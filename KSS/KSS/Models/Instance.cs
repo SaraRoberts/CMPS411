@@ -7,10 +7,11 @@ namespace KSS.Models
 {
     public class Instance
     {
-        public int Id { get; set; }
+        public int InstanceId { get; set; } //pk
         public DateTimeOffset StartDate { get; set; }
         public double Price { get; set; }
         public string Location { get; set; }
-        public int CourseId { get; set; }
+        public int CourseId { get; set; } //fk
+        public int Seats { get; set; }
     }
 }
