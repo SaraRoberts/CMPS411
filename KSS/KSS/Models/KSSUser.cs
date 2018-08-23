@@ -14,6 +14,6 @@ namespace KSS.Models
         [PersonalData]
         public string LastName { get; set; }
         [PersonalData]
-        public int CellPhone { get; set; }
+        public string CellPhone { get; set; }
     }
 }

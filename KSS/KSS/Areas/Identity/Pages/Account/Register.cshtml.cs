@@ -55,6 +55,24 @@ namespace KSS.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Display(Name ="First Name")]
+            [Required]
+            public string FirstName { get; set; }
+
+            [Display(Name ="Last Name")]
+            [Required]
+            public string LastName { get; set; }
+
+            [Display(Name ="Home Phone")]
+            [Required]
+            [Phone]
+            public string HomePhone { get; set; }
+
+            [Display(Name ="Cell Phone")]
+            [Required]
+            [Phone]
+            public string CellNumber { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -67,7 +85,9 @@ namespace KSS.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new KSSUser { UserName = Input.Email, Email = Input.Email  };//TODO Add FirstName Last Name and Cell
+                var user = new KSSUser { UserName = Input.Email,
+                    Email = Input.Email, FirstName = Input.FirstName,
+                    LastName = Input.LastName, CellPhone = Input.CellNumber, PhoneNumber = Input.HomePhone  };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
