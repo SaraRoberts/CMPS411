@@ -13,5 +13,8 @@ namespace KSS.Data
             : base(options)
         {}
         public DbSet<KSSUser> KSSUsers { get; set; }
+        public DbSet<Enrollment> Enrollment { get; set; }
+        public DbSet<Instance> Instance { get; set; }
+        public DbSet<Course> Course { get; set; }
     }
 }
