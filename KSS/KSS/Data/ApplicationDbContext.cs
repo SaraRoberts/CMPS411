@@ -11,7 +11,9 @@ namespace KSS.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
-        {}
+        {
+            this.Database.EnsureCreated();
+        }
         public DbSet<KSSUser> KSSUsers { get; set; }
         public DbSet<Enrollment> Enrollment { get; set; }
         public DbSet<Instance> Instance { get; set; }
