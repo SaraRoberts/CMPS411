@@ -15,7 +15,7 @@ namespace KSS.Models
         public int InstanceId { get; set; } //FK reference to InstanceId in Instance table
         public Instance Instance { get; set; }
 
-        [ForeignKey("Users")]
+        [ForeignKey("AspNetUsers")]
         public int Id { get; set; } //FK reference to UserId in KSSUer table
         public KSSUser KSSUser { get; set; } 
 
