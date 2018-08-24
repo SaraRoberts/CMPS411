@@ -18,5 +18,6 @@ namespace KSS.Data
         public DbSet<Enrollment> Enrollment { get; set; }
         public DbSet<Instance> Instance { get; set; }
         public DbSet<Course> Course { get; set; }
+        public DbSet<Location> Location { get; set; }
     }
 }

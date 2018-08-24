@@ -12,7 +12,6 @@ namespace KSS.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Book { get; set; }
-
         
         [ForeignKey("Course")]
         public int? PrereqId { get; set; } //FK references its own table
