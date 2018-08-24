@@ -48,7 +48,7 @@ namespace KSS.Controllers
         // GET: Courses/Create
         public IActionResult Create()
         {
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "CourseId");
+            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name");
             return View();
         }
 
@@ -82,7 +82,7 @@ namespace KSS.Controllers
             {
                 return NotFound();
             }
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "CourseId", course.PrereqId);
+            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
             return View(course);
         }
 
