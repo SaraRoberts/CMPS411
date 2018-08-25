@@ -12,7 +12,13 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Course.Name)
+            @Html.DisplayNameFor(model => model.Course)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Course.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.StartDate)
@@ -24,16 +30,11 @@
             @Html.DisplayFor(model => model.Price)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Course)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Course.CourseId)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Location)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Location.LocationId)
+            @Html.DisplayFor(model => model.Location.Street)
+            @Html.DisplayFor(model => model.Location.City)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Seats)
