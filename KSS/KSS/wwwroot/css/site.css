@@ -34,4 +34,21 @@ body {
     .carousel-caption {
         display: none;
     }
+    footer .contact {
+        float: none;
+    }
+}
+
+footer {
+    min-height:140px;
+    background-color:#b5302b;
+    color:#ffffff;
+    padding:20px;
+    margin-top:20px;
+    text-align:center;
+}
+
+footer .contact {
+    float: left;
+    font-size: 14px;
 }
