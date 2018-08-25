@@ -12,7 +12,7 @@ namespace KSS.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-            this.Database.EnsureCreated();
+            this.Database.Migrate();
         }
         public DbSet<KSSUser> KSSUsers { get; set; }
         public DbSet<Enrollment> Enrollment { get; set; }
