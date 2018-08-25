@@ -22,7 +22,8 @@ namespace KSS.Controllers
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Location.ToListAsync());
+            var location = _context.Location.OrderBy(l => l.City);
+            return View(await location.ToListAsync());
         }
 
         // GET: Locations/Details/5
