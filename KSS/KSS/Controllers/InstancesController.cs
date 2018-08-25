@@ -49,8 +49,8 @@ namespace KSS.Controllers
         // GET: Instances/Create
         public IActionResult Create()
         {
-            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId");
-            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "LocationId");
+            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name");
+            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street");
             return View();
         }
 
