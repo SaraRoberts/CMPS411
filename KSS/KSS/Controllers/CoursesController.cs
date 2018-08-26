@@ -65,7 +65,7 @@ namespace KSS.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "CourseId", course.PrereqId);
+            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
             return View(course);
         }
 
@@ -118,7 +118,7 @@ namespace KSS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "CourseId", course.PrereqId);
+            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
             return View(course);
         }
 
