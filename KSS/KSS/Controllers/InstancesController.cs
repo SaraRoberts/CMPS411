@@ -22,7 +22,8 @@ namespace KSS.Controllers
         // GET: Instances
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Instance.Include(i => i.Course).Include(i => i.Location);
+            var applicationDbContext = _context.Instance.Include(i => i.Course).Include(i => i.Location)
+                .OrderBy(i => i.Course.Name);
             return View(await applicationDbContext.ToListAsync());
         }
 
