@@ -10,24 +10,23 @@ using KSS.Models;
 
 namespace KSS.Controllers
 {
-    public class CoursesController : Controller
+    public class EnrollmentController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CoursesController(ApplicationDbContext context)
+        public EnrollmentController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Courses
+        // GET: Enrollment
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Course.Include(c => c.Prereq)
-                .OrderBy(c => c.Name);
+            var applicationDbContext = _context.Enrollment.Include(e => e.Instance);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Courses/Details/5
+        // GET: Enrollment/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,42 +34,42 @@ namespace KSS.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Course
-                .Include(c => c.Prereq)
-                .FirstOrDefaultAsync(m => m.CourseId == id);
-            if (course == null)
+            var enrollment = await _context.Enrollment
+                .Include(e => e.Instance)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (enrollment == null)
             {
                 return NotFound();
             }
 
-            return View(course);
+            return View(enrollment);
         }
 
-        // GET: Courses/Create
+        // GET: Enrollment/Create
         public IActionResult Create()
         {
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name");
+            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId");
             return View();
         }
 
-        // POST: Courses/Create
+        // POST: Enrollment/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseId,Name,Description,Book,PrereqId")] Course course)
+        public async Task<IActionResult> Create([Bind("EnrollmentId,InstanceId,Id,Status")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(course);
+                _context.Add(enrollment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
-            return View(course);
+            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
+            return View(enrollment);
         }
 
-        // GET: Courses/Edit/5
+        // GET: Enrollment/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,23 +77,23 @@ namespace KSS.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Course.FindAsync(id);
-            if (course == null)
+            var enrollment = await _context.Enrollment.FindAsync(id);
+            if (enrollment == null)
             {
                 return NotFound();
             }
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
-            return View(course);
+            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
+            return View(enrollment);
         }
 
-        // POST: Courses/Edit/5
+        // POST: Enrollment/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CourseId,Name,Description,Book,PrereqId")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("EnrollmentId,InstanceId,Id,Status")] Enrollment enrollment)
         {
-            if (id != course.CourseId)
+            if (id != enrollment.Id)
             {
                 return NotFound();
             }
@@ -103,12 +102,12 @@ namespace KSS.Controllers
             {
                 try
                 {
-                    _context.Update(course);
+                    _context.Update(enrollment);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CourseExists(course.CourseId))
+                    if (!EnrollmentExists(enrollment.Id))
                     {
                         return NotFound();
                     }
@@ -119,11 +118,11 @@ namespace KSS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
-            return View(course);
+            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
+            return View(enrollment);
         }
 
-        // GET: Courses/Delete/5
+        // GET: Enrollment/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -131,31 +130,31 @@ namespace KSS.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Course
-                .Include(c => c.Prereq)
-                .FirstOrDefaultAsync(m => m.CourseId == id);
-            if (course == null)
+            var enrollment = await _context.Enrollment
+                .Include(e => e.Instance)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (enrollment == null)
             {
                 return NotFound();
             }
 
-            return View(course);
+            return View(enrollment);
         }
 
-        // POST: Courses/Delete/5
+        // POST: Enrollment/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var course = await _context.Course.FindAsync(id);
-            _context.Course.Remove(course);
+            var enrollment = await _context.Enrollment.FindAsync(id);
+            _context.Enrollment.Remove(enrollment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CourseExists(int id)
+        private bool EnrollmentExists(int id)
         {
-            return _context.Course.Any(e => e.CourseId == id);
+            return _context.Enrollment.Any(e => e.Id == id);
         }
     }
 }
