@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +42,12 @@ namespace KSS
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "clientside-react/build";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,11 +70,29 @@ namespace KSS
 
             app.UseAuthentication();
 
+            app.UseSpaStaticFiles();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "adminArea",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action=Index}/{id?}");
+            });
+            // this uses this template: https://docs.microsoft.com/en-us/aspnet/core/spa/react?tabs=visual-studio
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "clientside-react";
+
+                if (env.IsDevelopment())
+                {
+                    //spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+                    spa.Options.StartupTimeout = new TimeSpan(0, 0, 90);
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
             });
         }
     }
