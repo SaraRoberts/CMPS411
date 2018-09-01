@@ -21,5 +21,7 @@ namespace KSS.Models
         public Location Location { get; set; }
 
         public int Seats { get; set; }
+
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
     }
 }

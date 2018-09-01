@@ -22,7 +22,7 @@ namespace KSS.Controllers
         // GET: Enrollments
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Enrollment.Include(e => e.Instance);
+            var applicationDbContext = _context.Enrollment.Include(e => e.Instance).Include(e => e.KSSUser);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace KSS.Controllers
 
             var enrollment = await _context.Enrollment
                 .Include(e => e.Instance)
+                .Include(e => e.KSSUser)
                 .FirstOrDefaultAsync(m => m.EnrollmentId == id);
             if (enrollment == null)
             {
@@ -49,6 +50,7 @@ namespace KSS.Controllers
         public IActionResult Create()
         {
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId");
+            ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "FirstName");
             return View();
         }
 
@@ -57,7 +59,7 @@ namespace KSS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EnrollmentId,InstanceId,Id,Status")] Enrollment enrollment)
+        public async Task<IActionResult> Create([Bind("EnrollmentId,InstanceId,UserId,Status")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
             {
@@ -66,6 +68,7 @@ namespace KSS.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
+            ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "Id", enrollment.UserId);
             return View(enrollment);
         }
 
@@ -83,6 +86,7 @@ namespace KSS.Controllers
                 return NotFound();
             }
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
+            ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "FirstName", enrollment.UserId);
             return View(enrollment);
         }
 
@@ -91,7 +95,7 @@ namespace KSS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EnrollmentId,InstanceId,Id,Status")] Enrollment enrollment)
+        public async Task<IActionResult> Edit(int id, [Bind("EnrollmentId,InstanceId,UserId,Status")] Enrollment enrollment)
         {
             if (id != enrollment.EnrollmentId)
             {
@@ -119,6 +123,7 @@ namespace KSS.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
+            ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "Id", enrollment.UserId);
             return View(enrollment);
         }
 
@@ -132,6 +137,7 @@ namespace KSS.Controllers
 
             var enrollment = await _context.Enrollment
                 .Include(e => e.Instance)
+                .Include(e => e.KSSUser)
                 .FirstOrDefaultAsync(m => m.EnrollmentId == id);
             if (enrollment == null)
             {

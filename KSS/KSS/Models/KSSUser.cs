@@ -15,5 +15,7 @@ namespace KSS.Models
         public string LastName { get; set; }
         [PersonalData]
         public string CellPhone { get; set; }
+
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
     }
 }

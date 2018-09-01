@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KSS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180901175941_initial")]
+    [Migration("20180901195300_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,21 +48,19 @@ namespace KSS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Id");
-
                     b.Property<int>("InstanceId");
-
-                    b.Property<string>("KSSUserId");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("EnrollmentId");
 
                     b.HasIndex("InstanceId");
 
-                    b.HasIndex("KSSUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Enrollment");
                 });
@@ -306,13 +304,13 @@ namespace KSS.Migrations
             modelBuilder.Entity("KSS.Models.Enrollment", b =>
                 {
                     b.HasOne("KSS.Models.Instance", "Instance")
-                        .WithMany()
+                        .WithMany("Enrollments")
                         .HasForeignKey("InstanceId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("KSS.Models.KSSUser", "KSSUser")
-                        .WithMany()
-                        .HasForeignKey("KSSUserId");
+                        .WithMany("Enrollments")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("KSS.Models.Instance", b =>

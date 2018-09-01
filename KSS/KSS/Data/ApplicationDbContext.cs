@@ -19,5 +19,26 @@ namespace KSS.Data
         public DbSet<Instance> Instance { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<Location> Location { get; set; }
+        /*
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Enrollment>()
+              .HasOne(c => c.KSSUser)
+              .WithMany(x => x.Enrollments)
+              .HasForeignKey(f => f.UserId)
+              .HasConstraintName("UserId")
+              .OnDelete(DeleteBehavior.Cascade)
+              .IsRequired();
+
+            modelBuilder.Entity<Enrollment>()
+              .HasOne(c => c.Instance)
+              .WithMany(x => x.Enrollments)
+              .HasForeignKey(f => f.InstanceId)
+              .HasConstraintName("InstanceId")
+              .OnDelete(DeleteBehavior.Cascade)
+              .IsRequired();
+        }
+        */
+        
     }
 }

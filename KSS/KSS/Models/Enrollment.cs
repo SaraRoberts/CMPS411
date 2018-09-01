@@ -10,15 +10,14 @@ namespace KSS.Models
 {
     public class Enrollment
     {
-        [Key]
         public int EnrollmentId { get; set; } //PK
 
         [ForeignKey("Instance")]
         public int InstanceId { get; set; } //FK reference to InstanceId in Instance table
         public Instance Instance { get; set; }
 
-        [ForeignKey("AspNetUsers")]
-        public int Id { get; set; } //FK reference to UserId in KSSUer table
+        [ForeignKey("KSSUser")]
+        public string UserId { get; set; } //FK reference to Id in KSSUer table
         public KSSUser KSSUser { get; set; } 
 
         public char Status { get; set; }

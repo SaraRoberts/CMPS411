@@ -231,8 +231,7 @@ namespace KSS.Migrations
                     EnrollmentId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     InstanceId = table.Column<int>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
-                    KSSUserId = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
                     Status = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -245,8 +244,8 @@ namespace KSS.Migrations
                         principalColumn: "InstanceId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Enrollment_AspNetUsers_KSSUserId",
-                        column: x => x.KSSUserId,
+                        name: "FK_Enrollment_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -302,9 +301,9 @@ namespace KSS.Migrations
                 column: "InstanceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enrollment_KSSUserId",
+                name: "IX_Enrollment_UserId",
                 table: "Enrollment",
-                column: "KSSUserId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Instance_CourseId",
