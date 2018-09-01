@@ -10,23 +10,23 @@ using KSS.Models;
 
 namespace KSS.Controllers
 {
-    public class EnrollmentController : Controller
+    public class EnrollmentsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EnrollmentController(ApplicationDbContext context)
+        public EnrollmentsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Enrollment
+        // GET: Enrollments
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Enrollment.Include(e => e.Instance);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Enrollment/Details/5
+        // GET: Enrollments/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace KSS.Controllers
 
             var enrollment = await _context.Enrollment
                 .Include(e => e.Instance)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.EnrollmentId == id);
             if (enrollment == null)
             {
                 return NotFound();
@@ -45,14 +45,14 @@ namespace KSS.Controllers
             return View(enrollment);
         }
 
-        // GET: Enrollment/Create
+        // GET: Enrollments/Create
         public IActionResult Create()
         {
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId");
             return View();
         }
 
-        // POST: Enrollment/Create
+        // POST: Enrollments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -69,7 +69,7 @@ namespace KSS.Controllers
             return View(enrollment);
         }
 
-        // GET: Enrollment/Edit/5
+        // GET: Enrollments/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,14 +86,14 @@ namespace KSS.Controllers
             return View(enrollment);
         }
 
-        // POST: Enrollment/Edit/5
+        // POST: Enrollments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EnrollmentId,InstanceId,Id,Status")] Enrollment enrollment)
         {
-            if (id != enrollment.Id)
+            if (id != enrollment.EnrollmentId)
             {
                 return NotFound();
             }
@@ -107,7 +107,7 @@ namespace KSS.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EnrollmentExists(enrollment.Id))
+                    if (!EnrollmentExists(enrollment.EnrollmentId))
                     {
                         return NotFound();
                     }
@@ -122,7 +122,7 @@ namespace KSS.Controllers
             return View(enrollment);
         }
 
-        // GET: Enrollment/Delete/5
+        // GET: Enrollments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,7 +132,7 @@ namespace KSS.Controllers
 
             var enrollment = await _context.Enrollment
                 .Include(e => e.Instance)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.EnrollmentId == id);
             if (enrollment == null)
             {
                 return NotFound();
@@ -141,7 +141,7 @@ namespace KSS.Controllers
             return View(enrollment);
         }
 
-        // POST: Enrollment/Delete/5
+        // POST: Enrollments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -154,7 +154,7 @@ namespace KSS.Controllers
 
         private bool EnrollmentExists(int id)
         {
-            return _context.Enrollment.Any(e => e.Id == id);
+            return _context.Enrollment.Any(e => e.EnrollmentId == id);
         }
     }
 }

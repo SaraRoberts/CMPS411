@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Details</h2>
@@ -12,16 +11,16 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.EnrollmentId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EnrollmentId)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Instance)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Instance.InstanceId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Status)
@@ -32,6 +31,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.EnrollmentId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

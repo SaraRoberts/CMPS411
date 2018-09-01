@@ -4,16 +4,14 @@ using KSS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace KSS.Data.Migrations
+namespace KSS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180824001421_DBTest")]
-    partial class DBTest
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,11 +42,11 @@ namespace KSS.Data.Migrations
 
             modelBuilder.Entity("KSS.Models.Enrollment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EnrollmentId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EnrollmentId");
+                    b.Property<int>("Id");
 
                     b.Property<int>("InstanceId");
 
@@ -58,7 +56,7 @@ namespace KSS.Data.Migrations
                         .IsRequired()
                         .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
 
-                    b.HasKey("Id");
+                    b.HasKey("EnrollmentId");
 
                     b.HasIndex("InstanceId");
 
@@ -75,7 +73,7 @@ namespace KSS.Data.Migrations
 
                     b.Property<int>("CourseId");
 
-                    b.Property<string>("Location");
+                    b.Property<int>("LocationId");
 
                     b.Property<double>("Price");
 
@@ -87,7 +85,28 @@ namespace KSS.Data.Migrations
 
                     b.HasIndex("CourseId");
 
+                    b.HasIndex("LocationId");
+
                     b.ToTable("Instance");
+                });
+
+            modelBuilder.Entity("KSS.Models.Location", b =>
+                {
+                    b.Property<int>("LocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("State");
+
+                    b.Property<string>("Street");
+
+                    b.Property<int>("Zipcode");
+
+                    b.HasKey("LocationId");
+
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -299,6 +318,11 @@ namespace KSS.Data.Migrations
                     b.HasOne("KSS.Models.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("KSS.Models.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

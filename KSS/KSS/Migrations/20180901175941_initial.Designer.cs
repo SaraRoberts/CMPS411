@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace KSS.Data.Migrations
+namespace KSS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180824230930_locationTable")]
-    partial class locationTable
+    [Migration("20180901175941_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,11 +44,11 @@ namespace KSS.Data.Migrations
 
             modelBuilder.Entity("KSS.Models.Enrollment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EnrollmentId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EnrollmentId");
+                    b.Property<int>("Id");
 
                     b.Property<int>("InstanceId");
 
@@ -58,7 +58,7 @@ namespace KSS.Data.Migrations
                         .IsRequired()
                         .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
 
-                    b.HasKey("Id");
+                    b.HasKey("EnrollmentId");
 
                     b.HasIndex("InstanceId");
 
