@@ -50,6 +50,7 @@
                 @Html.DisplayFor(modelItem => item.Seats)
             </td>
             <td>
+                <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> |
                 <a asp-action="Edit" asp-route-id="@item.InstanceId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.InstanceId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.InstanceId">Delete</a>

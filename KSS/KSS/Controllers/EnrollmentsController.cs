@@ -47,9 +47,22 @@ namespace KSS.Controllers
         }
 
         // GET: Enrollments/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int? id)
         {
-            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId");
+            if (id == null)
+            {
+                ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId");
+                ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "FirstName");
+                return View();
+                //return NotFound();
+            }
+
+            var instance = await _context.Instance.FirstOrDefaultAsync(m => m.InstanceId == id);
+            if (instance == null)
+            {
+                return NotFound();
+            }
+            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", instance.InstanceId);
             ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "FirstName");
             return View();
         }
