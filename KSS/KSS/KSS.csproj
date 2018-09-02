@@ -17,7 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Views\" />
     <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Areas\Api\" />
   </ItemGroup>
 
   <ItemGroup>
