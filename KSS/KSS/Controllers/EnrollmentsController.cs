@@ -46,6 +46,34 @@ namespace KSS.Controllers
             return View(enrollment);
         }
 
+        // GET: Enrollments/Roster
+        public async Task<IActionResult> Roster(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var enrollment = await _context.Enrollment
+                .Include(e => e.KSSUser)
+                .Where(m => m.InstanceId == id)
+                .ToListAsync();
+            var instance = await _context.Instance
+                .FirstOrDefaultAsync(e => e.InstanceId == id);
+            var course = await _context.Course
+                .FirstOrDefaultAsync(m => m.CourseId == instance.InstanceId);
+            var location = await _context.Location
+                .FirstOrDefaultAsync(m => m.LocationId == instance.LocationId);
+            if (instance == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["Course"] = course.Name;
+            ViewData["Location"] = location.City;
+            return View(enrollment);
+        }
+
         // GET: Enrollments/Create
         public async Task<IActionResult> Create(int? id)
         {
