@@ -56,14 +56,14 @@ namespace KSS.Controllers
 
             var enrollment = await _context.Enrollment
                 .Include(e => e.KSSUser)
-                .Where(m => m.InstanceId == id)
+                .Where(e => e.InstanceId == id)
                 .ToListAsync();
             var instance = await _context.Instance
                 .FirstOrDefaultAsync(e => e.InstanceId == id);
             var course = await _context.Course
-                .FirstOrDefaultAsync(m => m.CourseId == instance.InstanceId);
+                .FirstOrDefaultAsync(e => e.CourseId == instance.InstanceId);
             var location = await _context.Location
-                .FirstOrDefaultAsync(m => m.LocationId == instance.LocationId);
+                .FirstOrDefaultAsync(e => e.LocationId == instance.LocationId);
             if (instance == null)
             {
                 return NotFound();
@@ -104,12 +104,19 @@ namespace KSS.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(enrollment);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var duplicate = await _context.Enrollment
+                    .FirstOrDefaultAsync(e => e.InstanceId == enrollment.InstanceId && e.UserId == enrollment.UserId);
+
+                if (duplicate == null)
+                {
+                    _context.Add(enrollment);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
+            ViewData["Duplicate"] = "User already registered for this class.";
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "Id", enrollment.UserId);
+            ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "FirstName", enrollment.UserId);
             return View(enrollment);
         }
 
