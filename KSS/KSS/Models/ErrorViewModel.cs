@@ -1,5 +1,3 @@
-using System;
-
 namespace KSS.Models
 {
     public class ErrorViewModel

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using KSS.Data;
+using KSS.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using KSS.Data;
-using KSS.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace KSS.Controllers
 {
@@ -113,8 +111,13 @@ namespace KSS.Controllers
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
+
+                ViewData["Duplicate"] = "User already registered for this class.";
+                ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
+                ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "FirstName", enrollment.UserId);
+                return View(enrollment);
             }
-            ViewData["Duplicate"] = "User already registered for this class.";
+
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
             ViewData["UserId"] = new SelectList(_context.KSSUsers, "Id", "FirstName", enrollment.UserId);
             return View(enrollment);
