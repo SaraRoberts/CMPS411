@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.0-preview1-final" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
     <PackageReference Include="react.js" Version="0.14.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
