@@ -47,7 +47,7 @@ namespace KSS
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireClaim("AdminID"));
-                options.AddPolicy("KSSUser", policy => policy.RequireClaim("UserID"));
+                options.AddPolicy("KSSUser", policy => policy.RequireClaim("KSSUserId"));
             });
 
             // Register the Swagger generator, defining 1 or more Swagger documents

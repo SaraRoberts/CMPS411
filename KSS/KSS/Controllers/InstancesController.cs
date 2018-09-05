@@ -11,7 +11,7 @@ using KSS.Models;
 
 namespace KSS.Controllers
 {
-    [Authorize(Policy = "KSSUser")]
+    //[Authorize(Policy = "KSSUser")]
     public class InstancesController : Controller
     {
         private readonly ApplicationDbContext _context;

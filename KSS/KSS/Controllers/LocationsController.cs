@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KSS.Controllers
 {
-    [Authorize(Policy = "KSSUser")]
+    //[Authorize(Policy = "KSSUser")]
     public class LocationsController : Controller
     {
         private readonly ApplicationDbContext _context;
