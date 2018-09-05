@@ -12,11 +12,11 @@ namespace KSS.Areas
 {
     [Route("api/Enrollment")]
     [ApiController]
-    public class EnrollmentApiController : ControllerBase
+    public class EnrollmentsApiController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public EnrollmentApiController(ApplicationDbContext context)
+        public EnrollmentsApiController(ApplicationDbContext context)
         {
             _context = context;
         }

@@ -12,11 +12,11 @@ namespace KSS.Areas
 {
     [Route("api/Instance")]
     [ApiController]
-    public class InstanceApiController : ControllerBase
+    public class InstancesApiController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public InstanceApiController(ApplicationDbContext context)
+        public InstancesApiController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -25,7 +25,8 @@ namespace KSS.Areas
         [HttpGet]
         public IEnumerable<Instance> GetInstance()
         {
-            return _context.Instance;
+            return _context.Instance
+                .Include(e => e.Course);
         }
 
         // GET: api/InstanceApi/5
