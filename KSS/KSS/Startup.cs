@@ -43,6 +43,13 @@ namespace KSS
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            //Add authorization for Admin user and KSSUser that require different claims for access
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireClaim("AdminID"));
+                options.AddPolicy("KSSUser", policy => policy.RequireClaim("UserID"));
+            });
+
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {

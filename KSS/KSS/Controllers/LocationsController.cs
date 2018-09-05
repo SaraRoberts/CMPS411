@@ -1,12 +1,14 @@
 ﻿using KSS.Data;
 using KSS.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace KSS.Controllers
 {
+    [Authorize(Policy = "KSSUser")]
     public class LocationsController : Controller
     {
         private readonly ApplicationDbContext _context;
