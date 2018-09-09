@@ -1,0 +1,36 @@
+﻿@model KSS.Models.Enrollment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Enrollment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Instance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Instance.InstanceId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KSSUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KSSUser.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EnrollmentId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
