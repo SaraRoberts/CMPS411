@@ -1,0 +1,44 @@
+﻿@model IEnumerable<KSS.Areas.Admin.Models.Enrollment>
+
+    @{
+        ViewData["Title"] = "Roster";
+    }
+
+    <h2>@ViewData["Course"] in @ViewData["Location"]</h2>
+
+    Roster
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Student
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.EnrollmentId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.EnrollmentId">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        <a asp-action="Create">Add Student</a>
+    </p>

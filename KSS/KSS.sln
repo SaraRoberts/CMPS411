@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2047
+VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSS", "KSS\KSS.csproj", "{2EA6569E-551A-434F-B581-A562085A4986}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSS", "KSS\KSS.csproj", "{7D421A66-1F72-496A-95D4-52BF57186B4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2EA6569E-551A-434F-B581-A562085A4986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EA6569E-551A-434F-B581-A562085A4986}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EA6569E-551A-434F-B581-A562085A4986}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EA6569E-551A-434F-B581-A562085A4986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D421A66-1F72-496A-95D4-52BF57186B4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D421A66-1F72-496A-95D4-52BF57186B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D421A66-1F72-496A-95D4-52BF57186B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D421A66-1F72-496A-95D4-52BF57186B4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {13AB0A6F-A843-4231-991E-BD4B5A71C313}
+		SolutionGuid = {4D74590A-0CE5-43DE-894F-553AD8493769}
 	EndGlobalSection
 EndGlobal
