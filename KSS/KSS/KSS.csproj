@@ -27,10 +27,17 @@
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Areas\Admin\Views\Home\Index.cshtml" />
+  </ItemGroup>
   
   <ItemGroup>
     <None Remove="client\src\components\JavaScript.js" />
     <None Remove="client\src\components\JavaScript.js" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="Areas\Admin\Views\Home\Index.cshtml" />
   </ItemGroup>
 
 </Project>
