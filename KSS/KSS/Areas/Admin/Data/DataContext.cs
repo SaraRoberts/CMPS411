@@ -60,6 +60,5 @@ namespace KSS.Areas.Admin.Data
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
         }
-
     }
 }
