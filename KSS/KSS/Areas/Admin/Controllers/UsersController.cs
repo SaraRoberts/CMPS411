@@ -10,10 +10,12 @@ using KSS.Areas.Admin.Models;
 using KSS.Areas.Admin.ViewModels;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly DataContext _context;
@@ -48,6 +50,7 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Users/Create
+        [AllowAnonymous]
         public IActionResult Create()
         {
             return View();
