@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]
     public class CoursesController : Controller
     {
         private readonly DataContext _context;
