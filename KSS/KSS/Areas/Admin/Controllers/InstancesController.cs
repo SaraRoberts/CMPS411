@@ -154,6 +154,16 @@ namespace KSS.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var instance = await _context.Instance.FindAsync(id);
+            //Maybe we can also check if the instance is expired. If so, We can delete it 
+            var used = await _context.Enrollment
+               .Include(e => e.Instance)
+               .FirstOrDefaultAsync(e => e.InstanceId == instance.InstanceId);
+            if (used != null)
+            {
+                ViewData["Duplicate"] = "Students are " +
+                    "currently enrolled in this class" + " is using this using this class.";
+                return View(instance);
+            }
             _context.Instance.Remove(instance);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
