@@ -1,4 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Welcome";
+﻿@model IEnumerable<KSS.Areas.Admin.Models.Instance>
+
+@{
+    ViewData["Title"] = "Index";
 }
-<h2>Welcome</h2>
+
+<h2>Welcome @User.Identity.Name!</h2>
+
+<h3>Upcoming Classes</h3>
+
+<div class="classes">
+    @foreach (var item in Model)
+    {
+    <div class="class" style="margin: 5px;border-top: solid 3px #ff0000;box-shadow:0px 2px 4px 0px rgba(0, 0, 0, 0.2);display:inline-block;">
+        <h5  style="font-weight:600;">@Html.DisplayFor(modelItem => item.Course.Name) in @Html.DisplayFor(modelItem => item.Location.City)</h5>
+        <p style="color:#565656;">
+            @Html.DisplayFor(modelItem => item.StartDate)<br />
+            Seats: @Html.DisplayFor(modelItem => item.Seats)<br />
+        </p>
+        <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> |
+        <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">Roster</a>
+    </div>
+    }
+ </div>
