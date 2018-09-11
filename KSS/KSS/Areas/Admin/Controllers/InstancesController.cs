@@ -11,6 +11,7 @@ using KSS.Areas.Admin.Models;
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]
     public class InstancesController : Controller
     {
         private readonly DataContext _context;
