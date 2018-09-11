@@ -147,7 +147,17 @@ namespace KSS.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var course = await _context.Course.FindAsync(id);
+            var course = await _context.Course.FirstOrDefaultAsync(m => m.CourseId == id);
+
+            var used = await _context.Instance
+                .Include(e => e.Course)
+                .Include(e => e.Location)
+                .FirstOrDefaultAsync(e => e.CourseId == course.CourseId);
+            if (used != null)
+            {
+                ViewData["Duplicate"] = used.Course.Name + " in " + used.Location.City + " is using this Course.";
+                return View(course);
+            }
             _context.Course.Remove(course);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
