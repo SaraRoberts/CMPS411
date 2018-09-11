@@ -31,9 +31,14 @@ namespace KSS.Areas.Admin.Controllers
         }
         [Authorize(Roles = "Admin")]
         [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
-        public IActionResult Welcome()
+        public async Task<IActionResult> Welcome()
         {
-            return View();
+            var dataContext = _context
+                .Instance.Include(i => i.Course)
+                .Include(i => i.Location)
+                .Where(e => e.StartDate >= DateTime.UtcNow)
+                .OrderBy(e => e.StartDate);
+            return View(await dataContext.ToListAsync());
         }
         public IActionResult AccessDenied()
         {
