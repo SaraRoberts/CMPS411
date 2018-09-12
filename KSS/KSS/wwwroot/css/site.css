@@ -3,6 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #ffe6e6;
 }
 
 /* Wrapping element */
@@ -29,7 +30,8 @@ body {
 }
 
 /* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
+
     /* Hide captions */
     .carousel-caption {
         display: none;
