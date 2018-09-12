@@ -50,7 +50,6 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Users/Create
-        [AllowAnonymous]
         public IActionResult Create()
         {
             return View();
