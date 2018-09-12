@@ -24,8 +24,9 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Instances
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Instance.Include(i => i.Course).Include(i => i.Location);
-            return View(await dataContext.ToListAsync());
+            var applicationDbContext = _context.Instance.Include(i => i.Course).Include(i => i.Location)
+                .OrderBy(i => i.Course.Name);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Admin/Instances/Details/5
@@ -51,8 +52,8 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Instances/Create
         public IActionResult Create()
         {
-            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId");
-            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "LocationId");
+            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name");
+            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street");
             return View();
         }
 
@@ -69,8 +70,8 @@ namespace KSS.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId", instance.CourseId);
-            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "LocationId", instance.LocationId);
+            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
+            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
             return View(instance);
         }
 
@@ -87,8 +88,8 @@ namespace KSS.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId", instance.CourseId);
-            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "LocationId", instance.LocationId);
+            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
+            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
             return View(instance);
         }
 
@@ -124,8 +125,8 @@ namespace KSS.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId", instance.CourseId);
-            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "LocationId", instance.LocationId);
+            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
+            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
             return View(instance);
         }
 

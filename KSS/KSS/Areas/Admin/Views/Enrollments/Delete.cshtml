@@ -15,13 +15,19 @@
             @Html.DisplayNameFor(model => model.Instance)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Instance.InstanceId)
+            @Html.DisplayFor(model => model.InstanceId)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.User)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.User.UserId)
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.LastName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Status)
