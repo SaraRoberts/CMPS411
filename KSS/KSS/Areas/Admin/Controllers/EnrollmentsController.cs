@@ -25,7 +25,7 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Enrollments
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Enrollment.Include(e => e.Instance).Include(e => e.User).OrderBy(m => m.Instance.Course);
+            var dataContext = _context.Enrollment.Include(e => e.Instance).Include(e => e.User);
             return View(await dataContext.ToListAsync());
         }
 
@@ -81,7 +81,7 @@ namespace KSS.Areas.Admin.Controllers
             if (id == null)
             {
                 ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId");
-                ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName");
+                ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId");
                 return View();
                 //return NotFound();
             }
@@ -93,8 +93,7 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", instance.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName");
-            //ViewData["LastName"] = new SelectList(_context.Users, "UserId", "LastName");
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId");
             return View();
         }
 
@@ -119,13 +118,12 @@ namespace KSS.Areas.Admin.Controllers
 
                 ViewData["Duplicate"] = "User already registered for this class.";
                 ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-                ViewData["UserId"] = new SelectList(_context.Users, "UsersId", "FirstName", enrollment.UserId);
+                ViewData["UserId"] = new SelectList(_context.Users, "UsersId", "UsersId", enrollment.UserId);
                 return View(enrollment);
             }
 
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", enrollment.UserId);
-            ViewData["LastName"] = new SelectList(_context.Users, "UserId", "LastName", enrollment.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UsersId", "UsersId", enrollment.UserId);
             return View(enrollment);
         }
 
@@ -143,8 +141,7 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", enrollment.UserId);
-            ViewData["LastName"] = new SelectList(_context.Users, "UserId", "LastName", enrollment.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
             return View(enrollment);
         }
 
@@ -181,8 +178,7 @@ namespace KSS.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", enrollment.UserId);
-            ViewData["LastName"] = new SelectList(_context.Users, "UserId", "LastName", enrollment.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
             return View(enrollment);
         }
 

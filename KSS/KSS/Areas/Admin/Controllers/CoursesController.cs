@@ -50,7 +50,7 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Courses/Create
         public IActionResult Create()
         {
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name");
+            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "CourseId");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace KSS.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
+            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "CourseId", course.PrereqId);
             return View(course);
         }
 
@@ -84,7 +84,7 @@ namespace KSS.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
+            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "CourseId", course.PrereqId);
             return View(course);
         }
 
@@ -120,7 +120,7 @@ namespace KSS.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
+            ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "CourseId", course.PrereqId);
             return View(course);
         }
 
