@@ -16,7 +16,10 @@
                 @Html.DisplayNameFor(model => model.Instance)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.User.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.LastName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
@@ -28,10 +31,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Instance.InstanceId)
+                @Html.DisplayFor(modelItem => item.Instance.Course.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.UserId)
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

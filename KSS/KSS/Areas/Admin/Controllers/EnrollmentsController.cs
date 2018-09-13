@@ -25,7 +25,7 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Enrollments
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Enrollment.Include(e => e.Instance).Include(e => e.User);
+            var dataContext = _context.Enrollment.Include(e => e.Instance).Include(e => e.User).Include(c => c.Instance.Course);
             return View(await dataContext.ToListAsync());
         }
 
@@ -81,7 +81,7 @@ namespace KSS.Areas.Admin.Controllers
             if (id == null)
             {
                 ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId");
-                ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId");
+                ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName");
                 return View();
                 //return NotFound();
             }
