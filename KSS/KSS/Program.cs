@@ -17,8 +17,6 @@ namespace KSS
     {
         public static void Main(string[] args)
         {
-            //DataContext dc = new DataContext();
-            //DbSeeding dbs = new DbSeeding();
             CreateWebHostBuilder(args).Build().Run();
         }
 
