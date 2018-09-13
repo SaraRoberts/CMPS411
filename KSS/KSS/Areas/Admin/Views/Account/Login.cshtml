@@ -3,9 +3,10 @@
     ViewData["Title"] = "Login";
 }
 
-<h2 style="text-align: center">Login</h2>
 <div class="row" style="margin: auto; alignment: center;">
-    <div style="text-align: center">
+    <div style="text-align: center;">
+        <div style="margin: auto; background-color:#f9f9f9;width:500px;color:black;box-shadow:50px;border:solid 1px lightgrey">
+        <img src="~/images/logo.png" width="500" />
         @if (ViewData["Error"] != null)
         {
             <div class="alert alert-danger"> Invalid Login. Please try Again</div>
@@ -14,12 +15,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" id="login-box" style="width: 400px; margin: auto"/>
+                <input asp-for="Email" class="form-control" id="login-box" style="width: 400px; margin: auto" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" id="login-box" type="password" style="width: 400px; margin: auto"/>
+                <input asp-for="Password" class="form-control" id="login-box" type="password" style="width: 400px; margin: auto" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
@@ -27,6 +28,7 @@
                 <input type="submit" value="Login" class="btn btn-default" />
             </div>
         </form>
+        </div>
     </div>
 </div>
 @section Scripts {
