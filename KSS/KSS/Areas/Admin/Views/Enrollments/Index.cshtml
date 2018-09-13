@@ -16,10 +16,7 @@
                 @Html.DisplayNameFor(model => model.Instance)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User.LastName)
+                Student
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
@@ -31,13 +28,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Instance.Course.Name)
+                @Html.DisplayFor(modelItem => item.Instance.Course.Name) in @Html.DisplayFor(modelItem => item.Instance.Location.City) on @Html.DisplayFor(modelItem => item.Instance.StartDate.LocalDateTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.LastName)
+                @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

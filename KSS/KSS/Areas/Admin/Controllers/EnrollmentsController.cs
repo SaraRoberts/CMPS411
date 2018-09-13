@@ -25,7 +25,11 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Enrollments
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Enrollment.Include(e => e.Instance).Include(e => e.User).Include(c => c.Instance.Course);
+            var dataContext = _context.Enrollment
+                .Include(e => e.Instance)
+                .Include(e => e.User)
+                .Include(c => c.Instance.Course)
+                .Include(c => c.Instance.Location);
             return View(await dataContext.ToListAsync());
         }
 
