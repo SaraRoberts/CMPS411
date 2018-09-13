@@ -10,9 +10,9 @@
 <div class="classes">
     @foreach (var item in Model)
     {
-    <div class="class" style="width:200px;color:black;background-color:#efefef;padding: 5px;margin: 5px;border-top: solid 3px #ff0000;box-shadow:0px 2px 4px 0px rgba(0, 0, 0, 0.2);display:inline-block;">
-        <h5  style="color:black;font-weight:600;">@Html.DisplayFor(modelItem => item.Course.Name) in @Html.DisplayFor(modelItem => item.Location.City)</h5>
-        <p style="color:#474747;">
+    <div class="class">
+        <h5>@Html.DisplayFor(modelItem => item.Course.Name) in @Html.DisplayFor(modelItem => item.Location.City)</h5>
+        <p>
             @Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)<br />
             Seats: @Html.DisplayFor(modelItem => item.Seats)<br />
         </p>
