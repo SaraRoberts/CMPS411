@@ -3,7 +3,8 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #b5302b;
+    background-color: #820909;
+    color: white;
 }
 
 /* Wrapping element */
@@ -27,6 +28,23 @@ body {
 /* QR code generator */
 #qrCode {
     margin: 15px;
+}
+
+/*Title of welcome page*/
+#welcome-title{
+    text-align: center;
+}
+
+/*Main text of welcome page*/
+#welcome-text{
+    text-align: center;
+}
+
+/*Properties of the input login boxes*/
+#login-box{
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
 }
 
 /* Hide/rearrange for smaller screens */
