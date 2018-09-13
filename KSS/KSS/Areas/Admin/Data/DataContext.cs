@@ -65,12 +65,12 @@ namespace KSS.Areas.Admin.Data
             // Seeding database
             modelBuilder.Entity<Course>().HasData
             (
-                new Course { CourseId = 1, Name = "CPR 101", Description = "CPR ", Book = false, PrereqId = null },
-                new Course { CourseId = 2, Name = "CPR 201", Description = "Hammond", Book = false, PrereqId = null },
-                new Course { CourseId = 3, Name = "CPR 301", Description = "Hammond", Book = false, PrereqId = null },
-                new Course { CourseId = 4, Name = "EMT 101", Description = "Hammond", Book = false, PrereqId = null },
-                new Course { CourseId = 5, Name = "EMT 201", Description = "Hammond", Book = false, PrereqId = null },
-                new Course { CourseId = 6, Name = "EMT 301", Description = "Hammond", Book = false, PrereqId = null }
+                new Course { CourseId = 1, Name = "CPR 101", Description = "CPR beginner class", Book = false, PrereqId = null },
+                new Course { CourseId = 2, Name = "CPR 201", Description = "CPR advanced techniques", Book = false, PrereqId = 1 },
+                new Course { CourseId = 3, Name = "CPR 301", Description = "CPR master class", Book = false, PrereqId = 2 },
+                new Course { CourseId = 4, Name = "EMT 101", Description = "EMT beginner class", Book = false, PrereqId = null },
+                new Course { CourseId = 5, Name = "EMT 201", Description = "EMT advanced techniques", Book = false, PrereqId = 4 },
+                new Course { CourseId = 6, Name = "EMT 301", Description = "EMT master class", Book = false, PrereqId = 5 }
             );
             modelBuilder.Entity<Enrollment>().HasData
             (
@@ -145,24 +145,24 @@ namespace KSS.Areas.Admin.Data
             modelBuilder.Entity<User>().HasData
             (
                 // admin
-                new User { UserId = 1, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "admin@admin.com", Password = hashedAdmin, Salt = saltAdmin, Role = "Admin" },
+                new User { UserId = 1, FirstName = "Becky", LastName = "Smith", Phone = "1112223333", Email = "admin@admin.com", Password = hashedAdmin, Salt = saltAdmin, Role = "Admin" },
                 // students
-                new User { UserId = 2, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student1@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 3, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student2@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 4, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student3@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 5, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student4@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 6, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student5@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 7, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student6@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 8, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student7@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 9, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student8@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 10, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student9@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 11, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student10@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 12, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student11@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 13, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student12@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 14, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student13@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 15, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student14@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 16, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student15@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 17, FirstName = "Smith", LastName = "Hammond", Phone = "1112223333", Email = "student16@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" }
+                new User { UserId = 2, FirstName = "Paul", LastName = "Dig", Phone = "1112223333", Email = "student1@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 3, FirstName = "Mike", LastName = "Waters", Phone = "1112223333", Email = "student2@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 4, FirstName = "Russel", LastName = "Chavers", Phone = "1112223333", Email = "student3@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 5, FirstName = "Sharon", LastName = "Manino", Phone = "1112223333", Email = "student4@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 6, FirstName = "Amy", LastName = "Hillbond", Phone = "1112223333", Email = "student5@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 7, FirstName = "Bill", LastName = "Everet", Phone = "1112223333", Email = "student6@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 8, FirstName = "Trenton", LastName = "Hillsong", Phone = "1112223333", Email = "student7@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 9, FirstName = "Colin", LastName = "Livers", Phone = "1112223333", Email = "student8@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 10, FirstName = "Babe", LastName = "Ruth", Phone = "1112223333", Email = "student9@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 11, FirstName = "Tim", LastName = "Hammond", Phone = "1112223333", Email = "student10@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 12, FirstName = "Gary", LastName = "Aimes", Phone = "1112223333", Email = "student11@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 13, FirstName = "Lucy", LastName = "Vilardo", Phone = "1112223333", Email = "student12@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 14, FirstName = "Tom", LastName = "Avers", Phone = "1112223333", Email = "student13@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 15, FirstName = "Amanda", LastName = "Catalonato", Phone = "1112223333", Email = "student14@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 16, FirstName = "Donald", LastName = "Hill", Phone = "1112223333", Email = "student15@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
+                new User { UserId = 17, FirstName = "Richard", LastName = "Newman", Phone = "1112223333", Email = "student16@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" }
             );
         }
 

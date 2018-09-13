@@ -34,7 +34,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
+                @Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
