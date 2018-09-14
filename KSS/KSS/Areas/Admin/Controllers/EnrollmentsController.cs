@@ -122,12 +122,12 @@ namespace KSS.Areas.Admin.Controllers
 
                 ViewData["Duplicate"] = "User already registered for this class.";
                 ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-                ViewData["UserId"] = new SelectList(_context.Users, "UsersId", "UsersId", enrollment.UserId);
+                ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
                 return View(enrollment);
             }
 
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UsersId", "UsersId", enrollment.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
             return View(enrollment);
         }
 
