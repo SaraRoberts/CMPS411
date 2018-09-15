@@ -1,7 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    padding-top: 50px;
+    padding-top: 80px;
     padding-bottom: 20px;
     background-color: #820909;
     color: white;
@@ -75,3 +75,21 @@ body {
     color: black;
     font-weight: 600;
 }
+
+.navbar{
+    min-height:80px;
+}
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+}
+.navbar-toggle {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+#nav-logo {
+    padding: 10px;
+}
+.nav-menu {
+    text-transform: uppercase;
+}
+
