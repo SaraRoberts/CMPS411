@@ -106,7 +106,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EnrollmentId,InstanceId,UserId,Status")] Enrollment enrollment)
+        public async Task<IActionResult> Create([Bind("EnrollmentId,InstanceId,UserId,Status,BookBought")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
             {
@@ -154,7 +154,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EnrollmentId,InstanceId,UserId,Status")] Enrollment enrollment)
+        public async Task<IActionResult> Edit(int id, [Bind("EnrollmentId,InstanceId,UserId,Status,BookBought")] Enrollment enrollment)
         {
             if (id != enrollment.EnrollmentId)
             {

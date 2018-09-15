@@ -25,9 +25,14 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Book" /> @Html.DisplayNameFor(model => model.Book)
+                        <input asp-for="BookAvailable" /> @Html.DisplayNameFor(model => model.BookAvailable)
                     </label>
                 </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookPrice" class="control-label"></label>
+                <input asp-for="BookPrice" class="form-control" />
+                <span asp-validation-for="BookPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PrereqId" class="control-label"></label>

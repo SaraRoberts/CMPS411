@@ -19,7 +19,10 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book)
+                @Html.DisplayNameFor(model => model.BookAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPrice)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Prereq)
@@ -37,7 +40,10 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Book)
+                @Html.DisplayFor(modelItem => item.BookAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookPrice)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Prereq.Name)
