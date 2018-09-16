@@ -83,17 +83,29 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Enrollments/Create
         public async Task<IActionResult> Create(int? id)
         {
+            List<UserViewModel> userList = new List<UserViewModel>();
+            var users = _context.Users;
             if (id == null)
             {
+
+                  foreach(var name in users)
+            {
+                UserViewModel user = new UserViewModel();
+                user.FirstName = name.LastName;
+                user.LastName = name.FirstName;
+                user.FullName = name.FirstName + " " + name.LastName;
+                user.UserId = name.UserId;
+                userList.Add(user);
+            }
+
                 ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId");
-                ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName");
+                ViewData["UserId"] = new SelectList(userList, "UserId", "FullName");
                 return View();
                 //return NotFound();
             }
 
             var instance = await _context.Instance.FirstOrDefaultAsync(m => m.InstanceId == id);
-            List<UserViewModel> userList = new List<UserViewModel>();
-            var users = _context.Users;
+          
             foreach(var name in users)
             {
                 UserViewModel user = new UserViewModel();
