@@ -116,7 +116,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EnrollmentId,InstanceId,UserId,Status")] Enrollment enrollment)
+        public async Task<IActionResult> Create([Bind("EnrollmentId,InstanceId,UserId,Status,BookBought")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
             {
@@ -132,12 +132,12 @@ namespace KSS.Areas.Admin.Controllers
 
                 ViewData["Duplicate"] = "User already registered for this class.";
                 ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-                ViewData["UserId"] = new SelectList(_context.Users, "UsersId", "UsersId", enrollment.UserId);
+                ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
                 return View(enrollment);
             }
 
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UsersId", "UsersId", enrollment.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
             return View(enrollment);
         }
 
@@ -164,7 +164,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EnrollmentId,InstanceId,UserId,Status")] Enrollment enrollment)
+        public async Task<IActionResult> Edit(int id, [Bind("EnrollmentId,InstanceId,UserId,Status,BookBought")] Enrollment enrollment)
         {
             if (id != enrollment.EnrollmentId)
             {

@@ -27,18 +27,7 @@ namespace KSS.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            return RedirectToAction(nameof(Welcome));
-        }
-        [Authorize(Roles = "Admin")]
-        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
-        public async Task<IActionResult> Welcome()
-        {
-            var dataContext = _context
-                .Instance.Include(i => i.Course)
-                .Include(i => i.Location)
-                .Where(e => e.StartDate >= DateTime.UtcNow)
-                .OrderBy(e => e.StartDate);
-            return View(await dataContext.ToListAsync());
+            return View();
         }
         public IActionResult AccessDenied()
         {
@@ -109,7 +98,8 @@ namespace KSS.Areas.Admin.Controllers
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
 
-                    return RedirectToAction(nameof(Welcome));
+                    //return RedirectToAction(nameof(Welcome));
+                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
                 }
             }
             ViewData["Error"] = "ERROR";

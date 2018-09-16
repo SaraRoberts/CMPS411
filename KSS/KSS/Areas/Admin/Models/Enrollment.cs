@@ -16,5 +16,6 @@ namespace KSS.Areas.Admin.Models
         public User User { get; set; }
 
         public char Status { get; set; }
+        public bool BookBought { get; set; }
     }
 }

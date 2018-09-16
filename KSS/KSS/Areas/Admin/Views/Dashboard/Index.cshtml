@@ -1,0 +1,24 @@
+﻿@model IEnumerable<KSS.Areas.Admin.Models.Instance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Welcome @User.Identity.Name!</h2>
+
+<h3>Upcoming Classes</h3>
+
+<div class="classes">
+    @foreach (var item in Model)
+    {
+        <div class="class">
+            <h5>@Html.DisplayFor(modelItem => item.Course.Name) in @Html.DisplayFor(modelItem => item.Location.City)</h5>
+            <p>
+                @Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)<br />
+                Seats: @Html.DisplayFor(modelItem => item.Seats)<br />
+            </p>
+            <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> |
+            <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">Roster</a>
+        </div>
+    }
+</div>
