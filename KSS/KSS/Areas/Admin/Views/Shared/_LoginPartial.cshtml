@@ -2,7 +2,7 @@
 @if (User.Identity.IsAuthenticated)
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="Admin" asp-controller="Account" asp-action="Index">Hello @User.Identity.Name!</a></li>
+        <li><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Hello @User.Identity.Name!</a></li>
         <li><a asp-area="Admin" asp-controller="Account" asp-action="Logout">Logout</a></li>
     </ul>
 }
