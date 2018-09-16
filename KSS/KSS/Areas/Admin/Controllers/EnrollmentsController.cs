@@ -84,11 +84,11 @@ namespace KSS.Areas.Admin.Controllers
         public async Task<IActionResult> Create(int? id)
         {
             List<UserViewModel> userList = new List<UserViewModel>();
+            List<UserViewModel> instanceList = new List<UserViewModel>();
             var users = _context.Users;
-            if (id == null)
-            {
+            var instances = _context.Instance.Include(i => i.Course).Include(i => i.Location);
 
-                  foreach(var name in users)
+            foreach (var name in users)
             {
                 UserViewModel user = new UserViewModel();
                 user.FirstName = name.LastName;
@@ -98,27 +98,33 @@ namespace KSS.Areas.Admin.Controllers
                 userList.Add(user);
             }
 
-                ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId");
+            foreach (var inst in instances)
+            {
+                UserViewModel location = new UserViewModel();
+                location.CourseName = inst.Course.Name;
+                location.City = inst.Location.City;
+                var startDate = inst.StartDate.ToString();
+                location.StartDate = startDate;
+                location.InstanceId = inst.InstanceId;
+                location.FullInstance = inst.Course.Name + "   " + inst.Location.City + "   " + inst.StartDate;
+                instanceList.Add(location);
+
+            }
+
+            if (id == null)
+            {                
+
+                ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance");
                 ViewData["UserId"] = new SelectList(userList, "UserId", "FullName");
                 return View();
                 //return NotFound();
             }
 
             var instance = await _context.Instance.FirstOrDefaultAsync(m => m.InstanceId == id);
-          
-            foreach(var name in users)
-            {
-                UserViewModel user = new UserViewModel();
-                user.FirstName = name.LastName;
-                user.LastName = name.FirstName;
-                user.FullName = name.FirstName + " " + name.LastName;
-                user.UserId = name.UserId;
-                userList.Add(user);
-            }
             
 
 
-            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", instance.InstanceId);
+            ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance", instance.InstanceId);
             ViewData["UserId"] = new SelectList(userList, "UserId", "FullName");
             return View();
         }
