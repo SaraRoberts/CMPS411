@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
+using KSS.Areas.Admin.ViewModels;
 
 namespace KSS.Areas.Admin.Controllers
 {
@@ -91,13 +92,22 @@ namespace KSS.Areas.Admin.Controllers
             }
 
             var instance = await _context.Instance.FirstOrDefaultAsync(m => m.InstanceId == id);
-
-            if (instance == null)
+            List<UserViewModel> userList = new List<UserViewModel>();
+            var users = _context.Users;
+            foreach(var name in users)
             {
-                return NotFound();
+                UserViewModel user = new UserViewModel();
+                user.FirstName = name.LastName;
+                user.LastName = name.FirstName;
+                user.FullName = name.FirstName + " " + name.LastName;
+                user.UserId = name.UserId;
+                userList.Add(user);
             }
+            
+
+
             ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", instance.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId");
+            ViewData["UserId"] = new SelectList(userList, "UserId", "FullName");
             return View();
         }
 
