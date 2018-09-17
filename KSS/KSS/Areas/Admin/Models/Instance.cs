@@ -17,10 +17,10 @@ namespace KSS.Areas.Admin.Models
         public int LocationId { get; set; } //FK reference to LocationId in Location table
         public Location Location { get; set; }
 
+        public int Seats { get; set; }
+
         public int Instructor { get; set; } //FK reference to User Table
         public User User { get; set; }
-
-        public int Seats { get; set; }
 
         public List<Enrollment> Enrollments { get; set; }
     }

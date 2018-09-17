@@ -12,13 +12,13 @@ namespace KSS.Areas.Admin.Models
         public string Description { get; set; }
         public bool BookAvailable { get; set; }
         public decimal BookPrice { get; set; }
-        public string Category { get; set; }
 
         public int? PrereqId { get; set; } //FK references its own table
         public Course Prereq { get; set; }
 
-        public List<Course> Courses { get; set; }
+        public string Category { get; set; }
 
+        public List<Course> Courses { get; set; }
         public List<Instance> Instances { get; set; }
     }
 }
