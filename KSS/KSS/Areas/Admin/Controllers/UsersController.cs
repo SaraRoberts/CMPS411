@@ -116,7 +116,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Phone,Email,Password,Salt,Role")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Phone,Email,Password,Salt,Role,StaffId")] User user)
         {
             if (id != user.UserId)
             {

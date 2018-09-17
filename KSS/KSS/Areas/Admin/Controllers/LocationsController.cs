@@ -56,7 +56,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocationId,Street,City,State,Zipcode")] Location location)
+        public async Task<IActionResult> Create([Bind("LocationId,Name,Street,City,State,Zipcode")] Location location)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LocationId,Street,City,State,Zipcode")] Location location)
+        public async Task<IActionResult> Edit(int id, [Bind("LocationId,Name,Street,City,State,Zipcode")] Location location)
         {
             if (id != location.LocationId)
             {

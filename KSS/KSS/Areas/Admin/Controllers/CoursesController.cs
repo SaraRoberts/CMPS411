@@ -61,7 +61,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseId,Name,Description,BookAvailable,BookPrice,PrereqId")] Course course)
+        public async Task<IActionResult> Create([Bind("CourseId,Name,Description,BookAvailable,BookPrice,PrereqId,Category")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CourseId,Name,Description,BookAvailable,BookPrice,PrereqId")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("CourseId,Name,Description,BookAvailable,BookPrice,PrereqId,Category")] Course course)
         {
             if (id != course.CourseId)
             {
