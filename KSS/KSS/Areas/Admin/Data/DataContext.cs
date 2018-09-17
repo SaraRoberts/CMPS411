@@ -170,5 +170,9 @@ namespace KSS.Areas.Admin.Data
             );
         }
 
+        public DbSet<KSS.Areas.Admin.Models.Staff> Staff { get; set; }
+
+        public DbSet<KSS.Areas.Admin.Models.Category> Category { get; set; }
+
     }
 }
