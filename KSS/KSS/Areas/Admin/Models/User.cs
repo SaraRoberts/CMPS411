@@ -16,6 +16,9 @@ namespace KSS.Areas.Admin.Models
         public byte[] Salt { get; set; }
         public string Role { get; set; }
 
+        public int StaffId { get; set; } //FK to Staff Table
+        public Staff Staff { get; set; }
+
         public List<Enrollment> Enrollments { get; set; }
     }
 }

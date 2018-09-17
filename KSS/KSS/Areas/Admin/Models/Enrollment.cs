@@ -17,5 +17,8 @@ namespace KSS.Areas.Admin.Models
 
         public char Status { get; set; }
         public bool BookBought { get; set; }
+        public DateTimeOffset DLCont { get; set; }
+        public bool ConfirmPaid { get; set; }
+        public bool ConfirmEnroll { get; set; }
     }
 }
