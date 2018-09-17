@@ -47,6 +47,24 @@
         <dd>
             @Html.DisplayFor(model => model.Seats)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Instructor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.StaffId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookAvailable)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookAvailable)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookPrice)
+        </dd>
     </dl>
 
     <form asp-action="Delete">
