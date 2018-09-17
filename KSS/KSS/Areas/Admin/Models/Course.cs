@@ -16,7 +16,8 @@ namespace KSS.Areas.Admin.Models
         public int? PrereqId { get; set; } //FK references its own table
         public Course Prereq { get; set; }
 
-        public string Category { get; set; }
+        public string Category { get; set; } //FK reference to Category Table
+        public Category CourseCategory { get; set;}
 
         public List<Course> Courses { get; set; }
         public List<Instance> Instances { get; set; }
