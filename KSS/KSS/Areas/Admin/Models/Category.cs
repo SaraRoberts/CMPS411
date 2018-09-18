@@ -9,5 +9,7 @@ namespace KSS.Areas.Admin.Models
     {
         public int CategoryId { get; set; } //PK
         public string Name { get; set; }
+
+        public List<Course> Courses { get; set; }
     }
 }

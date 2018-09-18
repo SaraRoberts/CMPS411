@@ -31,6 +31,11 @@ namespace KSS.Areas.Admin.Data
                 .WithMany(e => e.Courses)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Course>()
+                .HasOne(e => e.CourseCategory)
+                .WithMany(e => e.Courses)
+                .OnDelete(DeleteBehavior.Restrict);
+
             //Instance
             modelBuilder.Entity<Instance>()
                 .HasOne(e => e.Course)
