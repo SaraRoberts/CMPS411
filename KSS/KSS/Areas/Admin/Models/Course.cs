@@ -10,6 +10,7 @@ namespace KSS.Areas.Admin.Models
         public int CourseId { get; set; } //PK
         public string Name { get; set; }
         public string Description { get; set; }
+        public int TypicalPrice { get; set; }
         public bool BookAvailable { get; set; }
         public decimal BookPrice { get; set; }
 

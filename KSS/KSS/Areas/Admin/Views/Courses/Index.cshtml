@@ -19,6 +19,9 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.TypicalPrice)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.BookAvailable)
             </th>
             <th>
@@ -41,6 +44,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypicalPrice)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BookAvailable)
