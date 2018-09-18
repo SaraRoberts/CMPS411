@@ -11,5 +11,7 @@ namespace KSS.Areas.Admin.Models
         public int StaffId { get; set; } //PK
         public string Picture { get; set; }
         public string Bio { get; set; }
+
+        public List<User> Users { get; set; }
     }
 }

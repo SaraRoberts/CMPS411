@@ -20,6 +20,8 @@ namespace KSS.Areas.Admin.Data
         public DbSet<Instance> Instance { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<Location> Location { get; set; }
+        public DbSet<Staff> Staff { get; set; }
+        public DbSet<Category> Category { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,7 +36,8 @@ namespace KSS.Areas.Admin.Data
             modelBuilder.Entity<Course>()
                 .HasOne(e => e.CourseCategory)
                 .WithMany(e => e.Courses)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
 
             //Instance
             modelBuilder.Entity<Instance>()
@@ -65,7 +68,7 @@ namespace KSS.Areas.Admin.Data
                 .HasForeignKey(e => e.InstanceId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
-
+            /*
             // Seeding database
             modelBuilder.Entity<Course>().HasData
             (
@@ -171,12 +174,7 @@ namespace KSS.Areas.Admin.Data
                 new User { UserId = 15, FirstName = "Amanda", LastName = "Catalonato", Phone = "1112223333", Email = "student14@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
                 new User { UserId = 16, FirstName = "Donald", LastName = "Hill", Phone = "1112223333", Email = "student15@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
                 new User { UserId = 17, FirstName = "Richard", LastName = "Newman", Phone = "1112223333", Email = "student16@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" }
-            );
+            );*/
         }
-
-        public DbSet<KSS.Areas.Admin.Models.Staff> Staff { get; set; }
-
-        public DbSet<KSS.Areas.Admin.Models.Category> Category { get; set; }
-
     }
 }
