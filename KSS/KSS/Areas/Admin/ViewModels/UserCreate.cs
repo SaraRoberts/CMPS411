@@ -19,5 +19,6 @@ namespace KSS.Areas.Admin.ViewModels
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         public string Role { get; set; }
+        public int StaffId { get; set; }
     }
 }

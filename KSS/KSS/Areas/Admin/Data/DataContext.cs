@@ -24,7 +24,11 @@ namespace KSS.Areas.Admin.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            //Category
 
+            //Staff
+
+            //User
             
             //Course
             modelBuilder.Entity<Course>()
