@@ -62,6 +62,13 @@ namespace KSS.Areas.Admin.Data
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
 
+            modelBuilder.Entity<Instance>()
+                .HasOne(e => e.Instructor)
+                .WithMany(e => e.Instances)
+                .HasForeignKey(e => e.InstructorId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
+
             //Enrollment
             modelBuilder.Entity<Enrollment>()
                 .HasOne(e => e.User)

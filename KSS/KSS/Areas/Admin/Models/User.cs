@@ -20,5 +20,6 @@ namespace KSS.Areas.Admin.Models
         public Staff Staff { get; set; }
 
         public List<Enrollment> Enrollments { get; set; }
+        public List<Instance> Instances { get; set; }
     }
 }

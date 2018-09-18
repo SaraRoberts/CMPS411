@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KSS.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180918184244_init")]
+    [Migration("20180918193058_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,7 +104,7 @@ namespace KSS.Migrations
 
                     b.Property<int>("CourseId");
 
-                    b.Property<int>("Instructor");
+                    b.Property<int>("InstructorId");
 
                     b.Property<int>("LocationId");
 
@@ -114,15 +114,13 @@ namespace KSS.Migrations
 
                     b.Property<DateTimeOffset>("StartDate");
 
-                    b.Property<int?>("UserId");
-
                     b.HasKey("InstanceId");
 
                     b.HasIndex("CourseId");
 
-                    b.HasIndex("LocationId");
+                    b.HasIndex("InstructorId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Instance");
                 });
@@ -192,23 +190,23 @@ namespace KSS.Migrations
                     b.ToTable("Users");
 
                     b.HasData(
-                        new { UserId = 1, Email = "admin@admin.com", FirstName = "Becky", LastName = "Smith", Password = "jb8VD9HiOSmPD6KFPoqaeLfI9LjvWpa3BhnXRtEJp34=", Phone = "1112223333", Role = "Admin", Salt = new byte[] { 11, 8, 185, 20, 27, 148, 106, 118, 87, 88, 54, 85, 221, 246, 185, 135 } },
-                        new { UserId = 2, Email = "student1@student.com", FirstName = "Paul", LastName = "Dig", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 3, Email = "student2@student.com", FirstName = "Mike", LastName = "Waters", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 4, Email = "student3@student.com", FirstName = "Russel", LastName = "Chavers", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 5, Email = "student4@student.com", FirstName = "Sharon", LastName = "Manino", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 6, Email = "student5@student.com", FirstName = "Amy", LastName = "Hillbond", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 7, Email = "student6@student.com", FirstName = "Bill", LastName = "Everet", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 8, Email = "student7@student.com", FirstName = "Trenton", LastName = "Hillsong", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 9, Email = "student8@student.com", FirstName = "Colin", LastName = "Livers", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 10, Email = "student9@student.com", FirstName = "Babe", LastName = "Ruth", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 11, Email = "student10@student.com", FirstName = "Tim", LastName = "Hammond", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 12, Email = "student11@student.com", FirstName = "Gary", LastName = "Aimes", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 13, Email = "student12@student.com", FirstName = "Lucy", LastName = "Vilardo", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 14, Email = "student13@student.com", FirstName = "Tom", LastName = "Avers", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 15, Email = "student14@student.com", FirstName = "Amanda", LastName = "Catalonato", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 16, Email = "student15@student.com", FirstName = "Donald", LastName = "Hill", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } },
-                        new { UserId = 17, Email = "student16@student.com", FirstName = "Richard", LastName = "Newman", Password = "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", Phone = "1112223333", Role = "User", Salt = new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 } }
+                        new { UserId = 1, Email = "admin@admin.com", FirstName = "Becky", LastName = "Smith", Password = "nbCzv5aYMu08N7oIYJIoj7pLFyG3hdlZ838eQdt5y9s=", Phone = "1112223333", Role = "Admin", Salt = new byte[] { 137, 20, 241, 106, 216, 35, 38, 146, 84, 167, 240, 121, 121, 19, 5, 12 } },
+                        new { UserId = 2, Email = "student1@student.com", FirstName = "Paul", LastName = "Dig", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 3, Email = "student2@student.com", FirstName = "Mike", LastName = "Waters", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 4, Email = "student3@student.com", FirstName = "Russel", LastName = "Chavers", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 5, Email = "student4@student.com", FirstName = "Sharon", LastName = "Manino", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 6, Email = "student5@student.com", FirstName = "Amy", LastName = "Hillbond", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 7, Email = "student6@student.com", FirstName = "Bill", LastName = "Everet", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 8, Email = "student7@student.com", FirstName = "Trenton", LastName = "Hillsong", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 9, Email = "student8@student.com", FirstName = "Colin", LastName = "Livers", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 10, Email = "student9@student.com", FirstName = "Babe", LastName = "Ruth", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 11, Email = "student10@student.com", FirstName = "Tim", LastName = "Hammond", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 12, Email = "student11@student.com", FirstName = "Gary", LastName = "Aimes", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 13, Email = "student12@student.com", FirstName = "Lucy", LastName = "Vilardo", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 14, Email = "student13@student.com", FirstName = "Tom", LastName = "Avers", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 15, Email = "student14@student.com", FirstName = "Amanda", LastName = "Catalonato", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 16, Email = "student15@student.com", FirstName = "Donald", LastName = "Hill", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } },
+                        new { UserId = 17, Email = "student16@student.com", FirstName = "Richard", LastName = "Newman", Password = "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", Phone = "1112223333", Role = "User", Salt = new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 } }
                     );
                 });
 
@@ -245,14 +243,15 @@ namespace KSS.Migrations
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("KSS.Areas.Admin.Models.User", "Instructor")
+                        .WithMany("Instances")
+                        .HasForeignKey("InstructorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("KSS.Areas.Admin.Models.Location", "Location")
                         .WithMany("Instances")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("KSS.Areas.Admin.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("KSS.Areas.Admin.Models.User", b =>

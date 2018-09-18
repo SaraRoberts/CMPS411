@@ -58,7 +58,8 @@
                 @Html.DisplayFor(modelItem => item.Seats)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.StaffId)
+                @Html.DisplayFor(modelItem => item.Instructor.FirstName)
+                @Html.DisplayFor(modelItem => item.Instructor.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BookAvailable)

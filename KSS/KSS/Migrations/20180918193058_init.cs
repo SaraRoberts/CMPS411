@@ -120,8 +120,7 @@ namespace KSS.Migrations
                     CourseId = table.Column<int>(nullable: false),
                     LocationId = table.Column<int>(nullable: false),
                     Seats = table.Column<int>(nullable: false),
-                    Instructor = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: true),
+                    InstructorId = table.Column<int>(nullable: false),
                     BookAvailable = table.Column<bool>(nullable: false),
                     BookPrice = table.Column<double>(nullable: false)
                 },
@@ -135,16 +134,16 @@ namespace KSS.Migrations
                         principalColumn: "CourseId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
+                        name: "FK_Instance_Users_InstructorId",
+                        column: x => x.InstructorId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Instance_Location_LocationId",
                         column: x => x.LocationId,
                         principalTable: "Location",
                         principalColumn: "LocationId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Instance_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -183,23 +182,23 @@ namespace KSS.Migrations
                 columns: new[] { "UserId", "Email", "FirstName", "LastName", "Password", "Phone", "Role", "Salt", "StaffId" },
                 values: new object[,]
                 {
-                    { 1, "admin@admin.com", "Becky", "Smith", "jb8VD9HiOSmPD6KFPoqaeLfI9LjvWpa3BhnXRtEJp34=", "1112223333", "Admin", new byte[] { 11, 8, 185, 20, 27, 148, 106, 118, 87, 88, 54, 85, 221, 246, 185, 135 }, null },
-                    { 15, "student14@student.com", "Amanda", "Catalonato", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 14, "student13@student.com", "Tom", "Avers", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 13, "student12@student.com", "Lucy", "Vilardo", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 12, "student11@student.com", "Gary", "Aimes", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 11, "student10@student.com", "Tim", "Hammond", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 10, "student9@student.com", "Babe", "Ruth", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 16, "student15@student.com", "Donald", "Hill", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 9, "student8@student.com", "Colin", "Livers", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 7, "student6@student.com", "Bill", "Everet", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 6, "student5@student.com", "Amy", "Hillbond", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 5, "student4@student.com", "Sharon", "Manino", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 4, "student3@student.com", "Russel", "Chavers", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 3, "student2@student.com", "Mike", "Waters", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 2, "student1@student.com", "Paul", "Dig", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 8, "student7@student.com", "Trenton", "Hillsong", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null },
-                    { 17, "student16@student.com", "Richard", "Newman", "9KZ3aH6F16AHb+g8+u3c3zlp25IawPqoesFXMupk4X8=", "1112223333", "User", new byte[] { 242, 96, 106, 3, 227, 145, 43, 18, 19, 128, 220, 118, 103, 71, 212, 190 }, null }
+                    { 1, "admin@admin.com", "Becky", "Smith", "nbCzv5aYMu08N7oIYJIoj7pLFyG3hdlZ838eQdt5y9s=", "1112223333", "Admin", new byte[] { 137, 20, 241, 106, 216, 35, 38, 146, 84, 167, 240, 121, 121, 19, 5, 12 }, null },
+                    { 15, "student14@student.com", "Amanda", "Catalonato", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 14, "student13@student.com", "Tom", "Avers", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 13, "student12@student.com", "Lucy", "Vilardo", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 12, "student11@student.com", "Gary", "Aimes", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 11, "student10@student.com", "Tim", "Hammond", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 10, "student9@student.com", "Babe", "Ruth", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 16, "student15@student.com", "Donald", "Hill", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 9, "student8@student.com", "Colin", "Livers", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 7, "student6@student.com", "Bill", "Everet", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 6, "student5@student.com", "Amy", "Hillbond", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 5, "student4@student.com", "Sharon", "Manino", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 4, "student3@student.com", "Russel", "Chavers", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 3, "student2@student.com", "Mike", "Waters", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 2, "student1@student.com", "Paul", "Dig", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 8, "student7@student.com", "Trenton", "Hillsong", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null },
+                    { 17, "student16@student.com", "Richard", "Newman", "DKgwuomqUjKkKSsWtB3RuaOFc836RSLQoLUNCsIKR0s=", "1112223333", "User", new byte[] { 184, 23, 64, 221, 55, 162, 65, 47, 246, 122, 96, 223, 236, 239, 126, 112 }, null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -228,14 +227,14 @@ namespace KSS.Migrations
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Instance_InstructorId",
+                table: "Instance",
+                column: "InstructorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Instance_LocationId",
                 table: "Instance",
                 column: "LocationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Instance_UserId",
-                table: "Instance",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_StaffId",
@@ -255,10 +254,10 @@ namespace KSS.Migrations
                 name: "Course");
 
             migrationBuilder.DropTable(
-                name: "Location");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Location");
 
             migrationBuilder.DropTable(
                 name: "Category");

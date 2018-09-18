@@ -54,6 +54,7 @@ namespace KSS.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name");
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "Name");
             return View();
         }
 
@@ -71,6 +72,7 @@ namespace KSS.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "Name", course.CategoryId);
             return View(course);
         }
 
@@ -88,6 +90,7 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "Name", course.CategoryId);
             return View(course);
         }
 
@@ -124,7 +127,7 @@ namespace KSS.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
-            ViewData["CourseCategory"] = new SelectList(_context.Category, "CategoryId", "Name", course.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "Name", course.CategoryId);
             return View(course);
         }
 
@@ -153,7 +156,9 @@ namespace KSS.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var course = await _context.Course.Include(e => e.CourseCategory).FirstOrDefaultAsync(m => m.CourseId == id);
+            var course = await _context.Course
+                .Include(e => e.CourseCategory)
+                .FirstOrDefaultAsync(m => m.CourseId == id);
 
             var used = await _context.Instance
                 .Include(e => e.Course)

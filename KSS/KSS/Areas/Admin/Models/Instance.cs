@@ -19,8 +19,8 @@ namespace KSS.Areas.Admin.Models
 
         public int Seats { get; set; }
 
-        public int Instructor { get; set; } //FK reference to User Table
-        public User User { get; set; }
+        public int InstructorId { get; set; } //FK reference to User Table
+        public User Instructor { get; set; }
 
         public bool BookAvailable { get; set; }
         public double BookPrice { get; set; }

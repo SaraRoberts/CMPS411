@@ -24,7 +24,7 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Instances
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Instance.Include(i => i.Course).Include(i => i.Location);
+            var dataContext = _context.Instance.Include(i => i.Course).Include(i => i.Location).Include(i => i.Instructor);
             return View(await dataContext.ToListAsync());
         }
 
@@ -39,6 +39,7 @@ namespace KSS.Areas.Admin.Controllers
             var instance = await _context.Instance
                 .Include(i => i.Course)
                 .Include(i => i.Location)
+                .Include(i => i.Instructor)
                 .FirstOrDefaultAsync(m => m.InstanceId == id);
             if (instance == null)
             {
@@ -53,6 +54,7 @@ namespace KSS.Areas.Admin.Controllers
         {
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name");
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street");
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId","UserId");
             return View();
         }
 
@@ -61,7 +63,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,Instructor,BookAvailable,BookPrice")] Instance instance)
+        public async Task<IActionResult> Create([Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,InstructorId,BookAvailable,BookPrice")] Instance instance)
         {
             if (ModelState.IsValid)
             {
@@ -71,6 +73,7 @@ namespace KSS.Areas.Admin.Controllers
             }
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "UserId", instance.InstructorId);
             return View(instance);
         }
 
@@ -89,6 +92,7 @@ namespace KSS.Areas.Admin.Controllers
             }
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "UserId", instance.InstructorId);
             return View(instance);
         }
 
@@ -97,7 +101,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,Instructor,BookAvailable,BookPrice")] Instance instance)
+        public async Task<IActionResult> Edit(int id, [Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,InstructorId,BookAvailable,BookPrice")] Instance instance)
         {
             if (id != instance.InstanceId)
             {
@@ -126,6 +130,7 @@ namespace KSS.Areas.Admin.Controllers
             }
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "UserId", instance.InstructorId);
             return View(instance);
         }
 
@@ -147,6 +152,7 @@ namespace KSS.Areas.Admin.Controllers
             }
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "UserId", instance.InstructorId);
             return View(instance);
         }
 
