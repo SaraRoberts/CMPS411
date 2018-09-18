@@ -76,7 +76,7 @@ namespace KSS.Areas.Admin.Controllers
             }
 
             ViewData["Course"] = instance.Course.Name;
-            ViewData["Location"] = instance.Location.City;
+            ViewData["Location"] = instance.Location.Name;
             return View(enrollment);
         }
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace KSS.Areas.Admin.Data
 {
@@ -26,6 +27,12 @@ namespace KSS.Areas.Admin.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            //User
+            modelBuilder.Entity<User>()
+                .HasOne(e => e.Staff)
+                .WithMany(e => e.User)
+                .HasForeignKey(e => e.StaffId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             //Course
             modelBuilder.Entity<Course>()
@@ -36,6 +43,7 @@ namespace KSS.Areas.Admin.Data
             modelBuilder.Entity<Course>()
                 .HasOne(e => e.CourseCategory)
                 .WithMany(e => e.Courses)
+                .HasForeignKey(e => e.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
 
@@ -68,6 +76,7 @@ namespace KSS.Areas.Admin.Data
                 .HasForeignKey(e => e.InstanceId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
+            
             /*
             // Seeding database
             modelBuilder.Entity<Course>().HasData
@@ -83,6 +92,7 @@ namespace KSS.Areas.Admin.Data
                 new Course { CourseId = 9, Name = "CPR/AED Online Recertification – Part 2", Description = "For those who have successfully completed the online portion of the Heartsaver CPR/AED course.  Students MUST provide a copy of the online course completion certificate. Cost includes practice time, exam, and course completion certificate(good for 2 years)", BookAvailable = false, BookPrice = 0, PrereqId = 4 },
                 new Course { CourseId = 10, Name = "First Aid Online Recertification – Part 2", Description = "For those who have successfully completed the online portion of the Heartsaver First Aid course.  Students MUST provide a copy of the online course completion certificate. Cost includes practice time, exam, and course completion certificate(good for 2 years)", BookAvailable = false, BookPrice = 0, PrereqId = 5 }
             );
+       
             modelBuilder.Entity<Enrollment>().HasData
             (
                 new Enrollment { EnrollmentId = 1, InstanceId = 1, UserId = 12, Status = 'E', BookBought = false }, new Enrollment { EnrollmentId = 17, InstanceId = 7, UserId = 9, Status = 'E', BookBought = false },
@@ -126,7 +136,7 @@ namespace KSS.Areas.Admin.Data
                 new Location { LocationId = 2, Street = "92 Hill Street", City = "Tickfaw", State = "LA", Zipcode = 70442 },
                 new Location { LocationId = 3, Street = "12044 Hwy 40", City = "Independence", State = "LA", Zipcode = 70443 }
             );
-
+            */
             //------admin password/salt
             byte[] saltAdmin = new byte[128 / 8];
             using (var rng = RandomNumberGenerator.Create())
@@ -174,7 +184,7 @@ namespace KSS.Areas.Admin.Data
                 new User { UserId = 15, FirstName = "Amanda", LastName = "Catalonato", Phone = "1112223333", Email = "student14@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
                 new User { UserId = 16, FirstName = "Donald", LastName = "Hill", Phone = "1112223333", Email = "student15@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
                 new User { UserId = 17, FirstName = "Richard", LastName = "Newman", Phone = "1112223333", Email = "student16@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" }
-            );*/
+            );
         }
     }
 }

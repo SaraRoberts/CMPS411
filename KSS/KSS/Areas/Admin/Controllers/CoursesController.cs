@@ -25,7 +25,7 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Courses
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Course.Include(c => c.Prereq)
+            var applicationDbContext = _context.Course.Include(c => c.Prereq).Include(c => c.CourseCategory)
                 .OrderBy(c => c.Name);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -40,6 +40,7 @@ namespace KSS.Areas.Admin.Controllers
 
             var course = await _context.Course
                 .Include(c => c.Prereq)
+                .Include(c => c.CourseCategory)
                 .FirstOrDefaultAsync(m => m.CourseId == id);
             if (course == null)
             {
@@ -61,7 +62,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseId,Name,Description,TypicalPrice,BookAvailable,BookPrice,PrereqId,Category")] Course course)
+        public async Task<IActionResult> Create([Bind("CourseId,Name,Description,TypicalPrice,BookAvailable,BookPrice,PrereqId,CategoryId")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +96,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CourseId,Name,Description,TypicalPrice,BookAvailable,BookPrice,PrereqId,Category")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("CourseId,Name,Description,TypicalPrice,BookAvailable,BookPrice,PrereqId,CategoryId")] Course course)
         {
             if (id != course.CourseId)
             {
@@ -123,6 +124,7 @@ namespace KSS.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
+            ViewData["CourseCategory"] = new SelectList(_context.Category, "CategoryId", "Name", course.CategoryId);
             return View(course);
         }
 
@@ -136,6 +138,7 @@ namespace KSS.Areas.Admin.Controllers
 
             var course = await _context.Course
                 .Include(c => c.Prereq)
+                .Include(c => c.CourseCategory)
                 .FirstOrDefaultAsync(m => m.CourseId == id);
             if (course == null)
             {
@@ -150,7 +153,7 @@ namespace KSS.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var course = await _context.Course.FirstOrDefaultAsync(m => m.CourseId == id);
+            var course = await _context.Course.Include(e => e.CourseCategory).FirstOrDefaultAsync(m => m.CourseId == id);
 
             var used = await _context.Instance
                 .Include(e => e.Course)
