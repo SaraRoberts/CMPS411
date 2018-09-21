@@ -83,8 +83,9 @@ namespace KSS.Areas.Admin.Data
                 .HasForeignKey(e => e.InstanceId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
-            
-            
+
+            Random random = new Random();
+
             // Seeding database
             modelBuilder.Entity<Course>().HasData
             (
@@ -117,44 +118,27 @@ namespace KSS.Areas.Admin.Data
                 new Staff { StaffId = 6, Picture = "Placeholder", Bio = "I am Staff 6!" },
                 new Staff { StaffId = 7, Picture = "Placeholder", Bio = "I am Staff 7!" }
             );
-       
-            modelBuilder.Entity<Enrollment>().HasData
-            (
-                new Enrollment { EnrollmentId = 1, InstanceId = 1, UserId = 12, Status = 'E', BookBought = false, Paid = false, Confirmed = true}, new Enrollment { EnrollmentId = 17, InstanceId = 7, UserId = 9, Status = 'E', BookBought = false, Paid = false, Confirmed = true },
-                new Enrollment { EnrollmentId = 2, InstanceId = 1, UserId = 2, Status = 'E', BookBought = false, Paid = true, Confirmed = true }, new Enrollment { EnrollmentId = 18, InstanceId = 7, UserId = 10, Status = 'E', BookBought = false, Paid = true, Confirmed = true },
-                new Enrollment { EnrollmentId = 3, InstanceId = 1, UserId = 3, Status = 'E', BookBought = false, Paid = true, Confirmed = true }, new Enrollment { EnrollmentId = 19, InstanceId = 8, UserId = 10, Status = 'E', BookBought = false, Paid = false, Confirmed = true },
-                new Enrollment { EnrollmentId = 4, InstanceId = 2, UserId = 4, Status = 'E', BookBought = false, Paid = true, Confirmed = false }, new Enrollment { EnrollmentId = 20, InstanceId = 8, UserId = 11, Status = 'E', BookBought = false, Paid = true, Confirmed = true },
-                new Enrollment { EnrollmentId = 5, InstanceId = 2, UserId = 5, Status = 'E', BookBought = false, Paid = true, Confirmed = false }, new Enrollment { EnrollmentId = 21, InstanceId = 8, UserId = 12, Status = 'E', BookBought = false, Paid = false, Confirmed = true },
-                new Enrollment { EnrollmentId = 6, InstanceId = 2, UserId = 6, Status = 'E', BookBought = false, Paid = true, Confirmed = true }, new Enrollment { EnrollmentId = 22, InstanceId = 9, UserId = 13, Status = 'E', BookBought = false, Paid = true, Confirmed = false },
-                new Enrollment { EnrollmentId = 7, InstanceId = 3, UserId = 7, Status = 'E', BookBought = false, Paid = true, Confirmed = true }, new Enrollment { EnrollmentId = 23, InstanceId = 9, UserId = 14, Status = 'E', BookBought = false, Paid = true, Confirmed = true },
-                new Enrollment { EnrollmentId = 8, InstanceId = 3, UserId = 8, Status = 'E', BookBought = false, Paid = false, Confirmed = false }, new Enrollment { EnrollmentId = 24, InstanceId = 9, UserId = 14, Status = 'E', BookBought = false, Paid = true, Confirmed = true },
-                new Enrollment { EnrollmentId = 9, InstanceId = 3, UserId = 13, Status = 'E', BookBought = false, Paid = true, Confirmed = true }, new Enrollment { EnrollmentId = 25, InstanceId = 10, UserId = 14, Status = 'E', BookBought = false, Paid = false, Confirmed = true },
-                new Enrollment { EnrollmentId = 10, InstanceId = 4, UserId = 2, Status = 'E', BookBought = false, Paid = false, Confirmed = true }, new Enrollment { EnrollmentId = 26, InstanceId = 10, UserId = 15, Status = 'E', BookBought = false, Paid = true, Confirmed = true },
-                new Enrollment { EnrollmentId = 11, InstanceId = 4, UserId = 3, Status = 'E', BookBought = false, Paid = true, Confirmed = true }, new Enrollment { EnrollmentId = 27, InstanceId = 10, UserId = 16, Status = 'E', BookBought = false, Paid = true, Confirmed = true },
-                new Enrollment { EnrollmentId = 12, InstanceId = 5, UserId = 4, Status = 'E', BookBought = false, Paid = true, Confirmed = true }, new Enrollment { EnrollmentId = 28, InstanceId = 11, UserId = 17, Status = 'E', BookBought = false, Paid = false, Confirmed = false },
-                new Enrollment { EnrollmentId = 13, InstanceId = 5, UserId = 5, Status = 'E', BookBought = false, Paid = true, Confirmed = true }, new Enrollment { EnrollmentId = 29, InstanceId = 12, UserId = 3, Status = 'E', BookBought = false, Paid = true, Confirmed = true },
-                new Enrollment { EnrollmentId = 14, InstanceId = 6, UserId = 6, Status = 'E', BookBought = false, Paid = true, Confirmed = false }, new Enrollment { EnrollmentId = 30, InstanceId = 12, UserId = 17, Status = 'E', BookBought = false, Paid = true, Confirmed = true },
-                new Enrollment { EnrollmentId = 15, InstanceId = 6, UserId = 7, Status = 'E', BookBought = false, Paid = true, Confirmed = true }, new Enrollment { EnrollmentId = 31, InstanceId = 13, UserId = 2, Status = 'E', BookBought = false, Paid = true, Confirmed = false },
-                new Enrollment { EnrollmentId = 16, InstanceId = 6, UserId = 8, Status = 'E', BookBought = false, Paid = false, Confirmed = true }, new Enrollment { EnrollmentId = 32, InstanceId = 13, UserId = 3, Status = 'E', BookBought = false, Paid = true, Confirmed = true }
-            );
-            modelBuilder.Entity<Instance>().HasData
-            (
-                new Instance { InstanceId = 1, StartDate = new DateTimeOffset(2018, 7, 1, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 1, LocationId = 1, Seats = 25, InstructorId = 1, BookAvailable = true, BookPrice = 50},
-                new Instance { InstanceId = 2, StartDate = new DateTimeOffset(2018, 7, 22, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 1, LocationId = 2, Seats = 10, InstructorId = 2, BookAvailable = true, BookPrice = 30 },
-                new Instance { InstanceId = 3, StartDate = new DateTimeOffset(2018, 8, 2, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 1, LocationId = 3, Seats = 30, InstructorId = 3, BookAvailable = true, BookPrice = 50 },
-                new Instance { InstanceId = 4, StartDate = new DateTimeOffset(2018, 8, 12, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 2, LocationId = 1, Seats = 10, InstructorId = 4, BookAvailable = true, BookPrice = 250 },
-                new Instance { InstanceId = 5, StartDate = new DateTimeOffset(2018, 9, 12, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 2, LocationId = 2, Seats = 30, InstructorId = 5, BookAvailable = true, BookPrice = 50 },
-                new Instance { InstanceId = 6, StartDate = new DateTimeOffset(2018, 9, 21, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 2, LocationId = 3, Seats = 10, InstructorId = 6, BookAvailable = true, BookPrice = 10 },
-                new Instance { InstanceId = 7, StartDate = new DateTimeOffset(2018, 9, 30, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 3, LocationId = 1, Seats = 12, InstructorId = 7, BookAvailable = true, BookPrice = 60 },
-                new Instance { InstanceId = 8, StartDate = new DateTimeOffset(2018, 9, 29, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 3, LocationId = 2, Seats = 10, InstructorId = 1, BookAvailable = true, BookPrice = 90 },
-                new Instance { InstanceId = 9, StartDate = new DateTimeOffset(2018, 10, 1, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 3, LocationId = 3, Seats = 10, InstructorId = 2, BookAvailable = true, BookPrice = 50 },
-                new Instance { InstanceId = 10, StartDate = new DateTimeOffset(2018, 10, 24, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 4, LocationId = 1, Seats = 25, InstructorId = 3, BookAvailable = true, BookPrice = 100 },
-                new Instance { InstanceId = 11, StartDate = new DateTimeOffset(2018, 10, 25, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 4, LocationId = 1, Seats = 25, InstructorId = 4, BookAvailable = true, BookPrice = 50 },
-                new Instance { InstanceId = 12, StartDate = new DateTimeOffset(2018, 11, 1, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 5, LocationId = 1, Seats = 15, InstructorId = 5, BookAvailable = true, BookPrice = 50 },
-                new Instance { InstanceId = 13, StartDate = new DateTimeOffset(2018, 11, 11, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 5, LocationId = 2, Seats = 25, InstructorId = 6, BookAvailable = true, BookPrice = 30 },
-                new Instance { InstanceId = 14, StartDate = new DateTimeOffset(2018, 11, 13, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 5, LocationId = 2, Seats = 25, InstructorId = 7, BookAvailable = true, BookPrice = 50 },
-                new Instance { InstanceId = 15, StartDate = new DateTimeOffset(2018, 11, 14, 8, 6, 32, new TimeSpan(-6, 0, 0)), Price = 45.00, CourseId = 5, LocationId = 2, Seats = 25, InstructorId = 1, BookAvailable = true, BookPrice = 300 }
-            );
+            
+            //Enrollments
+            for(int i=1,j=1; j < 601 && i<10200; j++)
+            {
+                for(int k = 1; k < 18; k++)
+                {
+                    modelBuilder.Entity<Enrollment>().HasData
+                    (
+                        new Enrollment { EnrollmentId = i++, InstanceId = j, UserId = k, Status = 'E', BookBought = 0 < random.Next(0, 2), Paid = 0 < random.Next(0, 2), Confirmed = 0 < random.Next(0, 2) }
+                    );
+                }
+            }
+
+            for(int i = 1; i < 601; i++)
+            {
+                modelBuilder.Entity<Instance>().HasData
+                (
+                        new Instance { InstanceId = i, StartDate = new DateTimeOffset(random.Next(2016,2020), random.Next(1,13), random.Next(1, 29), random.Next(7, 19), 00, 00, new TimeSpan(-6, 0, 0)), Price = (double)random.Next(45,150), CourseId = random.Next(1,11), LocationId = random.Next(1, 4), Seats = random.Next(10, 31), InstructorId = random.Next(1, 7), BookAvailable = 0<random.Next(1, 3), BookPrice = random.Next(15, 56) }
+                );
+            }
+            
             modelBuilder.Entity<Location>().HasData
             (
                 new Location { LocationId = 1, Name = "Hammond Location", Street = "104 Smith Street", City = "Hammond", State = "LA", Zipcode = 70403 },

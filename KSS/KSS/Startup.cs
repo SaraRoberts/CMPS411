@@ -46,7 +46,7 @@ namespace KSS
             });
 
             services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(
+                options.UseMySql(
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
