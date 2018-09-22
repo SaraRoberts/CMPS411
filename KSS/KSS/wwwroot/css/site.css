@@ -54,8 +54,6 @@ body {
         display: none;
     }
 }
-.classes {
-}
 .class {
     width: 200px;
     height: 175px;
@@ -110,7 +108,7 @@ td {
     background-color: #f9f9f9;
 }
 tr:hover td {
-    background-color: rgba(168, 57, 57, 0.2) !important;
+    background-color: rgba(168, 57, 57, 0.2);
 }
 th {
     border: solid 2px lightgrey;
