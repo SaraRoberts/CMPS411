@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class CoursesController : Controller
     {
         private readonly DataContext _context;
@@ -30,6 +30,7 @@ namespace KSS.Areas.Admin.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        [Authorize(Roles = "User, Admin")]
         // GET: Instructor Courses
         public async Task<IActionResult> CourseList()
         {

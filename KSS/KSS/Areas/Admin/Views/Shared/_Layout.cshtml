@@ -36,13 +36,30 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav nav-menu">
                         <li><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
-                        <li><a asp-area="Admin" asp-controller="Courses" asp-action="Index">Courses</a></li>
-                        <li><a asp-area="Admin" asp-controller="Categories" asp-action="Index">Categories</a></li>
-                        <li><a asp-area="Admin" asp-controller="Instances" asp-action="Index">Classes</a></li>
-                        <li><a asp-area="Admin" asp-controller="Locations" asp-action="Index">Locations</a></li>
-                        <li><a asp-area="Admin" asp-controller="Enrollments" asp-action="Index">Enrollments</a></li>
-                        <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
-                        <li><a asp-area="Admin" asp-controller="Staff" asp-action="Index">Staff</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Classes<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a asp-area="Admin" asp-controller="Instances" asp-action="ClassList">My Classes</a></li>
+                                <li><a asp-area="Admin" asp-controller="Instances" asp-action="Create">Add Class</a></li>
+                                @*<li class="divider"></li>*@
+                            </ul>
+                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Manage<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
+                                    <li><a asp-area="Admin" asp-controller="Staff" asp-action="Index">Staff</a></li>
+                                    <li><a asp-area="Admin" asp-controller="Courses" asp-action="Index">Courses</a></li>
+                                    <li><a asp-area="Admin" asp-controller="Categories" asp-action="Index">Categories</a></li>
+                                    <li><a asp-area="Admin" asp-controller="Instances" asp-action="Index">Classes</a></li>
+                                    <li><a asp-area="Admin" asp-controller="Locations" asp-action="Index">Locations</a></li>
+                                    <li><a asp-area="Admin" asp-controller="Enrollments" asp-action="Index">Enrollments</a></li>
+                                    @*<li class="divider"></li>*@
+                                </ul>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
