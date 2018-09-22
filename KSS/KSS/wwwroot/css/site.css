@@ -3,8 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 80px;
     padding-bottom: 20px;
-    background-color: #820909;
-    color: white;
+    background-color: #f9f9f9;
 }
 
 /* Wrapping element */
@@ -55,16 +54,18 @@ body {
         display: none;
     }
 }
-
+.classes {
+}
 .class {
     width: 200px;
-    color: black;
+    height: 175px;
     background-color: #efefef;
     padding: 5px;
     margin: 5px;
-    border-top: solid 3px #ff0000;
+    border-top: solid 3px #bc3e3e;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     display: inline-block;
+    vertical-align: top;
 }
 
 .class p {
@@ -76,8 +77,9 @@ body {
     font-weight: 600;
 }
 
-.navbar{
-    min-height:80px;
+.navbar {
+    min-height: 80px;
+    background-color: #bc3e3e;
 }
 .navbar-fixed-top .nav {
     padding: 15px 0;
@@ -92,4 +94,10 @@ body {
 .nav-menu {
     text-transform: uppercase;
 }
-
+nav .navbar-nav li a {
+    font-weight:600;
+    color: white !important;
+}
+nav .navbar-nav li a:hover {
+    color: lightgrey !important;
+}
