@@ -27,6 +27,34 @@ namespace KSS.Areas.Admin.Controllers
             var dataContext = _context.Instance.Include(i => i.Course).Include(i => i.Location).Include(i => i.Instructor);
             return View(await dataContext.ToListAsync());
         }
+        // GET: Instructor's Classes
+        public async Task<IActionResult> ClassList()
+        {
+            var dataContext = _context.Instance.Include(i => i.Course).Include(i => i.Location).Include(i => i.Instructor);
+            return View(await dataContext.ToListAsync());
+        }
+
+        // GET: Instructor's Class Detail
+        public async Task<IActionResult> ClassDetail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var instance = await _context.Instance
+                .Include(i => i.Course)
+                .Include(i => i.Location)
+                .Include(i => i.Instructor)
+                .FirstOrDefaultAsync(m => m.InstanceId == id);
+            if (instance == null)
+            {
+                return NotFound();
+            }
+
+            return View(instance);
+        }
+
 
         // GET: Admin/Instances/Details/5
         public async Task<IActionResult> Details(int? id)

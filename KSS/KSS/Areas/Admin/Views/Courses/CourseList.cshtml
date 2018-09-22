@@ -1,0 +1,33 @@
+﻿@model IEnumerable<KSS.Areas.Admin.Models.Course>
+
+@{
+    ViewData["Title"] = "CourseList";
+}
+
+<h2>CourseList</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="CourseDetail" asp-route-id="@item.CourseId">Course Details</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

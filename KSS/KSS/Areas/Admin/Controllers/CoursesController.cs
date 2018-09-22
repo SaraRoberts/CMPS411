@@ -30,6 +30,34 @@ namespace KSS.Areas.Admin.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        // GET: Instructor Courses
+        public async Task<IActionResult> CourseList()
+        {
+            var applicationDbContext = _context.Course.Include(c => c.Prereq).Include(c => c.CourseCategory)
+                .OrderBy(c => c.Name);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Instructor Course Details
+        public async Task<IActionResult> CourseDetail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var course = await _context.Course
+                .Include(c => c.Prereq)
+                .Include(c => c.CourseCategory)
+                .FirstOrDefaultAsync(m => m.CourseId == id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return View(course);
+        }
+
         // GET: Admin/Courses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
