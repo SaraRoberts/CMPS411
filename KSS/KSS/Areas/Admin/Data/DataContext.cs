@@ -120,7 +120,7 @@ namespace KSS.Areas.Admin.Data
             );
             
             //Enrollments
-            for(int i=1,j=1; j < 601 && i<10200; j++)
+            for(int i=1,j=1; j < 301 && i<5100; j++)
             {
                 for(int k = 1; k < 18; k++)
                 {
@@ -131,7 +131,7 @@ namespace KSS.Areas.Admin.Data
                 }
             }
 
-            for(int i = 1; i < 601; i++)
+            for(int i = 1; i < 301; i++)
             {
                 modelBuilder.Entity<Instance>().HasData
                 (
