@@ -77,6 +77,8 @@ body {
     font-weight: 600;
 }
 
+
+/* global nav bar styling*/
 .navbar {
     min-height: 80px;
     background-color: #a83939;
@@ -100,4 +102,17 @@ nav .navbar-nav li a {
 }
 nav .navbar-nav li a:hover {
     color: lightgrey !important;
+}
+
+/* global table styling*/
+td {
+    border:solid 2px lightgrey;
+    background-color: #f9f9f9;
+}
+tr:hover td {
+    background-color: rgba(168, 57, 57, 0.2) !important;
+}
+th {
+    border: solid 2px lightgrey;
+    background-color: #cccccc;
 }
