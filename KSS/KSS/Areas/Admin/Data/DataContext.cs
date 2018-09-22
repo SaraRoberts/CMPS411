@@ -21,7 +21,7 @@ namespace KSS.Areas.Admin.Data
         public DbSet<Instance> Instance { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<Location> Location { get; set; }
-        public DbSet<Staff> Staff { get; set; }
+        public DbSet<StaffBio> Bio { get; set; }
         public DbSet<Category> Category { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,7 +29,7 @@ namespace KSS.Areas.Admin.Data
             base.OnModelCreating(modelBuilder);
             //User
             modelBuilder.Entity<User>()
-                .HasOne(e => e.Staff)
+                .HasOne(e => e.Bio)
                 .WithMany(e => e.User)
                 .HasForeignKey(e => e.StaffId)
                 .OnDelete(DeleteBehavior.Cascade);
@@ -109,29 +109,30 @@ namespace KSS.Areas.Admin.Data
                 new Category { CategoryId = 4, Name = "EMT" }
             );
 
-            modelBuilder.Entity<Staff>().HasData(
-                new Staff { StaffId = 1, Picture = "Placeholder", Bio = "I am Staff 1!"},
-                new Staff { StaffId = 2, Picture = "Placeholder", Bio = "I am Staff 2!" },
-                new Staff { StaffId = 3, Picture = "Placeholder", Bio = "I am Staff 3!" },
-                new Staff { StaffId = 4, Picture = "Placeholder", Bio = "I am Staff 4!" },
-                new Staff { StaffId = 5, Picture = "Placeholder", Bio = "I am Staff 5!" },
-                new Staff { StaffId = 6, Picture = "Placeholder", Bio = "I am Staff 6!" },
-                new Staff { StaffId = 7, Picture = "Placeholder", Bio = "I am Staff 7!" }
+            modelBuilder.Entity<StaffBio>().HasData(
+                new StaffBio { StaffBioId = 1, Picture = "Placeholder", Bio = "I am Staff 1!"},
+                new StaffBio { StaffBioId = 2, Picture = "Placeholder", Bio = "I am Staff 2!" },
+                new StaffBio { StaffBioId = 3, Picture = "Placeholder", Bio = "I am Staff 3!" },
+                new StaffBio { StaffBioId = 4, Picture = "Placeholder", Bio = "I am Staff 4!" },
+                new StaffBio { StaffBioId = 5, Picture = "Placeholder", Bio = "I am Staff 5!" },
+                new StaffBio { StaffBioId = 6, Picture = "Placeholder", Bio = "I am Staff 6!" },
+                new StaffBio { StaffBioId = 7, Picture = "Placeholder", Bio = "I am Staff 7!" }
             );
             
             //Enrollments
-            for(int i=1,j=1; j < 301 && i<5100; j++)
+            for(int i=1,j=1; j < 30 && i<50; j++)
             {
                 for(int k = 1; k < 18; k++)
                 {
                     modelBuilder.Entity<Enrollment>().HasData
                     (
-                        new Enrollment { EnrollmentId = i++, InstanceId = j, UserId = k, Status = 'E', BookBought = 0 < random.Next(0, 2), Paid = 0 < random.Next(0, 2), Confirmed = 0 < random.Next(0, 2) }
+                        new Enrollment { EnrollmentId = i++, InstanceId = j, UserId = k, Status = 'E', BookBought = 0 < random.Next(0, 2), Paid = 0 < random.Next(0, 2), Confirmed = new DateTime(random.Next(2016, 2020), random.Next(1, 13), random.Next(1, 29), random.Next(7, 19), 00, 00) }
                     );
                 }
             }
 
-            for(int i = 1; i < 301; i++)
+            //Instances
+            for(int i = 1; i < 30; i++)
             {
                 modelBuilder.Entity<Instance>().HasData
                 (
@@ -178,7 +179,7 @@ namespace KSS.Areas.Admin.Data
                 new User { UserId = 1, FirstName = "Becky", LastName = "Smith", Phone = "1112223333", Email = "admin@admin.com", Password = hashedAdmin, Salt = saltAdmin, Role = "Admin" },
                 // students
                 new User { UserId = 2, FirstName = "Paul", LastName = "Dig", Phone = "1112223333", Email = "student1@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", StaffId = 1},
-                new User { UserId = 3, FirstName = "Mike", LastName = "Waters", Phone = "1112223333", Email = "student2@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", Staff = null},
+                new User { UserId = 3, FirstName = "Mike", LastName = "Waters", Phone = "1112223333", Email = "student2@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", StaffId = null},
                 new User { UserId = 4, FirstName = "Russel", LastName = "Chavers", Phone = "1112223333", Email = "student3@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", StaffId = null},
                 new User { UserId = 5, FirstName = "Sharon", LastName = "Manino", Phone = "1112223333", Email = "student4@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", StaffId = null },
                 new User { UserId = 6, FirstName = "Amy", LastName = "Hillbond", Phone = "1112223333", Email = "student5@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", StaffId = 2 },

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace KSS.Areas.Admin.Models
 {
-    public class Staff
+    public class StaffBio
     {
-        public int StaffId { get; set; } //PK
+        public int StaffBioId { get; set; } //PK
         public string Picture { get; set; }
         public string Bio { get; set; }
 

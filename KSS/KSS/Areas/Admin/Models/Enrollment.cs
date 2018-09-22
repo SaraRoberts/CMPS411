@@ -18,6 +18,6 @@ namespace KSS.Areas.Admin.Models
         public char Status { get; set; }
         public bool BookBought { get; set; }
         public bool Paid { get; set; }
-        public bool Confirmed { get; set; }
+        public DateTime Confirmed { get; set; }
     }
 }

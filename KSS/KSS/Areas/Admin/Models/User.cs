@@ -17,7 +17,7 @@ namespace KSS.Areas.Admin.Models
         public string Role { get; set; }
 
         public int? StaffId { get; set; } //FK to Staff Table
-        public Staff Staff { get; set; }
+        public StaffBio Bio { get; set; }
 
         public List<Enrollment> Enrollments { get; set; }
         public List<Instance> Instances { get; set; }

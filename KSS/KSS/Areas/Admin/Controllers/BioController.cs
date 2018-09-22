@@ -11,22 +11,22 @@ using KSS.Areas.Admin.Models;
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class StaffController : Controller
+    public class BioController : Controller
     {
         private readonly DataContext _context;
 
-        public StaffController(DataContext context)
+        public BioController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/Staff
+        // GET: Admin/Bio
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Staff.ToListAsync());
+            return View(await _context.Bio.ToListAsync());
         }
 
-        // GET: Admin/Staff/Details/5
+        // GET: Admin/Bio/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,39 +34,39 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var staff = await _context.Staff
-                .FirstOrDefaultAsync(m => m.StaffId == id);
-            if (staff == null)
+            var bio = await _context.Bio
+                .FirstOrDefaultAsync(m => m.StaffBioId == id);
+            if (bio == null)
             {
                 return NotFound();
             }
 
-            return View(staff);
+            return View(bio);
         }
 
-        // GET: Admin/Staff/Create
+        // GET: Admin/Bio/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Staff/Create
+        // POST: Admin/Bio/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StaffId,Picture,Bio")] Staff staff)
+        public async Task<IActionResult> Create([Bind("StaffId,Picture,Bio")] StaffBio bio)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(staff);
+                _context.Add(bio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(staff);
+            return View(bio);
         }
 
-        // GET: Admin/Staff/Edit/5
+        // GET: Admin/Bio/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +74,22 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var staff = await _context.Staff.FindAsync(id);
-            if (staff == null)
+            var bio = await _context.Bio.FindAsync(id);
+            if (bio == null)
             {
                 return NotFound();
             }
-            return View(staff);
+            return View(bio);
         }
 
-        // POST: Admin/Staff/Edit/5
+        // POST: Admin/Bio/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StaffId,Picture,Bio")] Staff staff)
+        public async Task<IActionResult> Edit(int id, [Bind("StaffId,Picture,Bio")] StaffBio bio)
         {
-            if (id != staff.StaffId)
+            if (id != bio.StaffBioId)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace KSS.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(staff);
+                    _context.Update(bio);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StaffExists(staff.StaffId))
+                    if (!BioExists(bio.StaffBioId))
                     {
                         return NotFound();
                     }
@@ -114,10 +114,10 @@ namespace KSS.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(staff);
+            return View(bio);
         }
 
-        // GET: Admin/Staff/Delete/5
+        // GET: Admin/Bio/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +125,30 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var staff = await _context.Staff
-                .FirstOrDefaultAsync(m => m.StaffId == id);
-            if (staff == null)
+            var bio = await _context.Bio
+                .FirstOrDefaultAsync(m => m.StaffBioId == id);
+            if (bio == null)
             {
                 return NotFound();
             }
 
-            return View(staff);
+            return View(bio);
         }
 
-        // POST: Admin/Staff/Delete/5
+        // POST: Admin/Bio/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var staff = await _context.Staff.FindAsync(id);
-            _context.Staff.Remove(staff);
+            var bio = await _context.Bio.FindAsync(id);
+            _context.Bio.Remove(bio);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StaffExists(int id)
+        private bool BioExists(int id)
         {
-            return _context.Staff.Any(e => e.StaffId == id);
+            return _context.Bio.Any(e => e.StaffBioId == id);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model KSS.Areas.Admin.Models.Staff
+﻿@model KSS.Areas.Admin.Models.StaffBio
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,7 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="StaffId" />
+            <input type="hidden" asp-for="StaffBioId" />
             <div class="form-group">
                 <label asp-for="Picture" class="control-label"></label>
                 <input asp-for="Picture" class="form-control" />

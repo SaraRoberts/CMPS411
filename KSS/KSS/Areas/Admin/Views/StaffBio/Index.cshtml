@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KSS.Areas.Admin.Models.Staff>
+﻿@model IEnumerable<KSS.Areas.Admin.Models.StaffBio>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.StaffId)
+                @Html.DisplayNameFor(model => model.StaffBioId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Picture)
@@ -28,7 +28,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.StaffId)
+                @Html.DisplayFor(modelItem => item.StaffBioId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Picture)
@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Bio)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.StaffId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StaffId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StaffId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.StaffBioId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StaffBioId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StaffBioId">Delete</a>
             </td>
         </tr>
 }
