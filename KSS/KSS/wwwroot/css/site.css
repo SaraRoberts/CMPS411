@@ -62,7 +62,7 @@ body {
     background-color: #efefef;
     padding: 5px;
     margin: 5px;
-    border-top: solid 3px #bc3e3e;
+    border-top: solid 3px #a83939;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     display: inline-block;
     vertical-align: top;
@@ -79,7 +79,7 @@ body {
 
 .navbar {
     min-height: 80px;
-    background-color: #bc3e3e;
+    background-color: #a83939;
 }
 .navbar-fixed-top .nav {
     padding: 15px 0;
