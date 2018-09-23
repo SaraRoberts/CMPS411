@@ -5,7 +5,28 @@
 }
 
 <h2>All Users</h2>
+<div id="detailsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">User Details</h3>
+            </div>
+            <div class="modal-body">
+                <h4 id="fullName"></h4>
+                <h4 id="phone"></h4>
+                <h4 id="email"></h4>
+                <h4 id="role"></h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -18,7 +39,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Phone)
             </th>
             <th>
@@ -26,35 +47,62 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Role)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
-            </td>
-        </tr>
-        }
-    </tbody>
+            <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.UserId)">           
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>*@
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+                    @*<a asp-action="Details" asp-route-id="@item.UserId">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
 </table>
+
+<script>
+    function getDetails(id) {
+
+
+        $.ajax({
+            url: '@Url.Action("Details", "Users")',
+            dataType: "json",
+            type: "POST",
+            cache: false,
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {
+                    $("#fullName").text(data.fullName);
+                    $("#phone").text("Phone Number : " + data.phone);
+                    $("#email").text("Email Address : " + data.email);
+                    $("#role").text("Role : " + data.role);
+                    $("#detailsModal").modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    }
+</script>
