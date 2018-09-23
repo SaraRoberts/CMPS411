@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
+using KSS.Areas.Admin.ViewModels;
 
 namespace KSS.Areas.Admin.Controllers
 {
@@ -105,11 +106,21 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseId,Name,Description,TypicalPrice,BookAvailable,BookPrice,PrereqId,CategoryId")] Course course)
+        public async Task<IActionResult> Create(CourseCreate course)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(course);
+                var newCourse = new Course
+                {
+                    Name = course.Name,
+                    Description = course.Description,
+                    TypicalPrice = course.TypicalPrice,
+                    BookAvailable = course.BookAvailable,
+                    BookPrice = course.BookPrice,
+                    PrereqId = course.PrereqId,
+                    CategoryId = course.CategoryId
+                };
+                _context.Add(newCourse);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -127,13 +138,24 @@ namespace KSS.Areas.Admin.Controllers
             }
 
             var course = await _context.Course.FindAsync(id);
+            var editCourse = new CourseEdit
+            {
+                CourseId = course.CourseId,
+                Name = course.Name,
+                Description = course.Description,
+                TypicalPrice = course.TypicalPrice,
+                BookAvailable = course.BookAvailable,
+                BookPrice = course.BookPrice,
+                PrereqId = course.PrereqId,
+                CategoryId = course.CategoryId
+            };
             if (course == null)
             {
                 return NotFound();
             }
             ViewData["PrereqId"] = new SelectList(_context.Course, "CourseId", "Name", course.PrereqId);
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "Name", course.CategoryId);
-            return View(course);
+            return View(editCourse);
         }
 
         // POST: Admin/Courses/Edit/5
@@ -141,18 +163,24 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CourseId,Name,Description,TypicalPrice,BookAvailable,BookPrice,PrereqId,CategoryId")] Course course)
+        public async Task<IActionResult> Edit(int id, CourseEdit course)
         {
-            if (id != course.CourseId)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(course);
+                    var editCourse = new Course
+                    {
+                        CourseId = course.CourseId,
+                        Name = course.Name,
+                        Description = course.Description,
+                        TypicalPrice = course.TypicalPrice,
+                        BookAvailable = course.BookAvailable,
+                        BookPrice = course.BookPrice,
+                        PrereqId = course.PrereqId,
+                        CategoryId = course.CategoryId
+                    };
+                    _context.Update(editCourse);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
