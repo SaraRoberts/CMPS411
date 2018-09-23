@@ -55,26 +55,46 @@ body {
     }
 }
 .class {
-    width: 200px;
-    height: 175px;
+    width: 350px;
+    height: 90px;
     background-color: #efefef;
-    padding: 5px;
     margin: 5px;
     border-top: solid 3px #a83939;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     display: inline-block;
     vertical-align: top;
 }
-
-.class p {
-    color: #474747;
-}
-
 .class h5 {
     color: black;
     font-weight: 600;
 }
-
+.class-left {
+    font-weight: 500;
+    padding: 5px;
+    display: inline-block;
+    width: 80px;
+    height: 90px;
+    background-color: rgba(168, 57, 57, 0.1);
+    text-align: center;
+    vertical-align: top;
+}
+.class-left span{
+    font-size: 25px;
+    font-weight:600;
+}
+.class-right {
+    line-height:1.9;
+    width:260px;
+    display: inline-block;
+    padding:5px;
+    vertical-align: top;
+}
+.class-right:first-line{
+    font-weight:800;
+}
+.class-right span.links {
+    float: right;
+}
 
 /* global nav bar styling*/
 .navbar {

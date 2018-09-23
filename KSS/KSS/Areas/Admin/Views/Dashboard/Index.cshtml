@@ -11,14 +11,23 @@
 <div class="classes">
     @foreach (var item in Model)
     {
+        String month = item.StartDate.ToString("MMMM");
+        String time = item.StartDate.ToString("h:mm tt");
         <div class="class">
-            <h5>@Html.DisplayFor(modelItem => item.Course.Name) in @Html.DisplayFor(modelItem => item.Location.City)</h5>
-            <p>
-                @Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)<br />
-                Seats: @Html.DisplayFor(modelItem => item.Seats)<br />
-            </p>
-            <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> |
-            <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">Roster</a>
+            <div class="class-left">
+                @Html.DisplayFor(modelItem => item.StartDate.DayOfWeek)<br />
+                <span>@Html.DisplayFor(modelItem => item.StartDate.Day)</span><br />
+                @month
+            </div>
+            <div class="class-right">
+                @Html.DisplayFor(modelItem => item.Course.Name)<br />
+                <span class="glyphicon glyphicon-map-marker"></span> @Html.DisplayFor(modelItem => item.Location.Name)<br />
+                <span class="glyphicon glyphicon-time"></span> @time 
+                <span class="links">
+                    <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> |
+                    <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">Roster</a>
+                </span>
+            </div>
         </div>
     }
 </div>
