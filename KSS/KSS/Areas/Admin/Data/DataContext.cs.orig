@@ -178,7 +178,11 @@ namespace KSS.Areas.Admin.Data
                 // admin
                 new User { UserId = 1, FirstName = "Becky", LastName = "Smith", Phone = "1112223333", Email = "admin@admin.com", Password = hashedAdmin, Salt = saltAdmin, Role = "Admin" },
                 // students
+<<<<<<< HEAD
+                new User { UserId = 2, FirstName = "Paul", LastName = "Dig", Phone = "1112223333", Email = "student1@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", StaffId = 1},
+=======
                 new User { UserId = 2, FirstName = "Paul", LastName = "Dig", Phone = "1112223333", Email = "student1@student.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff", StaffId = 1},
+>>>>>>> cf595d4af0e425fbc625c8b50a6b42858dafdb09
                 new User { UserId = 3, FirstName = "Mike", LastName = "Waters", Phone = "1112223333", Email = "student2@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", StaffId = null},
                 new User { UserId = 4, FirstName = "Russel", LastName = "Chavers", Phone = "1112223333", Email = "student3@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", StaffId = null},
                 new User { UserId = 5, FirstName = "Sharon", LastName = "Manino", Phone = "1112223333", Email = "student4@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User", StaffId = null },

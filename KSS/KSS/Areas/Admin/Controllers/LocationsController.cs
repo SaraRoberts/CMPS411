@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class LocationsController : Controller
     {
         private readonly DataContext _context;

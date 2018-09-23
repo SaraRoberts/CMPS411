@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff, Admin")]
     public class DashboardController : Controller
     {
         private readonly DataContext _context;

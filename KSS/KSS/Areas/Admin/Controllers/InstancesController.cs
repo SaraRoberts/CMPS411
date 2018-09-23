@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]
     public class InstancesController : Controller
     {
         private readonly DataContext _context;
@@ -21,19 +21,27 @@ namespace KSS.Areas.Admin.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Instances
         public async Task<IActionResult> Index()
         {
             var dataContext = _context.Instance.Include(i => i.Course).Include(i => i.Location).Include(i => i.Instructor);
             return View(await dataContext.ToListAsync());
         }
+
+        [Authorize(Roles = "Admin, Staff")]
         // GET: Instructor's Classes
         public async Task<IActionResult> ClassList()
         {
-            var dataContext = _context.Instance.Include(i => i.Course).Include(i => i.Location).Include(i => i.Instructor);
+            var user = await _context.Users.FirstOrDefaultAsync(e => e.Email == User.Identity.Name);
+            var dataContext = _context.Instance.Include(i => i.Course)
+                .Include(i => i.Location)
+                .Include(i => i.Instructor)
+                .Where(e => e.InstructorId == user.UserId);
             return View(await dataContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Admin, Staff")]
         // GET: Instructor's Class Detail
         public async Task<IActionResult> ClassDetail(int? id)
         {
@@ -55,7 +63,7 @@ namespace KSS.Areas.Admin.Controllers
             return View(instance);
         }
 
-
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Instances/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -77,6 +85,7 @@ namespace KSS.Areas.Admin.Controllers
             return View(instance);
         }
 
+        [Authorize(Roles = "Admin, Staff")]
         // GET: Admin/Instances/Create
         public IActionResult Create()
         {
@@ -86,6 +95,7 @@ namespace KSS.Areas.Admin.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Staff")]
         // POST: Admin/Instances/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -105,6 +115,7 @@ namespace KSS.Areas.Admin.Controllers
             return View(instance);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Instances/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -124,6 +135,7 @@ namespace KSS.Areas.Admin.Controllers
             return View(instance);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Admin/Instances/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -162,6 +174,7 @@ namespace KSS.Areas.Admin.Controllers
             return View(instance);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Instances/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -184,6 +197,7 @@ namespace KSS.Areas.Admin.Controllers
             return View(instance);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Admin/Instances/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

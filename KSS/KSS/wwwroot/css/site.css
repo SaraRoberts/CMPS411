@@ -114,3 +114,8 @@ th {
     border: solid 2px lightgrey;
     background-color: #cccccc;
 }
+.dropdown, .dropdown-toggle, .dropdown-menu, .dropdown-menu a:hover {
+    background-color: #a83939 !important;
+    box-shadow:none !important;
+    border:none !important;
+}
