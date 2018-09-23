@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KSS.Migrations
 {
-    public partial class StaffBio : Migration
+    public partial class Merge : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -217,16 +217,16 @@ namespace KSS.Migrations
                 columns: new[] { "UserId", "Email", "FirstName", "LastName", "Password", "Phone", "Role", "Salt", "StaffId" },
                 values: new object[,]
                 {
-                    { 15, "student14@student.com", "Amanda", "Catalonato", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, null },
-                    { 1, "admin@admin.com", "Becky", "Smith", "lfzrBEb8a7A6ztyujUAMfm10eaEld+uN1t9byW0OdPQ=", "1112223333", "Admin", new byte[] { 69, 145, 20, 214, 223, 116, 139, 25, 13, 177, 197, 2, 199, 55, 82, 203 }, null },
-                    { 3, "student2@student.com", "Mike", "Waters", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, null },
-                    { 4, "student3@student.com", "Russel", "Chavers", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, null },
-                    { 5, "student4@student.com", "Sharon", "Manino", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, null },
-                    { 7, "student6@student.com", "Bill", "Everet", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, null },
-                    { 9, "student8@student.com", "Colin", "Livers", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, null },
-                    { 10, "student9@student.com", "Babe", "Ruth", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, null },
-                    { 12, "student11@student.com", "Gary", "Aimes", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, null },
-                    { 17, "student16@student.com", "Richard", "Newman", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, null }
+                    { 15, "student14@student.com", "Amanda", "Catalonato", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "User", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, null },
+                    { 1, "admin@admin.com", "Becky", "Smith", "eCzDXOA9NgZOOz05TYiG9WMC6vFkgJ2SCunYYCOjyWs=", "1112223333", "Admin", new byte[] { 31, 248, 207, 94, 23, 129, 106, 191, 248, 69, 186, 216, 234, 113, 106, 63 }, null },
+                    { 3, "student2@student.com", "Mike", "Waters", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "User", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, null },
+                    { 4, "student3@student.com", "Russel", "Chavers", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "User", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, null },
+                    { 5, "student4@student.com", "Sharon", "Manino", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "User", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, null },
+                    { 7, "student6@student.com", "Bill", "Everet", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "User", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, null },
+                    { 9, "student8@student.com", "Colin", "Livers", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "User", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, null },
+                    { 10, "student9@student.com", "Babe", "Ruth", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "User", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, null },
+                    { 12, "student11@student.com", "Gary", "Aimes", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "User", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, null },
+                    { 17, "student16@student.com", "Richard", "Newman", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "User", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, null }
                 });
 
             migrationBuilder.InsertData(
@@ -248,13 +248,13 @@ namespace KSS.Migrations
                 columns: new[] { "UserId", "Email", "FirstName", "LastName", "Password", "Phone", "Role", "Salt", "StaffId" },
                 values: new object[,]
                 {
-                    { 2, "student1@student.com", "Paul", "Dig", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, 1 },
-                    { 6, "student5@student.com", "Amy", "Hillbond", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, 2 },
-                    { 8, "student7@student.com", "Trenton", "Hillsong", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, 3 },
-                    { 11, "student10@student.com", "Tim", "Hammond", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, 4 },
-                    { 13, "student12@student.com", "Lucy", "Vilardo", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, 5 },
-                    { 14, "student13@student.com", "Tom", "Avers", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, 6 },
-                    { 16, "student15@student.com", "Donald", "Hill", "HmeXE4u5XwRTPAdjHd83z36lgztTmimwYqNnHeosNSI=", "1112223333", "User", new byte[] { 17, 107, 232, 70, 177, 216, 25, 96, 181, 109, 70, 174, 116, 197, 45, 171 }, 7 }
+                    { 2, "student1@student.com", "Paul", "Dig", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "Staff", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, 1 },
+                    { 6, "student5@student.com", "Amy", "Hillbond", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "Staff", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, 2 },
+                    { 8, "student7@student.com", "Trenton", "Hillsong", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "Staff", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, 3 },
+                    { 11, "student10@student.com", "Tim", "Hammond", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "Staff", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, 4 },
+                    { 13, "student12@student.com", "Lucy", "Vilardo", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "Staff", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, 5 },
+                    { 14, "student13@student.com", "Tom", "Avers", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "Staff", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, 6 },
+                    { 16, "student15@student.com", "Donald", "Hill", "ODoH3ODbRHRcijKi0X8ccDkjp+GuhxfKNowIWUnfNUE=", "1112223333", "Staff", new byte[] { 177, 217, 22, 240, 143, 70, 20, 241, 10, 38, 114, 216, 209, 207, 198, 79 }, 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -263,8 +263,8 @@ namespace KSS.Migrations
                 values: new object[,]
                 {
                     { 8, false, 0m, 2, "This is a 16 - 20 hour course for those who wish to become AHA Instructor Candidates able to teach various levels of American Heart Association CPR.  Course is taught over 2 or 3 days. Successful completion of AHA BLS for Healthcare Providers Course, as well as each module instructor candidates wish to teach(Heartsaver First Aid, Heartsaver CPR / AED, etc.), and scoring 90 % or better on written examination(within 90 days of the instructor course) is required for completion. A letter of recommendation and completion of Core Instructor Course is required before applying. Cost includes all student level books, instructor manuals, practical exams, and test.New 2015 Guidelines!", "BLS CPR for Healthcare Providers, Instructor Course", 1, 50 },
-                    { 10, false, 0m, 2, "For those who have successfully completed the online portion of the Heartsaver First Aid course.  Students MUST provide a copy of the online course completion certificate. Cost includes practice time, exam, and course completion certificate(good for 2 years)", "First Aid Online Recertification – Part 2", 5, 50 },
-                    { 9, false, 0m, 1, "For those who have successfully completed the online portion of the Heartsaver CPR/AED course.  Students MUST provide a copy of the online course completion certificate. Cost includes practice time, exam, and course completion certificate(good for 2 years)", "CPR/AED Online Recertification – Part 2", 4, 50 }
+                    { 9, false, 0m, 1, "For those who have successfully completed the online portion of the Heartsaver CPR/AED course.  Students MUST provide a copy of the online course completion certificate. Cost includes practice time, exam, and course completion certificate(good for 2 years)", "CPR/AED Online Recertification – Part 2", 4, 50 },
+                    { 10, false, 0m, 2, "For those who have successfully completed the online portion of the Heartsaver First Aid course.  Students MUST provide a copy of the online course completion certificate. Cost includes practice time, exam, and course completion certificate(good for 2 years)", "First Aid Online Recertification – Part 2", 5, 50 }
                 });
 
             migrationBuilder.InsertData(
@@ -272,26 +272,25 @@ namespace KSS.Migrations
                 columns: new[] { "InstanceId", "BookAvailable", "BookPrice", "CourseId", "InstructorId", "LocationId", "Price", "Seats", "StartDate" },
                 values: new object[,]
                 {
-                    { 8, true, 51.0, 2, 6, 2, 58.0, 14, new DateTimeOffset(new DateTime(2016, 11, 25, 8, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 24, true, 52.0, 1, 2, 2, 91.0, 27, new DateTimeOffset(new DateTime(2018, 4, 17, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 15, true, 33.0, 5, 2, 1, 79.0, 14, new DateTimeOffset(new DateTime(2019, 5, 20, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 12, true, 37.0, 2, 2, 3, 100.0, 24, new DateTimeOffset(new DateTime(2016, 5, 28, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 11, true, 39.0, 2, 2, 1, 58.0, 24, new DateTimeOffset(new DateTime(2017, 2, 25, 15, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 6, true, 52.0, 4, 3, 2, 75.0, 12, new DateTimeOffset(new DateTime(2018, 4, 21, 14, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 5, true, 26.0, 4, 5, 2, 68.0, 25, new DateTimeOffset(new DateTime(2018, 7, 7, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 1, true, 53.0, 4, 1, 3, 117.0, 27, new DateTimeOffset(new DateTime(2019, 8, 2, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 29, true, 46.0, 3, 1, 2, 55.0, 18, new DateTimeOffset(new DateTime(2018, 4, 25, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 18, true, 49.0, 3, 5, 3, 84.0, 24, new DateTimeOffset(new DateTime(2017, 4, 28, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 4, true, 18.0, 3, 4, 2, 94.0, 27, new DateTimeOffset(new DateTime(2016, 8, 17, 13, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 3, true, 44.0, 5, 4, 3, 45.0, 23, new DateTimeOffset(new DateTime(2017, 5, 13, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 23, true, 25.0, 2, 3, 1, 114.0, 19, new DateTimeOffset(new DateTime(2019, 6, 1, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 25, true, 18.0, 6, 5, 1, 51.0, 12, new DateTimeOffset(new DateTime(2018, 5, 24, 14, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 21, true, 17.0, 6, 4, 2, 119.0, 15, new DateTimeOffset(new DateTime(2018, 7, 11, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 2, true, 33.0, 6, 3, 1, 135.0, 12, new DateTimeOffset(new DateTime(2018, 3, 17, 8, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 28, true, 38.0, 1, 3, 2, 51.0, 18, new DateTimeOffset(new DateTime(2019, 10, 19, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 7, true, 26.0, 1, 5, 3, 80.0, 25, new DateTimeOffset(new DateTime(2016, 2, 1, 13, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 13, true, 43.0, 6, 6, 2, 73.0, 28, new DateTimeOffset(new DateTime(2016, 3, 11, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 22, true, 44.0, 2, 6, 1, 78.0, 26, new DateTimeOffset(new DateTime(2018, 8, 4, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) }
+                    { 22, true, 30.0, 5, 2, 3, 82.0, 28, new DateTimeOffset(new DateTime(2016, 11, 23, 8, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 10, true, 41.0, 6, 2, 3, 81.0, 26, new DateTimeOffset(new DateTime(2019, 1, 22, 13, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 6, true, 46.0, 1, 2, 3, 112.0, 26, new DateTimeOffset(new DateTime(2016, 7, 20, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 9, true, 35.0, 4, 4, 3, 143.0, 26, new DateTimeOffset(new DateTime(2016, 7, 13, 15, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 5, true, 18.0, 4, 5, 2, 118.0, 26, new DateTimeOffset(new DateTime(2018, 2, 2, 9, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 20, true, 41.0, 3, 5, 3, 117.0, 28, new DateTimeOffset(new DateTime(2019, 6, 28, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 17, true, 20.0, 3, 4, 1, 70.0, 10, new DateTimeOffset(new DateTime(2018, 8, 13, 15, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 23, true, 38.0, 5, 3, 2, 110.0, 10, new DateTimeOffset(new DateTime(2018, 10, 1, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 15, true, 46.0, 5, 5, 3, 90.0, 12, new DateTimeOffset(new DateTime(2017, 2, 18, 12, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 14, true, 44.0, 5, 5, 2, 104.0, 26, new DateTimeOffset(new DateTime(2018, 8, 5, 16, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 11, true, 35.0, 5, 5, 3, 139.0, 26, new DateTimeOffset(new DateTime(2019, 4, 26, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 26, true, 42.0, 2, 1, 3, 59.0, 29, new DateTimeOffset(new DateTime(2017, 12, 16, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 18, true, 40.0, 2, 3, 3, 108.0, 26, new DateTimeOffset(new DateTime(2016, 8, 13, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 19, true, 33.0, 6, 3, 1, 121.0, 17, new DateTimeOffset(new DateTime(2019, 9, 19, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 13, true, 24.0, 6, 4, 2, 49.0, 26, new DateTimeOffset(new DateTime(2018, 12, 16, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 3, true, 28.0, 6, 1, 2, 127.0, 10, new DateTimeOffset(new DateTime(2019, 5, 19, 16, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 2, true, 20.0, 6, 5, 3, 70.0, 18, new DateTimeOffset(new DateTime(2017, 7, 9, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 27, true, 46.0, 2, 2, 3, 126.0, 20, new DateTimeOffset(new DateTime(2017, 10, 28, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 16, true, 35.0, 4, 6, 2, 141.0, 19, new DateTimeOffset(new DateTime(2019, 7, 27, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) }
                 });
 
             migrationBuilder.InsertData(
@@ -299,57 +298,40 @@ namespace KSS.Migrations
                 columns: new[] { "EnrollmentId", "BookBought", "Confirmed", "InstanceId", "Paid", "Status", "UserId" },
                 values: new object[,]
                 {
-                    { 41, false, new DateTime(2016, 8, 21, 14, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 7 },
-                    { 42, true, new DateTime(2018, 7, 3, 14, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 8 },
-                    { 43, true, new DateTime(2018, 7, 22, 15, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 9 },
-                    { 44, true, new DateTime(2019, 9, 23, 15, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 10 },
-                    { 45, false, new DateTime(2017, 1, 27, 16, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 11 },
-                    { 46, false, new DateTime(2018, 1, 22, 15, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 12 },
-                    { 47, true, new DateTime(2019, 11, 15, 10, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 13 },
-                    { 48, true, new DateTime(2018, 7, 6, 13, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 14 },
-                    { 49, true, new DateTime(2018, 9, 12, 9, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 15 },
-                    { 50, true, new DateTime(2017, 6, 14, 11, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 16 },
-                    { 51, false, new DateTime(2018, 10, 10, 12, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 17 },
-                    { 1, false, new DateTime(2017, 2, 25, 9, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 1 },
-                    { 2, false, new DateTime(2019, 3, 22, 17, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 2 },
-                    { 3, false, new DateTime(2017, 9, 1, 11, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 3 },
-                    { 4, false, new DateTime(2019, 1, 5, 17, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 4 },
-                    { 5, false, new DateTime(2018, 5, 5, 10, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 5 },
-                    { 6, false, new DateTime(2019, 6, 21, 11, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 6 },
-                    { 7, false, new DateTime(2018, 11, 20, 11, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 7 },
-                    { 8, true, new DateTime(2016, 2, 8, 16, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 8 },
-                    { 9, true, new DateTime(2018, 11, 1, 16, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 9 },
-                    { 10, true, new DateTime(2016, 7, 20, 14, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 10 },
-                    { 11, true, new DateTime(2018, 8, 1, 8, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 11 },
-                    { 12, true, new DateTime(2016, 11, 9, 9, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 12 },
-                    { 13, true, new DateTime(2018, 8, 13, 15, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 13 },
-                    { 14, true, new DateTime(2016, 10, 14, 15, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 14 },
-                    { 15, true, new DateTime(2018, 1, 14, 13, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 15 },
-                    { 16, false, new DateTime(2016, 12, 9, 15, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 16 },
-                    { 40, false, new DateTime(2017, 3, 22, 15, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 6 },
-                    { 17, true, new DateTime(2017, 1, 5, 12, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 17 },
-                    { 38, false, new DateTime(2018, 6, 1, 12, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 4 },
-                    { 18, true, new DateTime(2016, 5, 4, 12, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 1 },
-                    { 19, false, new DateTime(2018, 6, 23, 12, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 2 },
-                    { 20, true, new DateTime(2018, 1, 27, 15, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 3 },
-                    { 21, false, new DateTime(2017, 8, 19, 12, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 4 },
-                    { 22, false, new DateTime(2017, 10, 28, 12, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 5 },
-                    { 23, false, new DateTime(2016, 7, 6, 12, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 6 },
-                    { 24, true, new DateTime(2016, 3, 23, 8, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 7 },
-                    { 25, true, new DateTime(2016, 8, 10, 13, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 8 },
-                    { 26, false, new DateTime(2016, 10, 18, 9, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 9 },
-                    { 27, false, new DateTime(2017, 9, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 10 },
-                    { 28, false, new DateTime(2017, 4, 9, 8, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 11 },
-                    { 29, false, new DateTime(2018, 2, 12, 14, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 12 },
-                    { 39, true, new DateTime(2016, 10, 12, 9, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 5 },
-                    { 30, true, new DateTime(2016, 3, 23, 17, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 13 },
-                    { 32, false, new DateTime(2016, 11, 14, 8, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 15 },
-                    { 33, false, new DateTime(2016, 11, 2, 11, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 16 },
-                    { 34, true, new DateTime(2017, 11, 7, 10, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 17 },
-                    { 35, true, new DateTime(2016, 5, 9, 11, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 1 },
-                    { 36, false, new DateTime(2016, 6, 9, 13, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 2 },
-                    { 37, true, new DateTime(2018, 12, 23, 18, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 3 },
-                    { 31, false, new DateTime(2017, 9, 21, 11, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 14 }
+                    { 35, true, new DateTime(2017, 10, 28, 18, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 1 },
+                    { 34, true, new DateTime(2017, 2, 5, 12, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 17 },
+                    { 36, true, new DateTime(2017, 7, 26, 7, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 2 },
+                    { 37, true, new DateTime(2017, 12, 13, 15, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 3 },
+                    { 38, false, new DateTime(2017, 3, 26, 11, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 4 },
+                    { 39, false, new DateTime(2018, 3, 10, 10, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 5 },
+                    { 40, false, new DateTime(2016, 7, 17, 16, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 6 },
+                    { 41, false, new DateTime(2017, 10, 16, 11, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 7 },
+                    { 42, false, new DateTime(2016, 11, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 8 },
+                    { 43, true, new DateTime(2019, 10, 2, 7, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 9 },
+                    { 44, false, new DateTime(2019, 11, 20, 15, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 10 },
+                    { 45, false, new DateTime(2019, 1, 10, 8, 0, 0, 0, DateTimeKind.Unspecified), 3, true, "E", 11 },
+                    { 46, true, new DateTime(2017, 8, 21, 9, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 12 },
+                    { 47, false, new DateTime(2018, 12, 3, 16, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 13 },
+                    { 48, false, new DateTime(2016, 1, 8, 13, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 14 },
+                    { 49, false, new DateTime(2018, 2, 13, 8, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 15 },
+                    { 33, true, new DateTime(2019, 12, 15, 10, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 16 },
+                    { 50, true, new DateTime(2018, 8, 14, 18, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 16 },
+                    { 32, false, new DateTime(2019, 5, 14, 12, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 15 },
+                    { 30, false, new DateTime(2018, 2, 15, 15, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 13 },
+                    { 18, false, new DateTime(2019, 5, 6, 14, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 1 },
+                    { 19, false, new DateTime(2017, 7, 23, 9, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 2 },
+                    { 20, true, new DateTime(2017, 7, 8, 8, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 3 },
+                    { 21, true, new DateTime(2017, 4, 5, 7, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 4 },
+                    { 31, true, new DateTime(2016, 3, 19, 13, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 14 },
+                    { 23, true, new DateTime(2018, 9, 8, 18, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 6 },
+                    { 22, true, new DateTime(2018, 2, 9, 17, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 5 },
+                    { 25, true, new DateTime(2016, 9, 10, 10, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 8 },
+                    { 26, false, new DateTime(2019, 4, 4, 10, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 9 },
+                    { 27, false, new DateTime(2017, 11, 11, 17, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 10 },
+                    { 28, false, new DateTime(2017, 7, 27, 17, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 11 },
+                    { 29, true, new DateTime(2018, 7, 15, 7, 0, 0, 0, DateTimeKind.Unspecified), 2, true, "E", 12 },
+                    { 24, false, new DateTime(2019, 8, 10, 10, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "E", 7 },
+                    { 51, true, new DateTime(2018, 2, 27, 17, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "E", 17 }
                 });
 
             migrationBuilder.InsertData(
@@ -357,15 +339,40 @@ namespace KSS.Migrations
                 columns: new[] { "InstanceId", "BookAvailable", "BookPrice", "CourseId", "InstructorId", "LocationId", "Price", "Seats", "StartDate" },
                 values: new object[,]
                 {
-                    { 26, true, 31.0, 9, 2, 2, 129.0, 12, new DateTimeOffset(new DateTime(2016, 9, 25, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 20, true, 16.0, 9, 3, 1, 56.0, 15, new DateTimeOffset(new DateTime(2019, 12, 13, 15, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 14, true, 48.0, 9, 5, 3, 62.0, 11, new DateTimeOffset(new DateTime(2016, 10, 4, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 9, true, 15.0, 10, 3, 1, 137.0, 17, new DateTimeOffset(new DateTime(2019, 1, 8, 16, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 10, true, 41.0, 10, 6, 2, 113.0, 30, new DateTimeOffset(new DateTime(2018, 7, 3, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 16, true, 23.0, 10, 2, 3, 51.0, 15, new DateTimeOffset(new DateTime(2018, 12, 18, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 17, true, 55.0, 10, 2, 3, 108.0, 26, new DateTimeOffset(new DateTime(2017, 4, 6, 9, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 27, true, 18.0, 8, 1, 1, 86.0, 16, new DateTimeOffset(new DateTime(2017, 12, 23, 12, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
-                    { 19, true, 35.0, 8, 3, 3, 130.0, 17, new DateTimeOffset(new DateTime(2018, 1, 5, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) }
+                    { 4, true, 39.0, 10, 3, 3, 136.0, 23, new DateTimeOffset(new DateTime(2016, 9, 27, 12, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 24, true, 36.0, 10, 5, 2, 80.0, 10, new DateTimeOffset(new DateTime(2016, 10, 4, 13, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 8, true, 23.0, 9, 2, 3, 108.0, 21, new DateTimeOffset(new DateTime(2016, 10, 16, 15, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 25, true, 51.0, 9, 5, 1, 107.0, 13, new DateTimeOffset(new DateTime(2018, 5, 3, 9, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 1, true, 46.0, 8, 3, 2, 90.0, 12, new DateTimeOffset(new DateTime(2017, 5, 3, 14, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 21, true, 24.0, 8, 1, 2, 101.0, 21, new DateTimeOffset(new DateTime(2019, 7, 9, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 12, true, 49.0, 8, 3, 2, 53.0, 21, new DateTimeOffset(new DateTime(2019, 2, 4, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 7, true, 28.0, 8, 1, 3, 130.0, 19, new DateTimeOffset(new DateTime(2016, 4, 18, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 28, true, 45.0, 9, 2, 3, 89.0, 25, new DateTimeOffset(new DateTime(2016, 2, 19, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                    { 29, true, 17.0, 9, 6, 1, 146.0, 12, new DateTimeOffset(new DateTime(2016, 4, 6, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Enrollment",
+                columns: new[] { "EnrollmentId", "BookBought", "Confirmed", "InstanceId", "Paid", "Status", "UserId" },
+                values: new object[,]
+                {
+                    { 1, false, new DateTime(2017, 7, 12, 10, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 1 },
+                    { 15, true, new DateTime(2017, 6, 3, 8, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 15 },
+                    { 14, true, new DateTime(2017, 5, 11, 17, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 14 },
+                    { 13, false, new DateTime(2016, 9, 28, 18, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 13 },
+                    { 12, false, new DateTime(2017, 2, 25, 17, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 12 },
+                    { 11, false, new DateTime(2017, 11, 5, 7, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 11 },
+                    { 10, false, new DateTime(2017, 8, 3, 18, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 10 },
+                    { 16, true, new DateTime(2019, 11, 7, 18, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 16 },
+                    { 9, true, new DateTime(2016, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 9 },
+                    { 7, false, new DateTime(2019, 7, 22, 16, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 7 },
+                    { 6, false, new DateTime(2018, 7, 16, 12, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 6 },
+                    { 5, false, new DateTime(2019, 11, 18, 17, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 5 },
+                    { 4, false, new DateTime(2017, 12, 15, 15, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 4 },
+                    { 3, false, new DateTime(2018, 4, 26, 8, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 3 },
+                    { 2, true, new DateTime(2018, 8, 19, 18, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 2 },
+                    { 8, true, new DateTime(2019, 7, 5, 13, 0, 0, 0, DateTimeKind.Unspecified), 1, true, "E", 8 },
+                    { 17, false, new DateTime(2017, 11, 6, 14, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "E", 17 }
                 });
 
             migrationBuilder.CreateIndex(
