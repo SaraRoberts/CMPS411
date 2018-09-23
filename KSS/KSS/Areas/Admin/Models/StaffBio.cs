@@ -12,6 +12,7 @@ namespace KSS.Areas.Admin.Models
         public string Picture { get; set; }
         public string Bio { get; set; }
 
-        public List<User> User { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

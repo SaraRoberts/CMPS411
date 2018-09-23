@@ -7,29 +7,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-    
-    public class BioController : Controller
+    public class StaffBiosController : Controller
     {
         private readonly DataContext _context;
 
-        public BioController(DataContext context)
+        public StaffBiosController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/Bio
+        // GET: Admin/StaffBios
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Bio.ToListAsync());
+            var dataContext = _context.Bio.Include(s => s.User);
+            return View(await dataContext.ToListAsync());
         }
 
-        // GET: Admin/Bio/Details/5
+        // GET: Admin/StaffBios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,39 +35,42 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var bio = await _context.Bio
+            var staffBio = await _context.Bio
+                .Include(s => s.User)
                 .FirstOrDefaultAsync(m => m.StaffBioId == id);
-            if (bio == null)
+            if (staffBio == null)
             {
                 return NotFound();
             }
 
-            return View(bio);
+            return View(staffBio);
         }
 
-        // GET: Admin/Bio/Create
+        // GET: Admin/StaffBios/Create
         public IActionResult Create()
         {
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName");
             return View();
         }
 
-        // POST: Admin/Bio/Create
+        // POST: Admin/StaffBios/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StaffId,Picture,Bio")] StaffBio bio)
+        public async Task<IActionResult> Create([Bind("StaffBioId,Picture,Bio,UserId")] StaffBio staffBio)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(bio);
+                _context.Add(staffBio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(bio);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", staffBio.UserId);
+            return View(staffBio);
         }
 
-        // GET: Admin/Bio/Edit/5
+        // GET: Admin/StaffBios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,22 +78,23 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var bio = await _context.Bio.FindAsync(id);
-            if (bio == null)
+            var staffBio = await _context.Bio.FindAsync(id);
+            if (staffBio == null)
             {
                 return NotFound();
             }
-            return View(bio);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", staffBio.UserId);
+            return View(staffBio);
         }
 
-        // POST: Admin/Bio/Edit/5
+        // POST: Admin/StaffBios/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StaffId,Picture,Bio")] StaffBio bio)
+        public async Task<IActionResult> Edit(int id, [Bind("StaffBioId,Picture,Bio,UserId")] StaffBio staffBio)
         {
-            if (id != bio.StaffBioId)
+            if (id != staffBio.StaffBioId)
             {
                 return NotFound();
             }
@@ -101,12 +103,12 @@ namespace KSS.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(bio);
+                    _context.Update(staffBio);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BioExists(bio.StaffBioId))
+                    if (!StaffBioExists(staffBio.StaffBioId))
                     {
                         return NotFound();
                     }
@@ -117,10 +119,11 @@ namespace KSS.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(bio);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", staffBio.UserId);
+            return View(staffBio);
         }
 
-        // GET: Admin/Bio/Delete/5
+        // GET: Admin/StaffBios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -128,28 +131,29 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var bio = await _context.Bio
+            var staffBio = await _context.Bio
+                .Include(s => s.User)
                 .FirstOrDefaultAsync(m => m.StaffBioId == id);
-            if (bio == null)
+            if (staffBio == null)
             {
                 return NotFound();
             }
 
-            return View(bio);
+            return View(staffBio);
         }
 
-        // POST: Admin/Bio/Delete/5
+        // POST: Admin/StaffBios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var bio = await _context.Bio.FindAsync(id);
-            _context.Bio.Remove(bio);
+            var staffBio = await _context.Bio.FindAsync(id);
+            _context.Bio.Remove(staffBio);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BioExists(int id)
+        private bool StaffBioExists(int id)
         {
             return _context.Bio.Any(e => e.StaffBioId == id);
         }

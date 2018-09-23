@@ -4,18 +4,12 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Staff Bio</h2>
 
 <div>
-    <h4>Staff</h4>
+    <h4>Details</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.StaffBioId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StaffBioId)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Picture)
         </dt>
@@ -27,6 +21,12 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Bio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName)
         </dd>
     </dl>
 </div>
