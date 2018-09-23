@@ -5,19 +5,31 @@
 }
 
 <h2>All Staff Bios</h2>
+<div id="detailsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">User Details</h3>
+            </div>
+            <div class="modal-body">
+                <h4 id="fullName"></h4>
+                <h4 id="picture"></h4>
+                <h4 id="bio"></h4>              
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
 
+    </div>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Picture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bio)
-            </th>
+        <tr>          
             <th>
                 @Html.DisplayNameFor(model => model.User)
             </th>
@@ -25,23 +37,42 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Picture)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.StaffBioId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StaffBioId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StaffBioId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.StaffBioId)">               
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.StaffBioId">Edit</a> |                  
+                    <a asp-action="Delete" asp-route-id="@item.StaffBioId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<script>
+    function getDetails(id) {
+
+
+        $.ajax({
+            url: '@Url.Action("Details", "StaffBios")',
+            dataType: "json",
+            type: "POST",
+            cache: false,
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {
+                    $("#fullName").text(data.fullName);
+                    $("#picture").text("This is a placeholder for a picture : " + data.picture);
+                    $("#bio").text("Staff Bio : " + data.bio);
+                    $("#detailsModal").modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    }
+</script>

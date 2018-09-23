@@ -38,27 +38,7 @@ namespace KSS.Areas.Admin.Controllers
                 .OrderBy(c => c.Name);
             return View(await applicationDbContext.ToListAsync());
         }
-
-        //// GET: Instructor Course Details
-        //public async Task<IActionResult> CourseDetail(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var course = await _context.Course
-        //        .Include(c => c.Prereq)
-        //        .Include(c => c.CourseCategory)
-        //        .FirstOrDefaultAsync(m => m.CourseId == id);
-        //    if (course == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(course);
-        //}
-
+     
         [HttpPost]
         public async Task<ActionResult> CourseDetail(int? id)
         {

@@ -27,23 +27,31 @@ namespace KSS.Areas.Admin.Controllers
             return View(await dataContext.ToListAsync());
         }
 
-        // GET: Admin/StaffBios/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpPost]
+        public async Task<ActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+             if (id == null)
+             {
+                 return NotFound();
+             }
 
-            var staffBio = await _context.Bio
-                .Include(s => s.User)
-                .FirstOrDefaultAsync(m => m.StaffBioId == id);
-            if (staffBio == null)
-            {
-                return NotFound();
-            }
+             var staffBio = await _context.Bio
+                 .Include(s => s.User)
+                 .FirstOrDefaultAsync(m => m.StaffBioId == id);
+             if (staffBio == null)
+             {
+                 return NotFound();
+             }
 
-            return View(staffBio);
+
+            return Json(new
+            {
+                success  = true,
+                fullName = staffBio.User.FirstName + " " + staffBio.User.LastName,
+                bio      = staffBio.Bio,
+                picture  = staffBio.Picture
+
+            });
         }
 
         // GET: Admin/StaffBios/Create
