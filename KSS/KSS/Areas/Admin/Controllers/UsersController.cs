@@ -32,7 +32,25 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Users/Details/5
-        public async Task<IActionResult> Details(int? id)
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var user = await _context.Users
+        //        .FirstOrDefaultAsync(m => m.UserId == id);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(user);
+        //}
+
+        [HttpPost]
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -46,7 +64,16 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return View(user);
+            
+            return Json(new
+            {
+                success = true,
+                fullName = user.FirstName + " " + user.LastName,
+                phone    = user.Phone,
+                email    = user.Email,
+                role     = user.Role
+                
+            });
         }
 
         // GET: Admin/Users/Create
