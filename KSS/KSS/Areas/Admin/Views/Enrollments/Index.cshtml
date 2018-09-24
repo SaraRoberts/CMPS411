@@ -5,7 +5,28 @@
 }
 
 <h2>All Enrollments</h2>
+<div id="detailsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Enrollment Details</h3>
+            </div>
+            <div class="modal-body">
+                <h4 id="instance"></h4>
+                <h4 id="fullName"></h4>
+                <h4 id="status"></h4>
+                <h4 id="bookBought"></h4>
+                <h4 id="paid"></h4>
+                <h4 id="confirmed"></h4> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
 
+    </div>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -18,7 +39,7 @@
             <th>
                 Student
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
@@ -29,20 +50,20 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Confirmed)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.EnrollmentId)">
             <td>
                 @Html.DisplayFor(modelItem => item.Instance.Course.Name) in @Html.DisplayFor(modelItem => item.Instance.Location.City) on @Html.DisplayFor(modelItem => item.Instance.StartDate.LocalDateTime)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
@@ -53,13 +74,38 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Confirmed)
-            </td>
+            </td>*@
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EnrollmentId">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |                
                 <a asp-action="Delete" asp-route-id="@item.EnrollmentId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<script>
+    function getDetails(id) {
+        $.ajax({
+            url: '@Url.Action("Details", "Enrollments")',
+            dataType: "json",
+            type: "POST",
+            cache: false,
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {            
+                    $("#instance").text("Instance : " + data.instance);
+                    $("#fullName").text("Name : " + data.fullName);
+                    $("#status").text("Status : " + data.status);
+                    $("#bookBought").text(data.bookBought);
+                    $("#paid").text(data.paid);
+                    $("#confirmed").text("Date Confirmed : " + data.confirmed);
+                    $("#detailsModal").modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    }
+</script>

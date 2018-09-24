@@ -35,8 +35,32 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Enrollments/Details/5
-        public async Task<IActionResult> Details(int? id)
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var enrollment = await _context.Enrollment
+        //        .Include(e => e.Instance)
+        //        .Include(e => e.User)
+        //        .Include(c => c.Instance.Course)
+        //        .Include(c => c.Instance.Location)
+        //        .FirstOrDefaultAsync(m => m.EnrollmentId == id);
+        //    if (enrollment == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(enrollment);
+        //}
+
+        [HttpPost]
+        public async Task<ActionResult> Details(int? id)
         {
+            string bookPaid = "Book Bought : Yes";
+            string coursePaid   = "Course Paid : Yes";
             if (id == null)
             {
                 return NotFound();
@@ -45,13 +69,34 @@ namespace KSS.Areas.Admin.Controllers
             var enrollment = await _context.Enrollment
                 .Include(e => e.Instance)
                 .Include(e => e.User)
+                .Include(c => c.Instance.Course)
+                .Include(c => c.Instance.Location)
                 .FirstOrDefaultAsync(m => m.EnrollmentId == id);
             if (enrollment == null)
             {
                 return NotFound();
             }
+            if (!enrollment.BookBought)
+            {
+                bookPaid = "Book Bought : No";
+            }
+            if (!enrollment.Paid)
+            {
+                coursePaid = "Course Paid : No";
+            }
+            
 
-            return View(enrollment);
+            return Json(new
+            {
+                success    = true,
+                instance   = enrollment.Instance.Course.Name + " " + enrollment.Instance.Location.City + " " +
+                enrollment.Instance.StartDate.LocalDateTime,
+                fullName   = enrollment.User.FirstName + " " + enrollment.User.LastName,
+                status     = enrollment.Status,
+                bookBought = bookPaid,
+                paid       = coursePaid,
+                confirmed  = enrollment.Confirmed
+            });
         }
 
         // GET: Enrollments/Roster
