@@ -42,8 +42,8 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         [Authorize(Roles = "Admin, Staff")]
-        // GET: Instructor's Class Detail
-        public async Task<IActionResult> ClassDetail(int? id)
+        [HttpPost]
+        public async Task<ActionResult> ClassDetail(int? id)
         {
             if (id == null)
             {
@@ -60,7 +60,26 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return View(instance);
+            String month = instance.StartDate.ToString("MMMM");
+            String time = instance.StartDate.ToString("h:mm tt");
+
+            var response = Json(new
+            {
+                success = true,
+                startdate = instance.StartDate.DayOfWeek +
+                    ", " + month + ", " + instance.StartDate.Day +
+                    ", " + instance.StartDate.Year,
+                price = instance.Price,
+                course = instance.Course.Name,
+                location = instance.Location.Name,
+                seats = instance.Seats,
+                instructor = instance.Instructor.FirstName +" "+ instance.Instructor.LastName,
+                bookavailable = instance.BookAvailable,
+                bookprice = instance.BookPrice
+
+            });
+
+            return response;
         }
 
         [Authorize(Roles = "Admin")]
