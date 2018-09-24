@@ -5,7 +5,30 @@
 }
 
 <h2>All Classes</h2>
+<div id="detailsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Class Details</h3>
+            </div>
+            <div class="modal-body">
+                <h4 id="startDate"></h4>
+                <h4 id="instructor"></h4>
+                <h4 id="price"></h4>
+                <h4 id="courseName"></h4>
+                <h4 id="location"></h4>
+                <h4 id="seats"></h4>
+                <h4 id="book"></h4>
+                <h4 id="bookP"></h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
 
+    </div>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -42,7 +65,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
+        <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.InstanceId)">
             <td>
                 @Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)
             </td>
@@ -79,3 +102,31 @@
         }
     </tbody>
 </table>
+<script>
+    function getDetails(id) {
+        $.ajax({
+            url: '@Url.Action("Details", "Instances")',
+            dataType: "json",
+            type: "POST",
+            cache: false,
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {
+                    $("#startDate").text(data.startDate);
+                    $("#instructor").text(data.instructor);
+                    $("#price").text(data.price);
+                    $("#courseName").text(data.courseName);
+                    $("#location").text(data.location);
+                    $("#seats").text(data.seats);
+                    $("#book").text(data.book);
+                    $("#bookP").text(data.bookP)                    
+                    $("#detailsModal").modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    }
+</script>

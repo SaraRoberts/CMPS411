@@ -63,10 +63,11 @@ namespace KSS.Areas.Admin.Controllers
             return View(instance);
         }
 
-        [Authorize(Roles = "Admin")]
-        // GET: Admin/Instances/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpPost]
+        public async Task<ActionResult> Details(int? id)
         {
+            string bookAvailible = "Book Availible : No";
+            string bookPrice = "";
             if (id == null)
             {
                 return NotFound();
@@ -81,9 +82,50 @@ namespace KSS.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            if (instance.BookAvailable)
+            {
+                bookPrice = instance.BookPrice.ToString();
+                bookPrice = "Book Price " + bookPrice + " $";
+                bookAvailible = "Book Availible : Yes";
+            }
 
-            return View(instance);
+
+            return Json(new
+            {
+                success    = true,
+                startDate  = "Start Date : " + instance.StartDate,
+                price      = "Price : " + instance.Price + " $",
+                courseName = "Course Name : " + instance.Course.Name,
+                location   = "Location : " + instance.Location.Street,
+                seats      = "Seats : " + instance.Seats,
+                instructor = "Instructor : " + instance.Instructor.FirstName + " " +
+                instance.Instructor.LastName,
+                book       = bookAvailible,
+                bookP      = bookPrice
+            });
         }
+
+        //[Authorize(Roles = "Admin")]
+        //// GET: Admin/Instances/Details/5
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var instance = await _context.Instance
+        //        .Include(i => i.Course)
+        //        .Include(i => i.Location)
+        //        .Include(i => i.Instructor)
+        //        .FirstOrDefaultAsync(m => m.InstanceId == id);
+        //    if (instance == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(instance);
+        //}
 
         [Authorize(Roles = "Admin, Staff")]
         // GET: Admin/Instances/Create
