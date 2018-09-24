@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace KSS.Areas.Admin.ViewModels
 {
-    public class UserCreate
+    public class UserEdit
     {
+        public int UserId { get; set; }
+
         [MaxLength(15)]
         public string FirstName { get; set; }
         [MaxLength(15)]
@@ -16,13 +18,6 @@ namespace KSS.Areas.Admin.ViewModels
         public string Phone { get; set; }
         [EmailAddress]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Password is required")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-        [Compare("Password")]
-        [DataType(DataType.Password)]
-        public string ConfirmPassword { get; set; }
         public string Role { get; set; }
-        public int StaffId { get; set; }
     }
 }
