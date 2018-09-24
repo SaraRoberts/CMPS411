@@ -5,7 +5,25 @@
 }
 
 <h2>All Locations</h2>
+<div id="detailsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Street Address</h3>
+            </div>
+            <div class="modal-body">
+                <h4 id="addressStreet"></h4>
+                <h4 id="addressCityState"></h4>
+                <h4 id="addressZipCode"></h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
 
+    </div>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -14,46 +32,45 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Street)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Zipcode)
-            </th>
+            </th>          
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Street)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zipcode)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LocationId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LocationId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.LocationId)">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>             
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |                    
+                    <a asp-action="Delete" asp-route-id="@item.LocationId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<script>
+    function getDetails(id) {
+        $.ajax({
+            url: '@Url.Action("Details", "Locations")',
+            dataType: "json",
+            type: "POST",
+            cache: false,
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {
+                    $("#addressStreet").text(data.addressStreet);
+                    $("#addressCityState").text(data.addressCityState);
+                    $("#addressZipCode").text(data.addressZipCode);
+                    $("#detailsModal").modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    }
+</script>

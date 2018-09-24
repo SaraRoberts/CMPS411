@@ -27,9 +27,9 @@ namespace KSS.Areas.Admin.Controllers
         {
             return View(await _context.Location.ToListAsync());
         }
-
-        // GET: Admin/Locations/Details/5
-        public async Task<IActionResult> Details(int? id)
+        
+        [HttpPost]
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -43,7 +43,15 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return View(location);
+
+            return Json(new
+            {
+                success = true,
+                addressStreet = location.Street,
+                addressCityState = location.City + " " + location.State,               
+                addressZipCode = location.Zipcode
+
+            });
         }
 
         // GET: Admin/Locations/Create
