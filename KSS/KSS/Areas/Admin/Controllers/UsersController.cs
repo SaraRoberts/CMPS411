@@ -135,7 +135,16 @@ namespace KSS.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return View(user);
+            var userEdit = new UserEdit
+            {
+                UserId = user.UserId,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Phone = user.Phone,
+                Email = user.Email,
+                Role = user.Role
+            };
+            return View(userEdit);
         }
 
         // POST: Admin/Users/Edit/5
@@ -143,9 +152,9 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Phone,Email,Password,Salt,Role")] User user)
+        public async Task<IActionResult> Edit(int id, UserEdit userEdit)
         {
-            if (id != user.UserId)
+            if (id != userEdit.UserId)
             {
                 return NotFound();
             }
@@ -154,12 +163,21 @@ namespace KSS.Areas.Admin.Controllers
             {
                 try
                 {
+                    var user = new User
+                    {
+                        UserId = userEdit.UserId,
+                        FirstName = userEdit.FirstName,
+                        LastName = userEdit.LastName,
+                        Phone = userEdit.Phone,
+                        Email = userEdit.Email,
+                        Role = userEdit.Role
+                    };
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.UserId))
+                    if (!UserExists(userEdit.UserId))
                     {
                         return NotFound();
                     }
@@ -170,7 +188,7 @@ namespace KSS.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(userEdit);
         }
 
         // GET: Admin/Users/Delete/5
