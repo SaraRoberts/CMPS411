@@ -8,9 +8,13 @@ namespace KSS.Areas.Admin.ViewModels
 {
     public class UserCreate
     {
+        [MaxLength(15)]
         public string FirstName { get; set; }
+        [MaxLength(15)]
         public string LastName { get; set; }
+        [Phone]
         public string Phone { get; set; }
+        [EmailAddress]
         public string Email { get; set; }
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]

@@ -9,12 +9,14 @@ namespace KSS.Areas.Admin.ViewModels
     public class UserEdit
     {
         public int UserId { get; set; }
-        //max chars
+
+        [MaxLength(15)]
         public string FirstName { get; set; }
+        [MaxLength(15)]
         public string LastName { get; set; }
-        //phone
+        [Phone]
         public string Phone { get; set; }
-        //email
+        [EmailAddress]
         public string Email { get; set; }
         public string Role { get; set; }
     }
