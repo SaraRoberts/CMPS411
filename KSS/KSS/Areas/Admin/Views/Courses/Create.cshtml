@@ -4,59 +4,57 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Course</h2>
-
-<h4>Create</h4>
+<h2 style="text-align:center">Create a New Course</h2>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div style="margin:auto; max-width: 300px">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Course Name</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label">Description</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TypicalPrice" class="control-label"></label>
+                <label asp-for="TypicalPrice" class="control-label">Typical Price</label>
                 <input asp-for="TypicalPrice" class="form-control" />
                 <span asp-validation-for="TypicalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="BookAvailable" /> @Html.DisplayNameFor(model => model.BookAvailable)
+                        <input asp-for="BookAvailable" /> Book Available
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <label asp-for="BookPrice" class="control-label"></label>
+                <label asp-for="BookPrice" class="control-label">Book Price</label>
                 <input asp-for="BookPrice" class="form-control" />
                 <span asp-validation-for="BookPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PrereqId" class="control-label"></label>
+                <label asp-for="PrereqId" class="control-label">Prerequisite</label>
                 <select asp-for="PrereqId" class="form-control" asp-items="ViewBag.PrereqId">
                     <option value="">None</option>
                 </select>
             </div>
             <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
+                <label asp-for="CategoryId" class="control-label">Category</label>
                 <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="text-align:center;">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div style="text-align: center">
     <a asp-action="Index">Back to List</a>
 </div>
 
