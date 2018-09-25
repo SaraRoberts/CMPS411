@@ -4,12 +4,10 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Staff Bio</h2>
-
-<h4>Edit</h4>
+<h2 style="text-align:center">Edit Staff Bio</h2>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div style="margin:auto; max-width: 300px">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="StaffBioId" />
@@ -35,7 +33,7 @@
     </div>
 </div>
 
-<div>
+<div style="text-align: center">
     <a asp-action="Index">Back to List</a>
 </div>
 
