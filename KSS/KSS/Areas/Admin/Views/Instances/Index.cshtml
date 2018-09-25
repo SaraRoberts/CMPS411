@@ -51,6 +51,9 @@
                 @Html.DisplayNameFor(model => model.Seats)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Graded)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Instructor)
             </th>
             <th>
@@ -80,6 +83,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Graded)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Instructor.FirstName)
