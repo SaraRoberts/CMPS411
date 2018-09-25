@@ -152,7 +152,7 @@ namespace KSS.Areas.Admin.Controllers
         {
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name");
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street");
-            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId","UserId");
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId","LastName");
             return View();
         }
 
@@ -172,7 +172,7 @@ namespace KSS.Areas.Admin.Controllers
             }
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
-            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "UserId", instance.InstructorId);
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "LastName", instance.InstructorId);
             return View(instance);
         }
 
@@ -192,7 +192,7 @@ namespace KSS.Areas.Admin.Controllers
             }
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
-            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "UserId", instance.InstructorId);
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "LastName", instance.InstructorId);
             return View(instance);
         }
 
@@ -231,7 +231,7 @@ namespace KSS.Areas.Admin.Controllers
             }
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
-            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "UserId", instance.InstructorId);
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "LastName", instance.InstructorId);
             return View(instance);
         }
 
@@ -254,7 +254,7 @@ namespace KSS.Areas.Admin.Controllers
             }
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
-            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "UserId", instance.InstructorId);
+            ViewData["InstructorId"] = new SelectList(_context.Users, "UserId", "LastName", instance.InstructorId);
             return View(instance);
         }
 
