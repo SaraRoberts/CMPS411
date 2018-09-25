@@ -39,16 +39,14 @@
     {
         String month = item.StartDate.ToString("MMMM");
         String time = item.StartDate.ToString("h:mm tt");
-        <div class="class">
-            <div class="class-left">
-                @Html.DisplayFor(modelItem => item.StartDate.DayOfWeek)<br />
+        <div class="tograde">
+            <div class="tograde-left">
                 <span>@Html.DisplayFor(modelItem => item.StartDate.Day)</span><br />
-                @month
+                Days Late
             </div>
-            <div class="class-right">
+            <div class="tograde-right">
                 @Html.DisplayFor(modelItem => item.Course.Name)<br />
-                <span class="glyphicon glyphicon-map-marker"></span> @Html.DisplayFor(modelItem => item.Location.Name)<br />
-                <span class="glyphicon glyphicon-time"></span> @time
+                @month @Html.DisplayFor(modelItem => item.StartDate.Day)
                 <span class="links">
                     <a asp-controller="Instances" asp-action="Grade" asp-route-id="@item.InstanceId">Grade</a>
                 </span>
