@@ -4,59 +4,57 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Enrollment</h2>
-
-<h4>Edit</h4>
+<h2 style="text-align:center">Edit Enrollment</h2>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div style="margin:auto; max-width: 300px">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="EnrollmentId" />
             <div class="form-group">
-                <label asp-for="InstanceId" class="control-label"></label>
+                <label asp-for="InstanceId" class="control-label">Class</label>
                 <select asp-for="InstanceId" class="form-control" asp-items="ViewBag.InstanceId"></select>
                 <span asp-validation-for="InstanceId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
+                <label asp-for="UserId" class="control-label">User</label>
                 <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
+                <label asp-for="Status" class="control-label">Status</label>
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="BookBought" /> @Html.DisplayNameFor(model => model.BookBought)
+                        <input asp-for="BookBought" /> Book Bought
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Paid" /> @Html.DisplayNameFor(model => model.Paid)
+                        <input asp-for="Paid" /> Paid
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Confirmed" /> @Html.DisplayNameFor(model => model.Confirmed)
+                        <input asp-for="Confirmed" /> Confirmed
                     </label>
                 </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group" style="text-align:center;">
+                <input type="submit" value="Save Changes" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div style="text-align: center">
     <a asp-action="Index">Back to List</a>
 </div>
 

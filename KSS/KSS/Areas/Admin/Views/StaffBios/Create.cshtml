@@ -4,36 +4,34 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Staff Bio</h2>
-
-<h4>Create</h4>
+<h2 style="text-align:center">Add a New Staff Bio</h2>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div style="margin:auto; max-width: 300px">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Picture" class="control-label"></label>
+                <label asp-for="Picture" class="control-label">Picture</label>
                 <input asp-for="Picture" class="form-control" />
                 <span asp-validation-for="Picture" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Bio" class="control-label"></label>
+                <label asp-for="Bio" class="control-label">Bio</label>
                 <input asp-for="Bio" class="form-control" />
                 <span asp-validation-for="Bio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
+                <label asp-for="UserId" class="control-label">User</label>
                 <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="text-align:center;">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div style="text-align: center">
     <a asp-action="Index">Back to List</a>
 </div>
 
