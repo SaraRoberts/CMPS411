@@ -6,46 +6,45 @@
 
 <h2 style="text-align:center">Add a New Enrollment</h2>
 <div class="row">
-    <div style="margin:auto; max-width: 300px">
+    <div style="margin:auto; max-width: 750px">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <p style="color:red">
                 @ViewData["Duplicate"]  <!-- Displays if user already in class. -->
             </p>
-            <div class="form-group">
+            <div class="col-md-6 form-group">
                 <label asp-for="InstanceId" class="control-label">Class</label>
                 <select asp-for="InstanceId" class="form-control" asp-items="ViewBag.InstanceId"></select>
             </div>
-            <div class="form-group">
+            <div class="col-md-6 form-group">
                 <label asp-for="UserId" class="control-label">User</label>
                 <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
             </div>
-            <div class="form-group">
+            <div class="col-md-6 form-group">
                 <label asp-for="Status" class="control-label">Status</label>
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-md-6 form-group">
+                <label asp-for="Confirmed" class="control-label">Confirmed</label>
+                <input asp-for="Confirmed" class="form-control" type="datetime-local" />
+                <span asp-validation-for="Confirmed" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 form-group">
                 <div class="checkbox">
                     <label>
                         <input asp-for="BookBought" /> Book Bought
                     </label>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="col-md-6 form-group">
                 <div class="checkbox">
                     <label>
                         <input asp-for="Paid" /> Paid
                     </label>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Confirmed" /> Confirmed
-                    </label>
-                </div>
-            </div>
+            <br style="clear: both;">
             <div class="form-group" style="text-align:center;">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

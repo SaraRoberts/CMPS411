@@ -7,48 +7,48 @@
 <h2 style="text-align:center">Edit Class</h2>
 <hr />
 <div class="row">
-    <div style="margin:auto; max-width: 300px">
+    <div style="margin:auto; max-width: 750px">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="InstanceId" />
-            <div class="form-group">
+            <div class ="col-md-6 form-group">
                 <label asp-for="StartDate" class="control-label">Start Date</label>
                 <input asp-for="StartDate" class="form-control" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class ="col-md-6 form-group">
                 <label asp-for="Price" class="control-label">Price</label>
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class ="col-md-6 form-group">
                 <label asp-for="CourseId" class="control-label">Course</label>
                 <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
                 <span asp-validation-for="CourseId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class ="col-md-6 form-group">
                 <label asp-for="LocationId" class="control-label">Location</label>
                 <select asp-for="LocationId" class="form-control" asp-items="ViewBag.LocationId"></select>
                 <span asp-validation-for="LocationId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class ="col-md-6 form-group">
                 <label asp-for="Seats" class="control-label">Number of Seats</label>
                 <input asp-for="Seats" class="form-control" />
                 <span asp-validation-for="Seats" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class ="col-md-6 form-group">
                 <label asp-for="InstructorId" class="control-label">Instructor</label>
                 <select asp-for="InstructorId" class="form-control" asp-items="ViewBag.InstructorId"></select>
                 <span asp-validation-for="InstructorId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class ="col-md-6 form-group">
                 <div class="checkbox">
                     <label>
                         <input asp-for="BookAvailable" /> Book Available
                     </label>
                 </div>
             </div>
-            <div class="form-group">
+            <div class ="col-md-6 form-group">
                 <label asp-for="BookPrice" class="control-label">Book Price</label>
                 <input asp-for="BookPrice" class="form-control" />
                 <span asp-validation-for="BookPrice" class="text-danger"></span>
