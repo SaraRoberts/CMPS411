@@ -156,8 +156,8 @@ p.tooltips {
     padding: 10px;
 }
 
-.grid-container > div {
-    padding: 20px 0;
+    .grid-container > div {
+        padding: 20px 0;
     }
 
 .contentContainer {
@@ -168,4 +168,44 @@ p.tooltips {
 .tooltipContainer {
     text-align: center;
 }
-/*END OF TOOLTIP SECTION*/
+
+/* Help block */
+.main-col {
+    float:left;
+    width:70%;
+}
+aside.help {
+    float:right;
+    width: 30%;
+}
+.tooltipContainer2 {
+    margin: 0 10px;
+    border: solid 2px lightgrey;
+    text-align: center;
+}
+.tooltips-top {
+    padding:1px;
+    background-color: #a83939;
+    color:white;
+    font-weight:700;
+}
+.tooltips-bottom{
+    padding:10px;
+}
+.tooltips-bottom h4 {
+    text-decoration-line:underline;
+}
+
+@media(max-width: 768px) {
+    aside.help {
+        float: none;
+        width: 100%;
+    }
+    .main-col {
+        float: none;
+        width: 100%;
+    }
+}
+/* Help Block End */
+
+    /*END OF TOOLTIP SECTION*/
