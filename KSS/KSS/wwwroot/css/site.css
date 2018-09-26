@@ -139,3 +139,33 @@ th {
     box-shadow:none !important;
     border:none !important;
 }
+
+/*BEGINNING OF TOOLTIP SECTION :
+  This CSS sections index pages into grid containers to allow room for the tooltip on the right side*/
+p.tooltips {
+    border-width: 5px;
+    border-style: solid;
+    border-color: #a83939;
+    padding: 5px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.grid-container > div {
+    padding: 20px 0;
+    }
+
+.contentContainer {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.tooltipContainer {
+    text-align: center;
+}
+/*END OF TOOLTIP SECTION*/

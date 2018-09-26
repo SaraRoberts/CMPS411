@@ -5,6 +5,7 @@
 }
 
 <h2>All Enrollments</h2>
+<!--Makes Modal-->
 <div id="detailsModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -28,62 +29,66 @@
     </div>
 </div>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">New Enrollment</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Instance)
-            </th>
-            <th>
-                Student
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookBought)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Paid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Confirmed)
-            </th>*@
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.EnrollmentId)">
-            <td>
-                @Html.DisplayFor(modelItem => item.Instance.Course.Name) in @Html.DisplayFor(modelItem => item.Instance.Location.City) on @Html.DisplayFor(modelItem => item.Instance.StartDate.LocalDateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookBought)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Confirmed)
-            </td>*@
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |                
-                <a asp-action="Delete" asp-route-id="@item.EnrollmentId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<script>
+<!--Beginning of the Containers-->
+<div class="grid-container">
+    <div class="contentContainer">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Instance)
+                    </th>
+                    <th>
+                        Student
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookBought)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Paid)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Confirmed)
+                    </th>*@
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.EnrollmentId)">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Instance.Course.Name) in @Html.DisplayFor(modelItem => item.Instance.Location.City) on @Html.DisplayFor(modelItem => item.Instance.StartDate.LocalDateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookBought)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Paid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Confirmed)
+                    </td>*@
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.EnrollmentId">Delete</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+        <script>
     function getDetails(id) {
         $.ajax({
             url: '@Url.Action("Details", "Enrollments")',
@@ -92,7 +97,7 @@
             cache: false,
             data: { id: id },
             success: function (data) {
-                if (data.success) {            
+                if (data.success) {
                     $("#instance").text("Instance : " + data.instance);
                     $("#fullName").text("Name : " + data.fullName);
                     $("#status").text("Status : " + data.status);
@@ -108,4 +113,14 @@
         });
 
     }
-</script>
+        </script>
+
+    </div>
+    <div class="tooltipContainer">
+        <p class="tooltips">
+            <big><big><strong>Enrollments:</strong></big></big><br />
+            Use this page as an admin to enroll a student in a class if they do not have internet or computer access.
+        </p>
+    </div>
+</div>
+

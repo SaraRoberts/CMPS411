@@ -5,6 +5,7 @@
 }
 
 <h2>All Locations</h2>
+<!--Make Modals-->
 <div id="detailsModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -27,31 +28,34 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>          
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.LocationId)">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>             
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |                    
-                    <a asp-action="Delete" asp-route-id="@item.LocationId">Delete</a>
-                </td>
-            </tr>
+<!--Start of Container Grid-->
+<div class="grid-container">
+    <div class="contentContainer">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.LocationId)">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.LocationId">Delete</a>
+                    </td>
+                </tr>
         }
-    </tbody>
-</table>
-<script>
+            </tbody>
+        </table>
+        <script>
     function getDetails(id) {
         $.ajax({
             url: '@Url.Action("Details", "Locations")',
@@ -73,4 +77,13 @@
         });
 
     }
-</script>
+        </script>
+    </div>
+    <div class="tooltipContainer">
+        <p class="tooltips">
+            <big><big><strong>Locations:</strong></big></big><br />
+            Use this page to manage frequently visited locations to avoid repeatedly retyping the same addresses.
+        </p>
+    </div>
+</div>
+

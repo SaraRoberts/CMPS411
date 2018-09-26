@@ -5,6 +5,7 @@
 }
 
 <h2>All Courses</h2>
+<!--Make Modal-->
 <div id="detailsModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -33,70 +34,74 @@
     </div>
 </div>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">New Course</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.TypicalPrice)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.BookAvailable)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.BookPrice)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Prereq)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.CourseCategory)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.CourseId)">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.TypicalPrice)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.BookAvailable)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.BookPrice)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Prereq.Name)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.CourseCategory.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a> |
-                    @*<a asp-action="Details" asp-route-id="@item.CourseId">Details</a>*@ |
-                    <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-<script>
+
+<!--Start of the Container/Content-->
+<div class="grid-container">
+    <div class="contentContainer">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.TypicalPrice)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.BookAvailable)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.BookPrice)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Prereq)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseCategory)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.CourseId)">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.TypicalPrice)
+                            </td>*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.BookAvailable)
+                            </td>*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.BookPrice)
+                            </td>*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Prereq.Name)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseCategory.Name)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a>
+                            @*<a asp-action="Details" asp-route-id="@item.CourseId">Details</a>*@
+                            <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <script>
     function getDetails(id) {
 
 
@@ -130,4 +135,13 @@
         });
 
     }
-</script>
+        </script>
+    </div>
+    <div class="tooltipContainer">
+        <p class="tooltips">
+            <big><big><strong>Courses:</strong></big></big><br />
+            Use this page to manage new or existing courses offered including their descriptions and prices.
+        </p>
+    </div>
+</div>
+
