@@ -49,7 +49,8 @@ namespace KSS.Areas.Admin.Controllers
                 success = true,
                 addressStreet = location.Street,
                 addressCityState = location.City + " " + location.State,               
-                addressZipCode = location.Zipcode
+                addressZipCode = location.Zipcode,
+                locationId = location.LocationId
 
             });
         }
@@ -146,8 +147,8 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // POST: Admin/Locations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var location = await _context.Location.FirstOrDefaultAsync(m => m.LocationId == id);
@@ -157,12 +158,22 @@ namespace KSS.Areas.Admin.Controllers
                 .FirstOrDefaultAsync(e => e.LocationId == location.LocationId);
             if (used != null)
             {
-                ViewData["Duplicate"] = used.Course.Name + " is using this location.";
-                return View(location);
+                
+                return Json(new
+                {
+                    success   = true,
+                    message   = used.Course.Name + " is using this location.",
+                    canDelete = false 
+            }); 
             }
             _context.Location.Remove(location);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json(new
+            {
+                success   = true,
+                message   = used.Course.Name + " Deleted",
+                canDelete = true
+            });
         }
 
         private bool LocationExists(int id)
