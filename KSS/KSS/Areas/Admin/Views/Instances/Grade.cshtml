@@ -4,59 +4,66 @@
     ViewData["Title"] = "Grade";
 }
 
-<h2>Grade </h2>
+<h3>Submit Grades</h3>
 
-<div class="classes">
-    @foreach (var item in Model)
-    {
-        <div>
-            <div class="class-left">
-            </div>
-            <div class="class-right">
-                @Html.DisplayFor(modelItem => item.User.FirstName)
-                @Html.DisplayFor(modelItem => item.User.LastName)
-            </div>
-        </div>
-    }
-</div>
-<a class="btn btn-success" asp-controller="Instances" asp-action="Grade" asp-route-id="">Grade</a>
+<h4>Confirm class details below</h4>
 
-<div id="detailsModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title">Class Details</h3>
-            </div>
-            <div class="modal-body">
-                <h3 id="course"></h3>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+Course: @ViewData["class"]<br />
+Location: @ViewData["location"]<br />
+Date: @ViewData["date"]
+
+<h4>Students</h4>
+
+@foreach (var item in Model)
+{
+    <label class="switchContainer">
+        <input type="checkbox" checked>
+        <span class="switch">
+            @Html.DisplayFor(modelItem => item.User.FirstName) <br />
+            @Html.DisplayFor(modelItem => item.User.LastName)
+        </span>
+    </label>
+}
+<br />
+<a class="btn btn-info" asp-controller="Instances" asp-action="Grade" asp-route-id="">Grade</a>
+
+@* // leaving modal for later use...
+    <div id="detailsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Class Details</h3>
+                </div>
+                <div class="modal-body">
+                    <h3 id="course"></h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    function getDetails(id) {
+    <script>
+        function getDetails(id) {
 
 
-        $.ajax({
-            url: '@Url.Action("ClassDetail", "Instances")',
-            dataType: "json",
-            type: "POST",
-            cache: false,
-            data: { id: id },
-            success: function (data) {
-                if (data.success) {
-                    $("#course").text(data.course);
-                    $("#detailsModal").modal("show");
+            $.ajax({
+                url: '@Url.Action("ClassDetail", "Instances")',
+                dataType: "json",
+                type: "POST",
+                cache: false,
+                data: { id: id },
+                success: function (data) {
+                    if (data.success) {
+                        $("#course").text(data.course);
+                        $("#detailsModal").modal("show");
+                    }
+                },
+                error: function (xhr) {
+                    alert("failed");
                 }
-            },
-            error: function (xhr) {
-                alert("failed");
-            }
-        });
-    }
-</script>
+            });
+        }
+    </script>*@

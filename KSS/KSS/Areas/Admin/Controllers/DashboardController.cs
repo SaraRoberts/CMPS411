@@ -36,7 +36,8 @@ namespace KSS.Areas.Admin.Controllers
             instances.GradeInstances = _context.Instance
                 .Include(i => i.Course)
                 .Include(i => i.Location)
-                .Where(e => e.Graded == false && e.StartDate < DateTime.UtcNow);
+                .Where(e => e.Graded == false && e.StartDate < DateTime.UtcNow)
+                .OrderBy(e => e.StartDate);
 
             return View(instances);
         }

@@ -97,6 +97,11 @@ body {
 }
 
 /* classes to grade */
+
+.togrades a {
+    text-decoration: none;
+    color: black;
+}
 .tograde {
     width: 350px;
     height: 65px;
@@ -107,12 +112,10 @@ body {
     display: inline-block;
     vertical-align: top;
 }
-
 .tograde h5 {
     color: black;
     font-weight: 600;
 }
-
 .tograde-left {
     font-weight: 500;
     padding: 5px;
@@ -123,12 +126,10 @@ body {
     text-align: center;
     vertical-align: top;
 }
-
 .tograde-left span {
     font-size: 25px;
     font-weight: 600;
 }
-
 .tograde-right {
     line-height: 1.9;
     width: 260px;
@@ -136,13 +137,8 @@ body {
     padding: 5px;
     vertical-align: top;
 }
-
 .tograde-right:first-line {
     font-weight: 800;
-}
-
-.tograde-right span.links {
-    float: right;
 }
 
 /* global nav bar styling*/
@@ -188,3 +184,35 @@ th {
     box-shadow:none !important;
     border:none !important;
 }
+
+/* grade switch */
+.switchContainer {
+    display: inline-block;
+    width: 120px;
+    height: 53px;
+}
+
+    .switchContainer input {
+        display: none;
+    }
+
+.switch {
+    position: absolute;
+    cursor: pointer;
+    width: 120px;
+    height: 53px;
+    background-color: #ff7070;
+}
+
+input:checked + .switch {
+    background-color: lightgreen;
+}
+
+.switchContainer span {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    padding:5px;
+}
+
+/* end grade switch */

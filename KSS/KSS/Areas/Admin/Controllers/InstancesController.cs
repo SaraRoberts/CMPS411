@@ -287,18 +287,29 @@ namespace KSS.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
-            var dataContext = _context.Enrollment
+            var instance = await _context.Instance
+                .Include(c => c.Course)
+                .Where(e => e.InstanceId == id)
+                .FirstOrDefaultAsync();
+            if (instance == null)
+            {
+                return NotFound();
+            }
+            var enrollments = await _context.Enrollment
                 .Include(e => e.Instance)
                 .Include(e => e.User)
                 .Include(c => c.Instance.Course)
                 .Include(c => c.Instance.Location)
-                .Where(e => e.InstanceId == id);
-            if (dataContext == null)
+                .Where(e => e.InstanceId == id)
+                .ToListAsync();
+            if (enrollments == null)
             {
                 return NotFound();
             }
-            return View(await dataContext.ToListAsync());
+            ViewData["class"] = instance.Course.Name;
+            ViewData["location"] = instance.Location.Name;
+            ViewData["date"] = instance.StartDate.Date;
+            return View(enrollments);
         }
 
         // POST: Admin/Enrollments/Edit/5

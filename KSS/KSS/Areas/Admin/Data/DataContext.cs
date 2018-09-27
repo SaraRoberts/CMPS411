@@ -119,7 +119,7 @@ namespace KSS.Areas.Admin.Data
             );
             
             //Enrollments
-            for(int i=1,j=1; j < 30 && i<50; j++)
+            for(int i=1,j=1; j < 30 && i<510; j++)
             {
                 for(int k = 1; k < 18; k++)
                 {
@@ -141,9 +141,9 @@ namespace KSS.Areas.Admin.Data
             
             modelBuilder.Entity<Location>().HasData
             (
-                new Location { LocationId = 1, Name = "Hammond Location", Street = "104 Smith Street", City = "Hammond", State = "LA", Zipcode = 70403 },
-                new Location { LocationId = 2, Name = "Tickfaw Location", Street = "92 Hill Street", City = "Tickfaw", State = "LA", Zipcode = 70442 },
-                new Location { LocationId = 3, Name = "Independence Location", Street = "12044 Hwy 40", City = "Independence", State = "LA", Zipcode = 70443 }
+                new Location { LocationId = 1, Name = "Hammond Fire Department", Street = "104 Smith Street", City = "Hammond", State = "LA", Zipcode = 70403 },
+                new Location { LocationId = 2, Name = "Tickfaw Emergency Care", Street = "92 Hill Street", City = "Tickfaw", State = "LA", Zipcode = 70442 },
+                new Location { LocationId = 3, Name = "Independence Fire", Street = "12044 Hwy 40", City = "Independence", State = "LA", Zipcode = 70443 }
             );
             
             //------admin password/salt

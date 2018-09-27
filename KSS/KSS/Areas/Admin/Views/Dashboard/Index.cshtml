@@ -34,23 +34,23 @@
 
 <h3>Classes to Grade</h3>
 
-<div class="classes">
+<div class="togrades">
     @foreach (Instance item in Model.GradeInstances)
     {
         String month = item.StartDate.ToString("MMMM");
         String time = item.StartDate.ToString("h:mm tt");
+        TimeSpan span = DateTimeOffset.Now.Subtract(item.StartDate);
+    <a asp-controller="Instances" asp-action="Grade" asp-route-id="@item.InstanceId">
         <div class="tograde">
             <div class="tograde-left">
-                <span>@Html.DisplayFor(modelItem => item.StartDate.Day)</span><br />
+                <span>@span.Days</span><br />
                 Days Late
             </div>
             <div class="tograde-right">
                 @Html.DisplayFor(modelItem => item.Course.Name)<br />
                 @month @Html.DisplayFor(modelItem => item.StartDate.Day)
-                <span class="links">
-                    <a asp-controller="Instances" asp-action="Grade" asp-route-id="@item.InstanceId">Grade</a>
-                </span>
             </div>
         </div>
-    }
+    </a>
+        }
 </div>
