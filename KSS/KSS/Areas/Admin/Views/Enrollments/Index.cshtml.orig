@@ -54,6 +54,7 @@
 <p>
     <a asp-action="Create">New Enrollment</a>
 </p>
+<<<<<<< HEAD
 <!--Beginning of the Containers-->
 <div class="main-col">
     <table class="table">
@@ -65,14 +66,25 @@
                 <th>
                     Student
                 </th>
-          
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookBought)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Paid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Confirmed)
+                </th>*@
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
-            {           
-        <tr >
+        {
+            <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.EnrollmentId)">
                 <td>
                     @Html.DisplayFor(modelItem => item.Instance.Course.Name) in @Html.DisplayFor(modelItem => item.Instance.Location.City) on @Html.DisplayFor(modelItem => item.Instance.StartDate.LocalDateTime)
                 </td>
@@ -92,9 +104,8 @@
                     @Html.DisplayFor(modelItem => item.Confirmed)
                 </td>*@
                 <td>
-                <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
-                <button type="button" class="btn btn-default" onclick="getDetails(@item.EnrollmentId)">Details</button> |
-                <button type="button" class="btn btn-danger" onclick="deleteItem(@item.EnrollmentId)">Delete</button>
+                    <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EnrollmentId">Delete</a>
                 </td>
             </tr>
     }
@@ -123,6 +134,102 @@
                     alert(xhr.responseText);
                 }
             });
+
+        }
+    </script>
+</div>
+<aside class="help">
+    <div class="tooltipContainer2">
+        <div class="tooltips-top">
+            <h4>Help</h4>
+        </div>
+        <div class="tooltips-bottom">
+            <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
+                Page lists all enrollments in the system.
+            </p>
+            <h4>New Enrollment</h4>
+            <p>
+                To add student to a class manually.
+            </p>
+            <h4>Highlighted Row</h4>
+            <p>
+                Click highlighted row to view enrollment details.
+            </p>
+            <h4>Edit</h4>
+            <p>
+                Edit allows you to move student to another class.
+            </p>
+        </div>
+    </div>
+</aside>
+
+=======
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Instance)
+            </th>
+            <th>
+                Student
+            </th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr >
+            <td>
+                @Html.DisplayFor(modelItem => item.Instance.Course.Name) in @Html.DisplayFor(modelItem => item.Instance.Location.City) on @Html.DisplayFor(modelItem => item.Instance.StartDate.LocalDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookBought)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confirmed)
+            </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
+                <button type="button" class="btn btn-default" onclick="getDetails(@item.EnrollmentId)">Details</button> |
+                <button type="button" class="btn btn-danger" onclick="deleteItem(@item.EnrollmentId)">Delete</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+    function getDetails(id) {
+        $.ajax({
+            url: '@Url.Action("Details", "Enrollments")',
+            dataType: "json",
+            type: "POST",
+            cache: false,
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {            
+                    $("#instance").text("Instance : " + data.instance);
+                    $("#fullName").text("Name : " + data.fullName);
+                    $("#status").text("Status : " + data.status);
+                    $("#bookBought").text(data.bookBought);
+                    $("#paid").text(data.paid);
+                    $("#confirmed").text("Date Confirmed : " + data.confirmed);
+                    $("#detailsModal").modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
     }
 
      var deleteId;
@@ -178,31 +285,6 @@
             }
         });
        
-        }
-    </script>
-</div>
-<aside class="help">
-    <div class="tooltipContainer2">
-        <div class="tooltips-top">
-            <h4>Help</h4>
-        </div>
-        <div class="tooltips-bottom">
-            <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
-                Page lists all enrollments in the system.
-            </p>
-            <h4>New Enrollment</h4>
-            <p>
-                To add student to a class manually.
-            </p>
-            <h4>Highlighted Row</h4>
-            <p>
-                Click highlighted row to view enrollment details.
-            </p>
-            <h4>Edit</h4>
-            <p>
-                Edit allows you to move student to another class.
-            </p>
-        </div>
-    </div>
-</aside>
-
+    }
+</script>
+>>>>>>> Delete_Modal

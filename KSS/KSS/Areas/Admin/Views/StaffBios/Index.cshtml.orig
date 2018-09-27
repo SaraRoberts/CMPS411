@@ -1,0 +1,181 @@
+﻿@model IEnumerable<KSS.Areas.Admin.Models.StaffBio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>All Staff Bios</h2>
+<!--Make Modals-->
+<div id="detailsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">User Details</h3>
+            </div>
+            <div class="modal-body">
+                <h4 id="fullName"></h4>
+                <h4 id="picture"></h4>
+                <h4 id="bio"></h4>              
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Are You Sure You Want to Delete This Staff Bio?</h3>
+            </div>
+            <div class="modal-body">
+                <h4 id="fullName1"></h4>
+                <h4 id="picture1"></h4>
+                <h4 id="bio1"></h4>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="confirmDelete()">Delete</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<p>
+    <a asp-action="Create">New Staff Bio</a>
+</p>
+<<<<<<< HEAD
+<!--Containers Start-->
+<div class="grid-container">
+    <div class="contentContainer">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.StaffBioId)">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.StaffBioId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.StaffBioId">Delete</a>
+                    </td>
+                </tr>
+=======
+<table class="table">
+    <thead>
+        <tr>          
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr >            
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.StaffBioId">Edit</a> |
+                    @*<a asp-action="Delete" asp-route-id="@item.StaffBioId">Delete</a>*@
+                    <button type="button" class="btn btn-default" onclick="getDetails(@item.StaffBioId)">Details</button> |
+                    <button type="button" class="btn btn-danger" onclick="deleteItem(@item.StaffBioId)">Delete</button>                    
+                </td>
+            </tr>
+>>>>>>> Delete_Modal
+        }
+            </tbody>
+        </table>
+        <script>
+    function getDetails(id) {
+        $.ajax({
+            url: '@Url.Action("Details", "StaffBios")',
+            dataType: "json",
+            type: "POST",
+            cache: false,
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {
+                    $("#fullName").text(data.fullName);
+                    $("#picture").text("This is a placeholder for a picture : " + data.picture);
+                    $("#bio").text("Staff Bio : " + data.bio);
+                    $("#detailsModal").modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    }
+<<<<<<< HEAD
+        </script>
+    </div>
+    <div class="tooltipContainer">
+        <p class="tooltips">
+            <big><big><strong>Staff Bios:</strong></big></big><br />
+            Use this page to manage images and bios for all employees.  Instructors can update their own bios.
+        </p>
+    </div>
+</div>
+
+
+=======
+
+    var deleteId;
+
+    function deleteItem(id) {
+        deleteId = null;
+        $.ajax({
+            url: '@Url.Action("Details", "StaffBios")',
+            dataType: "json",
+            type: "POST",
+            cache: false,
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {
+                    $("#fullName1").text(data.fullName);
+                    $("#picture1").text("This is a placeholder for a picture : " + data.picture);
+                    $("#bio1").text("Staff Bio : " + data.bio);
+                    deleteId = data.staffId;
+                    $("#deleteModal").modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+
+    function confirmDelete() {
+        $.ajax({
+            url: '@Url.Action("DeleteConfirmed", "StaffBios")',
+            dataType: "json",
+            type: "DELETE",
+            cache: false,
+            data: { id: deleteId },
+            error: function () {
+                location.reload();
+            }
+        });
+       
+    }
+</script>
+>>>>>>> Delete_Modal
