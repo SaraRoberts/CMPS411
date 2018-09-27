@@ -95,7 +95,8 @@ namespace KSS.Areas.Admin.Controllers
                 status     = enrollment.Status,
                 bookBought = bookPaid,
                 paid       = coursePaid,
-                confirmed  = enrollment.Confirmed
+                confirmed  = enrollment.Confirmed,
+                enrollmentId = enrollment.EnrollmentId
             });
         }
 
@@ -280,14 +281,29 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // POST: Admin/Enrollments/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var enrollment = await _context.Enrollment.FindAsync(id);
+            var enrollmentDelete = await _context.Enrollment //used to display the deleted information
+               .Include(e => e.Instance)
+               .Include(e => e.User)
+               .Include(c => c.Instance.Course)
+               .Include(c => c.Instance.Location)
+               .FirstOrDefaultAsync(m => m.EnrollmentId == id);
             _context.Enrollment.Remove(enrollment);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json(new
+            {
+                success = true,
+               
+                removed = enrollmentDelete.User.FirstName + " " + enrollmentDelete.User.LastName +" Was removed from "
+                + enrollmentDelete.Instance.Course.Name + " " + enrollmentDelete.Instance.Location.City + " " +
+                enrollmentDelete.Instance.StartDate.LocalDateTime 
+                ,
+
+            });
         }
 
         private bool EnrollmentExists(int id)
