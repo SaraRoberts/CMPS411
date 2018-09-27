@@ -166,12 +166,13 @@ namespace KSS.Areas.Admin.Controllers
                     canDelete = false 
             }); 
             }
+            var deletedLocation = location;
             _context.Location.Remove(location);
             await _context.SaveChangesAsync();
             return Json(new
             {
                 success   = true,
-                message   = used.Course.Name + " Deleted",
+                message   = deletedLocation.Name + " has been Deleted",
                 canDelete = true
             });
         }
