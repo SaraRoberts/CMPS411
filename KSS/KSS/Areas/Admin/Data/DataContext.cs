@@ -135,7 +135,7 @@ namespace KSS.Areas.Admin.Data
             {
                 modelBuilder.Entity<Instance>().HasData
                 (
-                        new Instance { InstanceId = i, StartDate = new DateTimeOffset(random.Next(2016, 2020), random.Next(1, 13), random.Next(1, 29), random.Next(7, 19), 00, 00, new TimeSpan(-6, 0, 0)), Price = (double)random.Next(45, 150), CourseId = random.Next(1, 11), LocationId = random.Next(1, 4), Seats = random.Next(10, 31), Graded = false, InstructorId = random.Next(1, 7), BookAvailable = 0<random.Next(1, 3), BookPrice = random.Next(15, 56) }
+                        new Instance { InstanceId = i, StartDate = new DateTimeOffset(random.Next(2016,2020), random.Next(1,13), random.Next(1, 29), random.Next(7, 19), 00, 00, new TimeSpan(-6, 0, 0)), Price = (double)random.Next(45,150), CourseId = random.Next(1,11), LocationId = random.Next(1, 4), Seats = random.Next(10, 31), InstructorId = random.Next(1, 7), BookAvailable = 0<random.Next(1, 3), BookPrice = random.Next(15, 56) }
                 );
             }
             

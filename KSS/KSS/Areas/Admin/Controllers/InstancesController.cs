@@ -162,7 +162,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,Graded,InstructorId,BookAvailable,BookPrice")] Instance instance)
+        public async Task<IActionResult> Create([Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,InstructorId,BookAvailable,BookPrice")] Instance instance)
         {
             if (ModelState.IsValid)
             {
@@ -202,7 +202,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,Graded,InstructorId,BookAvailable,BookPrice")] Instance instance)
+        public async Task<IActionResult> Edit(int id, [Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,InstructorId,BookAvailable,BookPrice")] Instance instance)
         {
             if (id != instance.InstanceId)
             {
@@ -279,61 +279,6 @@ namespace KSS.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-        // GET: Admin/Enrollments
-        public async Task<IActionResult> Grade(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var dataContext = _context.Enrollment
-                .Include(e => e.Instance)
-                .Include(e => e.User)
-                .Include(c => c.Instance.Course)
-                .Include(c => c.Instance.Location)
-                .Where(e => e.InstanceId == id);
-            if (dataContext == null)
-            {
-                return NotFound();
-            }
-            return View(await dataContext.ToListAsync());
-        }
-
-        // POST: Admin/Enrollments/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int[] ids)
-        //{
-
-        //    foreach (var id in ids)
-        //    {
-        //        try
-        //        {
-        //            var enrollments = _context.Enrollment.Where(e => e.EnrollmentId = id);
-        //            _context.Update(enrollment);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!EnrollmentExists(enrollment.EnrollmentId))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-        //    ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
-            //return View(enrollment);
-        //}
 
         private bool InstanceExists(int id)
         {

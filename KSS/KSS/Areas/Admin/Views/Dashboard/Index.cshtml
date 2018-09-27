@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model IEnumerable<KSS.Areas.Admin.Models.Instance>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,7 +9,7 @@
 <h3>Upcoming Classes</h3>
 
 <div class="classes">
-    @foreach (Instance item in Model.FutureInstances)
+    @foreach (var item in Model)
     {
         String month = item.StartDate.ToString("MMMM");
         String time = item.StartDate.ToString("h:mm tt");
@@ -22,35 +22,10 @@
             <div class="class-right">
                 @Html.DisplayFor(modelItem => item.Course.Name)<br />
                 <span class="glyphicon glyphicon-map-marker"></span> @Html.DisplayFor(modelItem => item.Location.Name)<br />
-                <span class="glyphicon glyphicon-time"></span> @time
+                <span class="glyphicon glyphicon-time"></span> @time 
                 <span class="links">
                     <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> |
                     <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">Roster</a>
-                </span>
-            </div>
-        </div>
-    }
-</div>
-
-<h3>Classes to Grade</h3>
-
-<div class="classes">
-    @foreach (Instance item in Model.GradeInstances)
-    {
-        String month = item.StartDate.ToString("MMMM");
-        String time = item.StartDate.ToString("h:mm tt");
-        <div class="class">
-            <div class="class-left">
-                @Html.DisplayFor(modelItem => item.StartDate.DayOfWeek)<br />
-                <span>@Html.DisplayFor(modelItem => item.StartDate.Day)</span><br />
-                @month
-            </div>
-            <div class="class-right">
-                @Html.DisplayFor(modelItem => item.Course.Name)<br />
-                <span class="glyphicon glyphicon-map-marker"></span> @Html.DisplayFor(modelItem => item.Location.Name)<br />
-                <span class="glyphicon glyphicon-time"></span> @time
-                <span class="links">
-                    <a asp-controller="Instances" asp-action="Grade" asp-route-id="@item.InstanceId">Grade</a>
                 </span>
             </div>
         </div>

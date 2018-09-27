@@ -10,8 +10,6 @@ namespace KSS.Areas.Admin.Models
         public int InstanceId { get; set; } //PK
         public DateTimeOffset StartDate { get; set; }
         public double Price { get; set; }
-        public int Seats { get; set; }
-        public bool Graded { get; set; }
 
         public int CourseId { get; set; } //FK reference to CourseId in Course Table
         public Course Course { get; set; }
@@ -19,6 +17,7 @@ namespace KSS.Areas.Admin.Models
         public int LocationId { get; set; } //FK reference to LocationId in Location table
         public Location Location { get; set; }
 
+        public int Seats { get; set; }
 
         public int InstructorId { get; set; } //FK reference to User Table
         public User Instructor { get; set; }

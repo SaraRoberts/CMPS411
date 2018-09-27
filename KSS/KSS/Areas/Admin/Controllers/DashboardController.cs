@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Diagnostics;
-using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,20 +24,14 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            dynamic instances = new ExpandoObject();
-            instances.FutureInstances = _context.Instance
-                .Include(i => i.Course)
+            var dataContext = _context
+                .Instance.Include(i => i.Course)
                 .Include(i => i.Location)
                 .Where(e => e.StartDate >= DateTime.UtcNow)
                 .OrderBy(e => e.StartDate);
-            instances.GradeInstances = _context.Instance
-                .Include(i => i.Course)
-                .Include(i => i.Location)
-                .Where(e => e.Graded == false && e.StartDate < DateTime.UtcNow);
-
-            return View(instances);
+            return View(await dataContext.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
