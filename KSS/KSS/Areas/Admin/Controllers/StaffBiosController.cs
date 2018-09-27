@@ -49,7 +49,8 @@ namespace KSS.Areas.Admin.Controllers
                 success  = true,
                 fullName = staffBio.User.FirstName + " " + staffBio.User.LastName,
                 bio      = staffBio.Bio,
-                picture  = staffBio.Picture
+                picture  = staffBio.Picture,
+                staffId       = staffBio.StaffBioId
 
             });
         }
@@ -151,8 +152,8 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // POST: Admin/StaffBios/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[HttpDelete, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var staffBio = await _context.Bio.FindAsync(id);

@@ -28,6 +28,29 @@
 
     </div>
 </div>
+<div id="deleteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Are You Sure You Want to Delete this Enrollment</h3>
+            </div>
+            <div class="modal-body">
+                <h4 id="instance2"></h4>
+                <h4 id="fullName2"></h4>
+                <h4 id="status2"></h4>
+                <h4 id="bookBought2"></h4>
+                <h4 id="paid2"></h4>
+                <h4 id="confirmed2"></h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="confirmDelete()">Delete</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 <p>
     <a asp-action="Create">New Enrollment</a>
 </p>
@@ -42,25 +65,13 @@
                 <th>
                     Student
                 </th>
-                @*<th>
-                    @Html.DisplayNameFor(model => model.Status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BookBought)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Paid)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Confirmed)
-                </th>*@
+          
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
-        {
-            <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.EnrollmentId)">
+        <tr >
                 <td>
                     @Html.DisplayFor(modelItem => item.Instance.Course.Name) in @Html.DisplayFor(modelItem => item.Instance.Location.City) on @Html.DisplayFor(modelItem => item.Instance.StartDate.LocalDateTime)
                 </td>
@@ -80,8 +91,9 @@
                     @Html.DisplayFor(modelItem => item.Confirmed)
                 </td>*@
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.EnrollmentId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
+                <button type="button" class="btn btn-default" onclick="getDetails(@item.EnrollmentId)">Details</button> |
+                <button type="button" class="btn btn-danger" onclick="deleteItem(@item.EnrollmentId)">Delete</button>
                 </td>
             </tr>
     }
@@ -110,7 +122,61 @@
                     alert(xhr.responseText);
                 }
             });
+    }
 
+     var deleteId;
+
+    function deleteItem(id) {
+        deleteId = null;
+        $.ajax({
+            url: '@Url.Action("Details", "Enrollments")',
+            dataType: "json",
+            type: "POST",
+            cache: false,
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {
+                    $("#instance2").text("Instance : " + data.instance);
+                    $("#fullName2").text("Name : " + data.fullName);
+                    $("#status2").text("Status : " + data.status);
+                    $("#bookBought2").text(data.bookBought);
+                    $("#paid2").text(data.paid);
+                    $("#confirmed2").text("Date Confirmed : " + data.confirmed);
+                    deleteId = data.enrollmentId;
+                    $("#deleteModal").modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    }
+
+     function confirmDelete() {
+        $.ajax({
+            url: '@Url.Action("DeleteConfirmed", "Enrollments")',
+            dataType: "json",
+            type: "DELETE",
+            cache: false,
+            data: { id: deleteId },
+            success: function (data) {
+                if (data.success) {
+                    if (!data.canDelete) {
+                        alert(data.removed);
+                        location.reload();
+                    }
+                    else {
+                        alert(data.removed).delay(800);
+                        location.reload();
+                    }
+                }
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+       
         }
     </script>
 </div>

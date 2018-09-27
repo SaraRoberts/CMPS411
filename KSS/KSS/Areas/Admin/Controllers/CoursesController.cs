@@ -69,7 +69,8 @@ namespace KSS.Areas.Admin.Controllers
                 price = course.TypicalPrice,
                 book = course.BookAvailable,
                 bookPrice = course.BookPrice,
-                preReq = preRequisite
+                preReq = preRequisite,
+                id     = course.CourseId
             });
         }
 
@@ -222,8 +223,8 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // POST: Admin/Courses/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var course = await _context.Course
@@ -236,12 +237,30 @@ namespace KSS.Areas.Admin.Controllers
                 .FirstOrDefaultAsync(e => e.CourseId == course.CourseId);
             if (used != null)
             {
-                ViewData["Duplicate"] = used.Course.Name + " in " + used.Location.City + " is using this Course.";
-                return View(course);
+                var cannotDeleteMessage = used.Course.Name + " in " + used.Location.City + " is using this Course.";
+                return Json(new
+                {
+                    success = true,
+                    message = cannotDeleteMessage
+                });
             }
+            var deletedCourse = await _context.Course
+              .Include(c => c.Prereq)
+              .Include(c => c.CourseCategory)
+              .FirstOrDefaultAsync(m => m.CourseId == id);
+
             _context.Course.Remove(course);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json(new
+            {
+                success = true,
+                
+                message = deletedCourse.Name + " " +
+                deletedCourse.TypicalPrice + " " +
+                deletedCourse.BookPrice + " " +
+                deletedCourse.Prereq.Name + " " +
+                "Has been deleted"
+            });
         }
 
         private bool CourseExists(int id)
