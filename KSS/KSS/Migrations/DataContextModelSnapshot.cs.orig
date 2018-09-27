@@ -105,6 +105,59 @@ namespace KSS.Migrations
                     b.ToTable("Enrollment");
 
                     b.HasData(
+<<<<<<< HEAD
+                        new { EnrollmentId = 1, BookBought = true, Confirmed = new DateTime(2019, 2, 3, 15, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 1 },
+                        new { EnrollmentId = 2, BookBought = true, Confirmed = new DateTime(2018, 4, 14, 11, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 2 },
+                        new { EnrollmentId = 3, BookBought = false, Confirmed = new DateTime(2019, 6, 13, 17, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 3 },
+                        new { EnrollmentId = 4, BookBought = false, Confirmed = new DateTime(2019, 2, 16, 13, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = true, Status = "E", UserId = 4 },
+                        new { EnrollmentId = 5, BookBought = false, Confirmed = new DateTime(2019, 11, 1, 9, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 5 },
+                        new { EnrollmentId = 6, BookBought = false, Confirmed = new DateTime(2017, 9, 22, 7, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = true, Status = "E", UserId = 6 },
+                        new { EnrollmentId = 7, BookBought = false, Confirmed = new DateTime(2019, 4, 6, 16, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 7 },
+                        new { EnrollmentId = 8, BookBought = true, Confirmed = new DateTime(2019, 4, 7, 13, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 8 },
+                        new { EnrollmentId = 9, BookBought = true, Confirmed = new DateTime(2016, 9, 12, 11, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 9 },
+                        new { EnrollmentId = 10, BookBought = true, Confirmed = new DateTime(2018, 5, 20, 14, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = true, Status = "E", UserId = 10 },
+                        new { EnrollmentId = 11, BookBought = true, Confirmed = new DateTime(2016, 5, 3, 15, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = true, Status = "E", UserId = 11 },
+                        new { EnrollmentId = 12, BookBought = true, Confirmed = new DateTime(2017, 11, 11, 11, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = true, Status = "E", UserId = 12 },
+                        new { EnrollmentId = 13, BookBought = true, Confirmed = new DateTime(2018, 1, 16, 13, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 13 },
+                        new { EnrollmentId = 14, BookBought = true, Confirmed = new DateTime(2017, 6, 26, 18, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 14 },
+                        new { EnrollmentId = 15, BookBought = false, Confirmed = new DateTime(2017, 2, 26, 10, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = true, Status = "E", UserId = 15 },
+                        new { EnrollmentId = 16, BookBought = false, Confirmed = new DateTime(2017, 5, 14, 10, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = true, Status = "E", UserId = 16 },
+                        new { EnrollmentId = 17, BookBought = true, Confirmed = new DateTime(2019, 2, 11, 15, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 17 },
+                        new { EnrollmentId = 18, BookBought = false, Confirmed = new DateTime(2018, 8, 21, 10, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = false, Status = "E", UserId = 1 },
+                        new { EnrollmentId = 19, BookBought = true, Confirmed = new DateTime(2019, 2, 20, 13, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = true, Status = "E", UserId = 2 },
+                        new { EnrollmentId = 20, BookBought = false, Confirmed = new DateTime(2019, 3, 6, 13, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = false, Status = "E", UserId = 3 },
+                        new { EnrollmentId = 21, BookBought = false, Confirmed = new DateTime(2018, 3, 15, 15, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = true, Status = "E", UserId = 4 },
+                        new { EnrollmentId = 22, BookBought = false, Confirmed = new DateTime(2018, 4, 12, 11, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = true, Status = "E", UserId = 5 },
+                        new { EnrollmentId = 23, BookBought = true, Confirmed = new DateTime(2019, 8, 12, 17, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = true, Status = "E", UserId = 6 },
+                        new { EnrollmentId = 24, BookBought = false, Confirmed = new DateTime(2019, 1, 11, 7, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = true, Status = "E", UserId = 7 },
+                        new { EnrollmentId = 25, BookBought = false, Confirmed = new DateTime(2016, 11, 28, 8, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = false, Status = "E", UserId = 8 },
+                        new { EnrollmentId = 26, BookBought = false, Confirmed = new DateTime(2019, 6, 21, 14, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = false, Status = "E", UserId = 9 },
+                        new { EnrollmentId = 27, BookBought = true, Confirmed = new DateTime(2018, 12, 17, 8, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = true, Status = "E", UserId = 10 },
+                        new { EnrollmentId = 28, BookBought = true, Confirmed = new DateTime(2017, 7, 17, 9, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = false, Status = "E", UserId = 11 },
+                        new { EnrollmentId = 29, BookBought = true, Confirmed = new DateTime(2019, 2, 26, 14, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = true, Status = "E", UserId = 12 },
+                        new { EnrollmentId = 30, BookBought = true, Confirmed = new DateTime(2017, 8, 27, 10, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = false, Status = "E", UserId = 13 },
+                        new { EnrollmentId = 31, BookBought = true, Confirmed = new DateTime(2018, 7, 28, 7, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = false, Status = "E", UserId = 14 },
+                        new { EnrollmentId = 32, BookBought = false, Confirmed = new DateTime(2019, 3, 17, 14, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = false, Status = "E", UserId = 15 },
+                        new { EnrollmentId = 33, BookBought = false, Confirmed = new DateTime(2019, 9, 13, 18, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = false, Status = "E", UserId = 16 },
+                        new { EnrollmentId = 34, BookBought = true, Confirmed = new DateTime(2018, 10, 4, 9, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 2, Paid = true, Status = "E", UserId = 17 },
+                        new { EnrollmentId = 35, BookBought = false, Confirmed = new DateTime(2017, 4, 22, 11, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 1 },
+                        new { EnrollmentId = 36, BookBought = false, Confirmed = new DateTime(2019, 3, 10, 12, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 2 },
+                        new { EnrollmentId = 37, BookBought = false, Confirmed = new DateTime(2017, 5, 6, 12, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 3 },
+                        new { EnrollmentId = 38, BookBought = false, Confirmed = new DateTime(2016, 5, 24, 13, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 4 },
+                        new { EnrollmentId = 39, BookBought = true, Confirmed = new DateTime(2019, 6, 28, 9, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = true, Status = "E", UserId = 5 },
+                        new { EnrollmentId = 40, BookBought = true, Confirmed = new DateTime(2016, 5, 11, 16, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = true, Status = "E", UserId = 6 },
+                        new { EnrollmentId = 41, BookBought = true, Confirmed = new DateTime(2017, 6, 1, 9, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 7 },
+                        new { EnrollmentId = 42, BookBought = true, Confirmed = new DateTime(2016, 7, 7, 11, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 8 },
+                        new { EnrollmentId = 43, BookBought = true, Confirmed = new DateTime(2018, 3, 12, 14, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 9 },
+                        new { EnrollmentId = 44, BookBought = false, Confirmed = new DateTime(2017, 11, 18, 16, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = true, Status = "E", UserId = 10 },
+                        new { EnrollmentId = 45, BookBought = false, Confirmed = new DateTime(2017, 8, 16, 12, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = true, Status = "E", UserId = 11 },
+                        new { EnrollmentId = 46, BookBought = false, Confirmed = new DateTime(2018, 8, 21, 8, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 12 },
+                        new { EnrollmentId = 47, BookBought = false, Confirmed = new DateTime(2017, 12, 18, 16, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = true, Status = "E", UserId = 13 },
+                        new { EnrollmentId = 48, BookBought = true, Confirmed = new DateTime(2018, 7, 26, 15, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 14 },
+                        new { EnrollmentId = 49, BookBought = true, Confirmed = new DateTime(2017, 5, 9, 13, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = true, Status = "E", UserId = 15 },
+                        new { EnrollmentId = 50, BookBought = false, Confirmed = new DateTime(2017, 7, 27, 9, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = true, Status = "E", UserId = 16 },
+                        new { EnrollmentId = 51, BookBought = true, Confirmed = new DateTime(2017, 7, 4, 8, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 3, Paid = false, Status = "E", UserId = 17 }
+=======
                         new { EnrollmentId = 1, BookBought = true, Confirmed = new DateTime(2018, 11, 9, 9, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 1 },
                         new { EnrollmentId = 2, BookBought = true, Confirmed = new DateTime(2019, 5, 24, 11, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = false, Status = "E", UserId = 2 },
                         new { EnrollmentId = 3, BookBought = true, Confirmed = new DateTime(2019, 1, 19, 15, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 1, Paid = true, Status = "E", UserId = 3 },
@@ -598,6 +651,7 @@ namespace KSS.Migrations
                         new { EnrollmentId = 491, BookBought = false, Confirmed = new DateTime(2019, 9, 15, 12, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 29, Paid = false, Status = "E", UserId = 15 },
                         new { EnrollmentId = 492, BookBought = false, Confirmed = new DateTime(2016, 7, 2, 14, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 29, Paid = true, Status = "E", UserId = 16 },
                         new { EnrollmentId = 493, BookBought = true, Confirmed = new DateTime(2019, 11, 7, 14, 0, 0, 0, DateTimeKind.Unspecified), InstanceId = 29, Paid = false, Status = "E", UserId = 17 }
+>>>>>>> origin_GradeFunction
                     );
                 });
 
@@ -611,8 +665,6 @@ namespace KSS.Migrations
                     b.Property<double>("BookPrice");
 
                     b.Property<int>("CourseId");
-
-                    b.Property<bool>("Graded");
 
                     b.Property<int>("InstructorId");
 
@@ -635,6 +687,37 @@ namespace KSS.Migrations
                     b.ToTable("Instance");
 
                     b.HasData(
+<<<<<<< HEAD
+                        new { InstanceId = 1, BookAvailable = true, BookPrice = 28.0, CourseId = 5, InstructorId = 2, LocationId = 1, Price = 60.0, Seats = 12, StartDate = new DateTimeOffset(new DateTime(2018, 11, 16, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 2, BookAvailable = true, BookPrice = 21.0, CourseId = 10, InstructorId = 1, LocationId = 1, Price = 115.0, Seats = 11, StartDate = new DateTimeOffset(new DateTime(2017, 2, 27, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 3, BookAvailable = true, BookPrice = 15.0, CourseId = 3, InstructorId = 3, LocationId = 1, Price = 45.0, Seats = 20, StartDate = new DateTimeOffset(new DateTime(2016, 12, 20, 12, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 4, BookAvailable = true, BookPrice = 50.0, CourseId = 4, InstructorId = 2, LocationId = 3, Price = 75.0, Seats = 14, StartDate = new DateTimeOffset(new DateTime(2018, 11, 1, 8, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 5, BookAvailable = true, BookPrice = 27.0, CourseId = 2, InstructorId = 3, LocationId = 1, Price = 81.0, Seats = 19, StartDate = new DateTimeOffset(new DateTime(2017, 12, 14, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 6, BookAvailable = true, BookPrice = 26.0, CourseId = 5, InstructorId = 5, LocationId = 3, Price = 117.0, Seats = 10, StartDate = new DateTimeOffset(new DateTime(2018, 8, 16, 15, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 7, BookAvailable = true, BookPrice = 47.0, CourseId = 7, InstructorId = 5, LocationId = 3, Price = 98.0, Seats = 12, StartDate = new DateTimeOffset(new DateTime(2017, 7, 3, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 8, BookAvailable = true, BookPrice = 51.0, CourseId = 10, InstructorId = 6, LocationId = 3, Price = 147.0, Seats = 17, StartDate = new DateTimeOffset(new DateTime(2017, 8, 21, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 9, BookAvailable = true, BookPrice = 41.0, CourseId = 7, InstructorId = 1, LocationId = 2, Price = 104.0, Seats = 17, StartDate = new DateTimeOffset(new DateTime(2017, 5, 11, 14, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 10, BookAvailable = true, BookPrice = 42.0, CourseId = 7, InstructorId = 2, LocationId = 2, Price = 96.0, Seats = 25, StartDate = new DateTimeOffset(new DateTime(2016, 6, 28, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 11, BookAvailable = true, BookPrice = 41.0, CourseId = 5, InstructorId = 3, LocationId = 3, Price = 120.0, Seats = 11, StartDate = new DateTimeOffset(new DateTime(2018, 4, 27, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 12, BookAvailable = true, BookPrice = 19.0, CourseId = 1, InstructorId = 3, LocationId = 1, Price = 139.0, Seats = 23, StartDate = new DateTimeOffset(new DateTime(2018, 3, 21, 12, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 13, BookAvailable = true, BookPrice = 37.0, CourseId = 5, InstructorId = 1, LocationId = 1, Price = 48.0, Seats = 27, StartDate = new DateTimeOffset(new DateTime(2018, 6, 8, 18, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 14, BookAvailable = true, BookPrice = 28.0, CourseId = 10, InstructorId = 1, LocationId = 1, Price = 106.0, Seats = 18, StartDate = new DateTimeOffset(new DateTime(2018, 8, 2, 14, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 15, BookAvailable = true, BookPrice = 23.0, CourseId = 8, InstructorId = 4, LocationId = 2, Price = 149.0, Seats = 25, StartDate = new DateTimeOffset(new DateTime(2018, 11, 22, 9, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 16, BookAvailable = true, BookPrice = 26.0, CourseId = 5, InstructorId = 4, LocationId = 2, Price = 120.0, Seats = 26, StartDate = new DateTimeOffset(new DateTime(2018, 8, 15, 15, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 17, BookAvailable = true, BookPrice = 45.0, CourseId = 5, InstructorId = 1, LocationId = 1, Price = 70.0, Seats = 22, StartDate = new DateTimeOffset(new DateTime(2016, 8, 3, 12, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 18, BookAvailable = true, BookPrice = 40.0, CourseId = 5, InstructorId = 3, LocationId = 2, Price = 128.0, Seats = 17, StartDate = new DateTimeOffset(new DateTime(2017, 12, 11, 9, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 19, BookAvailable = true, BookPrice = 22.0, CourseId = 3, InstructorId = 2, LocationId = 2, Price = 137.0, Seats = 28, StartDate = new DateTimeOffset(new DateTime(2017, 1, 13, 8, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 20, BookAvailable = true, BookPrice = 48.0, CourseId = 6, InstructorId = 1, LocationId = 3, Price = 102.0, Seats = 23, StartDate = new DateTimeOffset(new DateTime(2016, 11, 5, 8, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 21, BookAvailable = true, BookPrice = 38.0, CourseId = 7, InstructorId = 1, LocationId = 1, Price = 95.0, Seats = 14, StartDate = new DateTimeOffset(new DateTime(2019, 3, 16, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 22, BookAvailable = true, BookPrice = 52.0, CourseId = 7, InstructorId = 1, LocationId = 3, Price = 54.0, Seats = 10, StartDate = new DateTimeOffset(new DateTime(2017, 3, 2, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 23, BookAvailable = true, BookPrice = 45.0, CourseId = 9, InstructorId = 5, LocationId = 1, Price = 113.0, Seats = 18, StartDate = new DateTimeOffset(new DateTime(2016, 9, 15, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 24, BookAvailable = true, BookPrice = 32.0, CourseId = 8, InstructorId = 1, LocationId = 3, Price = 101.0, Seats = 26, StartDate = new DateTimeOffset(new DateTime(2018, 2, 6, 14, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 25, BookAvailable = true, BookPrice = 46.0, CourseId = 5, InstructorId = 1, LocationId = 2, Price = 101.0, Seats = 27, StartDate = new DateTimeOffset(new DateTime(2018, 6, 28, 7, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 26, BookAvailable = true, BookPrice = 52.0, CourseId = 10, InstructorId = 5, LocationId = 1, Price = 88.0, Seats = 14, StartDate = new DateTimeOffset(new DateTime(2019, 1, 24, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 27, BookAvailable = true, BookPrice = 24.0, CourseId = 1, InstructorId = 3, LocationId = 1, Price = 98.0, Seats = 11, StartDate = new DateTimeOffset(new DateTime(2018, 8, 27, 16, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 28, BookAvailable = true, BookPrice = 16.0, CourseId = 4, InstructorId = 6, LocationId = 2, Price = 106.0, Seats = 10, StartDate = new DateTimeOffset(new DateTime(2019, 2, 1, 8, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
+                        new { InstanceId = 29, BookAvailable = true, BookPrice = 34.0, CourseId = 4, InstructorId = 6, LocationId = 3, Price = 119.0, Seats = 23, StartDate = new DateTimeOffset(new DateTime(2019, 3, 4, 16, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) }
+=======
                         new { InstanceId = 1, BookAvailable = true, BookPrice = 31.0, CourseId = 3, Graded = false, InstructorId = 3, LocationId = 1, Price = 97.0, Seats = 26, StartDate = new DateTimeOffset(new DateTime(2016, 4, 2, 9, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
                         new { InstanceId = 2, BookAvailable = true, BookPrice = 52.0, CourseId = 1, Graded = false, InstructorId = 1, LocationId = 2, Price = 132.0, Seats = 24, StartDate = new DateTimeOffset(new DateTime(2018, 6, 17, 17, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
                         new { InstanceId = 3, BookAvailable = true, BookPrice = 30.0, CourseId = 1, Graded = false, InstructorId = 1, LocationId = 1, Price = 79.0, Seats = 21, StartDate = new DateTimeOffset(new DateTime(2017, 3, 3, 12, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
@@ -664,6 +747,7 @@ namespace KSS.Migrations
                         new { InstanceId = 27, BookAvailable = true, BookPrice = 22.0, CourseId = 6, Graded = false, InstructorId = 4, LocationId = 3, Price = 98.0, Seats = 30, StartDate = new DateTimeOffset(new DateTime(2018, 3, 5, 9, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
                         new { InstanceId = 28, BookAvailable = true, BookPrice = 33.0, CourseId = 4, Graded = false, InstructorId = 3, LocationId = 2, Price = 108.0, Seats = 18, StartDate = new DateTimeOffset(new DateTime(2016, 2, 14, 16, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) },
                         new { InstanceId = 29, BookAvailable = true, BookPrice = 51.0, CourseId = 9, Graded = false, InstructorId = 6, LocationId = 2, Price = 69.0, Seats = 23, StartDate = new DateTimeOffset(new DateTime(2017, 1, 10, 15, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -6, 0, 0, 0)) }
+>>>>>>> origin_GradeFunction
                     );
                 });
 
@@ -744,6 +828,25 @@ namespace KSS.Migrations
                     b.ToTable("Users");
 
                     b.HasData(
+<<<<<<< HEAD
+                        new { UserId = 1, Email = "admin@admin.com", FirstName = "Becky", LastName = "Smith", Password = "nGqiP/qQObSSpyVP3l5g6wsTOtQH/1HqIbzJOREpsD4=", Phone = "1112223333", Role = "Admin", Salt = new byte[] { 164, 35, 97, 60, 86, 157, 227, 252, 32, 23, 12, 128, 50, 204, 202, 89 } },
+                        new { UserId = 2, Email = "student1@student.com", FirstName = "Paul", LastName = "Dig", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 3, Email = "student2@student.com", FirstName = "Mike", LastName = "Waters", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 4, Email = "student3@student.com", FirstName = "Russel", LastName = "Chavers", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 5, Email = "student4@student.com", FirstName = "Sharon", LastName = "Manino", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 6, Email = "student5@student.com", FirstName = "Amy", LastName = "Hillbond", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 7, Email = "student6@student.com", FirstName = "Bill", LastName = "Everet", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 8, Email = "student7@student.com", FirstName = "Trenton", LastName = "Hillsong", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 9, Email = "student8@student.com", FirstName = "Colin", LastName = "Livers", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 10, Email = "student9@student.com", FirstName = "Babe", LastName = "Ruth", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 11, Email = "student10@student.com", FirstName = "Tim", LastName = "Hammond", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 12, Email = "student11@student.com", FirstName = "Gary", LastName = "Aimes", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 13, Email = "student12@student.com", FirstName = "Lucy", LastName = "Vilardo", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 14, Email = "student13@student.com", FirstName = "Tom", LastName = "Avers", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 15, Email = "student14@student.com", FirstName = "Amanda", LastName = "Catalonato", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 16, Email = "student15@student.com", FirstName = "Donald", LastName = "Hill", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } },
+                        new { UserId = 17, Email = "student16@student.com", FirstName = "Richard", LastName = "Newman", Password = "GE5TzHE8BnNrO0nEivu/rjCkM0lWIps+Ct0qATRNcOo=", Phone = "1112223333", Role = "User", Salt = new byte[] { 247, 6, 201, 170, 203, 213, 25, 58, 184, 29, 102, 125, 12, 212, 187, 123 } }
+=======
                         new { UserId = 1, Email = "admin@admin.com", FirstName = "Becky", LastName = "Smith", Password = "PuD9Mus/N0bR7I5chCeSSu9WtDIYBZea+y5z/u0htkM=", Phone = "1112223333", Role = "Admin", Salt = new byte[] { 154, 5, 167, 149, 131, 140, 217, 208, 138, 75, 13, 187, 95, 145, 215, 255 } },
                         new { UserId = 2, Email = "student1@student.com", FirstName = "Paul", LastName = "Dig", Password = "1LVplJOTTvh5whisx5JjlNeOW1+bh3kzrVRu5CANh/Y=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 7, 104, 56, 1, 82, 139, 36, 152, 31, 135, 14, 115, 209, 195, 1, 19 } },
                         new { UserId = 3, Email = "student2@student.com", FirstName = "Mike", LastName = "Waters", Password = "1LVplJOTTvh5whisx5JjlNeOW1+bh3kzrVRu5CANh/Y=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 7, 104, 56, 1, 82, 139, 36, 152, 31, 135, 14, 115, 209, 195, 1, 19 } },
@@ -761,6 +864,7 @@ namespace KSS.Migrations
                         new { UserId = 15, Email = "student14@student.com", FirstName = "Amanda", LastName = "Catalonato", Password = "1LVplJOTTvh5whisx5JjlNeOW1+bh3kzrVRu5CANh/Y=", Phone = "1112223333", Role = "User", Salt = new byte[] { 7, 104, 56, 1, 82, 139, 36, 152, 31, 135, 14, 115, 209, 195, 1, 19 } },
                         new { UserId = 16, Email = "student15@student.com", FirstName = "Donald", LastName = "Hill", Password = "1LVplJOTTvh5whisx5JjlNeOW1+bh3kzrVRu5CANh/Y=", Phone = "1112223333", Role = "User", Salt = new byte[] { 7, 104, 56, 1, 82, 139, 36, 152, 31, 135, 14, 115, 209, 195, 1, 19 } },
                         new { UserId = 17, Email = "student16@student.com", FirstName = "Richard", LastName = "Newman", Password = "1LVplJOTTvh5whisx5JjlNeOW1+bh3kzrVRu5CANh/Y=", Phone = "1112223333", Role = "User", Salt = new byte[] { 7, 104, 56, 1, 82, 139, 36, 152, 31, 135, 14, 115, 209, 195, 1, 19 } }
+>>>>>>> origin_GradeFunction
                     );
                 });
 

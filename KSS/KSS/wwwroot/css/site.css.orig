@@ -185,34 +185,34 @@ th {
     border:none !important;
 }
 
-/* grade switch */
-.switchContainer {
-    display: inline-block;
-    width: 120px;
-    height: 53px;
+<<<<<<< HEAD
+/*BEGINNING OF TOOLTIP SECTION :
+  This CSS sections index pages into grid containers to allow room for the tooltip on the right side*/
+p.tooltips {
+    border-width: 5px;
+    border-style: solid;
+    border-color: #a83939;
+    padding: 5px;
 }
 
-    .switchContainer input {
-        display: none;
+.grid-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+    .grid-container > div {
+        padding: 20px 0;
     }
 
-.switch {
-    position: absolute;
-    cursor: pointer;
-    width: 120px;
-    height: 53px;
-    background-color: #ff7070;
+.contentContainer {
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 
-input:checked + .switch {
-    background-color: lightgreen;
-}
-
-.switchContainer span {
-    font-size: 16px;
-    font-weight: 700;
+.tooltipContainer {
     text-align: center;
-    padding:5px;
 }
 
 /* Help block */
@@ -255,3 +255,36 @@ aside.help {
 /* Help Block End */
 
     /*END OF TOOLTIP SECTION*/
+=======
+/* grade switch */
+.switchContainer {
+    display: inline-block;
+    width: 120px;
+    height: 53px;
+}
+
+    .switchContainer input {
+        display: none;
+    }
+
+.switch {
+    position: absolute;
+    cursor: pointer;
+    width: 120px;
+    height: 53px;
+    background-color: #ff7070;
+}
+
+input:checked + .switch {
+    background-color: lightgreen;
+}
+
+.switchContainer span {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    padding:5px;
+}
+
+/* end grade switch */
+>>>>>>> origin_GradeFunction
