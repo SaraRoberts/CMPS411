@@ -32,6 +32,7 @@
 <p>
     <a asp-action="Create">New Class</a>
 </p>
+<<<<<<< HEAD
 <!--Grid container-->
 <div class="grid-container">
     <div class="contentContainer">
@@ -54,9 +55,6 @@
                         @Html.DisplayNameFor(model => model.Seats)
                     </th>
                     <th>
-                @Html.DisplayNameFor(model => model.Graded)
-            </th>
-            <th>
                         @Html.DisplayNameFor(model => model.Instructor)
                     </th>
                     <th>
@@ -86,9 +84,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Seats)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Graded)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Instructor.FirstName)
@@ -108,6 +103,81 @@
                         <a asp-action="Delete" asp-route-id="@item.InstanceId">Delete</a>
                     </td>
                 </tr>
+=======
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Graded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Instructor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr onMouseOver="this.style.cursor='pointer'" onclick="getDetails(@item.InstanceId)">
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Graded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructor.FirstName)
+                @Html.DisplayFor(modelItem => item.Instructor.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookPrice)
+            </td>
+            <td>
+                <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> |
+                <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">Roster</a> |
+                <a asp-action="Edit" asp-route-id="@item.InstanceId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.InstanceId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.InstanceId">Delete</a>
+            </td>
+        </tr>
+>>>>>>> GradeFunction
         }
             </tbody>
         </table>
