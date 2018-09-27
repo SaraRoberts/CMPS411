@@ -71,7 +71,8 @@ namespace KSS.Areas.Admin.Controllers
                 fullName = user.FirstName + " " + user.LastName,
                 phone    = user.Phone,
                 email    = user.Email,
-                role     = user.Role
+                role     = user.Role,
+                id       = user.UserId
                 
             });
         }
@@ -210,14 +211,38 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // POST: Admin/Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var user = await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var fullName = user.FirstName + " " + user.LastName;
+
+
+            var used = await _context.Enrollment
+               .Include(e => e.Instance)
+               .Include(e => e.User)
+               .Include(c => c.Instance.Course)
+               .Include(c => c.Instance.Location)
+               .FirstOrDefaultAsync(e => e.UserId == id);
+            if (used != null)
+            {
+                return Json(new
+                {
+                    success = true,
+                    message = "Cannot delete this record. " + fullName + " is currently enrolled in "
+                    + used.Instance.Course.Name + " " + used.Instance.Location.Name + " " + used.Instance.StartDate,
+                    canDelete = false
+                });
+            }
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+                return Json(new
+                {
+                    success = true,
+                    message = "Record deleted. " + fullName,
+                    canDelete = true
+                });            
         }
 
         private bool UserExists(int id)
