@@ -54,6 +54,9 @@
                         @Html.DisplayNameFor(model => model.Seats)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.Graded)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Instructor)
                     </th>
                     <th>
@@ -85,6 +88,9 @@
                         @Html.DisplayFor(modelItem => item.Seats)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Graded)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Instructor.FirstName)
                         @Html.DisplayFor(modelItem => item.Instructor.LastName)
                     </td>
@@ -95,10 +101,9 @@
                         @Html.DisplayFor(modelItem => item.BookPrice)
                     </td>
                     <td>
-                        <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> 
-                        <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">Roster</a> 
-                        <a asp-action="Edit" asp-route-id="@item.InstanceId">Edit</a> 
-                        <a asp-action="Details" asp-route-id="@item.InstanceId">Details</a> 
+                        <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> |
+                        <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">Roster</a> |
+                        <a asp-action="Edit" asp-route-id="@item.InstanceId">Edit</a> |
                         <a asp-action="Delete" asp-route-id="@item.InstanceId">Delete</a>
                     </td>
                 </tr>

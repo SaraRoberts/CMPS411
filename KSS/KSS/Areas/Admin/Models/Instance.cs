@@ -10,6 +10,7 @@ namespace KSS.Areas.Admin.Models
         public int InstanceId { get; set; } //PK
         public DateTimeOffset StartDate { get; set; }
         public double Price { get; set; }
+        public bool Graded { get; set; }
 
         public int CourseId { get; set; } //FK reference to CourseId in Course Table
         public Course Course { get; set; }

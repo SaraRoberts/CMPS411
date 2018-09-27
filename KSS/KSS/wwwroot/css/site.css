@@ -192,9 +192,9 @@ th {
     height: 53px;
 }
 
-    .switchContainer input {
-        display: none;
-    }
+.switchContainer input {
+    display: none;
+}
 
 .switch {
     position: absolute;
