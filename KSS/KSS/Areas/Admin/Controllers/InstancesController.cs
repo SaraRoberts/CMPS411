@@ -75,7 +75,8 @@ namespace KSS.Areas.Admin.Controllers
                 seats = instance.Seats,
                 instructor = instance.Instructor.FirstName +" "+ instance.Instructor.LastName,
                 bookavailable = instance.BookAvailable,
-                bookprice = instance.BookPrice
+                bookprice = instance.BookPrice,
+                       
 
             });
 
@@ -120,7 +121,8 @@ namespace KSS.Areas.Admin.Controllers
                 instructor = "Instructor : " + instance.Instructor.FirstName + " " +
                 instance.Instructor.LastName,
                 book       = bookAvailible,
-                bookP      = bookPrice
+                bookP      = bookPrice,
+                id         = instance.InstanceId
             });
         }
 
@@ -260,8 +262,8 @@ namespace KSS.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin")]
         // POST: Admin/Instances/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Delete")]
+       // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var instance = await _context.Instance.FindAsync(id);
@@ -270,14 +272,33 @@ namespace KSS.Areas.Admin.Controllers
                .Include(e => e.Instance)
                .FirstOrDefaultAsync(e => e.InstanceId == instance.InstanceId);
             if (used != null)
-            {
-                ViewData["Duplicate"] = "Students are " +
-                    "currently enrolled in this class" + " is using this using this class.";
-                return View(instance);
+            {                
+                return Json(new
+                {
+                    success = true,
+                    message = "Cannot delete. Students are " +
+                    "currently enrolled in this class"
+            });
             }
+            var deletedInstance = await _context.Instance
+               .Include(i => i.Course)
+               .Include(i => i.Location)
+               .Include(i => i.Instructor)
+               .FirstOrDefaultAsync(m => m.InstanceId == id);
             _context.Instance.Remove(instance);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json(new
+            {
+                success = true,
+                message = "Start Date : " + deletedInstance.StartDate + " " +
+                "Price : " + deletedInstance.Price + " $ " +
+                " Course Name : " + deletedInstance.Course.Name + " " +
+                " Location : " + deletedInstance.Location.Street + " " +
+                " Seats : " + deletedInstance.Seats + " " +
+                " Instructor : " + deletedInstance.Instructor.FirstName + " " +
+                deletedInstance.Instructor.LastName + " Has been deleted "
+
+            });
         }
 
         private bool InstanceExists(int id)
