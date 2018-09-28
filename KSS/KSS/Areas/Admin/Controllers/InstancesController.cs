@@ -25,7 +25,8 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Instances
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Instance.Include(i => i.Course).Include(i => i.Location).Include(i => i.Instructor);
+            var dataContext = _context.Instance.Include(i => i.Course).Include(i => i.Location)
+                .Include(i => i.Instructor).OrderBy(e => e.StartDate);
             return View(await dataContext.ToListAsync());
         }
 
