@@ -105,7 +105,7 @@ namespace KSS.Areas.Admin.Controllers
             if (instance.BookAvailable)
             {
                 bookPrice = instance.BookPrice.ToString();
-                bookPrice = "Book Price " + bookPrice + " $";
+                bookPrice = "Book Price: " + "$ "+bookPrice;
                 bookAvailible = "Book Availible : Yes";
             }
 
@@ -114,7 +114,7 @@ namespace KSS.Areas.Admin.Controllers
             {
                 success    = true,
                 startDate  = "Start Date : " + instance.StartDate,
-                price      = "Price : " + instance.Price + " $",
+                price      = "Price : $ " + instance.Price,
                 courseName = "Course Name : " + instance.Course.Name,
                 location   = "Location : " + instance.Location.Street,
                 seats      = "Seats : " + instance.Seats,

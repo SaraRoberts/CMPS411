@@ -141,9 +141,9 @@
 
                     $("#courseDetails").text(data.description);
                     $("#courseName").text(data.name);
-                    $("#typicalPrice").text("Typical Price : " + data.price + " $");
+                    $("#typicalPrice").text("Typical Price : $ " + data.price );
                     if (data.book) {
-                        $("#bookAvailible").text("A book is availible for this course for " + data.bookPrice + " $" );
+                        $("#bookAvailible").text("A book is availible for this course for $ " + data.bookPrice);
                     }
                     else {
                         $("#bookAvailible").text("This course does not require a book ");
@@ -175,9 +175,9 @@
                 if (data.success) {
                     $("#courseDetails2").text(data.description);
                     $("#courseName2").text(data.name);
-                    $("#typicalPrice2").text("Typical Price : " + data.price + " $");
+                    $("#typicalPrice2").text("Typical Price : $ " + data.price);
                     if (data.book) {
-                        $("#bookAvailible2").text("A book is availible for this course for " + data.bookPrice + " $");
+                        $("#bookAvailible2").text("A book is availible for this course for $ " + data.bookPrice);
                     }
                     else {
                         $("#bookAvailible2").text("This course does not require a book ");
