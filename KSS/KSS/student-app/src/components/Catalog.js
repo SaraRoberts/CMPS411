@@ -2,13 +2,13 @@
 import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-export class Home extends Component {
-    displayName = Home.name
+export class Catalog extends Component {
+    displayName = Catalog.name
 
 
     render() {
         return (
-            <h1> Home </h1>
+            <h1> Catalog. This shows non-users class offerings and info like what is CPR, EMT, etc. </h1>
         );
     }
 }

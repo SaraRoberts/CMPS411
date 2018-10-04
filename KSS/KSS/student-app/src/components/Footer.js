@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import './styles/Footer.css';
 
 
 export class Footer extends React.Component {
