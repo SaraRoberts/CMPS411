@@ -22,7 +22,6 @@ export class Footer extends React.Component {
                             </ul></p>
                         <p class="company-name">KSS © 2018 </p>
                     </div>
-                    <div class="clearfix visible-sm-block"></div>
                     <div class="col-md-4 footer-about">
                         <h4>About this project</h4>
                         <p> Test Footer </p>
