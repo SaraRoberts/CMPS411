@@ -8,7 +8,10 @@ export class Contact extends Component {
 
     render() {
         return (
-            <h1> Contact </h1>
+            <div>
+                <h1> Contact </h1>
+                <p> Here, we put contact information for the business and any relevant info that would be useful to the user</p>
+            </div>
         );
     }
 }
