@@ -62,71 +62,39 @@
     <a asp-action="Create">New Course</a>
 </p>
 
-<!--Start of the Container/Content-->
-<div class="grid-container">
-    <div class="contentContainer">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.Description)
-                        </th>*@
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.TypicalPrice)
-                        </th>*@
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.BookAvailable)
-                        </th>*@
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.BookPrice)
-                        </th>*@
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.Prereq)
-                        </th>*@
-                    <th>
-                        @Html.DisplayNameFor(model => model.CourseCategory)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-            <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>*@
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.TypicalPrice)
-                            </td>*@
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.BookAvailable)
-                            </td>*@
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.BookPrice)
-                            </td>*@
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.Prereq.Name)
-                            </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CourseCategory.Name)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a>
-                    <button type="button" class="btn btn-default" onclick="getDetails(@item.CourseId)">Details</button> |
-                    <button type="button" class="btn btn-danger" onclick="deleteItem(@item.CourseId)">Delete</button>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <script>
+<div class="main-col">
+    <h4>
+        All Courses
+    </h4>
+
+    @foreach (var item in Model)
+    {
+        <div class="index-tile">
+            <div class="index-tile-left">
+                <span style="font-weight:800">@Html.DisplayFor(modelItem => item.CourseCategory.Name)</span><br />
+            </div>
+            <div class="index-tile-middle" onclick="getDetails(@item.CourseId)">
+                <span style="font-weight:600">@Html.DisplayFor(modelItem => item.Name)</span><br />
+                @*@Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)*@<br />
+                @*@Html.DisplayFor(modelItem => item.Location.Name)*@
+            </div>
+            <div class="index-tile-right">
+                <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.CourseId">
+                    <div class="div-button-add">A<br />D<br />D</div>
+                </a>
+                <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.CourseId">
+                    <div class="div-button-roster">R<br />S<br />T</div>
+                </a>
+                <a asp-action="Edit" asp-route-id="@item.CourseId">
+                    <div class="div-button-edit">E<br />D<br />T</div>
+                </a>
+                <div onclick="deleteItem(@item.CourseId)" class="div-button-delete">D<br />E<br />L</div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
     function getDetails(id) {
 
 
@@ -218,15 +186,36 @@
                 location.reload();
             }
         });
-       
+
     }
-        </script>
+</script>
+<!-- HELP BOX  -->
+<aside class="help">
+    <div class="tooltipContainer2">
+        <div class="tooltips-top">
+            <h4>Help</h4>
+        </div>
+        <div class="tooltips-bottom">
+            <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
+                Page lists all courses in the system.
+            </p>
+            <h4 style="background-color:lightgreen; color:white">ADD</h4>
+            <p>
+                Click to add a courses.
+            </p>
+            <h4 style="background-color:lightsalmon; color:white">RST</h4>
+            <p>
+                Click to view roster for courses.
+            </p>
+            <h4 style="background-color:lightslategrey; color:white">EDT</h4>
+            <p>
+                Click to edit the courses.
+            </p>
+            <h4 style="background-color:lightcoral; color:white">DEL</h4>
+            <p>
+                Click to delete the courses.
+            </p>
+        </div>
     </div>
-    <div class="tooltipContainer">
-        <p class="tooltips">
-            <big><big><strong>Courses:</strong></big></big><br />
-            Use this page to manage new or existing courses offered including their descriptions and prices.
-        </p>
-    </div>
-</div>
+</aside>
 

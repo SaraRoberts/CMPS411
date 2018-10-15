@@ -26,7 +26,9 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Courses
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Course.Include(c => c.Prereq).Include(c => c.CourseCategory)
+            var applicationDbContext = _context.Course
+                .Include(c => c.Prereq)
+                .Include(c => c.CourseCategory)
                 .OrderBy(c => c.Name);
             return View(await applicationDbContext.ToListAsync());
         }

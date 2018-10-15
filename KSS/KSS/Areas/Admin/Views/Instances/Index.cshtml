@@ -65,7 +65,7 @@
     {
         <div class="index-tile">
             <div class="index-tile-left">
-                <span style="font-weight:800">@Html.DisplayFor(modelItem => item.Course.CourseCategory)</span><br />
+                <span style="font-weight:800">@Html.DisplayFor(modelItem => item.Course.CourseCategory.Name)</span><br />
             </div>
             <div class="index-tile-middle" onclick="getDetails(@item.InstanceId)">
                 <span style="font-weight:600">@Html.DisplayFor(modelItem => item.Course.Name)</span><br />
