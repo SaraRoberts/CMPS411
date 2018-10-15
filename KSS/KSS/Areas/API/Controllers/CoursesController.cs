@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
+using KSS.Areas.API.Models;
 
 namespace KSS.Areas.API.Controllers
 {
@@ -25,7 +26,12 @@ namespace KSS.Areas.API.Controllers
         [HttpGet]
         public IEnumerable<Course> GetCourse()
         {
-            return _context.Course;
+            var course = _context.Course;
+            var courseDto = new List<CourseDto>()
+            {
+
+            };
+            return null;
         }
 
         // GET: api/Courses/5
