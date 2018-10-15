@@ -255,3 +255,102 @@ aside.help {
 /* Help Block End */
 
     /*END OF TOOLTIP SECTION*/
+
+/* Index Tiles */
+.index-tiles {
+}
+
+.index-tile {
+    background-color: white;
+    margin: 5px;
+    min-width: 385px;
+    max-width: 700px;
+    height: 70px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .3);
+}
+
+.index-tile a {
+    text-decoration: none;
+    color: white;
+}
+
+.index-tile-left {
+    word-break: break-all;
+    word-wrap: break-word;
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+    background-color: rgba(168, 57, 57, 0.7);
+    color: white;
+    padding: 5px;
+}
+
+.index-tile-middle {
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.index-tile-right {
+    display: inline-block;
+    float: right;
+    height: 100%;
+    text-align: center;
+    word-break: break-all;
+    font-weight: 800;
+    font-size: 14px;
+    color: white;
+}
+
+.index-tile-right .div-button-add {
+    display: inline-block;
+    background-color: lightgreen;
+    padding: 5px;
+    height: 100%;
+    width: 33px;
+    vertical-align: top;
+}
+
+.index-tile-right .div-button-roster {
+    display: inline-block;
+    background-color: lightsalmon;
+    padding: 5px;
+    height: 100%;
+    width: 33px;
+    vertical-align: top;
+}
+
+.index-tile-right .div-button-edit {
+    display: inline-block;
+    background-color: lightslategrey;
+    padding: 5px;
+    height: 100%;
+    width: 33px;
+    vertical-align: top;
+}
+
+.index-tile-right .div-button-delete {
+    display: inline-block;
+    background-color: lightcoral;
+    padding: 5px;
+    height: 100%;
+    width: 33px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.index-tile-right .div-button-add:hover,
+.index-tile-right .div-button-roster:hover,
+.index-tile-right .div-button-edit:hover,
+.index-tile-right .div-button-delete:hover {
+    border: solid 2px rgba(0, 0, 0, 0.1);
+}
+
+.index-tile-right .div-button-add:active,
+.index-tile-right .div-button-roster:active,
+.index-tile-right .div-button-edit:active,
+.index-tile-right .div-button-delete:active {
+    border: solid 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Index Tiles End */
