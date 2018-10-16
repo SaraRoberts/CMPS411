@@ -13,11 +13,13 @@ Location: @ViewData["location"]<br />
 Date: @ViewData["date"]
 
 <h4>Students</h4>
-
+@using (Html.BeginForm("Grade", "Instances", FormMethod.Post))
+{
+    <input name="instanceId" type="hidden" value="@ViewData["instance"]" />
 @foreach (var item in Model)
 {
     <label class="switchContainer">
-        <input type="checkbox" checked>
+        <input type="checkbox" name="studentsPassed" id="studentsPassed" value="@item.User.UserId" checked>
         <span class="switch">
             @Html.DisplayFor(modelItem => item.User.FirstName) <br />
             @Html.DisplayFor(modelItem => item.User.LastName)
@@ -25,7 +27,8 @@ Date: @ViewData["date"]
     </label>
 }
 <br />
-<a class="btn btn-info" asp-controller="Instances" asp-action="Grade" asp-route-id="">Grade</a>
+<button type="submit" class="btn btn-info">Grade</button>
+}
 
 @* // leaving modal for later use...
     <div id="detailsModal" class="modal fade" role="dialog">

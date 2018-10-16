@@ -332,11 +332,49 @@ namespace KSS.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["instance"] = instance.InstanceId;
             ViewData["class"] = instance.Course.Name;
             ViewData["location"] = instance.Location.Name;
             ViewData["date"] = instance.StartDate.Date;
             return View(enrollments);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Grade(int instanceId, IEnumerable<int> studentsPassed)
+        {
+            if(studentsPassed != null)
+            {
+                //grab all enrollments for the instance
+                var enrollments = await _context.Enrollment
+                .Where(e => e.InstanceId == instanceId)
+                .ToListAsync();
+
+                //cycle through enrollments, check if in studentsPassed, mark P or F
+                foreach ( var e in enrollments)
+                {
+                    foreach( var s in studentsPassed)
+                    {
+                        if (e.UserId == s)
+                        {
+                            e.Status = 'P';
+                            break;
+                        }
+                        else e.Status = 'F';
+                    }
+                    _context.Enrollment.Update(e);
+                }
+
+                //mark instance "graded"
+                var instance = await _context.Instance.FindAsync(instanceId);
+                instance.Graded = true;
+                _context.Update(instance);
+
+                await _context.SaveChangesAsync();
+            }
+            return View();
+        }
+
         private bool InstanceExists(int id)
         {
             return _context.Instance.Any(e => e.InstanceId == id);
