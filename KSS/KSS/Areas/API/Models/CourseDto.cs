@@ -14,14 +14,16 @@ namespace KSS.Areas.API.Models
         public int TypicalPrice { get; set; }
         public bool BookAvailable { get; set; }
         public decimal BookPrice { get; set; }
+        public string CategoryName { get; set; }
+        public string PrereqName { get; set; }
 
         public int? PrereqId { get; set; } //FK references its own table
-        public Course Prereq { get; set; }
+        //public Course Prereq { get; set; }
 
         public int CategoryId { get; set; } //FK reference to Category Table
-        public Category CourseCategory { get; set; }
+        //public Category CourseCategory { get; set; }
 
-        public List<Course> Courses { get; set; }
-        public List<Instance> Instances { get; set; }
+        //public List<Course> Courses { get; set; }
+        //public List<Instance> Instances { get; set; }
     }
 }
