@@ -209,7 +209,7 @@ namespace KSS.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,InstructorId,BookAvailable,BookPrice")] Instance instance)
+        public async Task<IActionResult> Edit(int id, [Bind("InstanceId,StartDate,Price,CourseId,LocationId,Seats,InstructorId,Graded,BookAvailable,BookPrice")] Instance instance)
         {
             if (id != instance.InstanceId)
             {
