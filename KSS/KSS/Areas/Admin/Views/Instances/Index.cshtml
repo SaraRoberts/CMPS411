@@ -5,6 +5,71 @@
 }
 
 <h2>Classes</h2>
+
+<p>
+    <a asp-action="Create">New Class</a>
+</p>
+
+<h4>All Classes</h4>
+
+<div class="main-col">
+    @foreach (var item in Model)
+    {
+        <div class="index-tile">
+            <div class="index-tile-left">
+                <span style="font-weight:800">@Html.DisplayFor(modelItem => item.Course.CourseCategory.Name)</span><br />
+            </div>
+            <div class="index-tile-middle" onclick="getDetails(@item.InstanceId)">
+                <span style="font-weight:600">@Html.DisplayFor(modelItem => item.Course.Name)</span><br />
+                @Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)<br />
+                @Html.DisplayFor(modelItem => item.Location.Name)
+            </div>
+            <div class="index-tile-right">
+                <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">
+                    <div class="div-button-add">A<br />D<br />D</div>
+                </a>
+                <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">
+                    <div class="div-button-roster">R<br />S<br />T</div>
+                </a>
+                <a asp-action="Edit" asp-route-id="@item.InstanceId">
+                    <div class="div-button-edit">E<br />D<br />T</div>
+                </a>
+                <div onclick="deleteItem(@item.InstanceId)" class="div-button-delete">D<br />E<br />L</div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- HELP BOX  -->
+<aside class="help">
+    <div class="tooltipContainer2">
+        <div class="tooltips-top">
+            <h4>Help</h4>
+        </div>
+        <div class="tooltips-bottom">
+            <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
+                Page lists all classes in the system.
+            </p>
+            <h4 style="background-color:lightgreen; color:white">ADD</h4>
+            <p>
+                Add a class.
+            </p>
+            <h4 style="background-color:lightsalmon; color:white">RST</h4>
+            <p>
+                View roster for class.
+            </p>
+            <h4 style="background-color:lightslategrey; color:white">EDT</h4>
+            <p>
+                Edit the class.
+            </p>
+            <h4 style="background-color:lightcoral; color:white">DEL</h4>
+            <p>
+                Delete the class.
+            </p>
+        </div>
+    </div>
+</aside>
+
 <!--Modal Maker-->
 <div id="detailsModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -53,40 +118,7 @@
         </div>
     </div>
 </div>
-<p>
-    <a asp-action="Create">New Class</a>
-</p>
-<div class="main-col">
-    <h4>
-        All Classes
-    </h4>
 
-    @foreach (var item in Model)
-    {
-        <div class="index-tile">
-            <div class="index-tile-left">
-                <span style="font-weight:800">@Html.DisplayFor(modelItem => item.Course.CourseCategory.Name)</span><br />
-            </div>
-            <div class="index-tile-middle" onclick="getDetails(@item.InstanceId)">
-                <span style="font-weight:600">@Html.DisplayFor(modelItem => item.Course.Name)</span><br />
-                @Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)<br />
-                @Html.DisplayFor(modelItem => item.Location.Name)
-            </div>
-            <div class="index-tile-right">
-                <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">
-                    <div class="div-button-add">A<br />D<br />D</div>
-                </a>
-                <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">
-                    <div class="div-button-roster">R<br />S<br />T</div>
-                </a>
-                <a asp-action="Edit" asp-route-id="@item.InstanceId">
-                    <div class="div-button-edit">E<br />D<br />T</div>
-                </a>
-                <div onclick="deleteItem(@item.InstanceId)" class="div-button-delete">D<br />E<br />L</div>
-            </div>
-        </div>
-    }
-</div>
 <script>
     function getDetails(id) {
         $.ajax({
@@ -169,35 +201,6 @@
         });
 
     }
-    </script>
-<!-- HELP BOX  -->
-<aside class="help">
-    <div class="tooltipContainer2">
-        <div class="tooltips-top">
-            <h4>Help</h4>
-        </div>
-        <div class="tooltips-bottom">
-            <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
-                Page lists all classes in the system.
-            </p>
-            <h4 style="background-color:lightgreen; color:white">ADD</h4>
-            <p>
-                Click to add a class.
-            </p>
-            <h4 style="background-color:lightsalmon; color:white">RST</h4>
-            <p>
-                Click to view roster for class.
-            </p>
-            <h4 style="background-color:lightslategrey; color:white">EDT</h4>
-            <p>
-                Click to edit the class.
-            </p>
-            <h4 style="background-color:lightcoral; color:white">DEL</h4>
-            <p>
-                Click to delete the class.
-            </p>
-        </div>
-    </div>
-</aside>
+</script>
 
 

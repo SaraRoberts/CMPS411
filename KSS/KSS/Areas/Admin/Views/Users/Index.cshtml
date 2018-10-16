@@ -4,7 +4,78 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>All Users</h2>
+<h2>Users</h2>
+
+<p>
+    <a asp-action="Create">New User</a>
+</p>
+
+<h4>All Users</h4>
+
+<div class="main-col">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+                        <button type="button" class="btn btn-sm btn-default" onclick="getDetails(@item.UserId)">Details</button> |
+                        <button type="button" class="btn btn-sm btn-danger" onclick="deleteItem(@item.UserId)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- HELP BOX  -->
+<aside class="help">
+    <div class="tooltipContainer2">
+        <div class="tooltips-top">
+            <h4>Help</h4>
+        </div>
+        <div class="tooltips-bottom">
+            <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
+                Page lets admin manage all users in the system.
+            </p>
+            <h4>New User</h4>
+            <p>
+                Add new user.
+            </p>
+            <h4>Edit</h4>
+            <p>
+                Make changes to existing user.
+            </p>
+            <h4>Details</h4>
+            <p>
+                View more information about existing user.
+            </p>
+            <h4>Delete</h4>
+            <p>
+                Delete existing user.
+            </p>
+        </div>
+    </div>
+</aside>
+
 <!--Make Modal-->
 <div id="detailsModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -47,64 +118,8 @@
 
     </div>
 </div>
-<p>
-    <a asp-action="Create">New User</a>
-</p>
-<!--Start of Grid Container-->
 
-<div class="grid-container">
-    <div class="contentContainer">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </th>
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.Phone)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Role)
-                    </th>*@
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-            {
-            <tr>           
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    @*<td>
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Role)
-                    </td>*@
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
-                    <button type="button" class="btn btn-default" onclick="getDetails(@item.UserId)">Details</button> |
-                    <button type="button" class="btn btn-danger" onclick="deleteItem(@item.UserId)">Delete</button>
-                    </td>
-                </tr>
-        }
-            </tbody>
-        </table>
-
-        <script>
+<script>
     function getDetails(id) {
 
 
@@ -179,16 +194,7 @@
                 location.reload();
             }
         });
-       
+
     }
 
-        </script>
-    </div>
-    <div class="tooltipContainer">
-        <p class="tooltips">
-            <big><big><strong>Users:</strong></big></big><br />
-            Use this page to manage all users in the application including students, instructors, and admins.
-        </p>
-    </div>
-</div>
-
+</script>

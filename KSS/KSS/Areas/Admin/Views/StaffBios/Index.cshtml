@@ -4,7 +4,73 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>All Staff Bios</h2>
+<h2>Staff Bios</h2>
+
+<p>
+    <a asp-action="Create">New Staff Bio</a>
+</p>
+
+<h4>All Staff Bios</h4>
+
+<div class="main-col">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.StaffBioId">Edit</a> |
+                        @*<a asp-action="Delete" asp-route-id="@item.StaffBioId">Delete</a>*@
+                        <button type="button" class="btn btn-sm btn-default" onclick="getDetails(@item.StaffBioId)">Details</button> |
+                        <button type="button" class="btn btn-sm btn-danger" onclick="deleteItem(@item.StaffBioId)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- HELP BOX  -->
+<aside class="help">
+    <div class="tooltipContainer2">
+        <div class="tooltips-top">
+            <h4>Help</h4>
+        </div>
+        <div class="tooltips-bottom">
+            <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
+                Page lets admin manage all staff bios.
+            </p>
+            <h4>New Staff Bio</h4>
+            <p>
+                Add new staff bio.
+            </p>
+            <h4>Edit</h4>
+            <p>
+                Change existing staff bio.
+            </p>
+            <h4>Details</h4>
+            <p>
+                View more information about existing staff bio.
+            </p>
+            <h4>Delete</h4>
+            <p>
+                Delete existing staff bio.
+            </p>
+        </div>
+    </div>
+</aside>
+
 <!--Make Modals-->
 <div id="detailsModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -16,7 +82,7 @@
             <div class="modal-body">
                 <h4 id="fullName"></h4>
                 <h4 id="picture"></h4>
-                <h4 id="bio"></h4>              
+                <h4 id="bio"></h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -37,49 +103,18 @@
                 <h4 id="fullName1"></h4>
                 <h4 id="picture1"></h4>
                 <h4 id="bio1"></h4>
-                
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="confirmDelete()">Delete</button>
             </div>
         </div>
 
     </div>
 </div>
-<p>
-    <a asp-action="Create">New Staff Bio</a>
-</p>
-<!--Containers Start-->
-<div class="grid-container">
-    <div class="contentContainer">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.User)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-            {
-            <tr >            
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
-                    </td>
-                    <td>
-                    <a asp-action="Edit" asp-route-id="@item.StaffBioId">Edit</a> |
-                    @*<a asp-action="Delete" asp-route-id="@item.StaffBioId">Delete</a>*@
-                    <button type="button" class="btn btn-default" onclick="getDetails(@item.StaffBioId)">Details</button> |
-                    <button type="button" class="btn btn-danger" onclick="deleteItem(@item.StaffBioId)">Delete</button>                    
-                    </td>
-                </tr>
-        }
-            </tbody>
-        </table>
-        <script>
+
+<script>
     function getDetails(id) {
         $.ajax({
             url: '@Url.Action("Details", "StaffBios")',
@@ -138,16 +173,6 @@
                 location.reload();
             }
         });
-       
+
     }
-        </script>
-    </div>
-    <div class="tooltipContainer">
-        <p class="tooltips">
-            <big><big><strong>Staff Bios:</strong></big></big><br />
-            Use this page to manage images and bios for all employees.  Instructors can update their own bios.
-        </p>
-    </div>
-</div>
-
-
+</script>

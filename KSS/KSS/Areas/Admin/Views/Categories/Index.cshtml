@@ -4,45 +4,65 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>All Categories</h2>
-    <p>
-        <a asp-action="Create">New Category</a>
-    </p>
-    <div class="grid-container">
-    <div class="contentContainer">
-        <table class="table">
-            <thead>
+<h2>Categories</h2>
+
+<p>
+    <a asp-action="Create">New Category</a>
+</p>
+
+<h4>All Categories</h4>
+
+<div class="main-col">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a>
-                            <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a>
-                            <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <div class="tooltipContainer">
-        <p class="tooltips">
-            <big><big><strong>Categories:</strong></big></big>
-            <br />
-            Use this page to manage large-scale categories that consist of several courses offered. E.g. CPR, EMT
-        </p>
-    </div>
+            }
+        </tbody>
+    </table>
 </div>
+<!-- HELP BOX  -->
+<aside class="help">
+    <div class="tooltipContainer2">
+        <div class="tooltips-top">
+            <h4>Help</h4>
+        </div>
+        <div class="tooltips-bottom">
+            <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
+                Page lets admin manage categories for courses.
+            </p>
+            <h4>New Category</h4>
+            <p>
+                Add new category.
+            </p>
+            <h4>Edit</h4>
+            <p>
+                Change existing category.
+            </p>
+            <h4>Delete</h4>
+            <p>
+                Delete existing category.
+            </p>
+        </div>
+    </div>
+</aside>
 
 
