@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
-import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, Table } from 'semantic-ui-react';
+import './styles/Tables.css';
 
 export class Catalog extends Component {
     displayName = Catalog.name
