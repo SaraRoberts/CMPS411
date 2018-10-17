@@ -23,6 +23,28 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="student-app\src\components\styles\bootstrap.css" />
+    <None Remove="student-app\src\components\styles\bootstrap.css.map" />
+    <None Remove="student-app\src\components\styles\bootstrap.min.css" />
+    <None Remove="student-app\src\components\styles\bootstrap.min.css.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="student-app\src\components\styles\bootstrap.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="student-app\src\components\styles\bootstrap.css.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="student-app\src\components\styles\bootstrap.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="student-app\src\components\styles\bootstrap.min.css.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
