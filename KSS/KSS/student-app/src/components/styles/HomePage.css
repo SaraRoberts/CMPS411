@@ -1,0 +1,60 @@
+﻿body {
+
+}
+
+#topImage{
+    height: 700px;
+    width: 100%;
+}
+
+#logo{
+    height: 500px;
+    width: 700px;
+}
+
+#banner-container{
+    width: 100%;
+    background-color: lightgray;
+    text-align: center;
+}
+
+#banner-title{
+    font-size: 55px;
+    font-style: italic;
+    margin-bottom: -20px;
+}
+
+#banner-text{
+    font-size: 40px;
+}
+
+#middleDiv{
+    text-align:center;
+    display: table;
+}
+
+
+.course {
+    text-align: center;
+    color: white;
+    background-color: #a83939;
+    border-radius: 15px;
+    display: inline-grid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 400px;
+    height: 700px;
+    font-size: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.course-image {
+    margin: auto;
+    margin-top: 12px;
+    width: 380px;
+    height: 250px;
+    border-radius: 15px;
+}

@@ -6,10 +6,8 @@ import './styles/Footer.css';
 export class Footer extends React.Component {
     displayName = Footer.name
 
-
-    render() {
-        return (
-            <footer>
+    /*
+     * <footer>
                 <div class="row">
                     <div class="col-md-4 col-sm-6 footer-navigation">
                         <h3><a href="#">Keeping Safety Smart</a></h3>
@@ -18,6 +16,11 @@ export class Footer extends React.Component {
                     </div>
                 </div>
             </footer>
+    */
+
+    render() {
+        return (
+            null
         );
     }
 }
