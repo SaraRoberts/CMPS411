@@ -21,16 +21,9 @@
             </div>
             <div class="index-tile-middle" onclick="getDetails(@item.CourseId)">
                 <span style="font-weight:600">@Html.DisplayFor(modelItem => item.Name)</span><br />
-                @*@Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)*@<br />
-                @*@Html.DisplayFor(modelItem => item.Location.Name)*@
+                <br />
             </div>
             <div class="index-tile-right">
-                <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.CourseId">
-                    <div class="div-button-add">A<br />D<br />D</div>
-                </a>
-                <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.CourseId">
-                    <div class="div-button-roster">R<br />S<br />T</div>
-                </a>
                 <a asp-action="Edit" asp-route-id="@item.CourseId">
                     <div class="div-button-edit">E<br />D<br />T</div>
                 </a>
@@ -49,14 +42,6 @@
         <div class="tooltips-bottom">
             <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
                 Page lists all courses in the system.
-            </p>
-            <h4 style="background-color:lightgreen; color:white">ADD</h4>
-            <p>
-                Click to add a courses.
-            </p>
-            <h4 style="background-color:lightsalmon; color:white">RST</h4>
-            <p>
-                Click to view roster for courses.
             </p>
             <h4 style="background-color:lightslategrey; color:white">EDT</h4>
             <p>
@@ -104,7 +89,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title">Are you sure you want to delete this location?</h3>
+                <h3 class="modal-title">Are you sure you want to delete this course?</h3>
             </div>
             <div class="modal-body">
                 <h2 id="courseName2" align="center"></h2>
@@ -141,7 +126,7 @@
                     $("#courseName").text(data.name);
                     $("#typicalPrice").text("Typical Price : $ " + data.price );
                     if (data.book) {
-                        $("#bookAvailible").text("A book is availible for this course for $ " + data.bookPrice);
+                        $("#bookAvailible").text("A book is available for this course for $ " + data.bookPrice);
                     }
                     else {
                         $("#bookAvailible").text("This course does not require a book ");
@@ -175,7 +160,7 @@
                     $("#courseName2").text(data.name);
                     $("#typicalPrice2").text("Typical Price : $ " + data.price);
                     if (data.book) {
-                        $("#bookAvailible2").text("A book is availible for this course for $ " + data.bookPrice);
+                        $("#bookAvailible2").text("A book is available for this course for $ " + data.bookPrice);
                     }
                     else {
                         $("#bookAvailible2").text("This course does not require a book ");
