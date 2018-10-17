@@ -125,7 +125,7 @@ namespace KSS.Areas.Admin.Data
                 {
                     modelBuilder.Entity<Enrollment>().HasData
                     (
-                        new Enrollment { EnrollmentId = i++, InstanceId = j, UserId = k, Status = 'E', BookBought = 0 < random.Next(0, 2), Paid = 0 < random.Next(0, 2), Confirmed = new DateTime(random.Next(2016, 2020), random.Next(1, 13), random.Next(1, 29), random.Next(7, 19), 00, 00) }
+                        new Enrollment { EnrollmentId = i++, InstanceId = j, UserId = k, Status = 'E', BookBought = 0 < random.Next(0, 2), Paid = 0 < random.Next(0, 2) }
                     );
                 }
             }
