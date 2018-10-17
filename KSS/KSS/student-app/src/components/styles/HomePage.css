@@ -21,6 +21,7 @@
 #banner-title{
     font-size: 55px;
     font-style: italic;
+    margin-bottom: -20px;
 }
 
 #banner-text{
@@ -29,7 +30,9 @@
 
 #middleDiv{
     text-align:center;
+    display: table;
 }
+
 
 .course {
     text-align: center;
@@ -37,10 +40,21 @@
     background-color: #a83939;
     border-radius: 15px;
     display: inline-grid;
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
     max-width: 400px;
+    height: 700px;
     font-size: 30px;
     padding-right: 10px;
     padding-left: 10px;
+}
+
+.course-image {
+    margin: auto;
+    margin-top: 12px;
+    width: 380px;
+    height: 250px;
+    border-radius: 15px;
 }

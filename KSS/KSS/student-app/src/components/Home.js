@@ -3,6 +3,8 @@ import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import home1 from './images/home1.jpg';
 import logo from './images/logo.png';
+import emtImage from './images/EMTImage.jpeg';
+import emrImage from './images/EMRImage.jpeg';
 import './styles/HomePage.css';
 
 export class Home extends Component {
@@ -20,6 +22,7 @@ export class Home extends Component {
 
                 <div>
                     <div className="course">
+                        <img className="course-image" src={emtImage} />
                         <h2>EMT</h2>
                         <p>Interested in becoming an EMT? An EMT is a specially trained
                            technician certified to provide basic emergency services
@@ -27,6 +30,7 @@ export class Home extends Component {
                         </p>
                     </div>
                     <div className="course">
+                        <img className="course-image" src={home1} />
                         <h2>CPR</h2>
                         <p>Learn CPR, a medical procedure involving specific compression
                            of a patient's chest, performed in an attempt to bring back
@@ -35,6 +39,7 @@ export class Home extends Component {
                         </p>
                     </div>
                     <div className="course">
+                        <img className="course-image" src={emrImage} />
                         <h2>EMR</h2>
                         <p> In case of a medical emergency, learn techniques and procedures for 
                             helping others who are in need of attention and treating minor wounds
