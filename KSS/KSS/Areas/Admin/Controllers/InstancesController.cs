@@ -111,16 +111,21 @@ namespace KSS.Areas.Admin.Controllers
             {
                 bookPrice = instance.BookPrice.ToString();
                 bookPrice = "Book Price: " + "$ "+bookPrice;
-                bookAvailible = "Book Availible : Yes";
+                bookAvailible = "Book Available : Yes";
             }
 
+            String month = instance.StartDate.ToString("MMMM");
+            String time = instance.StartDate.ToString("h:mm tt");
 
             return Json(new
             {
                 success    = true,
-                startDate  = "Start Date : " + instance.StartDate,
+                startDate  = instance.StartDate.DayOfWeek +
+                    ", " + month + " " + instance.StartDate.Day +
+                    ", " + instance.StartDate.Year +
+                    ", " + instance.StartDate.TimeOfDay,
                 price      = "Price : $ " + instance.Price,
-                courseName = "Course Name : " + instance.Course.Name,
+                courseName = instance.Course.Name,
                 location   = "Location : " + instance.Location.Street,
                 seats      = "Seats : " + instance.Seats,
                 instructor = "Instructor : " + instance.Instructor.FirstName + " " +
