@@ -238,6 +238,26 @@ aside.help {
 .tooltips-bottom{
     padding:10px;
 }
+.tooltips-bottom .pageDesc {
+    background: rgba(168, 57, 57, 0.2);
+    font-weight: 600;
+}
+.tooltips-bottom .add {
+    background-color: lightgreen;
+    color: white
+}
+.tooltips-bottom .roster {
+    background-color: lightsalmon;
+    color: white
+}
+.tooltips-bottom .edit {
+    background-color: lightslategrey;
+    color: white
+}
+.tooltips-bottom .delete {
+    background-color: lightcoral;
+    color: white
+}
 .tooltips-bottom h4 {
     text-decoration-line:underline;
 }
