@@ -24,8 +24,7 @@ export class Home extends Component {
                                             below to begin enhancing your emergency medical skills!</p>
                     </div>
                     <div>
-                        <div>
-                            <div className="course">
+                        <div className="course">
                                 <img className="course-image" src={emtImage} />
                                 <h2>EMT</h2>
                                 <p>Interested in becoming an EMT? An EMT is a specially trained
@@ -49,8 +48,7 @@ export class Home extends Component {
                                     helping others who are in need of attention and treating minor wounds
                                 </p>
                             </div>
-                        </div>
-                        <div>
+                        
                             <div className="course">
                                 <img className="course-image" src={blsImage} />
                                 <h2>BLS</h2>
@@ -67,7 +65,6 @@ export class Home extends Component {
                                    deliver an electric shock to help re-establish it.
                                 </p>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
