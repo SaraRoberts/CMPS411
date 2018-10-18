@@ -51,12 +51,16 @@ export class MyClasses extends Component {
             : MyClasses.renderinstanceTable(this.state.instances);
 
         return (
-            <div class="grid-container-pages">
-                <div class="grid-item-pages">
-                    <h1>Upcoming Classes</h1>
-                </div>
-                <div class="grid-item-pages">
-                    {contents}
+            <div id="page">
+                <div id="main-container">
+                    <div class="grid-container-pages">
+                        <div class="grid-item-pages">
+                            <h1>Upcoming Classes</h1>
+                        </div>
+                        <div class="grid-item-pages">
+                            {contents}
+                        </div>
+                    </div>
                 </div>
             </div>
         );
