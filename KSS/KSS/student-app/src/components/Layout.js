@@ -7,7 +7,7 @@ export class Layout extends Component {
     displayName = Layout.name
 
     render() {
-
+        var style = { minHeight: '600px' };
         console.log(this.props)
 
         return (
@@ -19,7 +19,7 @@ export class Layout extends Component {
                 </Row>
 
                 <Row>
-                    <Col>
+                    <Col style={style}>
                         {this.props.children}
                     </Col>
                 </Row>

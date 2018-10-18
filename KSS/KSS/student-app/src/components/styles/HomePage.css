@@ -1,45 +1,38 @@
-﻿body {
-    
-}
-
-#page{
-    text-align: center;
-    background-color: gray;
-}
-
-#main-container{
-    width: 75%; 
+﻿#main-container{
+    width: 85%; 
     height: 100%;
-    max-width: 1500px;
+    max-width: 1000px;
     text-align: center;
     background-color: white;
     display: inline-block;
 }
 
 #topImage{
-    height: 500px;
+    height: 300px;
     width: 100%;
 }
 
 #logo{
-    height: 300px;
-    width: 500px;
+    width: 100%;
+    max-width: 400px;
+    min-width: 350px;
 }
 
-#banner-container{
+#banner-container {
     width: 100%;
-    background-color: lightgray;
+    background-color: gray;
     text-align: center;
+    color: white;
 }
 
 #banner-title{
-    font-size: 40px;
+    font-size: 30px;
     font-style: italic;
     margin-bottom: -20px;
 }
 
 #banner-text{
-    font-size: 30px;
+    font-size: 24px;
 }
 
 #middleDiv{
@@ -57,9 +50,9 @@
     margin-bottom: 10px;
     margin-left: 30px;
     margin-right: 30px;
-    max-width: 350px;
-    height: 550px;
-    font-size: 20px;
+    max-width: 200px;
+    height: 400px;
+    font-size: 15px;
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 15px;
@@ -68,7 +61,7 @@
 .course-image {
     margin: auto;
     margin-top: 20px;
-    width: 300px;
-    height: 220px;
+    width: 175px;
+    height: 150px;
     border-radius: 15px;
 }

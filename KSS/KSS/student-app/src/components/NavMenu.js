@@ -9,29 +9,33 @@ export class NavMenu extends Component {
 
     render() {
         return (
-            <div class="navmenu">
-                <Nav>
-                    <NavItem eventKey={1} href="/"> Home </NavItem>
-                    <NavItem eventKey={2} href="/catalog"> Catalog </NavItem>
-                    <NavItem eventKey={3} href="/group"> Group </NavItem>
-                    <NavItem eventKey={4} href="/contact"> Contact </NavItem>
+            <header>
+                <div className="container">
+                    <div class="navmenu">
+                        <Nav>
+                            <NavItem eventKey={1} href="/"> Home </NavItem>
+                            <NavItem eventKey={2} href="/catalog"> Catalog </NavItem>
+                            <NavItem eventKey={3} href="/group"> Group </NavItem>
+                            <NavItem eventKey={4} href="/contact"> Contact </NavItem>
 
-                    <div class="dropdown">
-                    <NavDropdown eventKey={5} title="Dashboard" >
-                        <div class="dropdown-content">
-                        <MenuItem eventKey={5.1} href="/myclasses"> My Classes </MenuItem>
-                        <MenuItem eventKey={5.2} href="/search"> Class Search </MenuItem>
-                        <MenuItem eventKey={5.3} href="/account">My Account</MenuItem>
-                        </div>
-                    </NavDropdown>
+                            <div class="dropdown">
+                            <NavDropdown eventKey={5} title="Dashboard" >
+                                <div class="dropdown-content">
+                                <MenuItem eventKey={5.1} href="/myclasses"> My Classes </MenuItem>
+                                <MenuItem eventKey={5.2} href="/search"> Class Search </MenuItem>
+                                <MenuItem eventKey={5.3} href="/account">My Account</MenuItem>
+                                </div>
+                            </NavDropdown>
+                            </div>
+                            <div id="register-button">
+                                <NavItem eventKey={6} href="/register"> Register </NavItem>
+                                <NavItem eventKey={7} href="/login"> Login </NavItem>
+                                <NavItem eventKey={8} href="/logout"> Logout </NavItem>
+                            </div>
+                        </Nav>
                     </div>
-                    <div id="register-button">
-                        <NavItem eventKey={6} href="/register"> Register </NavItem>
-                        <NavItem eventKey={7} href="/login"> Login </NavItem>
-                        <NavItem eventKey={8} href="/logout"> Logout </NavItem>
-                    </div>
-                </Nav>
-            </div>
+                </div>
+            </header>
         );
     }
 }
