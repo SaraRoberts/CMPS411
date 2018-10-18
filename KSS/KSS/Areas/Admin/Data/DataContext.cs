@@ -14,6 +14,7 @@ namespace KSS.Areas.Admin.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
+            Database.SetCommandTimeout(9000);
             this.Database.Migrate();
         }
         public DbSet<User> Users { get; set; }

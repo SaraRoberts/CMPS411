@@ -1,2 +1,51 @@
 ﻿body {
 }
+/*START 2cols*/
+* {
+    box-sizing: border-box;
+}
+.twocolumn {
+    float: left;
+    width: 50%;
+    padding: 50px;
+    height: 300px;
+}
+.tworow:after {
+    content: "";
+    display: table;
+    clear: both;
+    padding: 100px;
+}
+/*END 2cols*/
+/*START table*/
+.ui.table
+{
+    text-align: left;
+    padding: 50px;
+    width: 100%;
+    margin: 5% 0;
+    transition: 0.5s;
+}
+.ui.table th {
+    font-size: 24px;
+    background-color: indianred;
+    font: white;
+    color: white;
+    min-width: 200px;
+    padding: 15px;
+}
+.ui.table td {
+    padding: 15px;
+}
+.ui.table tr:nth-child(even) {
+    background-color: #eee;
+}
+.ui.table tr:nth-child(odd) {
+    background-color: #fff;
+}
+.ui.table tr {
+    font-size: 18px;
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+/*END tables*/

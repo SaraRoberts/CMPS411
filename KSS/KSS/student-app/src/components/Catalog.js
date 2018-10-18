@@ -19,8 +19,7 @@ export class Catalog extends Component {
 
     static rendercourseTable(courses) {
         return (
-
-        <Table color={'grey'} inverted inverted>
+        <Table>
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell>Category</Table.HeaderCell>
@@ -50,12 +49,20 @@ export class Catalog extends Component {
             :Catalog.rendercourseTable(this.state.courses);
 
     return (
-        <div class="grid-container-pages">
-            <div class="grid-item-pages">
-                <h1>Upcoming Classes</h1>
-            </div>
-            <div class="grid-item-pages">
-                {contents}
+        <div id="page">
+            <div id="main-container">
+                <div class="grid-container-pages">
+                    <div class="grid-item-pages">
+                        <h1>Course Catalog</h1>
+                        <p>
+                            Keeping Safety Smart offers a variety of courses that teach valuable first responder skills. Search through
+                            course listings below.
+                        </p>
+                    </div>
+                    <div class="grid-item-pages">
+                        {contents}
+                    </div>
+                </div>
             </div>
         </div>
         );
