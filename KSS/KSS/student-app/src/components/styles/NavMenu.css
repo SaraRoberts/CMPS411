@@ -1,4 +1,13 @@
-﻿.nav {
+﻿header {
+    background-color: #a83939;
+}
+.container{
+    width: 85%;
+    max-width: 1000px;
+    text-align: center;
+    margin: auto;
+}
+.nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -64,16 +73,6 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
-
-
-
-
-
-
-
-
-
 
 .navbar {
     min-height: 80px;
