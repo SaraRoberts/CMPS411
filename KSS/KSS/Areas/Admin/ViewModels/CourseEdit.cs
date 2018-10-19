@@ -10,7 +10,7 @@ namespace KSS.Areas.Admin.ViewModels
         public string Description { get; set; }
         public int TypicalPrice { get; set; }
         public bool BookAvailable { get; set; }
-        public decimal BookPrice { get; set; }
+        public double? BookPrice { get; set; }
         public int? PrereqId { get; set; }
         public int CategoryId { get; set; }
     }

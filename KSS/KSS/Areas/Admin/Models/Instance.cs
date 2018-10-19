@@ -24,7 +24,7 @@ namespace KSS.Areas.Admin.Models
         public User Instructor { get; set; }
 
         public bool BookAvailable { get; set; }
-        public double BookPrice { get; set; }
+        public double? BookPrice { get; set; }
 
         public List<Enrollment> Enrollments { get; set; }
     }
