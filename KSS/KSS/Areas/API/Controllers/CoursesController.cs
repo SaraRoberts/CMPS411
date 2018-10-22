@@ -89,81 +89,118 @@ namespace KSS.Areas.API.Controllers
 
         return Ok(course);
     }
+        [HttpGet("{category}")]
+        public async Task<IActionResult> GetCourseByCategory([FromRoute] string category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (!category.Equals("CPR") && !category.Equals("BLS") &&
+                !category.Equals("AED") && !category.Equals("EMT"))
+            {
+                return NotFound();
+            }
+            var course = await (from c in _context.Course
+                          join k in _context.Category on c.CategoryId equals k.CategoryId
+                          where c.CourseCategory.Name == category
 
-    //// PUT: api/Courses/5
-    //[HttpPut("{id}")]
-    //public async Task<IActionResult> PutCourse([FromRoute] int id, [FromBody] Course course)
-    //{
-    //    if (!ModelState.IsValid)
-    //    {
-    //        return BadRequest(ModelState);
-    //    }
 
-    //    if (id != course.CourseId)
-    //    {
-    //        return BadRequest();
-    //    }
+                          select new CourseDto
+                          {
+                              CategoryId = c.CategoryId,
+                              CourseId = c.CourseId,
+                              Name = c.Name,
+                              Description = c.Description,
+                              TypicalPrice = c.TypicalPrice,
+                              BookAvailable = c.BookAvailable,
+                              PrereqId = c.PrereqId,
+                              CategoryName = c.CourseCategory.Name,
+                              PrereqName = c.Prereq.Name
 
-    //    _context.Entry(course).State = EntityState.Modified;
+                          }).ToListAsync();
 
-    //    try
-    //    {
-    //        await _context.SaveChangesAsync();
-    //    }
-    //    catch (DbUpdateConcurrencyException)
-    //    {
-    //        if (!CourseExists(id))
-    //        {
-    //            return NotFound();
-    //        }
-    //        else
-    //        {
-    //            throw;
-    //        }
-    //    }
+            if (course == null)
+            {
+                return NotFound();
+            }
 
-    //    return NoContent();
-    //}
+            return Ok(course);
+        }
+        //// PUT: api/Courses/5
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutCourse([FromRoute] int id, [FromBody] Course course)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-    //// POST: api/Courses
-    //[HttpPost]
-    //public async Task<IActionResult> PostCourse([FromBody] Course course)
-    //{
-    //    if (!ModelState.IsValid)
-    //    {
-    //        return BadRequest(ModelState);
-    //    }
+        //    if (id != course.CourseId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-    //    _context.Course.Add(course);
-    //    await _context.SaveChangesAsync();
+        //    _context.Entry(course).State = EntityState.Modified;
 
-    //    return CreatedAtAction("GetCourse", new { id = course.CourseId }, course);
-    //}
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!CourseExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-    //// DELETE: api/Courses/5
-    //[HttpDelete("{id}")]
-    //public async Task<IActionResult> DeleteCourse([FromRoute] int id)
-    //{
-    //    if (!ModelState.IsValid)
-    //    {
-    //        return BadRequest(ModelState);
-    //    }
+        //    return NoContent();
+        //}
 
-    //    var course = await _context.Course.FindAsync(id);
-    //    if (course == null)
-    //    {
-    //        return NotFound();
-    //    }
+        //// POST: api/Courses
+        //[HttpPost]
+        //public async Task<IActionResult> PostCourse([FromBody] Course course)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-    //    _context.Course.Remove(course);
-    //    await _context.SaveChangesAsync();
+        //    _context.Course.Add(course);
+        //    await _context.SaveChangesAsync();
 
-    //    return Ok(course);
-    //}
+        //    return CreatedAtAction("GetCourse", new { id = course.CourseId }, course);
+        //}
 
-    //private bool CourseExists(int id)
-    //{
-    //    return _context.Course.Any(e => e.CourseId == id);
-    //}
-}
+        //// DELETE: api/Courses/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteCourse([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    var course = await _context.Course.FindAsync(id);
+        //    if (course == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    _context.Course.Remove(course);
+        //    await _context.SaveChangesAsync();
+
+        //    return Ok(course);
+        //}
+
+        //private bool CourseExists(int id)
+        //{
+        //    return _context.Course.Any(e => e.CourseId == id);
+        //}
+    }
 }
