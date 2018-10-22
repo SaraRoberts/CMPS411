@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
+using KSS.Areas.API.Models;
 
 namespace KSS.Areas.API.Controllers
 {
@@ -20,12 +21,40 @@ namespace KSS.Areas.API.Controllers
         {
             _context = context;
         }
-
-        // GET: api/Instances
+        /// <summary>
+        /// this method is for fetching every instance.   
+        /// </summary>
+        /// <returns> InstancesDto list </returns>
         [HttpGet]
-        public IEnumerable<Instance> GetInstance()
+        public IActionResult GetInstance()
         {
-            return _context.Instance;
+            
+            var query = (from i in _context.Instance
+                         join c in _context.Course on i.CourseId equals c.CourseId
+                         join l in _context.Location on i.LocationId equals l.LocationId                       
+                         join t in _context.Users on i.InstructorId equals t.UserId
+                         select new InstancesDto
+                         {
+                             InstanceId = i.InstanceId,
+                             StartDate = i.StartDate,
+                             Price = i.Price,
+                             Graded = i.Graded,
+                             CourseId = i.CourseId,
+                             LocationId = i.LocationId,
+                             Seats = i.Seats,
+                             InstructorId = i.InstructorId,
+                             BookAvailable = i.BookAvailable,
+                             BookPrice = i.BookPrice,
+                             CourseName = i.Course.Name,
+                             LocationName = i.Location.Name,
+                             InstructorName = i.Instructor.FirstName + " " + i.Instructor.LastName,
+                             CourseCategory = i.Course.CourseCategory.Name
+
+                         }).ToList().OrderBy(i => i.InstanceId);
+
+
+            return Ok(query);
+
         }
 
         // GET: api/Instances/5
@@ -37,7 +66,29 @@ namespace KSS.Areas.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var instance = await _context.Instance.FindAsync(id);
+            var instance = await (from i in _context.Instance
+                         join c in _context.Course on i.CourseId equals c.CourseId
+                         join l in _context.Location on i.LocationId equals l.LocationId                         
+                         join t in _context.Users on i.InstructorId equals t.UserId
+                         where i.InstanceId == id
+                         select new InstancesDto
+                         {
+                             InstanceId = i.InstanceId,
+                             StartDate = i.StartDate,
+                             Price = i.Price,
+                             Graded = i.Graded,
+                             CourseId = i.CourseId,
+                             LocationId = i.LocationId,
+                             Seats = i.Seats,
+                             InstructorId = i.InstructorId,
+                             BookAvailable = i.BookAvailable,
+                             BookPrice = i.BookPrice,
+                             CourseName = i.Course.Name,
+                             LocationName = i.Location.Name,
+                             InstructorName = i.Instructor.FirstName + " " + i.Instructor.LastName,
+                             CourseCategory = i.Course.CourseCategory.Name
+
+                         }).FirstAsync();
 
             if (instance == null)
             {
