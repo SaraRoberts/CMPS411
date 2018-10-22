@@ -28,7 +28,7 @@ namespace KSS.Areas.API.Models
         public string InstructorName { get; set; }
 
         public bool BookAvailable { get; set; }
-        public double BookPrice { get; set; }
+        public double? BookPrice { get; set; }
 
         //public List<Enrollment> Enrollments { get; set; }
     }
