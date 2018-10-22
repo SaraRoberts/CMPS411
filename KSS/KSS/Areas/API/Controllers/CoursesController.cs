@@ -96,11 +96,15 @@ namespace KSS.Areas.API.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            category = category.ToUpper();
+
             if (!category.Equals("CPR") && !category.Equals("BLS") &&
                 !category.Equals("AED") && !category.Equals("EMT"))
             {
                 return NotFound();
             }
+
             var course = await (from c in _context.Course
                           join k in _context.Category on c.CategoryId equals k.CategoryId
                           where c.CourseCategory.Name == category
