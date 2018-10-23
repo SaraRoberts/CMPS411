@@ -98,6 +98,54 @@ namespace KSS.Areas.API.Controllers
             return Ok(instance);
         }
 
+        [HttpGet("{category}")]
+        public async Task<IActionResult> GetInstanceByCategory([FromRoute] string category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            category = category.ToUpper();
+
+            if (!category.Equals("CPR") && !category.Equals("BLS") &&
+               !category.Equals("AED") && !category.Equals("EMT"))
+            {
+                return NotFound();
+            }
+
+            var instance = await (from i in _context.Instance
+                                  join c in _context.Course on i.CourseId equals c.CourseId
+                                  join l in _context.Location on i.LocationId equals l.LocationId
+                                  join t in _context.Users on i.InstructorId equals t.UserId
+                                  where i.Course.CourseCategory.Name == category
+                                  select new InstancesDto
+                                  {
+                                      InstanceId = i.InstanceId,
+                                      StartDate = i.StartDate,
+                                      Price = i.Price,
+                                      Graded = i.Graded,
+                                      CourseId = i.CourseId,
+                                      LocationId = i.LocationId,
+                                      Seats = i.Seats,
+                                      InstructorId = i.InstructorId,
+                                      BookAvailable = i.BookAvailable,
+                                      BookPrice = i.BookPrice,
+                                      CourseName = i.Course.Name,
+                                      LocationName = i.Location.Name,
+                                      InstructorName = i.Instructor.FirstName + " " + i.Instructor.LastName,
+                                      CourseCategory = i.Course.CourseCategory.Name
+
+                                  }).ToListAsync();
+
+            if (instance == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(instance);
+        }
+
         // PUT: api/Instances/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutInstance([FromRoute] int id, [FromBody] Instance instance)
