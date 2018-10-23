@@ -129,33 +129,8 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/Enrollments/Create
         public async Task<IActionResult> Create(int? id)
         {
-            List<UserViewModel> userList = new List<UserViewModel>();
-            List<UserViewModel> instanceList = new List<UserViewModel>();
-            var users = _context.Users;
-            var instances = _context.Instance.Include(i => i.Course).Include(i => i.Location);
-
-            foreach (var name in users)
-            {
-                UserViewModel user = new UserViewModel();
-                user.FirstName = name.LastName;
-                user.LastName = name.FirstName;
-                user.FullName = name.FirstName + " " + name.LastName;
-                user.UserId = name.UserId;
-                userList.Add(user);
-            }
-
-            foreach (var inst in instances)
-            {
-                UserViewModel location = new UserViewModel();
-                location.CourseName = inst.Course.Name;
-                location.City = inst.Location.City;
-                var startDate = inst.StartDate.ToString();
-                location.StartDate = startDate;
-                location.InstanceId = inst.InstanceId;
-                location.FullInstance = inst.Course.Name + "   " + inst.Location.City + "   " + inst.StartDate;
-                instanceList.Add(location);
-
-            }
+            List<UserViewModel> userList = UsersList();
+            List<UserViewModel> instanceList = InstancesList();
 
             if (id == null)
             {                
@@ -163,12 +138,9 @@ namespace KSS.Areas.Admin.Controllers
                 ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance");
                 ViewData["UserId"] = new SelectList(userList, "UserId", "FullName");
                 return View();
-                //return NotFound();
             }
 
             var instance = await _context.Instance.FirstOrDefaultAsync(m => m.InstanceId == id);
-            
-
 
             ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance", instance.InstanceId);
             ViewData["UserId"] = new SelectList(userList, "UserId", "FullName");
@@ -195,14 +167,20 @@ namespace KSS.Areas.Admin.Controllers
                     return RedirectToAction(nameof(Index));
                 }
 
+                List<UserViewModel> userList = UsersList();
+                List<UserViewModel> instanceList = InstancesList();
+
                 ViewData["Duplicate"] = "User already registered for this class.";
-                ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-                ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
+                ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance", enrollment.InstanceId);
+                ViewData["UserId"] = new SelectList(userList, "UserId", "FullName");
                 return View(enrollment);
             }
 
-            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
+            List<UserViewModel> userList2 = UsersList();
+            List<UserViewModel> instanceList2 = InstancesList();
+
+            ViewData["InstanceId"] = new SelectList(instanceList2, "InstanceId", "FullInstance", enrollment.InstanceId);
+            ViewData["UserId"] = new SelectList(userList2, "UserId", "FullName");
             return View(enrollment);
         }
 
@@ -219,8 +197,13 @@ namespace KSS.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
+
+            List<UserViewModel> userList = UsersList();
+            List<UserViewModel> instanceList = InstancesList();
+
+            ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance", enrollment.InstanceId);
+            ViewData["UserId"] = new SelectList(userList, "UserId", "FullName", enrollment.UserId);
+
             return View(enrollment);
         }
 
@@ -256,8 +239,12 @@ namespace KSS.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["InstanceId"] = new SelectList(_context.Instance, "InstanceId", "InstanceId", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", enrollment.UserId);
+            List<UserViewModel> userList = UsersList();
+            List<UserViewModel> instanceList = InstancesList();
+
+            ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance", enrollment.InstanceId);
+            ViewData["UserId"] = new SelectList(userList, "UserId", "FullName", enrollment.UserId);
+
             return View(enrollment);
         }
 
@@ -310,6 +297,42 @@ namespace KSS.Areas.Admin.Controllers
         private bool EnrollmentExists(int id)
         {
             return _context.Enrollment.Any(e => e.EnrollmentId == id);
+        }
+
+        // returns list of users confirmed to userViewModel
+        List<UserViewModel> UsersList()
+        {
+            List<UserViewModel> usersList = new List<UserViewModel>();
+            var users = _context.Users;
+            foreach (var name in users)
+            {
+                UserViewModel user = new UserViewModel();
+                user.FirstName = name.LastName;
+                user.LastName = name.FirstName;
+                user.FullName = name.FirstName + " " + name.LastName;
+                user.UserId = name.UserId;
+                usersList.Add(user);
+            }
+            return usersList;
+        }
+
+        // returns list of instances confirmed to userViewModel
+        List<UserViewModel> InstancesList()
+        {
+            List<UserViewModel> instancesList = new List<UserViewModel>();
+            var instances = _context.Instance.Include(i => i.Course).Include(i => i.Location);
+            foreach (var inst in instances)
+            {
+                UserViewModel location = new UserViewModel();
+                location.CourseName = inst.Course.Name;
+                location.City = inst.Location.City;
+                var startDate = inst.StartDate.ToString();
+                location.StartDate = startDate;
+                location.InstanceId = inst.InstanceId;
+                location.FullInstance = inst.Course.Name + "   " + inst.Location.City + "   " + inst.StartDate;
+                instancesList.Add(location);
+            }
+            return instancesList;
         }
     }
 }
