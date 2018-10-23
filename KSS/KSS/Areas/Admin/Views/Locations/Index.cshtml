@@ -13,31 +13,25 @@
 <h4>All Locations</h4>
 
 <div class="main-col">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |
-                        <button type="button" class="btn btn-sm btn-default" onclick="getDetails(@item.LocationId)">Details</button> |
-                        <button type="button" class="btn btn-sm btn-danger" onclick="deleteItem(@item.LocationId)">Delete</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (var item in Model)
+    {
+        <div class="index-tile">
+            <div class="index-tile-left" style="height:100%;vertical-align:middle">
+                <br />
+                <span class="glyphicon glyphicon-map-marker" style="font-size:17px"></span>
+            </div>
+            <div class="index-tile-middle" onclick="getDetails(@item.LocationId)">
+                <span style="font-weight:600">@Html.DisplayFor(modelItem => item.Name)</span>
+                <br />
+            </div>
+            <div class="index-tile-right">
+                <a asp-action="Edit" asp-route-id="@item.LocationId">
+                    <div class="div-button-edit">E<br />D<br />T</div>
+                </a>
+                <div onclick="deleteItem(@item.LocationId)" class="div-button-delete">D<br />E<br />L</div>
+            </div>
+        </div>
+    }
 </div>
 
 <!-- HELP BOX  -->
@@ -48,19 +42,15 @@
         </div>
         <div class="tooltips-bottom">
             <p class="pageDesc">
-                Page lets admin manage all locations.
+                Page lists all locations in the system.
             </p>
-            <h4>New Location</h4>
+            <h4 class="edit">EDT</h4>
             <p>
-                Add new location.
+                Click to edit the location.
             </p>
-            <h4>Edit</h4>
+            <h4 class="delete">DEL</h4>
             <p>
-                Change existing location.
-            </p>
-            <h4>Delete</h4>
-            <p>
-                Delete existing location.
+                Click to delete the location.
             </p>
         </div>
     </div>

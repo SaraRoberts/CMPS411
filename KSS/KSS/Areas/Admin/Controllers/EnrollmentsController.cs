@@ -299,7 +299,7 @@ namespace KSS.Areas.Admin.Controllers
             return _context.Enrollment.Any(e => e.EnrollmentId == id);
         }
 
-        // returns list of users confirmed to userViewModel
+        // returns list of users conformed to userViewModel
         List<UserViewModel> UsersList()
         {
             List<UserViewModel> usersList = new List<UserViewModel>();
@@ -316,7 +316,7 @@ namespace KSS.Areas.Admin.Controllers
             return usersList;
         }
 
-        // returns list of instances confirmed to userViewModel
+        // returns list of instances conformed to userViewModel
         List<UserViewModel> InstancesList()
         {
             List<UserViewModel> instancesList = new List<UserViewModel>();

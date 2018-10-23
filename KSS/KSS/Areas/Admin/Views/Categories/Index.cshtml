@@ -13,32 +13,27 @@
 <h4>All Categories</h4>
 
 <div class="main-col">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (var item in Model)
+    {
+        <div class="index-tile">
+            <div class="index-tile-left" style="height:100%;vertical-align:middle">
+                <br />
+                <span class="glyphicon glyphicon-bookmark" style="font-size:17px"></span>
+            </div>
+            <div class="index-tile-middle">
+                <span style="font-weight:600">@Html.DisplayFor(modelItem => item.Name)</span>
+                <br />
+            </div>
+            <div class="index-tile-right">
+                <a asp-action="Edit" asp-route-id="@item.CategoryId">
+                    <div class="div-button-edit">E<br />D<br />T</div>
+                </a>
+                <div onclick="deleteItem(@item.CategoryId)" class="div-button-delete">D<br />E<br />L</div>
+            </div>
+        </div>
+    }
 </div>
+
 <!-- HELP BOX  -->
 <aside class="help">
     <div class="tooltipContainer2">
@@ -53,16 +48,14 @@
             <p>
                 Add new category.
             </p>
-            <h4>Edit</h4>
+            <h4 class="edit">EDT</h4>
             <p>
-                Change existing category.
+                Make changes to existing category.
             </p>
-            <h4>Delete</h4>
+            <h4 class="delete">DEL</h4>
             <p>
                 Delete existing category.
             </p>
         </div>
     </div>
 </aside>
-
-
