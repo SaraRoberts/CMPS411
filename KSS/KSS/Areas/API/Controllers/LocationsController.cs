@@ -47,76 +47,76 @@ namespace KSS.Areas.API.Controllers
             return Ok(location);
         }
 
-        // PUT: api/Locations/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutLocation([FromRoute] int id, [FromBody] Location location)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// PUT: api/Locations/5
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutLocation([FromRoute] int id, [FromBody] Location location)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != location.LocationId)
-            {
-                return BadRequest();
-            }
+        //    if (id != location.LocationId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(location).State = EntityState.Modified;
+        //    _context.Entry(location).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LocationExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!LocationExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        // POST: api/Locations
-        [HttpPost]
-        public async Task<IActionResult> PostLocation([FromBody] Location location)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/Locations
+        //[HttpPost]
+        //public async Task<IActionResult> PostLocation([FromBody] Location location)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            _context.Location.Add(location);
-            await _context.SaveChangesAsync();
+        //    _context.Location.Add(location);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLocation", new { id = location.LocationId }, location);
-        }
+        //    return CreatedAtAction("GetLocation", new { id = location.LocationId }, location);
+        //}
 
-        // DELETE: api/Locations/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLocation([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// DELETE: api/Locations/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteLocation([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var location = await _context.Location.FindAsync(id);
-            if (location == null)
-            {
-                return NotFound();
-            }
+        //    var location = await _context.Location.FindAsync(id);
+        //    if (location == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Location.Remove(location);
-            await _context.SaveChangesAsync();
+        //    _context.Location.Remove(location);
+        //    await _context.SaveChangesAsync();
 
-            return Ok(location);
-        }
+        //    return Ok(location);
+        //}
 
         private bool LocationExists(int id)
         {

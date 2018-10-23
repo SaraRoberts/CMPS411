@@ -20,7 +20,10 @@ namespace KSS.Areas.API.Models
         public int LocationId { get; set; } //FK reference to LocationId in Location table
         //public Location Location { get; set; }
         public string LocationName { get; set; }
-
+        public string LocationStreet { get; set; }
+        public string LocationCity { get; set; }
+        public string LocationState { get; set; }
+        public int LocationZip { get; set; }
         public int Seats { get; set; }
 
         public int InstructorId { get; set; } //FK reference to User Table
