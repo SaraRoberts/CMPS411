@@ -12,6 +12,10 @@ namespace KSS.Areas.API.Models
         public int InstanceId { get; set; } //FK reference to Id in Instance table
         //public Instance Instance { get; set; }
         public string LocationName { get; set; }
+        public string LocationStreet { get; set; }
+        public string LocationCity { get; set; }
+        public string LocationState { get; set; }
+        public int LocationZip { get; set; }
         public string CourseName { get; set; }
         public string CategoryName { get; set; }
         public string UserName { get; set; }

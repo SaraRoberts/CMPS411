@@ -63,7 +63,7 @@ namespace KSS.Areas.API.Controllers
             return BadRequest(ModelState);
         }
 
-            var course =  (from c in _context.Course
+            var course =  await(from c in _context.Course
                          join k in _context.Category on c.CategoryId equals k.CategoryId
                          where c.CourseId == id
 
@@ -80,7 +80,7 @@ namespace KSS.Areas.API.Controllers
                              CategoryName = c.CourseCategory.Name,
                              PrereqName = c.Prereq.Name
 
-                         }).FirstOrDefault();
+                         }).FirstOrDefaultAsync();
 
             if (course == null)
         {
@@ -89,7 +89,7 @@ namespace KSS.Areas.API.Controllers
 
         return Ok(course);
     }
-        [HttpGet("{category}")]
+        [HttpGet("GetByCategory/{category}")]
         public async Task<IActionResult> GetCourseByCategory([FromRoute] string category)
         {
             if (!ModelState.IsValid)
@@ -202,9 +202,9 @@ namespace KSS.Areas.API.Controllers
         //    return Ok(course);
         //}
 
-        //private bool CourseExists(int id)
-        //{
-        //    return _context.Course.Any(e => e.CourseId == id);
-        //}
+        private bool CourseExists(int id)
+        {
+            return _context.Course.Any(e => e.CourseId == id);
+        }
     }
 }

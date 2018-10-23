@@ -47,7 +47,11 @@ namespace KSS.Areas.API.Controllers
                                   UserName = e.User.FirstName + " "+ e.User.LastName,
                                   CourseName = e.Instance.Course.Name,
                                   CategoryName = e.Instance.Course.CourseCategory.Name,
-                                  LocationName = e.Instance.Location.Name,
+                                  LocationName = i.Location.Name,
+                                  LocationStreet = i.Location.Street,
+                                  LocationCity = i.Location.City,
+                                  LocationState = i.Location.State,
+                                  LocationZip = i.Location.Zipcode,
                                   Status = e.Status,
                                   BookBought = e.BookBought,
                                   Paid = e.Paid,
@@ -86,7 +90,11 @@ namespace KSS.Areas.API.Controllers
                                         UserName = e.User.FirstName + " " + e.User.LastName,
                                         CourseName = e.Instance.Course.Name,
                                         CategoryName = e.Instance.Course.CourseCategory.Name,
-                                        LocationName = e.Instance.Location.Name,
+                                        LocationName = i.Location.Name,
+                                        LocationStreet = i.Location.Street,
+                                        LocationCity = i.Location.City,
+                                        LocationState = i.Location.State,
+                                        LocationZip = i.Location.Zipcode,
                                         Status = e.Status,
                                         BookBought = e.BookBought,
                                         Paid = e.Paid,
@@ -103,75 +111,75 @@ namespace KSS.Areas.API.Controllers
 
         }
        
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEnrollment([FromRoute] int id, [FromBody] Enrollment enrollment)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutEnrollment([FromRoute] int id, [FromBody] Enrollment enrollment)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != enrollment.EnrollmentId)
-            {
-                return BadRequest();
-            }
+        //    if (id != enrollment.EnrollmentId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(enrollment).State = EntityState.Modified;
+        //    _context.Entry(enrollment).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EnrollmentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!EnrollmentExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        // POST: api/Enrollments
-        [HttpPost]
-        public async Task<IActionResult> PostEnrollment([FromBody] Enrollment enrollment)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/Enrollments
+        //[HttpPost]
+        //public async Task<IActionResult> PostEnrollment([FromBody] Enrollment enrollment)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            _context.Enrollment.Add(enrollment);
-            await _context.SaveChangesAsync();
+        //    _context.Enrollment.Add(enrollment);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEnrollment", new { id = enrollment.EnrollmentId }, enrollment);
-        }
+        //    return CreatedAtAction("GetEnrollment", new { id = enrollment.EnrollmentId }, enrollment);
+        //}
 
-        // DELETE: api/Enrollments/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEnrollment([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// DELETE: api/Enrollments/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteEnrollment([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var enrollment = await _context.Enrollment.FindAsync(id);
-            if (enrollment == null)
-            {
-                return NotFound();
-            }
+        //    var enrollment = await _context.Enrollment.FindAsync(id);
+        //    if (enrollment == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Enrollment.Remove(enrollment);
-            await _context.SaveChangesAsync();
+        //    _context.Enrollment.Remove(enrollment);
+        //    await _context.SaveChangesAsync();
 
-            return Ok(enrollment);
-        }
+        //    return Ok(enrollment);
+        //}
 
         private bool EnrollmentExists(int id)
         {
