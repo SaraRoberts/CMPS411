@@ -25,17 +25,22 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.StaffBioId">Edit</a> |
-                        @*<a asp-action="Delete" asp-route-id="@item.StaffBioId">Delete</a>*@
-                        <button type="button" class="btn btn-sm btn-default" onclick="getDetails(@item.StaffBioId)">Details</button> |
-                        <button type="button" class="btn btn-sm btn-danger" onclick="deleteItem(@item.StaffBioId)">Delete</button>
-                    </td>
-                </tr>
+                <div class="index-tile">
+                    <div class="index-tile-left" style="height:100%;vertical-align:middle">
+                        <br />
+                        <span class="glyphicon glyphicon-user" style="font-size:17px"></span>
+                    </div>
+                    <div class="index-tile-middle" onclick="getDetails(@item.StaffBioId)">
+                        <span style="font-weight:600">@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</span>
+                        <br />
+                    </div>
+                    <div class="index-tile-right">
+                        <a asp-action="Edit" asp-route-id="@item.StaffBioId">
+                            <div class="div-button-edit">E<br />D<br />T</div>
+                        </a>
+                        <div onclick="deleteItem(@item.StaffBioId)" class="div-button-delete">D<br />E<br />L</div>
+                    </div>
+                </div>
             }
         </tbody>
     </table>

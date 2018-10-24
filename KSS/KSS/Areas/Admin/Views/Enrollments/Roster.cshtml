@@ -6,7 +6,6 @@
 
     <h2>@ViewData["Course"] at @ViewData["Location"]</h2>
 
-    Roster
     <div id="deleteModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -71,8 +70,12 @@
                     @Html.DisplayFor(modelItem => item.Confirmed)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
-                    <button type="button" class="btn btn-danger" onclick="deleteItem(@item.EnrollmentId)">Delete</button>
+                    <div class="index-tile-right">
+                        <a asp-action="Edit" asp-route-id="@item.EnrollmentId">
+                            <div class="div-button-edit">E<br/>D<br/>T</div>
+                        </a>
+                        <div onclick="deleteItem(@item.EnrollmentId)" class="div-button-delete">D<br/>E<br/>L</div>
+                    </div>
                 </td>
             </tr>
             }
