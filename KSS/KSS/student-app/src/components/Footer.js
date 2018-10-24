@@ -8,17 +8,26 @@ export class Footer extends React.Component {
 
     render() {
         return (
-            <div>
-                <footer>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 footer-navigation">
-                            <h3><a href="#">Keeping Safety Smart</a></h3>
-                            <p>Spencer Shaw, Donald Vicknair, Weston Arnold, Sara Roberts</p>
-                            <p class="company-name">KSS © 2018 </p>
-                        </div>
+            <footer>
+                <div className="main-container">
+                    <div className="footer-navigation">
+                        <h3><a href="#">Keeping Safety Smart</a></h3>
+                        <p>
+                            Ms Beckey Smith, Owner <br />
+                            beckey@keepingsafetysmart.com <br />
+                            (985) 888-8888 <br />
+                            Cell: (985) 888-8888 <br />
+                            <a href="\">
+                                www.keepingsafetysmart.com
+                            </a>    
+                        </p>
+                        <p className="company-name">KSS © 2018 </p>
                     </div>
-                </footer>
-            </div>
+                    <div className="social">
+                        <span>Social Icons</span>
+                    </div>
+                </div>
+            </footer>
         );
     }
 }
