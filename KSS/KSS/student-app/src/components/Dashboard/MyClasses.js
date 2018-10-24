@@ -25,7 +25,6 @@ export class MyClasses extends Component {
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Course</Table.HeaderCell>
-                        <Table.HeaderCell>Description</Table.HeaderCell>
                         <Table.HeaderCell>Start Date</Table.HeaderCell>
                         <Table.HeaderCell>Location</Table.HeaderCell>
                     </Table.Row>
@@ -34,10 +33,16 @@ export class MyClasses extends Component {
                 <Table.Body>
                     {instances.map(instances =>
                         <Table.Row key={instances.instanceId}>
-                            <Table.Cell>{instances.courseId}</Table.Cell>
-                            <Table.Cell>{instances.seats}</Table.Cell>
+                            <Table.Cell>{instances.courseName}</Table.Cell>
                             <Table.Cell>{instances.startDate}</Table.Cell>
-                            <Table.Cell>{instances.locationId}</Table.Cell>
+                            <Table.Cell>
+                                {instances.locationName}<br/>
+                                {instances.locationStreet}<br/>
+                                {instances.locationCity}<br/>
+                                {instances.locationState}, 
+                                {instances.locationZip}<br/>
+
+                            </Table.Cell>
                         </Table.Row>
                     )}
                 </Table.Body>
@@ -51,12 +56,16 @@ export class MyClasses extends Component {
             : MyClasses.renderinstanceTable(this.state.instances);
 
         return (
-            <div class="grid-container-pages">
-                <div class="grid-item-pages">
-                    <h1>Upcoming Classes</h1>
-                </div>
-                <div class="grid-item-pages">
-                    {contents}
+            <div id="page">
+                <div id="main-container">
+                    <div class="grid-container-pages">
+                        <div class="grid-item-pages">
+                            <h1>Upcoming Classes</h1>
+                        </div>
+                        <div class="grid-item-pages">
+                            {contents}
+                        </div>
+                    </div>
                 </div>
             </div>
         );
