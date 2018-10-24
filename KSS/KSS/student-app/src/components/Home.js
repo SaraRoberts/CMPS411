@@ -14,15 +14,21 @@ export class Home extends Component {
     render() {
         return (
             <div id="main-container">
-                <img id="topImage" src={home1} alt="Home1" />
-                <div>
-                    <img id="logo" src={logo} alt="Logo" />
+                <div id = "nestedImage">
+                    <img id="topImage" src={home1} alt="Home1" />
+                    <div>
+                        <img id="nested-logo" src={logo} alt="Logo" />
+                    </div>
                 </div>
 
                 <div id="banner-container">
                     <p id="banner-title">Keep safety smart one class at a time</p>
-                    <p id="banner-text">Choose from any of the course offerings
-                                        below to begin enhancing your emergency medical skills!</p>
+                    <p id="banner-text">Keeping Safety Smart LLC. is my company and it is an honor and privilege to help educate. The company 
+                        cornerstone is to bring the strongest safety education to our community.  We are a program with the 
+                        Louisiana Bureau of Emergency Medical Services as well as a national registry company, which means we 
+                        have met all State of Louisiana requirements including a Medical Director to teach our courses. We 
+                        offer over 25 years of safety education experience.   
+                    </p>
                 </div>
                 <div>
                     <div className="course">

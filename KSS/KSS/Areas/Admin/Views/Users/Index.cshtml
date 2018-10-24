@@ -13,37 +13,25 @@
 <h4>All Users</h4>
 
 <div class="main-col">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LastName)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
-                        <button type="button" class="btn btn-sm btn-default" onclick="getDetails(@item.UserId)">Details</button> |
-                        <button type="button" class="btn btn-sm btn-danger" onclick="deleteItem(@item.UserId)">Delete</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (var item in Model)
+    {
+        <div class="index-tile">
+            <div class="index-tile-left" style="height:100%;vertical-align:middle">
+                <br />
+                <span class="glyphicon glyphicon-user" style="font-size:17px"></span>
+            </div>
+            <div class="index-tile-middle" onclick="getDetails(@item.UserId)">
+                <span style="font-weight:600">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</span>
+                <br />
+            </div>
+            <div class="index-tile-right">
+                <a asp-action="Edit" asp-route-id="@item.UserId">
+                    <div class="div-button-edit">E<br />D<br />T</div>
+                </a>
+                <div onclick="deleteItem(@item.UserId)" class="div-button-delete">D<br />E<br />L</div>
+            </div>
+        </div>
+    }
 </div>
 
 <!-- HELP BOX  -->
@@ -60,15 +48,11 @@
             <p>
                 Add new user.
             </p>
-            <h4>Edit</h4>
+            <h4 class="edit">EDT</h4>
             <p>
                 Make changes to existing user.
             </p>
-            <h4>Details</h4>
-            <p>
-                View more information about existing user.
-            </p>
-            <h4>Delete</h4>
+            <h4 class="delete">DEL</h4>
             <p>
                 Delete existing user.
             </p>

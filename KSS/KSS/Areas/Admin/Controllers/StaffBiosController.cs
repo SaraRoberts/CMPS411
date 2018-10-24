@@ -58,7 +58,7 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Admin/StaffBios/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName");
+            ViewData["UserId"] = new SelectList(_context.Users.Where(e => e.Role == "Staff" || e.Role == "Admin"), "UserId", "FirstName");
             return View();
         }
 
@@ -92,7 +92,7 @@ namespace KSS.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", staffBio.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users.Where(e => e.Role == "Staff" || e.Role == "Admin"), "UserId", "FirstName", staffBio.UserId);
             return View(staffBio);
         }
 

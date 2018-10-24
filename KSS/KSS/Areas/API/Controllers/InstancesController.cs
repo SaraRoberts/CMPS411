@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
+using KSS.Areas.API.Models;
 
 namespace KSS.Areas.API.Controllers
 {
@@ -20,24 +21,133 @@ namespace KSS.Areas.API.Controllers
         {
             _context = context;
         }
-
-        // GET: api/Instances
+        /// <summary>
+        /// this method is for fetching every instance.   
+        /// </summary>
+        /// <returns> InstancesDto list </returns>
         [HttpGet]
-        public IEnumerable<Instance> GetInstance()
+        public IActionResult GetInstance()
         {
-            return _context.Instance;
+
+            var query = (from i in _context.Instance
+                         join c in _context.Course on i.CourseId equals c.CourseId
+                         join l in _context.Location on i.LocationId equals l.LocationId
+                         join t in _context.Users on i.InstructorId equals t.UserId
+                         select new InstancesDto
+                         {
+                             InstanceId = i.InstanceId,
+                             StartDate = i.StartDate,
+                             Price = i.Price,
+                             Graded = i.Graded,
+                             CourseId = i.CourseId,
+                             LocationId = i.LocationId,
+                             Seats = i.Seats,
+                             InstructorId = i.InstructorId,
+                             BookAvailable = i.BookAvailable,
+                             BookPrice = i.BookPrice,
+                             CourseName = i.Course.Name,
+                             LocationName = i.Location.Name,
+                             LocationStreet = i.Location.Street,
+                             LocationCity = i.Location.City,
+                             LocationState = i.Location.State,
+                             LocationZip = i.Location.Zipcode,
+                             InstructorName = i.Instructor.FirstName + " " + i.Instructor.LastName,
+                             CourseCategory = i.Course.CourseCategory.Name
+
+                         }).ToList().OrderBy(i => i.InstanceId);
+
+
+            return Ok(query);
+
         }
 
         // GET: api/Instances/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetInstance([FromRoute] int id)
+        public async Task<IActionResult> GetInstanceById([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var instance = await _context.Instance.FindAsync(id);
+            var instance = await (from i in _context.Instance
+                         join c in _context.Course on i.CourseId equals c.CourseId
+                         join l in _context.Location on i.LocationId equals l.LocationId                         
+                         join t in _context.Users on i.InstructorId equals t.UserId
+                         where i.InstanceId == id
+                         select new InstancesDto
+                         {
+                             InstanceId = i.InstanceId,
+                             StartDate = i.StartDate,
+                             Price = i.Price,
+                             Graded = i.Graded,
+                             CourseId = i.CourseId,
+                             LocationId = i.LocationId,
+                             Seats = i.Seats,
+                             InstructorId = i.InstructorId,
+                             BookAvailable = i.BookAvailable,
+                             BookPrice = i.BookPrice,
+                             CourseName = i.Course.Name,
+                             LocationName = i.Location.Name,
+                             LocationStreet = i.Location.Street,
+                             LocationCity = i.Location.City,
+                             LocationState = i.Location.State,
+                             LocationZip = i.Location.Zipcode,
+                             InstructorName = i.Instructor.FirstName + " " + i.Instructor.LastName,
+                             CourseCategory = i.Course.CourseCategory.Name
+
+                         }).FirstAsync();
+
+            if (instance == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(instance);
+        }      
+        [HttpGet("GetByCategory/{category}")]
+        public async Task<IActionResult> GetInstanceByCategory([FromRoute] string category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            category = category.ToUpper();
+
+            if (!category.Equals("CPR") && !category.Equals("BLS") &&
+               !category.Equals("AED") && !category.Equals("EMT"))
+            {
+                return NotFound();
+            }
+
+            var instance = await (from i in _context.Instance
+                                  join c in _context.Course on i.CourseId equals c.CourseId
+                                  join l in _context.Location on i.LocationId equals l.LocationId
+                                  join t in _context.Users on i.InstructorId equals t.UserId
+                                  where i.Course.CourseCategory.Name == category
+                                  select new InstancesDto
+                                  {
+                                      InstanceId = i.InstanceId,
+                                      StartDate = i.StartDate,
+                                      Price = i.Price,
+                                      Graded = i.Graded,
+                                      CourseId = i.CourseId,
+                                      LocationId = i.LocationId,
+                                      Seats = i.Seats,
+                                      InstructorId = i.InstructorId,
+                                      BookAvailable = i.BookAvailable,
+                                      BookPrice = i.BookPrice,
+                                      CourseName = i.Course.Name,
+                                      LocationName = i.Location.Name,
+                                      LocationStreet = i.Location.Street,
+                                      LocationCity = i.Location.City,
+                                      LocationState = i.Location.State,
+                                      LocationZip = i.Location.Zipcode,
+                                      InstructorName = i.Instructor.FirstName + " " + i.Instructor.LastName,
+                                      CourseCategory = i.Course.CourseCategory.Name
+
+                                  }).ToListAsync();
 
             if (instance == null)
             {
@@ -47,76 +157,76 @@ namespace KSS.Areas.API.Controllers
             return Ok(instance);
         }
 
-        // PUT: api/Instances/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutInstance([FromRoute] int id, [FromBody] Instance instance)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //PUT: api/Instances/5
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutInstance([FromRoute] int id, [FromBody] Instance instance)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != instance.InstanceId)
-            {
-                return BadRequest();
-            }
+        //    if (id != instance.InstanceId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(instance).State = EntityState.Modified;
+        //    _context.Entry(instance).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!InstanceExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!InstanceExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        // POST: api/Instances
-        [HttpPost]
-        public async Task<IActionResult> PostInstance([FromBody] Instance instance)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/Instances
+        //[HttpPost]
+        //public async Task<IActionResult> PostInstance([FromBody] Instance instance)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            _context.Instance.Add(instance);
-            await _context.SaveChangesAsync();
+        //    _context.Instance.Add(instance);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInstance", new { id = instance.InstanceId }, instance);
-        }
+        //    return CreatedAtAction("GetInstance", new { id = instance.InstanceId }, instance);
+        //}
 
-        // DELETE: api/Instances/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteInstance([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// DELETE: api/Instances/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteInstance([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var instance = await _context.Instance.FindAsync(id);
-            if (instance == null)
-            {
-                return NotFound();
-            }
+        //    var instance = await _context.Instance.FindAsync(id);
+        //    if (instance == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Instance.Remove(instance);
-            await _context.SaveChangesAsync();
+        //    _context.Instance.Remove(instance);
+        //    await _context.SaveChangesAsync();
 
-            return Ok(instance);
-        }
+        //    return Ok(instance);
+        //}
 
         private bool InstanceExists(int id)
         {

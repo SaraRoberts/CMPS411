@@ -12,7 +12,7 @@ namespace KSS.Areas.Admin.Models
         public string Description { get; set; }
         public int TypicalPrice { get; set; }
         public bool BookAvailable { get; set; }
-        public decimal BookPrice { get; set; }
+        public double? BookPrice { get; set; }
 
         public int? PrereqId { get; set; } //FK references its own table
         public Course Prereq { get; set; }

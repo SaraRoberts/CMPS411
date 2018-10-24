@@ -5,6 +5,10 @@ body {
     padding-bottom: 20px;
     background-color: #f9f9f9;
 }
+textarea{
+    resize: none;
+    min-height:200px;
+}
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
