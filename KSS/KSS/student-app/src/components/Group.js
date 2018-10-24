@@ -13,7 +13,7 @@ export class Group extends Component {
             <div id="page">
                 <div id="main-container">
 
-                    <img id="topImage" src={groups1} alt="Groups1" />
+                    <img id="headerImage" src={groups1} alt="Groups1" />
 
                     <div class="tworow">
                         <div class="twocolumn">

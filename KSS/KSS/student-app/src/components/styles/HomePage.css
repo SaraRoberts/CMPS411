@@ -89,3 +89,11 @@
 body{
     background-color: lightgray;
 }
+
+#headerImage {
+    height: 300px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
