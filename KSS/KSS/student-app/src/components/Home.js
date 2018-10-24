@@ -14,11 +14,11 @@ export class Home extends Component {
     render() {
         return (
             <div id="main-container">
-                <div id = "nestedImage">
+                <div id = "nestedImage-container">
                     <img id="topImage" src={home1} alt="Home1" />
-                    <div>
-                        <img id="nested-logo" src={logo} alt="Logo" />
-                    </div>
+                </div>
+                <div id="centered-logo-container">
+                    <img id="nested-logo" src={logo} alt="Logo" />
                 </div>
 
                 <div id="banner-container">

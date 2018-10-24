@@ -2,11 +2,9 @@
     background-color: #a83939;
     box-sizing: border-box;
     width: 100%;
-    text-align: left;
-    padding: 100px 100px;
-    bottom: 0;
+    text-align: center;
     color: white;
-    height: 50px;
+    height: 100px;
 }
 
 .footer-navigation h3 {

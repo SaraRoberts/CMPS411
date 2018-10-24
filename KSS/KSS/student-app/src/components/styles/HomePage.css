@@ -7,7 +7,7 @@
     display: inline-block;
 }
 
-#nestedImage{
+#nestedImage-container{
     position: relative;
     top: 0;
     left: 0;
@@ -21,15 +21,21 @@
     left: 0;
     opacity: 0.4;
     filter: alpha(opacity=40);
+    margin-bottom: -200px;
+}
+
+#centered-logo-container{
+    align-content: center;
+    margin-top: -75px;
+    padding-bottom: 75px;
 }
 
 #nested-logo{
     width: 100%;
     max-width: 400px;
     min-width: 350px;
-    position: absolute;
-    top: 30px;
-    left: 350px;
+    display: inline-block;
+    margin: auto;
 }
 
 #banner-container {
