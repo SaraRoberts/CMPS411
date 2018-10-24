@@ -164,7 +164,7 @@ namespace KSS.Areas.Admin.Controllers
                     enrollment.Status = 'E';
                     _context.Add(enrollment);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("Roster", "Enrollments", new { id = enrollment.InstanceId });
                 }
 
                 List<UserViewModel> userList = UsersList();
@@ -237,7 +237,7 @@ namespace KSS.Areas.Admin.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Roster", "Enrollments", new { id = enrollment.InstanceId });
             }
             List<UserViewModel> userList = UsersList();
             List<UserViewModel> instanceList = InstancesList();
