@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using KSS.Areas.Admin.Data;
+using KSS.Areas.API.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using KSS.Areas.Admin.Data;
-using KSS.Areas.Admin.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace KSS.Areas.API.Controllers
 {
@@ -20,6 +24,48 @@ namespace KSS.Areas.API.Controllers
         {
             _context = context;
         }
+
+
+        [AllowAnonymous]
+        [Route("Login")]
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody] LoginApi login)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var user = _context.Users.SingleOrDefault(u => u.Email == login.Email);
+
+            if (user == null)
+                return NotFound();
+
+            //login.password is hashed
+            string loginHashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: login.Password,
+                salt: user.Salt,
+                prf: KeyDerivationPrf.HMACSHA256,
+                iterationCount: 10000,
+                numBytesRequested: 256 / 8));
+            //-------hash function end
+
+            if (loginHashed != user.Password)
+            {
+                return Forbid();
+            }
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.Email),
+                new Claim(ClaimTypes.Role, user.Role)
+            };
+            var claimsIdentity = new ClaimsIdentity(
+            claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity));
+            return Ok();
+        }
+
 
         //// GET: api/Users
         //[HttpGet]
