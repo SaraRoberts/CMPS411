@@ -17,7 +17,7 @@ export class Login extends Component {
                             <hr />
                         </div>
                     </div>
-                    <div class="main-login main-center" class="login-container">
+                    <div class="main-login main-center">
                         <form onSubmit={this.handleSubmit} class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label for="email" class="cols-sm-2 control-label">Email</label>

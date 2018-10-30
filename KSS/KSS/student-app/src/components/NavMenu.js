@@ -13,7 +13,7 @@ export class NavMenu extends Component {
                 <div className="container">
                     <div class="navmenu">
                         <Nav>
-                            <NavItem eventKey={1} href="/"> Home </NavItem>
+                            <NavItem class="left-button-divider" eventKey={1} href="/"> Home </NavItem>
                             <NavItem eventKey={2} href="/catalog"> Catalog </NavItem>
                             <NavItem eventKey={3} href="/group"> Group </NavItem>
                             <NavItem eventKey={4} href="/contact"> Contact </NavItem>
@@ -29,7 +29,7 @@ export class NavMenu extends Component {
                             </NavDropdown>
                             </div>
                             <div id="register-button">
-                                <NavItem eventKey={6} href="/register"> Sign Up </NavItem>
+                                <NavItem class="left-button-divider" eventKey={6} href="/register"> Sign Up </NavItem>
                                 <NavItem eventKey={7} href="/login"> Login </NavItem>
                                 <NavItem eventKey={8} href="/logout"> Logout </NavItem>
                             </div>
