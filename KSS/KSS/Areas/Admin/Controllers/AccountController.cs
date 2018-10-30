@@ -45,6 +45,11 @@ namespace KSS.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(User vm)
         {
+            if(vm.Password == null)
+            {
+                ViewData["Error"] = "ERROR";
+                return View();
+            }
             var user = await _context.Users.SingleOrDefaultAsync(m => m.Email == vm.Email);
             if (user != null && ModelState.IsValid)
             {
