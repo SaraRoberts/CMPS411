@@ -17,14 +17,14 @@ export class Login extends Component {
                             <hr />
                         </div>
                     </div>
-                    <div class="main-login main-center">
+                    <div class="main-login main-center" class="login-container">
                         <form onSubmit={this.handleSubmit} class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label for="email" class="cols-sm-2 control-label">Email</label>
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChange} />
+                                        <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@ export class Login extends Component {
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChange} />
+                                        <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>

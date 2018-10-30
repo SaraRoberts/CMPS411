@@ -29,7 +29,7 @@ export class NavMenu extends Component {
                             </NavDropdown>
                             </div>
                             <div id="register-button">
-                                <NavItem eventKey={6} href="/register"> Register </NavItem>
+                                <NavItem eventKey={6} href="/register"> Sign Up </NavItem>
                                 <NavItem eventKey={7} href="/login"> Login </NavItem>
                                 <NavItem eventKey={8} href="/logout"> Logout </NavItem>
                             </div>

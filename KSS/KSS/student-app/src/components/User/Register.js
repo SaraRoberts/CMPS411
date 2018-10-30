@@ -13,11 +13,11 @@ export class Register extends Component {
                 <div class="row main">
                     <div class="panel-heading">
                         <div class="panel-title text-center">
-                            <h3 class="title">Register </h3>
+                            <h3 class="title">Sign Up </h3>
                             <hr />
                         </div>
                     </div>
-                    <div class="main-login main-center">
+                    <div class="main-login main-center" >
                         <form onSubmit={this.handleSubmit} class="form-horizontal">
 
                             <div class="form-group">
@@ -25,7 +25,7 @@ export class Register extends Component {
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChange} />
+                                        <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@ export class Register extends Component {
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChange} />
+                                        <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@ export class Register extends Component {
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm your Password" onChange={this.handleChange} />
+                                        <input type="password" class="form-control" class="form-blank" name="confirmPassword" id="confirmPassword" placeholder="Confirm your Password" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@ export class Register extends Component {
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Enter your First Name" onChange={this.handleChange} />
+                                        <input type="text" class="form-control" class="form-blank" name="firstName" id="firstName" placeholder="Enter your First Name" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@ export class Register extends Component {
                                     <div class="cols-sm-10">
                                         <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Enter your Last Name" onChange={this.handleChange} />
+                                        <input type="text" class="form-control" class="form-blank" name="lastName" id="lastName" placeholder="Enter your Last Name" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>
@@ -75,13 +75,13 @@ export class Register extends Component {
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="(###) ### - ####" onChange={this.handleChange} />
+                                        <input type="text" class="form-control" class="form-blank" name="phone" id="phone" placeholder="(###) ### - ####" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group ">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Sign Up</button>
                             </div>
                         </form>
                     </div>

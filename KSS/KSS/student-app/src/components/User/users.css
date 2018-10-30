@@ -16,15 +16,43 @@ input::-webkit-input-placeholder {
 
 }
 
+label{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input{
+    font-size: 14px;
+}
+
 .main-center{
     margin-top: 30px;
     margin: 0 auto;
-    max-width: 330px;
+    max-width: 400px;
     padding: 40px 40px;
 }
 
+.login-container{
+    height: 200px;
+}
+
+.form-container{
+    width: 600px;
+    background-color: white;
+}
+
+.form-blank {
+    margin-bottom: 10px;
+    width: 200px;
+    height: 32px;
+    text-align: center;
+}
+
 .login-button{
-   margin-top: 5px;
+   margin-top: 20px;
+   width: 100px;
+   height: 32px;
 }
 
 .login-register{
