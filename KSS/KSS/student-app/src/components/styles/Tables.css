@@ -4,6 +4,14 @@
 * {
     box-sizing: border-box;
 }
+
+.details-button{
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    margin-left: 35px;
+}
+
 .twocolumn {
     float: left;
     width: 50%;

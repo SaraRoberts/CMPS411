@@ -35,7 +35,7 @@ export class Catalog extends Component {
                     <Table.Cell>{courses.categoryName}</Table.Cell>
                     <Table.Cell>{courses.name}</Table.Cell>
                     <Table.Cell>{courses.description}</Table.Cell>
-                    <Table.Cell><Button>Details</Button></Table.Cell>
+                    <Table.Cell><Button className="details-button" >See Details</Button></Table.Cell>
                 </Table.Row>
                 )}
             </Table.Body>
