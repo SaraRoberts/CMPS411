@@ -11,6 +11,7 @@ import { Search } from './components/Dashboard/Search';
 import { Login } from './components/User/Login';
 import { Logout } from './components/User/Logout';
 import { Register } from './components/User/Register';
+import { Payment } from './components/Payment';
 import './App.css';
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
                             <Route path='/search' component={Search} />
                             <Route path='/login' component={Login} />
                             <Route path='/logout' component={Logout} />
+                            <Route path='/payment' component={Payment} />
                             <Route exact path='/register' component={Register} />
                         </Switch>
                     </BrowserRouter>

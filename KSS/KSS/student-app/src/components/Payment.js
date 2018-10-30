@@ -3,9 +3,10 @@ import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PayPalButton from 'react-paypal-button'
 
-export class Home extends Component {
+export class Payment extends Component {
     render(){
         return (
+            <div>
             <PayPalButton
                 //Uncomment when we move into production
                 //env='production'
@@ -16,7 +17,8 @@ export class Home extends Component {
                 amount={0.01}
                 currency='USD'
                 commit={true}
-            />
+                />
+             </div>
         );
     }
 }
