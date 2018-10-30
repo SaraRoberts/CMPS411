@@ -12,7 +12,7 @@ export class Payment extends Component {
         }
         return (
             <PaypalExpressBtn
-                env={'live'} //change this to 'live' to complete REAL transactions
+                env={'sandbox'} //change this to 'live' to complete REAL transactions
                 client={client}
                 currency={'USD'}
                 total={0.01}
