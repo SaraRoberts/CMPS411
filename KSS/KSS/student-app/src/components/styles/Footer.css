@@ -69,12 +69,6 @@ span.new-line-span {
     margin: 0;
 }
 
-.social:hover {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-}
-
 .social {
     float: right;
     display: inline-block;
@@ -86,6 +80,11 @@ span.new-line-span {
     -webkit-transition-duration: 0.5s;
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
+}
+
+.social-icons{
+    width: 50px;
+    height: 50px;
 }
 
 .social span {

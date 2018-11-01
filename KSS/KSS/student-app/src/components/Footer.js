@@ -1,5 +1,7 @@
 ﻿import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import facebook from './images/Facebook.png';
+import email from './images/Email.png';
 import './styles/Footer.css';
 
 
@@ -24,7 +26,10 @@ export class Footer extends React.Component {
                         <p className="company-name">KSS © 2018 </p>
                     </div>
                     <div className="social">
-                        <span>Social Icons</span>
+                        <img className="social-icons" src={email} href="" />
+                    </div>
+                    <div className="social">
+                        <img className="social-icons" src={facebook} href="" />
                     </div>
                 </div>
             </footer>
