@@ -2,13 +2,14 @@
     background-color: #a83939;
 }
 
-.container{
+.container {
     width: 85%;
     max-height: 46px;
     max-width: 1000px;
     text-align: center;
     margin: auto;
 }
+
 .nav {
     list-style-type: none;
     margin: 0;
