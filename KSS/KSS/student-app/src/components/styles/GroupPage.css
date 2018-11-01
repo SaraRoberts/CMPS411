@@ -2,6 +2,49 @@
 
 }
 
-#info{
+#main-container{
+    text-align: center;
+}
+
+#tworow {
+    text-align: center;
+    align-content: center;
+}
+
+#info {
+    margin-top: 60px;
+    margin-right: 10px;
+    margin-right: 10px;
     text-align: left;
+    height: 500px;
+    color: white;
+    width: 45%;
+    background-color: #a83939;
+    border-radius: 5px;
+    margin-bottom: -115px;
+    box-shadow: 8px 8px 20px -4px grey, -8px 8px 20px -4px grey;
+    min-width: 425px;
+}
+
+#main-image{
+    max-width: 550px;
+    max-height: 550px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+#info h1{
+    text-align: left;
+    margin-top: -40px;
+}
+
+@media only screen and (max-width: 887px) {
+    #info{
+        margin-top: 150px;
+    }
+
+    #tworow {
+        text-align: center;
+        align-content: center;
+    }
 }

@@ -8,7 +8,6 @@ import './styles/GroupPage.css';
 export class Group extends Component {
     displayName = Group.name
 
-
     render() {
         return (
             <div id="page">
@@ -18,7 +17,7 @@ export class Group extends Component {
 
                     <div class="tworow">
                         <div class="twocolumn">
-                            <img src={k} alt="K" />
+                            <img id="main-image" src={k} alt="K" />
                         </div>
                         <div class="twocolumn" id="info">
                             <h1>Interested in enrolling as a group?</h1>
