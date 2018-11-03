@@ -378,3 +378,14 @@ aside.help {
 }
 
 /* Index Tiles End */
+
+/* Roster Glyphs */
+
+a.transfer {
+    text-decoration: none;
+}
+
+.glyphicon-trash {
+    color: red;
+    cursor: pointer;
+}
