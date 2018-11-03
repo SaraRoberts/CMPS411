@@ -38,11 +38,10 @@ namespace KSS.Areas.Admin.Controllers
         // GET: Instructor's Classes
         public async Task<IActionResult> ClassList()
         {
-            var user = await _context.Users.FirstOrDefaultAsync(e => e.Email == User.Identity.Name);
             var dataContext = _context.Instance.Include(i => i.Course)
                 .Include(i => i.Location)
                 .Include(i => i.Instructor)
-                .Where(e => e.InstructorId == user.UserId);
+                .Where(e => e.StartDate >= DateTime.UtcNow);
             return View(await dataContext.ToListAsync());
         }
 

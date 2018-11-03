@@ -25,13 +25,14 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var user = await _context.Users.FirstOrDefaultAsync(e => e.Email == User.Identity.Name);
             dynamic instances = new ExpandoObject();
             instances.FutureInstances = _context.Instance
                 .Include(i => i.Course)
                 .Include(i => i.Location)
-                .Where(e => e.StartDate >= DateTime.UtcNow)
+                .Where(e => e.StartDate >= DateTime.UtcNow && e.InstructorId == user.UserId)
                 .OrderBy(e => e.StartDate);
             instances.GradeInstances = _context.Instance
                 .Include(i => i.Course)
