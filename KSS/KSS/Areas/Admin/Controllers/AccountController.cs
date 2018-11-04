@@ -115,7 +115,7 @@ namespace KSS.Areas.Admin.Controllers
         {
             await HttpContext.SignOutAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction("Login", "Account", new { area = "Admin" });
 
         }
     }

@@ -43,11 +43,22 @@ textarea{
     text-align: center;
 }
 
-/*Properties of the input login boxes*/
-#login-box{
-    height: 40px;
-    font-size: 18px;
+.login {
+    margin: auto;
     text-align: center;
+    padding: 20px;
+    background-color: #FdFdFd;
+    width: 90%;
+    min-width: 300px;
+    max-width: 500px;
+    color: black;
+    box-shadow: 50px;
+    border: solid 1px lightgrey
+}
+
+.login img {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 /* Hide/rearrange for smaller screens */
