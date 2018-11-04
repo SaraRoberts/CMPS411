@@ -376,7 +376,7 @@ namespace KSS.Areas.Admin.Controllers
 
                 await _context.SaveChangesAsync();
             }
-            return View();
+            return RedirectToAction("Index", "Dashboard");
         }
 
         private bool InstanceExists(int id)

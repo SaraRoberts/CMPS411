@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KSS.Areas.Admin.Models.Enrollment>
+﻿@model List<KSS.Areas.Admin.Models.Enrollment>
 
 @{
     ViewData["Title"] = "Grade";
@@ -14,22 +14,21 @@ Date: @ViewData["date"]<br />
 
 <div class="main-col">
     <h4>Students</h4>
-    @using (Html.BeginForm("Grade", "Instances", FormMethod.Post))
-    {
+    <form asp-area="Admin" asp-controller="Instances" asp-action="Grade" method="post">
         <input name="instanceId" type="hidden" value="@ViewData["instance"]" />
-        @foreach (var item in Model)
+        @for (int i = 0; i < Model.Count; i++)
         {
-            <label class="switchContainer">
-                <input type="checkbox" name="studentsPassed" id="studentsPassed" value="@item.User.UserId" checked>
-                <span class="switch">
-                    @Html.DisplayFor(modelItem => item.User.FirstName) <br />
-                    @Html.DisplayFor(modelItem => item.User.LastName)
-                </span>
-            </label>
+        <label class="switchContainer">
+            <input type="checkbox" name="studentsPassed" id="studentsPassed" value="@Model[i].User.UserId" checked>
+            <span class="switch">
+                @Model[i].User.FirstName <br />
+                @Model[i].User.LastName
+            </span>
+        </label>
         }
         <br />
         <button type="submit" class="btn btn-info">Submit Grades</button>
-    }
+    </form>
 </div>
 
 <!-- HELP BOX  -->
