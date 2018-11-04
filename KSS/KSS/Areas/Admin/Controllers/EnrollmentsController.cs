@@ -309,7 +309,7 @@ namespace KSS.Areas.Admin.Controllers
                 UserViewModel user = new UserViewModel();
                 user.FirstName = name.LastName;
                 user.LastName = name.FirstName;
-                user.FullName = name.FirstName + " " + name.LastName;
+                user.FullName = name.FirstName + " " + name.LastName + " " + name.Email;
                 user.UserId = name.UserId;
                 usersList.Add(user);
             }
