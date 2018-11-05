@@ -1,12 +1,53 @@
 ﻿import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from 'axios';
 import './users.css';  
 
 export class Register extends Component {
     displayName = Register.name
 
+    //Constructor
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            confirmPassword: "",
+            firstName: "",
+            lastName: "",
+            phone: ""
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    //Handles Change
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+    //Handles Submit
+    handleSubmit(event) {
+        const user = {
+            email: this.state.email,
+            password: this.state.password,
+            confirmPassword: this.state.confirmPassword,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            phone: this.state.phone
+        };
 
+    // Posts to the API
+        axios.post('api/account/register', user)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+            .catch(error => (alert("Incorrect registration please try again")))
+
+        alert("Thank you for registering!")
+    }
+
+    // Visuals
     render() {
         return (
             <div class="container">
