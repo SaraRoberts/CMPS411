@@ -30,6 +30,9 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+            <p style="color:red">
+                @ViewData["Duplicate"]  <!-- Displays if email already used. -->
+            </p>
             <div class="form-group">
                 <label asp-for="Password" class="control-label">Password</label>
                 <input asp-for="Password" class="form-control" />

@@ -79,7 +79,7 @@ namespace KSS.Areas.Admin.Controllers
 
         // GET: Admin/Users/Create
         public IActionResult Create()
-        {
+        {            
             return View();
         }
 
@@ -92,6 +92,15 @@ namespace KSS.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var existingUser = await _context.Users
+                .FirstOrDefaultAsync(m => m.Email == user.Email);
+                
+                if (existingUser != null)
+                {
+                    ViewData["Duplicate"] = "Email address already used.  Please use another email address.";
+                    return View(user);
+                }
+
                 //password is hashed
                 byte[] salt = new byte[128 / 8];
                 using (var rng = RandomNumberGenerator.Create())
