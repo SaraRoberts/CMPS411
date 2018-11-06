@@ -21,7 +21,7 @@
             </div>
             <div class="index-tile-middle" onclick="getDetails(@item.InstanceId)">
                 <span style="font-weight:600">@Html.DisplayFor(modelItem => item.Course.Name)</span><br />
-                @Html.DisplayFor(modelItem => item.StartDate.LocalDateTime)<br />
+                @Html.DisplayFor(modelItem => item.StartDate.UtcDateTime)<br />
                 @Html.DisplayFor(modelItem => item.Location.Name)
             </div>
             <div class="index-tile-right">

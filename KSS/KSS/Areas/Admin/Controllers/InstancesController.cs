@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Globalization;
 
 namespace KSS.Areas.Admin.Controllers
 {
@@ -119,10 +120,7 @@ namespace KSS.Areas.Admin.Controllers
             return Json(new
             {
                 success    = true,
-                startDate  = instance.StartDate.DayOfWeek +
-                    ", " + month + " " + instance.StartDate.Day +
-                    ", " + instance.StartDate.Year +
-                    ", " + instance.StartDate.TimeOfDay,
+                startDate  = instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")),
                 price      = "Price : $ " + instance.Price,
                 courseName = instance.Course.Name,
                 location   = "Location : " + instance.Location.Street,
