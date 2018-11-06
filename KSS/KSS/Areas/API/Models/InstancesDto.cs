@@ -8,7 +8,7 @@ namespace KSS.Areas.API.Models
     public class InstancesDto
     {
         public int InstanceId { get; set; } //PK
-        public DateTimeOffset StartDate { get; set; }
+        public string StartDate { get; set; }
         public double Price { get; set; }
         public bool Graded { get; set; }
         public string CourseCategory { get; set; }

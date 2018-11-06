@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
 using KSS.Areas.API.Models;
+using System.Globalization;
 
 namespace KSS.Areas.API.Controllers
 {
@@ -36,7 +37,7 @@ namespace KSS.Areas.API.Controllers
                          select new InstancesDto
                          {
                              InstanceId = i.InstanceId,
-                             StartDate = i.StartDate,
+                             StartDate = i.StartDate.ToString("f",CultureInfo.CreateSpecificCulture("en-US")),
                              Price = i.Price,
                              Graded = i.Graded,
                              CourseId = i.CourseId,
@@ -78,7 +79,7 @@ namespace KSS.Areas.API.Controllers
                          select new InstancesDto
                          {
                              InstanceId = i.InstanceId,
-                             StartDate = i.StartDate,
+                             StartDate = i.StartDate.ToString("f",CultureInfo.CreateSpecificCulture("en-US")),
                              Price = i.Price,
                              Graded = i.Graded,
                              CourseId = i.CourseId,
@@ -129,7 +130,8 @@ namespace KSS.Areas.API.Controllers
                                   select new InstancesDto
                                   {
                                       InstanceId = i.InstanceId,
-                                      StartDate = i.StartDate,
+                                      StartDate = i.StartDate.ToString("f",
+                  CultureInfo.CreateSpecificCulture("en-US")),
                                       Price = i.Price,
                                       Graded = i.Graded,
                                       CourseId = i.CourseId,
@@ -157,76 +159,7 @@ namespace KSS.Areas.API.Controllers
             return Ok(instance);
         }
 
-        //PUT: api/Instances/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutInstance([FromRoute] int id, [FromBody] Instance instance)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    if (id != instance.InstanceId)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(instance).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!InstanceExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
-        //// POST: api/Instances
-        //[HttpPost]
-        //public async Task<IActionResult> PostInstance([FromBody] Instance instance)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    _context.Instance.Add(instance);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetInstance", new { id = instance.InstanceId }, instance);
-        //}
-
-        //// DELETE: api/Instances/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteInstance([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    var instance = await _context.Instance.FindAsync(id);
-        //    if (instance == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Instance.Remove(instance);
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok(instance);
-        //}
+      
 
         private bool InstanceExists(int id)
         {
