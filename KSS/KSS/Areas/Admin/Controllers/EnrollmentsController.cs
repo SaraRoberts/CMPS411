@@ -143,7 +143,7 @@ namespace KSS.Areas.Admin.Controllers
             var instance = await _context.Instance.FirstOrDefaultAsync(m => m.InstanceId == id);
 
             ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance", instance.InstanceId);
-            ViewData["UserId"] = new SelectList(userList, "UserId", "FullName");
+            ViewData["UserId"] = userList;
             return View();
         }
 
@@ -172,15 +172,16 @@ namespace KSS.Areas.Admin.Controllers
 
                 ViewData["Duplicate"] = "User already registered for this class.";
                 ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance", enrollment.InstanceId);
-                ViewData["UserId"] = new SelectList(userList, "UserId", "FullName");
+                ViewData["UserId"] = userList;
                 return View(enrollment);
             }
 
             List<UserViewModel> userList2 = UsersList();
             List<UserViewModel> instanceList2 = InstancesList();
 
+            ViewData["Duplicate"] = "Select a User from the search list or add user to system.";
             ViewData["InstanceId"] = new SelectList(instanceList2, "InstanceId", "FullInstance", enrollment.InstanceId);
-            ViewData["UserId"] = new SelectList(userList2, "UserId", "FullName");
+            ViewData["UserId"] = userList2;
             return View(enrollment);
         }
 
@@ -309,8 +310,10 @@ namespace KSS.Areas.Admin.Controllers
                 UserViewModel user = new UserViewModel();
                 user.FirstName = name.LastName;
                 user.LastName = name.FirstName;
-                user.FullName = name.FirstName + " " + name.LastName + " " + name.Email;
+                user.FullName = name.FirstName + " " + name.LastName;
                 user.UserId = name.UserId;
+                user.Email = name.Email;
+                user.Phone = name.Phone;
                 usersList.Add(user);
             }
             return usersList;

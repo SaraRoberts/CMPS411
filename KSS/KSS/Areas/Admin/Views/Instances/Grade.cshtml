@@ -4,13 +4,9 @@
     ViewData["Title"] = "Grade";
 }
 
-<h3>Submit Grades</h3>
-
-<h4>Confirm class details below</h4>
-
-Course: @ViewData["class"]<br />
-Location: @ViewData["location"]<br />
-Date: @ViewData["date"]<br />
+<h4>@ViewData["class"]</h4>
+@ViewData["location"]<br />
+@ViewData["date"]<br />
 
 <div class="main-col">
     <h4>Students</h4>
@@ -38,8 +34,11 @@ Date: @ViewData["date"]<br />
             <h4>Help</h4>
         </div>
         <div class="tooltips-bottom">
-            <p style="background:rgba(168, 57, 57, 0.2); font-weight:600;">
+            <p class="pageDesc">
                 Page lets instructor submit pass / fail grades.
+            </p>
+            <p>
+                Click or touch student's name to toggle pass or fail.
             </p>
             <h4 style="background-color:lightgreen;">Student Name</h4>
             <p>

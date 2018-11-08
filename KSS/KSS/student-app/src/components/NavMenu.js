@@ -11,17 +11,17 @@ export class NavMenu extends Component {
         return (
             <header>
                 <div className="container">
-                    <div class="navmenu">
+                    <div className="navmenu">
                         <Nav>
-                            <NavItem class="left-button-divider" eventKey={1} href="/"> Home </NavItem>
+                            <NavItem className="left-button-divider" eventKey={1} href="/"> Home </NavItem>
                             <NavItem eventKey={2} href="/catalog"> Catalog </NavItem>
                             <NavItem eventKey={3} href="/group"> Group </NavItem>
                             <NavItem eventKey={4} href="/contact"> Contact </NavItem>
                             <NavItem eventKey={5} href="/payment"> Payment </NavItem>
 
-                            <div class="dropdown">
+                            <div className="dropdown">
                             <NavDropdown eventKey={5} title="Dashboard" >
-                                <div class="dropdown-content">
+                                <div className="dropdown-content">
                                 <MenuItem eventKey={5.1} href="/myclasses"> My Classes </MenuItem>
                                 <MenuItem eventKey={5.2} href="/search"> Class Search </MenuItem>
                                 <MenuItem eventKey={5.3} href="/account">My Account</MenuItem>
@@ -29,7 +29,7 @@ export class NavMenu extends Component {
                             </NavDropdown>
                             </div>
                             <div id="register-button">
-                                <NavItem class="left-button-divider" eventKey={6} href="/register"> Sign Up </NavItem>
+                                <NavItem className="left-button-divider" eventKey={6} href="/register"> Sign Up </NavItem>
                                 <NavItem eventKey={7} href="/login"> Login </NavItem>
                                 <NavItem eventKey={8} href="/logout"> Logout </NavItem>
                             </div>

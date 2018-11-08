@@ -9,16 +9,22 @@
     <div style="margin:auto; max-width: 400px">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <p style="color:red">
-                @ViewData["Duplicate"]  <!-- Displays if user already in class. -->
-            </p>
             <div class="form-group">
                 <label asp-for="InstanceId" class="control-label">Class</label>
                 <select asp-for="InstanceId" class="form-control" asp-items="ViewBag.InstanceId"></select>
             </div>
+            <p style="color:red">
+                @ViewData["Duplicate"]  <!-- Displays if user already in class or invalid user input. -->
+            </p>
             <div class="form-group">
                 <label asp-for="UserId" class="control-label">User</label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <input type="text" list="users" id="user" asp-for="UserId" class="form-control" />
+                <datalist id="users">
+                    @foreach (var u in ViewBag.UserId)
+                    {
+                    <option value="@u.UserId">@u.FullName (@u.Email) (@u.Phone)</option>
+                    }
+                </datalist>
             </div>
             <div class="form-group">
                 <div class="checkbox">
