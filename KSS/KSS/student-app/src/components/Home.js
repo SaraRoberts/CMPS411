@@ -58,18 +58,26 @@ export class Home extends Component {
                         
                     <div className="course">
                         <img className="course-image" src={blsImage} />
-                        <h2>BLS</h2>
-                        <p>Learn the techniques and practices of Basic Life Support (BLS), a type
-                            of care utilized by first responders, healthcare providers, and public safety
-                            personel in order to help those experiencing cardiac or respiratory distress.
+                        <h2>AQU</h2>
+                        <p>These courses teaches
+                            applicable safety practices for individuals such as swim coaches and lifeguard
+                            instructors and even professional resuers.
                         </p>
                     </div>
                     <div className="course">
                         <img className="course-image" src={aedImage} />
-                        <h2>AED</h2>
-                        <p>Learn how to utilize an AED, automated external defribillator, a device used to help those 
-                            suffering from a sudden cardiac arrest. It is used to analyze heart rhythm and 
-                            deliver an electric shock to help re-establish it.
+                        <h2>BBS</h2>
+                        <p>Babysitting can sometimes be difficult, but BBS courses teach babysitting skills
+                            such as leadership, keeping children safe, and helping kids to behave to anyone
+                            who wants to learn or even grow a babysitting business.
+                        </p>
+                    </div>
+                    <div className="course">
+                        <img className="course-image" src={aedImage} />
+                        <h2>CSS</h2>
+                        <p>Learn how to properly conduct cild safety seat checks, and be informed on the best
+                            way to utilize and understand seat belts and child restraint systems while in 
+                            motorized vehicles.
                         </p>
                     </div>
                 </div>
