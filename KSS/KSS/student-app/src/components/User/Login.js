@@ -1,11 +1,44 @@
 ﻿import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";  
+import axios from 'axios';
 import './users.css';  
 
 export class Login extends Component {
     displayName = Login.name
+    //Follows pattern (pretty much the same thing) as the register page
+    //Constructor
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: ""
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
+    //Handles Change
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+    //Handles Submit
+    handleSubmit(event) {
+        const user = {
+            email: this.state.email,
+            password: this.state.password,
+        };
+
+        // Posts to the API
+        axios.post('api/account/login', user)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+            .catch(error => (alert("Incorrect Login, please try again")))
+
+        alert("Wow, the login worked!")
+    }
 
     render() {
         return (
