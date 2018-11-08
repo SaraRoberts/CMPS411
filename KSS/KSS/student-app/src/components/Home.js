@@ -45,38 +45,37 @@ export class Home extends Component {
                         <h2>CPR</h2>
                         <p>Learn CPR, a medical procedure involving specific compression
                             of a patient's chest, performed in an attempt to bring back
-                            the blood circulation and breathing os a person who has suffered
-                            cardiac arrest
+                            the blood circulation and breathing of a person who has suffered
+                            cardiac arrest.
                         </p>
                     </div>
                     <div className="course">
                         <img className="course-image" src={emrImage} />
                         <h2>EMR</h2>
                         <p> In case of a medical emergency, learn techniques and procedures for 
-                            helping others who are in need of attention and treating minor wounds
+                            helping others in need of immediate attention and treating minor wounds.
                         </p>
                     </div>
-                        
                     <div className="course">
                         <img className="course-image" src={aquImage} />
                         <h2>AQU</h2>
-                        <p>These courses teaches
-                            applicable safety practices for individuals such as swim coaches and lifeguard
-                            instructors and even professional resuers.
+                        <p>These courses teach
+                            applicable safety practices for individuals such as swim coaches, lifeguard
+                            instructors, and even professional rescuers.
                         </p>
                     </div>
                     <div className="course">
                         <img className="course-image" src={bbsImage} />
                         <h2>BBS</h2>
-                        <p>Babysitting can sometimes be difficult, but BBS courses teach babysitting skills
-                            such as leadership, keeping children safe, and helping kids to behave to anyone
+                        <p>Babysitting can sometimes be difficult, but BBS courses teach babysitting skills,
+                            such as leadership, keeping children safe, and helping kids to behave, to anyone
                             who wants to learn or even grow a babysitting business.
                         </p>
                     </div>
                     <div className="course">
                         <img className="course-image" src={cssImage} />
                         <h2>CSS</h2>
-                        <p>Learn how to properly conduct cild safety seat checks, and be informed on the best
+                        <p>Learn how to properly conduct child safety seat checks and be informed on the best
                             way to utilize and understand seat belts and child restraint systems while in 
                             motorized vehicles.
                         </p>
