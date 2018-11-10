@@ -12,22 +12,42 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label">First Name</label>
-                <input asp-for="FirstName" class="form-control" />
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-menu-right"></span>
+                    </div>
+                    <input asp-for="FirstName" class="form-control currency" />
+                </div>
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label">Last Name</label>
-                <input asp-for="LastName" class="form-control" />
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-menu-right"></span>
+                    </div>
+                    <input asp-for="LastName" class="form-control currency" />
+                </div>
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Phone" class="control-label">Phone Number</label>
-                <input asp-for="Phone" class="form-control" />
+                <label asp-for="Phone" class="control-label">Phone</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-earphone"></span>
+                    </div>
+                    <input asp-for="Phone" class="form-control currency" />
+                </div>
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label">Email</label>
-                <input asp-for="Email" class="form-control" />
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </div>
+                    <input asp-for="Email" class="form-control currency" />
+                </div>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <p style="color:red">
@@ -35,21 +55,36 @@
             </p>
             <div class="form-group">
                 <label asp-for="Password" class="control-label">Password</label>
-                <input asp-for="Password" class="form-control" />
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </div>
+                    <input asp-for="Password" class="form-control currency" />
+                </div>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ConfirmPassword" class="control-label">Confirm Password</label>
-                <input asp-for="ConfirmPassword" class="form-control" />
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </div>
+                    <input asp-for="ConfirmPassword" class="form-control currency" />
+                </div>
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Role" class="control-label">Role</label>
-                <select asp-for="Role" class="form-control">
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Staff">Staff</option>
-                </select>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-certificate"></span>
+                    </div>
+                    <select asp-for="Role" class="form-control">
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Staff">Staff</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Role" class="text-danger"></span>
             </div>
             <br style="clear: both;">
