@@ -26,9 +26,9 @@
             </div>
             <div class="index-tile-right">
                 <a asp-action="Edit" asp-route-id="@item.UserId">
-                    <div class="div-button-edit">E<br />D<br />T</div>
+                    <div class="div-button-edit"><br /><span class="glyphicon glyphicon-pencil"></span><br /></div>
                 </a>
-                <div onclick="deleteItem(@item.UserId)" class="div-button-delete">D<br />E<br />L</div>
+                <div onclick="deleteItem(@item.UserId)" class="div-button-delete"><br /><span class="glyphicon glyphicon-trash"></span><br /></div>
             </div>
         </div>
     }

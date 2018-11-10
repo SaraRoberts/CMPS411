@@ -26,15 +26,15 @@
             </div>
             <div class="index-tile-right">
                 <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">
-                    <div class="div-button-add">A<br />D<br />D</div>
+                    <div class="div-button-add"><br /><span class="glyphicon glyphicon-user"></span><br /></div>
                 </a>
                 <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">
-                    <div class="div-button-roster">R<br />S<br />T</div>
+                    <div class="div-button-roster"><br /><span class="glyphicon glyphicon-list"></span><br /></div>
                 </a>
                 <a asp-action="Edit" asp-route-id="@item.InstanceId">
-                    <div class="div-button-edit">E<br />D<br />T</div>
+                    <div class="div-button-edit"><br /><span class="glyphicon glyphicon-pencil"></span><br /></div>
                 </a>
-                <div onclick="deleteItem(@item.InstanceId)" class="div-button-delete">D<br />E<br />L</div>
+                <div onclick="deleteItem(@item.InstanceId)" class="div-button-delete"><br /><span class="glyphicon glyphicon-trash"></span><br /></div>
             </div>
         </div>
     }
