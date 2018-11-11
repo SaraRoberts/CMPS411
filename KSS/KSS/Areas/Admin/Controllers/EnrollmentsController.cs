@@ -159,6 +159,22 @@ namespace KSS.Areas.Admin.Controllers
                 var duplicate = await _context.Enrollment
                     .FirstOrDefaultAsync(e => e.InstanceId == enrollment.InstanceId && e.UserId == enrollment.UserId);
 
+                // get number students enrolled in instance and check if there are seats available.
+                    var numStudents = _context.Enrollment
+                        .Count(e => e.InstanceId.Equals(enrollment.InstanceId));
+                    var instance = await _context.Instance.FirstOrDefaultAsync(e => e.InstanceId.Equals(enrollment.InstanceId));
+
+                    if (numStudents >= instance.Seats)
+                    {
+                        List<UserViewModel> userList3 = UsersList();
+                        List<UserViewModel> instanceList3 = InstancesList();
+
+                        ViewData["Duplicate"] = "This class is full.";
+                        ViewData["InstanceId"] = new SelectList(instanceList3, "InstanceId", "FullInstance", enrollment.InstanceId);
+                        ViewData["UserId"] = userList3;
+                        return View(enrollment);
+                    }
+
                 if (duplicate == null)
                 {
                     enrollment.Status = 'E';
