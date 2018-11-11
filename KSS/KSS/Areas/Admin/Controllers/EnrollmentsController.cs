@@ -121,6 +121,7 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
+            ViewData["Instance"] = instance.InstanceId;
             ViewData["Course"] = instance.Course.Name;
             ViewData["Location"] = instance.Location.Name;
             return View(enrollment);
@@ -348,7 +349,7 @@ namespace KSS.Areas.Admin.Controllers
                 var startDate = inst.StartDate.ToString();
                 location.StartDate = startDate;
                 location.InstanceId = inst.InstanceId;
-                location.FullInstance = inst.Course.Name + "   " + inst.Location.City + "   " + inst.StartDate;
+                location.FullInstance = inst.Course.Name + " (" + inst.Location.Name + ") (" + inst.StartDate + ")";
                 instancesList.Add(location);
             }
             return instancesList;
