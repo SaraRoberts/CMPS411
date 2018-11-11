@@ -8,6 +8,10 @@
 
 <h3>My Upcoming Classes</h3>
 
+<p>
+    <a asp-controller="Instances" asp-action="Create">Add Class</a>
+</p>
+
 <div class="classes">
     @foreach (Instance item in Model.FutureInstances)
     {
