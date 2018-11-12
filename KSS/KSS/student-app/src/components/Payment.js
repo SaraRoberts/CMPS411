@@ -5,7 +5,15 @@ import PaypalExpressBtn from 'react-paypal-express-checkout';
 
 export class Payment extends React.Component {
     displayName = Payment.name
+    //constructor(props) {
+        //super(props);
+        //this.state = {
+          //  price: 0
+       // }
+    //}
+
     render() {
+      
         //Output in browser console on success
         const onSuccess = (payment) => {
             console.log("Successful: ", payment);
@@ -20,7 +28,7 @@ export class Payment extends React.Component {
         const onError = (err) => {
             console.log("Failure: ", err);
         };
-
+        
         const client = {
             //For testing, use sandbox, for live, use Production. The 'env' variable will also need to be changed in the PayPalExpressBtn element below
             sandbox: 'AU7-TZCTcPacLNP7bj74quFlQPLWzG9jlMB8Zqr5m4wnygK-ckrcuV6izspeNmb-su0VXrXWSsjXZAY-',
@@ -34,12 +42,13 @@ export class Payment extends React.Component {
                 client={client}
                 currency={'USD'}
 
-                total={50.00} //change this to adjust price
+                total={price} //change this to adjust price
 
                 //output handlers
                 onSuccess={onSuccess}
                 onError={onError}
-                onCancel={onCancel}
+                onCancel={onCancel}              
+                
             />
         );
     }
