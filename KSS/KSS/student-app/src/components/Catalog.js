@@ -57,21 +57,21 @@ export class Catalog extends Component {
                     <Table.Cell>{courses.categoryName}</Table.Cell>
                     <Table.Cell>{courses.name}</Table.Cell>
                     <Table.Cell>{courses.description}</Table.Cell>
-                            <Table.Cell><Button className="details-button" >See Details</Button></Table.Cell>
-                            <Table.Cell>
-                                <PaypalExpressBtn
-                                    env={'sandbox'} //change this to 'production' to complete REAL transactions
-                                    client={client}
-                                    currency={'USD'}
+                    <Table.Cell>
+                          <Button className="details-button" >See Details</Button>
+                          <PaypalExpressBtn
+                              env={'sandbox'} //change this to 'production' to complete REAL transactions
+                              client={client}
+                              currency={'USD'}
 
-                                    total={0.05} //change this to adjust price
+                              total={0.05} //change this to adjust price
 
-                                    //output handlers
-                                    onSuccess={onSuccess}
-                                    onError={onError}
-                                    onCancel={onCancel}
-                                />
-                            </Table.Cell>
+                              //output handlers
+                              onSuccess={onSuccess}
+                              onError={onError}
+                              onCancel={onCancel}
+                          />
+                      </Table.Cell>
                 </Table.Row>
                 )}
             </Table.Body>
