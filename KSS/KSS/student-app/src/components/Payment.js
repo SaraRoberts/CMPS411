@@ -42,7 +42,7 @@ export class Payment extends React.Component {
                 client={client}
                 currency={'USD'}
 
-                total={price} //change this to adjust price
+                total={0.05} //change this to adjust price
 
                 //output handlers
                 onSuccess={onSuccess}
