@@ -5,15 +5,18 @@ import PaypalExpressBtn from 'react-paypal-express-checkout';
 
 export class Payment extends React.Component {
     displayName = Payment.name
-    //constructor(props) {
-        //super(props);
-        //this.state = {
-          //  price: 0
-       // }
-    //}
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);        
+    }
 
-    render() {
-      
+    handleClick(e) { //Click event that works. Need to put this on the paypal button
+        e.preventDefault();
+        console.log('The button was clicked.');
+    };
+  
+    render() {     
+     
         //Output in browser console on success
         const onSuccess = (payment) => {
             console.log("Successful: ", payment);
@@ -32,12 +35,13 @@ export class Payment extends React.Component {
         const client = {
             //For testing, use sandbox, for live, use Production. The 'env' variable will also need to be changed in the PayPalExpressBtn element below
             sandbox: 'AU7-TZCTcPacLNP7bj74quFlQPLWzG9jlMB8Zqr5m4wnygK-ckrcuV6izspeNmb-su0VXrXWSsjXZAY-',
-            production: 'ATt_35Hio2zgeOr0HRxARGxst3ewohkZXzSJ7N4Ds3kwynkon66oriV6zuxLq5RfYW5l64d0dQJoBTAB'
+            production: 'ATt_35Hio2zgeOr0HRxARGxst3ewohkZXzSJ7N4Ds3kwynkon66oriV6zuxLq5RfYW5l64d0dQJoBTAB',           
         };
 
         //renders the button with the following attributes. The only value needing to changed from time to time is 'env' and 'cost'
         return (
-            <PaypalExpressBtn
+            <div>
+                <PaypalExpressBtn
                 env={'sandbox'} //change this to 'production' to complete REAL transactions
                 client={client}
                 currency={'USD'}
@@ -47,9 +51,14 @@ export class Payment extends React.Component {
                 //output handlers
                 onSuccess={onSuccess}
                 onError={onError}
-                onCancel={onCancel}              
-                
-            />
+                onCancel={onCancel}  
+                                  
+                />              
+
+                <button onClick={this.handleClick}>
+                    Test Click Event
+                </button>
+            </div>                        
         );
     }
 } 
