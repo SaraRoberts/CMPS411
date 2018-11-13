@@ -159,7 +159,31 @@ namespace KSS.Areas.API.Controllers
             return Ok(instance);
         }
 
-      
+        [HttpGet("GetPrciceById/{id}")]
+        public async Task<IActionResult> GetInstancePriceById([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            double? price = null;
+            var instance = await (from i in _context.Instance
+                                  join c in _context.Course on i.CourseId equals c.CourseId
+                                  join l in _context.Location on i.LocationId equals l.LocationId
+                                  join t in _context.Users on i.InstructorId equals t.UserId
+                                  where i.InstanceId == id
+                                  select new InstancesDto
+                                  {                                     
+                                      Price = i.Price,                                   
+                                  }).FirstAsync();
+            price = instance.Price;
+            if (instance == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(price);
+        }
 
         private bool InstanceExists(int id)
         {
