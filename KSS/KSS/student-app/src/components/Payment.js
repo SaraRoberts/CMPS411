@@ -18,13 +18,15 @@ export class Payment extends React.Component {
     handleClick(e) { //Click event that works. Need to put this on the paypal button
         e.preventDefault();
         console.log('The button was clicked.');
-    };
-
-    componentDidMount() {
-        this.setState({
+         this.setState({
             ...this.state,
             price: 10
         });
+    };
+
+    componentDidMount() { // May need to use this later if you need something to mount
+
+
     }
   
     render() {     
@@ -66,8 +68,8 @@ export class Payment extends React.Component {
                 onCancel={onCancel}  
                                   
                 />              
-
-                <button onClick={this.handleClick}>
+                
+                <button onClick={this.handleClick}> 
                     Test Click Event
                 </button>
             </div>                        
