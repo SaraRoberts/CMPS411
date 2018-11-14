@@ -309,6 +309,7 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Enrollments
+        [Authorize(Roles = "Admin, Staff")]
         public async Task<IActionResult> Grade(int? id)
         {
             if (id == null)
@@ -329,6 +330,7 @@ namespace KSS.Areas.Admin.Controllers
                 .Include(c => c.Instance.Course)
                 .Include(c => c.Instance.Location)
                 .Where(e => e.InstanceId == id)
+                .OrderBy(e => e.User.FirstName)
                 .ToListAsync();
             if (enrollments == null)
             {

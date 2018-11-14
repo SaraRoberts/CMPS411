@@ -112,7 +112,9 @@ textarea{
 }
 
 /* classes to grade */
-
+.grades{
+    background: white;
+}
 .togrades a {
     text-decoration: none;
     color: black;

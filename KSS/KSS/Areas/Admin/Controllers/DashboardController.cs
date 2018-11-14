@@ -37,7 +37,7 @@ namespace KSS.Areas.Admin.Controllers
             instances.GradeInstances = _context.Instance
                 .Include(i => i.Course)
                 .Include(i => i.Location)
-                .Where(e => e.Graded == false && e.StartDate < DateTime.UtcNow)
+                .Where(e => e.Graded == false && e.StartDate < DateTime.UtcNow && e.InstructorId == user.UserId)
                 .OrderBy(e => e.StartDate);
             // get number of future instances, using to display placeholder when there are none.
             int numFutureInstances = 0;

@@ -4,10 +4,12 @@
     ViewData["Title"] = "Grade";
 }
 
+<h2>Instructor Grade Page</h2>
+<hr />
 <h4>@ViewData["class"]</h4>
 @ViewData["location"]<br />
 @ViewData["date"]<br />
-
+<hr />
 <div class="main-col">
     <h4>Students</h4>
     <form asp-area="Admin" asp-controller="Instances" asp-action="Grade" method="post">
@@ -22,7 +24,7 @@
             </span>
         </label>
         }
-        <br />
+        <hr />
         <button type="submit" class="btn btn-info">Submit Grades</button>
     </form>
 </div>
