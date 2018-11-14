@@ -24,15 +24,15 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Enrollments
-        public async Task<IActionResult> Index()
-        {
-            var dataContext = _context.Enrollment
-                .Include(e => e.Instance)
-                .Include(e => e.User)
-                .Include(c => c.Instance.Course)
-                .Include(c => c.Instance.Location);
-            return View(await dataContext.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    var dataContext = _context.Enrollment
+        //        .Include(e => e.Instance)
+        //        .Include(e => e.User)
+        //        .Include(c => c.Instance.Course)
+        //        .Include(c => c.Instance.Location);
+        //    return View(await dataContext.ToListAsync());
+        //}
 
         // GET: Admin/Enrollments/Details/5
         //public async Task<IActionResult> Details(int? id)
