@@ -185,6 +185,50 @@ namespace KSS.Areas.API.Controllers
             return Ok(price);
         }
 
+        [HttpGet("GetInstanceByCourseId/{id}")]
+        public async Task<IActionResult> GetInstanceByCourseId([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var instance = await (from i in _context.Instance
+                                  join c in _context.Course on i.CourseId equals c.CourseId
+                                  join l in _context.Location on i.LocationId equals l.LocationId
+                                  join t in _context.Users on i.InstructorId equals t.UserId
+                                  where i.CourseId == id
+                                  select new InstancesDto
+                                  {
+                                      InstanceId = i.InstanceId,
+                                      StartDate = i.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")),
+                                      Price = i.Price,
+                                      Graded = i.Graded,
+                                      CourseId = i.CourseId,
+                                      LocationId = i.LocationId,
+                                      Seats = i.Seats,
+                                      InstructorId = i.InstructorId,
+                                      BookAvailable = i.BookAvailable,
+                                      BookPrice = i.BookPrice,
+                                      CourseName = i.Course.Name,
+                                      LocationName = i.Location.Name,
+                                      LocationStreet = i.Location.Street,
+                                      LocationCity = i.Location.City,
+                                      LocationState = i.Location.State,
+                                      LocationZip = i.Location.Zipcode,
+                                      InstructorName = i.Instructor.FirstName + " " + i.Instructor.LastName,
+                                      CourseCategory = i.Course.CourseCategory.Name
+
+                                  }).ToListAsync();
+
+            if (instance == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(instance);
+        }
+
         private bool InstanceExists(int id)
         {
             return _context.Instance.Any(e => e.InstanceId == id);

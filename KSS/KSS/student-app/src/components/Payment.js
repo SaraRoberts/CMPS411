@@ -7,13 +7,25 @@ export class Payment extends React.Component {
     displayName = Payment.name
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);        
+        this.handleClick = this.handleClick.bind(this); 
+        this.state = {
+            price: ""
+            
+        };
+        
     }
 
     handleClick(e) { //Click event that works. Need to put this on the paypal button
         e.preventDefault();
         console.log('The button was clicked.');
     };
+
+    componentDidMount() {
+        this.setState({
+            ...this.state,
+            price: 10
+        });
+    }
   
     render() {     
      
@@ -46,7 +58,7 @@ export class Payment extends React.Component {
                 client={client}
                 currency={'USD'}
 
-                total={0.05} //change this to adjust price
+                    total={this.state.price} //change this to adjust price
 
                 //output handlers
                 onSuccess={onSuccess}
