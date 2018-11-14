@@ -39,7 +39,11 @@ namespace KSS.Areas.Admin.Controllers
                 .Include(i => i.Location)
                 .Where(e => e.Graded == false && e.StartDate < DateTime.UtcNow)
                 .OrderBy(e => e.StartDate);
+            // get number of future instances, using to display placeholder when there are none.
+            int numFutureInstances = 0;
+            foreach (var i in instances.FutureInstances){numFutureInstances++;}
 
+            ViewBag.numFutureInstances = numFutureInstances;
             return View(instances);
         }
 

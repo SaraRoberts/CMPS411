@@ -7,11 +7,18 @@
 <h2>Welcome @User.Identity.Name!</h2>
 
 <h3>My Upcoming Classes</h3>
-
-<p>
-    <a asp-controller="Instances" asp-action="Create">Add Class</a>
-</p>
-
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-controller="Instances" asp-action="Create">Add Class</a>
+    </p>
+}
+@if (ViewBag.numFutureInstances == 0)
+{
+    <p>
+        You have no upcoming classes.
+    </p>
+}
 <div class="classes">
     @foreach (Instance item in Model.FutureInstances)
     {
@@ -44,17 +51,17 @@
         String month = item.StartDate.ToString("MMMM");
         String time = item.StartDate.ToString("h:mm tt");
         TimeSpan span = DateTimeOffset.Now.Subtract(item.StartDate);
-    <a asp-controller="Instances" asp-action="Grade" asp-route-id="@item.InstanceId">
-        <div class="tograde">
-            <div class="tograde-left">
-                <span>@span.Days</span><br />
-                Days Late
+        <a asp-controller="Instances" asp-action="Grade" asp-route-id="@item.InstanceId">
+            <div class="tograde">
+                <div class="tograde-left">
+                    <span>@span.Days</span><br />
+                    Days Late
+                </div>
+                <div class="tograde-right">
+                    @Html.DisplayFor(modelItem => item.Course.Name)<br />
+                    @month @Html.DisplayFor(modelItem => item.StartDate.Day)
+                </div>
             </div>
-            <div class="tograde-right">
-                @Html.DisplayFor(modelItem => item.Course.Name)<br />
-                @month @Html.DisplayFor(modelItem => item.StartDate.Day)
-            </div>
-        </div>
-    </a>
-        }
+        </a>
+    }
 </div>

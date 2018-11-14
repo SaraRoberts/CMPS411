@@ -155,7 +155,7 @@ namespace KSS.Areas.Admin.Controllers
         //    return View(instance);
         //}
 
-        [Authorize(Roles = "Admin, Staff")]
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Instances/Create
         public IActionResult Create()
         {
@@ -165,7 +165,7 @@ namespace KSS.Areas.Admin.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin, Staff")]
+        [Authorize(Roles = "Admin")]
         // POST: Admin/Instances/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
