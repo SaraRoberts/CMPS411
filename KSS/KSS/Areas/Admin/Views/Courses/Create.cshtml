@@ -4,32 +4,53 @@
     ViewData["Title"] = "Create";
 }
 
-<h2 style="text-align:center">Add a New Course</h2>
+<h2 style="text-align:center">Add New Course</h2>
 <hr />
 <div class="row">
     <div style="margin:auto; max-width: 400px">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label">Course Name</label>
-                <input asp-for="Name" class="form-control" />
+                <label asp-for="Name" class="control-label">Name</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-education"></span>
+                    </div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label">Description</label>
-                <textarea asp-for="Description" class="form-control"></textarea>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-option-vertical"></span>
+                    </div>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TypicalPrice" class="control-label">Typical Price</label>
-                <input asp-for="TypicalPrice" class="form-control" />
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-usd"></span>
+                    </div>
+                    <input asp-for="TypicalPrice" class="form-control" />
+                </div>
                 <span asp-validation-for="TypicalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PrereqId" class="control-label">Prerequisite</label>
-                <select asp-for="PrereqId" class="form-control" asp-items="ViewBag.PrereqId">
-                    <option value="">None</option>
-                </select>
+                <label asp-for="PrereqId" class="control-label">Prereq</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-education"></span>
+                    </div>
+                    <select asp-for="PrereqId" class="form-control" asp-items="ViewBag.PrereqId">
+                        <option value="">None</option>
+                    </select>
+                </div>
+                <span asp-validation-for="PrereqId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">
@@ -40,12 +61,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="BookPrice" class="control-label">Book Price</label>
-                <input asp-for="BookPrice" class="form-control" />
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-usd"></span>
+                    </div>
+                    <input asp-for="BookPrice" class="form-control" />
+                </div>
                 <span asp-validation-for="BookPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label">Category</label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-bookmark"></span>
+                    </div>
+                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                </div>
             </div>
             <br style="clear: both;">
             <div style="text-align:center" class="form-group">
