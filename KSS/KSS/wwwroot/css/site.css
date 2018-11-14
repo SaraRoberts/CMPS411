@@ -402,3 +402,11 @@ a.transfer {
     color: red;
     cursor: pointer;
 }
+
+.glyphicon-ok {
+    color: green;
+}
+
+.glyphicon-remove {
+    color: red;
+}

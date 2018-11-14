@@ -61,10 +61,12 @@
                     @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Paid)
+                    @if (@item.Paid) { <span class="glyphicon glyphicon-ok"></span> }
+                    else { <span class="glyphicon glyphicon-remove"></span> }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.BookBought)
+                    @if (@item.BookBought) { <span class="glyphicon glyphicon-ok"></span> }
+                    else { <span class="glyphicon glyphicon-remove"></span> }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)

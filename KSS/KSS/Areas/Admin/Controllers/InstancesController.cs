@@ -31,7 +31,7 @@ namespace KSS.Areas.Admin.Controllers
                 .Include(i => i.Location)
                 .Include(i => i.Course.CourseCategory)
                 .Include(i => i.Instructor)
-                .OrderBy(e => e.StartDate);
+                .OrderByDescending(e => e.StartDate);
             return View(await dataContext.ToListAsync());
         }
 
