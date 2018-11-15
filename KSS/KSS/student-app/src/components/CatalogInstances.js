@@ -21,13 +21,14 @@ export class CatalogInstances extends Component {
                 this.setState({ instances: data, loading: false });
                 console.log(data);
             });
-        // Pulls course data to e
-        //fetch('/api/courses/' + this.props.match.params.courseId)
-        //    .then(res => res.json())
-        //    .then(data2 => {
-        //        this.setState({ venueInfo: data2, loading: false });
-        //        console.log(data2);
-        //    });
+
+        //Pulls course data display course title/description
+        fetch('/api/courses/' + this.props.match.params.courseId)
+            .then(res => res.json())
+            .then(data2 => {
+                this.setState({ courseInfo: data2, loading: false });
+                console.log(data2);
+            });
     }
 
     static rendercourseTable(instances) {
@@ -57,9 +58,7 @@ export class CatalogInstances extends Component {
                     <Table.Row>
                         <Table.HeaderCell>Start Date</Table.HeaderCell>
                         <Table.HeaderCell>Location</Table.HeaderCell>
-                        <Table.HeaderCell>Price</Table.HeaderCell>
-                        <Table.HeaderCell>Seats</Table.HeaderCell>
-                        <Table.HeaderCell>Instructor</Table.HeaderCell>
+                        <Table.HeaderCell>Details</Table.HeaderCell>
                         <Table.HeaderCell></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
@@ -67,10 +66,12 @@ export class CatalogInstances extends Component {
                     {instances.map(instances =>
                         <Table.Row key={instances.instanceId}>
                             <Table.Cell>{instances.startDate}</Table.Cell>
-                            <Table.Cell>{instances.locationName}{instances.locationStreet},{instances.locationCity}, {instances.locationState} {instances.locationZip}</Table.Cell>
-                            <Table.Cell>${instances.price}</Table.Cell>
-                            <Table.Cell>{instances.seats}</Table.Cell>
-                            <Table.Cell>{instances.instructorName}</Table.Cell>
+                            <Table.Cell>{instances.locationName}<br />
+                                        {instances.locationStreet} <br />
+                                        {instances.locationCity}, {instances.locationState} {instances.locationZip}</Table.Cell>
+                            <Table.Cell>Instructor: {instances.instructorName}<br />
+                                        Price: ${instances.price}.00<br />
+                                        Capacity: {instances.seats}</Table.Cell>
                             <Table.Cell>
                                 <Button className="details-button" >See Details</Button>
                                 <PaypalExpressBtn
@@ -103,10 +104,13 @@ export class CatalogInstances extends Component {
                 <div id="main-container">
                     <div class="grid-container-pages">
                         <div class="grid-item-pages">
-                            <h1>Upcoming Courses</h1>
-                            <p>
-                                The title and description will be pulled from the API here.
-                        </p>
+                        {this.state && this.state.courseInfo &&
+                            <div>
+                                <br />
+                                <h1>{this.state.courseInfo.name}</h1>
+                                <p>{this.state.courseInfo.description}</p>
+                            </div>
+                        } 
                         </div>
                         <div class="grid-item-pages">
                             {contents}
