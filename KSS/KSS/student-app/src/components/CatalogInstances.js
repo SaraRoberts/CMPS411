@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, Table } from 'semantic-ui-react';
 import './styles/Tables.css';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
-import PropTypes from 'prop-types';
 
 
 export class CatalogInstances extends Component {
@@ -66,6 +65,7 @@ export class CatalogInstances extends Component {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
+                    {instances.map(instances =>
                         <Table.Row key={instances.instanceId}>
                             <Table.Cell>{instances.startDate}</Table.Cell>
                             <Table.Cell>{instances.locationName}{instances.locationStreet},{instances.locationCity}, {instances.locationState} {instances.locationZip}</Table.Cell>
@@ -89,6 +89,7 @@ export class CatalogInstances extends Component {
                                 />
                             </Table.Cell>
                         </Table.Row>
+                        )}
                 </Table.Body>
             </Table>
         );
@@ -104,10 +105,9 @@ export class CatalogInstances extends Component {
                 <div id="main-container">
                     <div class="grid-container-pages">
                         <div class="grid-item-pages">
-                            <h1>Course Catalog</h1>
+                            <h1>Upcoming Courses</h1>
                             <p>
-                                Keeping Safety Smart offers a variety of courses that teach valuable first responder skills. Search through
-                            course listings below.
+                                The title and description will be pulled from the API here.
                         </p>
                         </div>
                         <div class="grid-item-pages">

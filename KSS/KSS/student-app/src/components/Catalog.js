@@ -37,7 +37,7 @@ export class Catalog extends Component {
                     <Table.Cell>{courses.name}</Table.Cell>
                     <Table.Cell>{courses.description}</Table.Cell>
                     <Table.Cell>
-                        <button><Link to={`cataloginstances/${courses.courseId}`}>Upcoming Classes</Link></button>
+                        <button><Link to={`catalog/${courses.courseId}`}>Upcoming Classes</Link></button>
                     </Table.Cell>
                 </Table.Row>
                 )}

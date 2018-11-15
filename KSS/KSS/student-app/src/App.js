@@ -23,8 +23,8 @@ class App extends Component {
                     <BrowserRouter>
                         <Switch>
                             <Route exact path='/' component={Home} />
-                            <Route path='/catalog' component={Catalog} />
-                            <Route path='/cataloginstances' component={CatalogInstances} />
+                            <Route exact path='/catalog' component={Catalog} />
+                            <Route path='/catalog/:courseId' component={CatalogInstances} />
                             <Route path='/contact' component={Contact} />
                             <Route path='/group' component={Group} />
                             <Route path='/account' component={Account} />
