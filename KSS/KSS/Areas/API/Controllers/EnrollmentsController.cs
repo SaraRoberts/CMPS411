@@ -110,7 +110,43 @@ namespace KSS.Areas.API.Controllers
             return Ok(enrollment);
 
         }
-       
+
+        [Route("Enrollment")]
+        [HttpPost]
+        public async Task<IActionResult> AddEnrollment([FromBody] EnrollDto enrollDto)
+        {
+            var duplicate = await _context.Enrollment
+                   .FirstOrDefaultAsync(e => e.InstanceId == enrollDto.InstanceId && e.UserId == enrollDto.UserId);
+            var numStudents = _context.Enrollment
+                       .Count(e => e.InstanceId.Equals(enrollDto.InstanceId));
+            var instance = await _context.Instance.FirstOrDefaultAsync(e => e.InstanceId.Equals(enrollDto.InstanceId));
+            if (numStudents >= instance.Seats)
+            {
+                return NotFound();
+            }
+
+            if (duplicate == null)
+            {
+                var enrollment = _context.Enrollment;
+                enrollment.Add(new Enrollment()
+                {
+                    InstanceId = enrollDto.InstanceId,
+                    UserId = enrollDto.UserId,
+                    BookBought = enrollDto.BookBought,
+                    Status = 'E',
+                    Paid = enrollDto.Paid,
+
+                });
+                
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+            
+        }
         //[HttpPut("{id}")]
         //public async Task<IActionResult> PutEnrollment([FromRoute] int id, [FromBody] Enrollment enrollment)
         //{
