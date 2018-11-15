@@ -60,7 +60,6 @@ export class CatalogInstances extends Component {
                         <Table.HeaderCell>Price</Table.HeaderCell>
                         <Table.HeaderCell>Seats</Table.HeaderCell>
                         <Table.HeaderCell>Instructor</Table.HeaderCell>
-                        <Table.HeaderCell>Book</Table.HeaderCell>
                         <Table.HeaderCell></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
@@ -69,10 +68,9 @@ export class CatalogInstances extends Component {
                         <Table.Row key={instances.instanceId}>
                             <Table.Cell>{instances.startDate}</Table.Cell>
                             <Table.Cell>{instances.locationName}{instances.locationStreet},{instances.locationCity}, {instances.locationState} {instances.locationZip}</Table.Cell>
-                            <Table.Cell>{instances.price}</Table.Cell>
+                            <Table.Cell>${instances.price}</Table.Cell>
                             <Table.Cell>{instances.seats}</Table.Cell>
                             <Table.Cell>{instances.instructorName}</Table.Cell>
-                            <Table.Cell>{instances.bookAvailable},{instances.bookPrice}</Table.Cell>
                             <Table.Cell>
                                 <Button className="details-button" >See Details</Button>
                                 <PaypalExpressBtn
@@ -80,7 +78,7 @@ export class CatalogInstances extends Component {
                                     client={client}
                                     currency={'USD'}
 
-                                    total={0.05} //change this to adjust price
+                                    total={instances.price} //change this to adjust price
 
                                     //output handlers
                                     onSuccess={onSuccess}
