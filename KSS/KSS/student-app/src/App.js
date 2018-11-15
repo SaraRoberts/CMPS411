@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Catalog } from './components/Catalog';
+import { CatalogInstances } from './components/CatalogInstances';
 import { Contact } from './components/Contact';
 import { Group } from './components/Group';
 import { Account } from './components/Dashboard/Account';
@@ -23,6 +24,7 @@ class App extends Component {
                         <Switch>
                             <Route exact path='/' component={Home} />
                             <Route path='/catalog' component={Catalog} />
+                            <Route path='/cataloginstances' component={CatalogInstances} />
                             <Route path='/contact' component={Contact} />
                             <Route path='/group' component={Group} />
                             <Route path='/account' component={Account} />
