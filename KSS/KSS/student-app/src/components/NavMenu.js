@@ -13,17 +13,18 @@ export class NavMenu extends Component {
                 <div className="container">
                     <div className="navmenu">
                         <Nav>
-                            <NavItem className="left-button-divider" eventKey={1} href="/"> Home </NavItem>
-                            <NavItem eventKey={2} href="/catalog"> Catalog </NavItem>
-                            <NavItem eventKey={3} href="/group"> Group </NavItem>
-
+                            <div id="basic-nav">
+                                <NavItem className="left-button-divider" eventKey={1} href="/"> Home </NavItem>
+                                <NavItem eventKey={2} href="/catalog"> Catalog </NavItem>
+                                <NavItem eventKey={3} href="/group"> Group </NavItem>
+                            </div>
                             <div className="dropdown">
                             <NavDropdown eventKey={5} title="Dashboard" >
-                                <div className="dropdown-content">
-                                <MenuItem eventKey={5.1} href="/myclasses"> My Classes </MenuItem>
-                                <MenuItem eventKey={5.2} href="/search"> Class Search </MenuItem>
-                                <MenuItem eventKey={5.3} href="/account">My Account</MenuItem>
-                                </div>
+                                    <div className="dropdown-content">
+                                        <MenuItem eventKey={5.1} href="/myclasses" className="first-item"> My Classes </MenuItem>
+                                        <MenuItem eventKey={5.2} href="/search" className="menu-item"> Class Search </MenuItem>
+                                        <MenuItem eventKey={5.3} href="/account" className="menu-item">My Account</MenuItem>
+                                    </div>
                             </NavDropdown>
                             </div>
                             <div id="register-button">

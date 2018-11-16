@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+#main-container{
+    width: 1100px;
+}
+
 .details-button{
     width: 100px;
     height: 40px;

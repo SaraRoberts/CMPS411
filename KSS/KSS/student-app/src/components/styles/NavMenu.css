@@ -5,7 +5,7 @@
 .container {
     width: 85%;
     max-height: 46px;
-    max-width: 1000px;
+    max-width: 1100px;
     text-align: center;
     margin: auto;
 }
@@ -65,6 +65,7 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     list-style: none;
+    margin-left: -40px;
 }
 
 .dropdown-content a {
@@ -116,4 +117,16 @@ nav .navbar-nav li a {
 
 #register-button{
     float: right;
+}
+
+#basic-nav{
+ 
+}
+
+.first-item{
+    width: 116px;
+}
+
+.menu-item{
+    max-width:125px;
 }
