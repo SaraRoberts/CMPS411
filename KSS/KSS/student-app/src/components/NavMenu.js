@@ -16,8 +16,6 @@ export class NavMenu extends Component {
                             <NavItem className="left-button-divider" eventKey={1} href="/"> Home </NavItem>
                             <NavItem eventKey={2} href="/catalog"> Catalog </NavItem>
                             <NavItem eventKey={3} href="/group"> Group </NavItem>
-                            <NavItem eventKey={4} href="/contact"> Contact </NavItem>
-                            <NavItem eventKey={5} href="/payment"> Payment </NavItem>
 
                             <div className="dropdown">
                             <NavDropdown eventKey={5} title="Dashboard" >
