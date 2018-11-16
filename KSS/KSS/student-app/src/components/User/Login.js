@@ -11,33 +11,52 @@ export class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
-            password: ""
+            credentials: {
+                email: "",
+                password: ""
+            }
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     //Handles Change
-    handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
-    }
-    //Handles Submit
-    handleSubmit(event) {
-        const user = {
-            email: this.state.email,
-            password: this.state.password,
+    handleChange = e => {
+        var credentials = {
+            ...this.state.credentials,
+            [e.target.name]: e.target.value
         };
+        this.setState({ credentials: credentials });
+    }
 
-        // Posts to the API
-        axios.post('api/account/login', user)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            })
-            .catch(error => (alert("Incorrect Login, please try again")))
+    //Handles Submit
+    handleSubmit = e => {
+        
+        e.preventDefault();
+        fetch('api/account/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify(this.state.credentials)
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('Login successful, ok to continue.');
+                    //this.login()
+                } else {
+                    alert('Login failed!!!!');
+                    //this.setState({
+                    //    loginError: "Invalid credentials, try again!"
+                    //})
+                }
+            });
 
-        alert("Wow, the login worked!")
+        this.setState({
+            credentials: {
+                email: "",
+                password: ""
+            }
+        });
     }
 
     render() {
