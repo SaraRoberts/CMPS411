@@ -16,8 +16,7 @@ export class Logout extends React.Component {
     }
 
     handleLogout() {
-        axios.get('api/account/logout')
-        .then(response => alert("Logged out"));
+        axios.post('api/account/logout')
         this.handleHome();
     }
 

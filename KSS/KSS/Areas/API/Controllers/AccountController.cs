@@ -109,6 +109,7 @@ namespace KSS.Areas.API.Controllers
         }
 
         [Route("Logout")]
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
