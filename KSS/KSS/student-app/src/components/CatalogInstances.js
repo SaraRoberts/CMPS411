@@ -3,6 +3,19 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, Table } from 'semantic-ui-react';
 import './styles/Tables.css';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
+import Modal from 'react-modal';
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+
+Modal.setAppElement(document.getElementById('root'));
 
 
 export class CatalogInstances extends Component {
@@ -10,7 +23,7 @@ export class CatalogInstances extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { instances: [], loading: true, courseInfo: null  };
+        this.state = { instances: [], loading: true, courseInfo: null, modalIsOpen: false   };
 
         console.log(this.props);
         console.log(this.props.match.params.courseId);
@@ -29,6 +42,22 @@ export class CatalogInstances extends Component {
                 this.setState({ courseInfo: data2, loading: false });
                 console.log(data2);
             });
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+    openModal() {
+        this.setState({ modalIsOpen: true });
+    }
+
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        this.subtitle.style.color = '#f00';
+    }
+
+    closeModal() {
+        this.setState({ modalIsOpen: false });
     }
 
     static rendercourseTable(instances) {
@@ -60,6 +89,7 @@ export class CatalogInstances extends Component {
                         <Table.HeaderCell>Location</Table.HeaderCell>
                         <Table.HeaderCell>Details</Table.HeaderCell>
                         <Table.HeaderCell></Table.HeaderCell>
+                        <Table.HeaderCell></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -87,13 +117,15 @@ export class CatalogInstances extends Component {
                                     onCancel={onCancel}
                                 />
                             </Table.Cell>
+                            <Table.Cell>
+                               
+                            </Table.Cell>
                         </Table.Row>
                         )}
                 </Table.Body>
             </Table>
         );
     }
-
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
@@ -108,7 +140,7 @@ export class CatalogInstances extends Component {
                             <div>
                                 <br />
                                 <h1>{this.state.courseInfo.name}</h1>
-                                <p>{this.state.courseInfo.description}</p>
+                                <p>{this.state.courseInfo.description}</p>                               
                             </div>
                         } 
                         </div>
@@ -116,6 +148,26 @@ export class CatalogInstances extends Component {
                             {contents}
                         </div>
                     </div>
+                    <button onClick={this.openModal}>Open Modal</button>
+                    <Modal
+                        isOpen={this.state.modalIsOpen}
+                        onAfterOpen={this.afterOpenModal}
+                        onRequestClose={this.closeModal}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                    >
+
+                        <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+                        <button onClick={this.closeModal}>close</button>
+                        <div>I am a modal</div>
+                        <form>
+                            <input />
+                            <button>tab navigation</button>
+                            <button>stays</button>
+                            <button>inside</button>
+                            <button>the modal</button>
+                        </form>
+                    </Modal>
                 </div>
             </div>
         );
