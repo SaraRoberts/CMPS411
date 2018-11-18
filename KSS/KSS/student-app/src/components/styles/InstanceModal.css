@@ -1,0 +1,63 @@
+﻿#modalBack {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.8);
+    padding: 50px;
+    text-align: center;
+}
+
+#modal-left {
+    display: inline-block;
+    background-image: url('../images/EMTImage.jpeg');
+    height: 400px;
+    width: 200px;
+    background-color: #ffffff;
+    border-radius: 10px 0 0 10px;
+    vertical-align: top;
+    position: relative;
+    top: 30px;
+}
+
+#modal-right {
+    display: inline-block;
+    padding: 20px;
+    height: 400px;
+    width: 425px;
+    background-color: #ffffff;
+    border-radius: 0 10px 10px 0;
+    vertical-align: top;
+    position: relative;
+    top: 30px;
+}
+
+@media (max-width: 824px) {
+
+    #modalBack {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.8);
+        padding: 50px;
+    }
+
+    #modal-left {
+        display: none;
+    }
+
+    #modal-right {
+        display: inline-block;
+        padding: 20px;
+        height: 400px;
+        width: 250px;
+        background-color: #ffffff;
+        border-radius: 10px 10px 10px 10px;
+        vertical-align: top;
+        position: relative;
+        top: 30px;
+    }
+}
