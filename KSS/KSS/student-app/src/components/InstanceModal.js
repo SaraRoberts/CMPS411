@@ -40,18 +40,20 @@ export class InstanceModal extends Component {
         return (
             <div id="modalBack">
                 <div id="modal-left"></div>
-                <div id="modal-right">
+                <div id="modal-right" onClick="">
+                    <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
+                        X
+                    </span>
+                    <h2>{this.props.modalInstance.courseName}</h2>
 
-                    <h2>Scheduling class for: <br/>
-                    {this.props.modalInstance.course}</h2><br/>
-
-                    <h4>{this.props.modalInstance.startdate}</h4>
-
-                    <h4>{this.props.modalInstance.name}<br/>
-                        {this.props.modalInstance.city}, {this.props.modalInstance.state} {this.props.modalInstance.zip}<br/>
+                    <h4>Instructor: {this.props.modalInstance.instructorName}</h4>
+                    <h4>{this.props.modalInstance.startDate}</h4>
+                    <h4>{this.props.modalInstance.locationName}<br />
+                        {this.props.modalInstance.locationCity}, {this.props.modalInstance.locationState} {this.props.modalInstance.locationZip}
                     </h4>
-                    <br />
-                    <br/> 
+                    <h4>Price: ${this.props.modalInstance.price}</h4>
+                    
+                    <h5>Click to pay with PayPal and Book Class.</h5>
 
                     <PaypalExpressBtn
                         env={'sandbox'} //change this to 'production' to complete REAL transactions
@@ -63,16 +65,9 @@ export class InstanceModal extends Component {
                         //output handlers
                         onSuccess={onSuccess}
                         onError={onError}
-                        onCancel={onCancel} />
-
-                    <input type="button" className="close btn-link"
-                        value="Enroll Without Payment"
-                        onClick={(e) => { this.onClose(e) }} /><br/>
-
-                    <input type="button" className="close btn-link"
-                        value="Cancel"
-                        onClick={(e) => { this.onClose(e) }} />
-
+                        onCancel={onCancel}
+                    />
+                    <h5>or <a href="/">Book and Pay Later</a></h5>
                 </div>
             </div>
         );

@@ -28,11 +28,8 @@ export class CatalogInstances extends Component {
         this.state = {
             instances: [],
             courseInfo: null,
-            showR: false,
-            modalInstance: {
-                id: "",
-                price: ""
-            }
+            showM: false,
+            modalInstance: null
         };
 
         console.log(this.props);
@@ -54,22 +51,20 @@ export class CatalogInstances extends Component {
             });
     }
 
-    showModalR = (passedid, pcourse, plname, plstreet, plcity, plstate, plzip, pstartdate, passedprice) => {
-        this.setState({
-            ...this.state,
-            modalInstance: {
-                id: passedid,
-                course: pcourse,
-                name: plname,
-                street: plstreet,
-                city: plcity,
-                state: plstate,
-                zip: plzip, 
-                startdate: pstartdate,
-                price: passedprice
-            },
-            showR: !this.state.showR,
-        })
+    showModal = (instance) => {
+        if (!this.state.show) {
+            this.setState({
+                ...this.state,
+                modalInstance: instance,
+                show: !this.state.show,
+            })
+        }
+        else {
+            this.setState({
+                ...this.state,
+                show: !this.state.show,
+            })
+        }
     }
 
     render() {
@@ -97,32 +92,20 @@ export class CatalogInstances extends Component {
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
-                                    {this.state.instances.map(instances =>
-                                        <Table.Row key={instances.instanceId}>
-                                            <Table.Cell>{instances.startDate}</Table.Cell>
-                                            <Table.Cell>{instances.locationName}<br />
-                                                {instances.locationStreet} <br />
-                                                {instances.locationCity}, {instances.locationState} {instances.locationZip}</Table.Cell>
-                                            <Table.Cell>Instructor: {instances.instructorName}<br />
-                                                Price: ${instances.price}.00<br />
-                                                Capacity: {instances.seats}</Table.Cell>
+                                    {this.state.instances.map(instance =>
+                                        <Table.Row key={instance.instanceId}>
+                                            <Table.Cell>{instance.startDate}</Table.Cell>
+                                            <Table.Cell>{instance.locationName}<br />
+                                                {instance.locationStreet} <br />
+                                                {instance.locationCity}, {instance.locationState} {instance.locationZip}</Table.Cell>
+                                            <Table.Cell>Instructor: {instance.instructorName}<br />
+                                                Price: ${instance.price}.00<br />
+                                                Capacity: {instance.seats}</Table.Cell>
                                             <Table.Cell>
                                                 <button
                                                     onClick={
-                                                        () => this.showModalR(
-                                                            instances.instanceId,
-                                                            instances.courseName,
-                                                            instances.locationName,
-                                                            instances.locationStreet,
-                                                            instances.locationCity,
-                                                            instances.locationState,
-                                                            instances.locationZip,
-                                                            instances.startDate,
-                                                            instances.price
-                                                        )
-                                                    }
-                                                >Book Now!</button>
-
+                                                        () => this.showModal(instance)}>Book Now!
+                                                </button>
                                             </Table.Cell>
                                         </Table.Row>
                                     )}
@@ -132,8 +115,8 @@ export class CatalogInstances extends Component {
                     </div>
 
                     <InstanceModal
-                        show={this.state.showR}
-                        onClose={this.showModalR}
+                        show={this.state.show}
+                        onClose={this.showModal}
                         modalInstance={this.state.modalInstance}
                     />
                     
