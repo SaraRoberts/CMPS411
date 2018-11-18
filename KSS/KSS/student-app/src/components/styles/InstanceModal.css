@@ -38,6 +38,9 @@
     float: right;
     cursor: pointer
 }
+#payMessage {
+    color: #265670;
+}
 
 @media (max-width: 824px) {
     #modalBack {

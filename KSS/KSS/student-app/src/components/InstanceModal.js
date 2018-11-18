@@ -52,8 +52,8 @@ export class InstanceModal extends Component {
                         {this.props.modalInstance.locationCity}, {this.props.modalInstance.locationState} {this.props.modalInstance.locationZip}
                     </h4>
                     <h4>Price: ${this.props.modalInstance.price}</h4>
-                    
-                    <h5>Click to pay with PayPal and Book Class.</h5>
+
+                    <h5 id="payMessage">Click to pay with PayPal and Book Class.</h5>
 
                     <PaypalExpressBtn
                         env={'sandbox'} //change this to 'production' to complete REAL transactions

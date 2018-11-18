@@ -88,10 +88,7 @@ export class CatalogInstances extends Component {
                             <Table>
                                 <Table.Header>
                                     <Table.Row>
-                                        <Table.HeaderCell>Start Date & Instructor</Table.HeaderCell>
-                                        <Table.HeaderCell>Location</Table.HeaderCell>
-                                        <Table.HeaderCell>Pricing</Table.HeaderCell>
-                                        <Table.HeaderCell>Capacity</Table.HeaderCell>
+                                        <Table.HeaderCell>Upcoming Classes</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
@@ -102,13 +99,11 @@ export class CatalogInstances extends Component {
                                                 {instance.instructorName}
                                             </Table.Cell>
                                             <Table.Cell>{instance.locationName}<br />
-                                                {instance.locationCity}, {instance.locationState} {instance.locationZip}
+                                                {instance.locationCity}, {instance.locationState}
                                             </Table.Cell>
                                             <Table.Cell>
-                                                ${instance.price}.00
-                                            </Table.Cell>
-                                            <Table.Cell>
-                                                Available Seats: {instance.seats}
+                                                Open Seats: {instance.seats} <br />
+                                                Price: ${instance.price}.00
                                             </Table.Cell>
                                             <Table.Cell>
                                                 <button
