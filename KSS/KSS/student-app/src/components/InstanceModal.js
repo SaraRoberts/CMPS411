@@ -41,10 +41,18 @@ export class InstanceModal extends Component {
             <div id="modalBack">
                 <div id="modal-left"></div>
                 <div id="modal-right">
-                    <input type="button" className="close btn-link"
-                        value="Cancel"
-                        onClick={(e) => { this.onClose(e) }}
-                    />
+
+                    <h2>Scheduling class for: <br/>
+                    {this.props.modalInstance.course}</h2><br/>
+
+                    <h4>{this.props.modalInstance.startdate}</h4>
+
+                    <h4>{this.props.modalInstance.name}<br/>
+                        {this.props.modalInstance.city}, {this.props.modalInstance.state} {this.props.modalInstance.zip}<br/>
+                    </h4>
+                    <br />
+                    <br/> 
+
                     <PaypalExpressBtn
                         env={'sandbox'} //change this to 'production' to complete REAL transactions
                         client={client}
@@ -55,8 +63,16 @@ export class InstanceModal extends Component {
                         //output handlers
                         onSuccess={onSuccess}
                         onError={onError}
-                        onCancel={onCancel}
-                    />
+                        onCancel={onCancel} />
+
+                    <input type="button" className="close btn-link"
+                        value="Enroll Without Payment"
+                        onClick={(e) => { this.onClose(e) }} /><br/>
+
+                    <input type="button" className="close btn-link"
+                        value="Cancel"
+                        onClick={(e) => { this.onClose(e) }} />
+
                 </div>
             </div>
         );

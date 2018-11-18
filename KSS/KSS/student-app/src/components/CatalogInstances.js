@@ -5,6 +5,7 @@ import './styles/Tables.css';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import Modal from 'react-modal';
 import { InstanceModal } from './InstanceModal'
+
 const customStyles = {
     content: {
         top: '50%',
@@ -53,11 +54,18 @@ export class CatalogInstances extends Component {
             });
     }
 
-    showModalR = (passedid, passedprice) => {
+    showModalR = (passedid, pcourse, plname, plstreet, plcity, plstate, plzip, pstartdate, passedprice) => {
         this.setState({
             ...this.state,
             modalInstance: {
                 id: passedid,
+                course: pcourse,
+                name: plname,
+                street: plstreet,
+                city: plcity,
+                state: plstate,
+                zip: plzip, 
+                startdate: pstartdate,
                 price: passedprice
             },
             showR: !this.state.showR,
@@ -86,7 +94,6 @@ export class CatalogInstances extends Component {
                                         <Table.HeaderCell>Location</Table.HeaderCell>
                                         <Table.HeaderCell>Details</Table.HeaderCell>
                                         <Table.HeaderCell></Table.HeaderCell>
-                                        <Table.HeaderCell></Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
@@ -104,6 +111,13 @@ export class CatalogInstances extends Component {
                                                     onClick={
                                                         () => this.showModalR(
                                                             instances.instanceId,
+                                                            instances.courseName,
+                                                            instances.locationName,
+                                                            instances.locationStreet,
+                                                            instances.locationCity,
+                                                            instances.locationState,
+                                                            instances.locationZip,
+                                                            instances.startDate,
                                                             instances.price
                                                         )
                                                     }
