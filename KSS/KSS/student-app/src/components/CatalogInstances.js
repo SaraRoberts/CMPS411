@@ -89,6 +89,9 @@ export class CatalogInstances extends Component {
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell>Upcoming Classes</Table.HeaderCell>
+                                        <Table.HeaderCell>Location</Table.HeaderCell>
+                                        <Table.HeaderCell>Pricing</Table.HeaderCell>
+                                        <Table.HeaderCell>Capacity</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
@@ -99,10 +102,14 @@ export class CatalogInstances extends Component {
                                                 Instructor: {instance.instructorName}
                                             </Table.Cell>
                                             <Table.Cell>{instance.locationName}<br />
-                                                {instance.locationCity}, {instance.locationState} {instance.locationZip}</Table.Cell>
+                                                {instance.locationCity}, {instance.locationState} {instance.locationZip}
+                                            </Table.Cell>
                                             <Table.Cell>
-                                                Price: ${instance.price}.00<br />
-                                                Capacity: {instance.seats}</Table.Cell>
+                                                ${instance.price}.00
+                                            </Table.Cell>
+                                            <Table.Cell id="last-element">
+                                                Seats: {instance.seats}
+                                            </Table.Cell>
                                             <Table.Cell>
                                                 <button
                                                     className="redButton"
