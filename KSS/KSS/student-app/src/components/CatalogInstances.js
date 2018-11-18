@@ -108,7 +108,7 @@ export class CatalogInstances extends Component {
                                                 ${instance.price}.00
                                             </Table.Cell>
                                             <Table.Cell>
-                                                Seats: {instance.seats}
+                                                Available Seats: {instance.seats}
                                             </Table.Cell>
                                             <Table.Cell>
                                                 <button
