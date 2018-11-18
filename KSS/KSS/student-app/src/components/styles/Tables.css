@@ -5,16 +5,23 @@
     box-sizing: border-box;
 }
 
-#main-container{
-    width: 1100px;
+#main-container {
+    width: 100%;
+}
+#courseHeader * {
+    float:left;
+    margin: 10px;
 }
 
-.details-button{
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
-    margin-left: 20px;
-    margin-bottom: 20px;
+.redButton {
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #a83939;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 .twocolumn {
@@ -31,33 +38,30 @@
 }
 /*END 2cols*/
 /*START table*/
-.ui.table
-{
+.ui.table {
     text-align: left;
     padding: 50px;
-    width: 100%;
+    min-width: 75%;
     margin: 5% 0;
     transition: 0.5s;
 }
 .ui.table th {
-    font-size: 24px;
-    background-color: indianred;
-    font: white;
-    color: white;
+    font-size: 12px;
+    color: black;
     min-width: 200px;
     padding: 15px;
 }
 .ui.table td {
-    padding: 15px;
+    padding: 10px;
 }
-.ui.table tr:nth-child(even) {
+/*.ui.table tr:nth-child(even) {
     background-color: #eee;
 }
 .ui.table tr:nth-child(odd) {
     background-color: #fff;
-}
+}*/
 .ui.table tr {
-    font-size: 18px;
+    font-size: 12px;
     border: 1px solid lightgray;
     border-collapse: collapse;
 }

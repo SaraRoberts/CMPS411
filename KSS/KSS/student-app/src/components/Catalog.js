@@ -23,7 +23,6 @@ export class Catalog extends Component {
         <Table>
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell>Category</Table.HeaderCell>
                     <Table.HeaderCell>Course</Table.HeaderCell>
                     <Table.HeaderCell>Description</Table.HeaderCell>
                     <Table.HeaderCell></Table.HeaderCell>
@@ -33,11 +32,14 @@ export class Catalog extends Component {
             <Table.Body>
             {courses.map(courses =>
                 <Table.Row key={courses.courseId}>
-                    <Table.Cell>{courses.categoryName}</Table.Cell>
                     <Table.Cell>{courses.name}</Table.Cell>
                     <Table.Cell>{courses.description}</Table.Cell>
                     <Table.Cell>
-                        <button><Link to={`catalog/${courses.courseId}`}>Upcoming Classes</Link></button>
+                        <Link to={`catalog/${courses.courseId}`}>
+                            <button className="redButton">
+                                Upcoming Classes
+                            </button>
+                        </Link>
                     </Table.Cell>
                 </Table.Row>
                 )}

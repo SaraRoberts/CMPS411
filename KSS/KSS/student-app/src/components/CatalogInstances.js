@@ -2,9 +2,9 @@
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, Table } from 'semantic-ui-react';
 import './styles/Tables.css';
-import PaypalExpressBtn from 'react-paypal-express-checkout';
 import Modal from 'react-modal';
 import { InstanceModal } from './InstanceModal'
+import EMTImage from './images/EMTImage.jpeg'
 
 const customStyles = {
     content: {
@@ -71,12 +71,15 @@ export class CatalogInstances extends Component {
         return (
             <div id="page">
                 <div id="main-container">
+                    <div id="courseHeader">
+                        <div><img src={EMTImage} /></div>
+                    </div>
                     <div class="grid-container-pages">
                         <div class="grid-item-pages">
                         {this.state && this.state.courseInfo &&
                             <div>
                                 <br />
-                                <h1>{this.state.courseInfo.name}</h1>
+                                <h2>{this.state.courseInfo.name}</h2>
                                 <p>{this.state.courseInfo.description}</p>                               
                             </div>
                         } 
@@ -85,24 +88,24 @@ export class CatalogInstances extends Component {
                             <Table>
                                 <Table.Header>
                                     <Table.Row>
-                                        <Table.HeaderCell>Start Date</Table.HeaderCell>
-                                        <Table.HeaderCell>Location</Table.HeaderCell>
-                                        <Table.HeaderCell>Details</Table.HeaderCell>
-                                        <Table.HeaderCell></Table.HeaderCell>
+                                        <Table.HeaderCell>Upcoming Classes</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
                                     {this.state.instances.map(instance =>
                                         <Table.Row key={instance.instanceId}>
-                                            <Table.Cell>{instance.startDate}</Table.Cell>
+                                            <Table.Cell>
+                                                {instance.startDate}<br />
+                                                Instructor: {instance.instructorName}
+                                            </Table.Cell>
                                             <Table.Cell>{instance.locationName}<br />
-                                                {instance.locationStreet} <br />
                                                 {instance.locationCity}, {instance.locationState} {instance.locationZip}</Table.Cell>
-                                            <Table.Cell>Instructor: {instance.instructorName}<br />
+                                            <Table.Cell>
                                                 Price: ${instance.price}.00<br />
                                                 Capacity: {instance.seats}</Table.Cell>
                                             <Table.Cell>
                                                 <button
+                                                    className="redButton"
                                                     onClick={
                                                         () => this.showModal(instance)}>Book Now!
                                                 </button>
