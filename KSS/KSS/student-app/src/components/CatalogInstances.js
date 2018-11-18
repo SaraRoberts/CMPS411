@@ -99,7 +99,7 @@ export class CatalogInstances extends Component {
                                         <Table.Row key={instance.instanceId}>
                                             <Table.Cell>
                                                 {instance.startDate}<br />
-                                                Instructor: {instance.instructorName}
+                                                {instance.instructorName}
                                             </Table.Cell>
                                             <Table.Cell>{instance.locationName}<br />
                                                 {instance.locationCity}, {instance.locationState} {instance.locationZip}
