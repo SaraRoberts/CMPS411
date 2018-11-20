@@ -13,8 +13,12 @@ import './styles/HomePage.css';
 export class Home extends Component {
     displayName = Home.name
     render() {
+        if (this.props.loggedIn)
+            var test = "Logged In!";
+        else test = "Not Logged In";
         return (
             <div id="main-container">
+                {test}
                 <div id = "nestedImage-container">
                     <img id="topImage" src={home1} alt="Home1" />
                 </div>
