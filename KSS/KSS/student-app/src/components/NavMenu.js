@@ -8,6 +8,19 @@ export class NavMenu extends Component {
     displayName = NavMenu.name
 
     render() {
+        if (!this.props.loggedIn) {
+            var rightNav = (
+                <div id="register-button">
+                    <NavItem className="left-button-divider" eventKey={6} href="/register" > Sign Up </NavItem>
+                    <NavItem eventKey={7} href="/login"> Login </NavItem>
+                </div>
+            );
+        } else rightNav = (
+            <div id="register-button">
+                <MenuItem className="left-button-divider" eventKey={5.3} href="/account">My Account</MenuItem>
+                <NavItem eventKey={8} href="/logout"> Logout </NavItem>
+            </div>
+            );
         return (
             <header>
                 <div className="container">
@@ -27,11 +40,7 @@ export class NavMenu extends Component {
                                     </div>
                             </NavDropdown>
                             </div>
-                            <div id="register-button">
-                                <NavItem className="left-button-divider" eventKey={6} href="/register"> Sign Up </NavItem>
-                                <NavItem eventKey={7} href="/login"> Login </NavItem>
-                                <NavItem eventKey={8} href="/logout"> Logout </NavItem>
-                            </div>
+                            {rightNav}
                         </Nav>
                     </div>
                 </div>

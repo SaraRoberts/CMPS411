@@ -34,7 +34,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Layout>
+                <Layout loggedIn={this.state.loggedIn}>
                     <BrowserRouter>
                         <Switch>
                             <Route exact path='/' component={() => <Home loggedIn={this.state.loggedIn} />} />

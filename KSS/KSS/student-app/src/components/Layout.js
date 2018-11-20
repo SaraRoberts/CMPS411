@@ -8,13 +8,13 @@ export class Layout extends Component {
 
     render() {
         var style = { minHeight: '600px' };
-        console.log(this.props)
+        console.log(this.props);
 
         return (
             <Grid fluid>
                 <Row>
                     <Col>
-                        <NavMenu />
+                        <NavMenu loggedIn={this.props.loggedIn}/>
                     </Col>
                 </Row>
 
