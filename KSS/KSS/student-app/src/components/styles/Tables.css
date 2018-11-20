@@ -13,6 +13,12 @@
     margin: 10px;
 }
 
+#descr{
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .redButton {
     font-size: 14px;
     font-weight: 600;
