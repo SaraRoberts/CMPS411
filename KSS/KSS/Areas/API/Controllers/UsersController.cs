@@ -29,7 +29,7 @@ namespace KSS.Areas.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult CheckAuthintication()
+        public IActionResult CheckAuthentication()
         {
             if (User.Identity.IsAuthenticated)
             {
