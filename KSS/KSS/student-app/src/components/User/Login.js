@@ -66,7 +66,6 @@ export class Login extends Component {
                     <div class="panel-heading">
                         <div class="panel-title text-center">
                             <h3 class="title">Login</h3>
-                            <hr />
                         </div>
                     </div>
                     <div class="main-login main-center">
