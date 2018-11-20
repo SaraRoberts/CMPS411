@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -25,6 +26,19 @@ namespace KSS.Areas.API.Controllers
         public UsersController(DataContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        public IActionResult CheckAuthintication()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return Ok(User.Identity.Name);
+            }
+            else
+            {
+                return StatusCode(403);
+            }
         }
 
         //// GET: api/Users
