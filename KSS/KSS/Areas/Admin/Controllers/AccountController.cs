@@ -67,7 +67,8 @@ namespace KSS.Areas.Admin.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.Email),
-                        new Claim(ClaimTypes.Role, user.Role)
+                        new Claim(ClaimTypes.Role, user.Role),
+                        new Claim("FirstName", user.FirstName+" "+user.LastName)
                     };
 
                     var claimsIdentity = new ClaimsIdentity(

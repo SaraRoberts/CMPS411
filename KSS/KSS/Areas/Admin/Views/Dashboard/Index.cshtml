@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Welcome @User.Identity.Name!</h2>
+<h2>Welcome @(User.FindFirst("FirstName").Value)!</h2>
 
 <h3>My Upcoming Classes</h3>
 @if (User.IsInRole("Admin"))
