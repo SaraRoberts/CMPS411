@@ -11,14 +11,22 @@ export class NavMenu extends Component {
         if (!this.props.loggedIn) {
             var rightNav = (
                 <div id="register-button">
-                    <NavItem className="left-button-divider" eventKey={6} href="/register" > Sign Up </NavItem>
-                    <NavItem eventKey={7} href="/login"> Login </NavItem>
+                    <LinkContainer to={'/register'}>
+                        <NavItem className="left-button-divider">Sign Up</NavItem>
+                    </LinkContainer>
+                    <LinkContainer to={'/login'}>
+                        <NavItem>Login</NavItem>
+                    </LinkContainer>
                 </div>
             );
-        } else rightNav = (
-            <div id="register-button">
-                <MenuItem className="left-button-divider" eventKey={5.3} href="/account">My Account</MenuItem>
-                <NavItem eventKey={8} href="/logout"> Logout </NavItem>
+                } else rightNav = (
+                    <div id="register-button">
+                        <LinkContainer to={'/account'}>
+                            <MenuItem className="left-button-divider">My Account</MenuItem>
+                        </LinkContainer>
+                        <LinkContainer to={'/logout'}>
+                    <NavItem> Logout </NavItem>
+                    </LinkContainer>
             </div>
             );
         return (
@@ -27,18 +35,27 @@ export class NavMenu extends Component {
                     <div className="navmenu">
                         <Nav>
                             <div id="basic-nav">
-                                <NavItem className="left-button-divider" eventKey={1} href="/"> Home </NavItem>
-                                <NavItem eventKey={2} href="/catalog"> Catalog </NavItem>
-                                <NavItem eventKey={3} href="/group"> Group </NavItem>
+                                <LinkContainer to={'/'} exact>
+                                    <NavItem className="left-button-divider"> Home </NavItem>
+                                </LinkContainer>
+                                <LinkContainer to={'/catalog'}>
+                                    <NavItem> Catalog </NavItem>
+                                </LinkContainer>
+                                <LinkContainer to={'/group'}>
+                                    <NavItem> Group </NavItem>
+                                </LinkContainer>
                             </div>
                             <div className="dropdown">
-                            <NavDropdown eventKey={5} title="Dashboard" >
+                                <NavDropdown eventKey={5} title="Dashboard" >
                                     <div className="dropdown-content">
-                                        <MenuItem eventKey={5.1} href="/myclasses" className="first-item"> My Classes </MenuItem>
-                                        <MenuItem eventKey={5.2} href="/search" className="menu-item"> Class Search </MenuItem>
-                                        <MenuItem eventKey={5.3} href="/account" className="menu-item">My Account</MenuItem>
+                                        <LinkContainer to={'/myclasses'}>
+                                            <MenuItem className="first-item">My Classes</MenuItem>
+                                        </LinkContainer>
+                                        <LinkContainer to={'/search'}>
+                                            <MenuItem className="menu-item">Class Search</MenuItem>
+                                        </LinkContainer>
                                     </div>
-                            </NavDropdown>
+                                </NavDropdown>
                             </div>
                             {rightNav}
                         </Nav>
