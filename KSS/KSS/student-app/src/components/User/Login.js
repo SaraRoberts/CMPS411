@@ -42,6 +42,7 @@ export class Login extends Component {
             .then(response => {
                 if (response.ok) {
                     alert('Login successful, ok to continue.');
+                    window.location.href = '/account';
                     //this.login()
                 } else {
                     alert('Login failed!!!!');
