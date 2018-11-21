@@ -50,12 +50,12 @@ export class NavMenu extends Component {
             );
                 } else rightNav = (
                     <div id="register-button">
-                        <LinkContainer to={'/account'}>
+                        <LinkContainer to={'/dashboard'}>
                             <MenuItem className="left-button-divider">Dashboard</MenuItem>
                         </LinkContainer>
                         <LinkContainer to={'/logout'}>
-                    <NavItem> Logout </NavItem>
-                    </LinkContainer>
+                            <NavItem>Logout</NavItem>
+                        </LinkContainer>
             </div>
             );
         return (

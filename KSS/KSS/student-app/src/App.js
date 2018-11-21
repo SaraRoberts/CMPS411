@@ -13,6 +13,7 @@ import { Login } from './components/User/Login';
 import { Logout } from './components/User/Logout';
 import { Register } from './components/User/Register';
 import { Payment } from './components/Payment';
+import { StudentDashboard } from './components/User/StudentDashboard';
 import './App.css';
 
 class App extends Component {
@@ -69,6 +70,7 @@ class App extends Component {
                             <Route path='/logout' component={Logout} />
                             <Route path='/payment' component={Payment} />
                             <Route exact path='/register' component={Register} />
+                            <Route path='/dashboard' component={() => <StudentDashboard loginState={this.state.loginState} />} />
                 </Layout>
             </div>
         );
