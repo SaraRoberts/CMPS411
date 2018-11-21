@@ -37,6 +37,9 @@ export class NavMenu extends Component {
         if (!this.props.loginState.loggedIn) {
             var rightNav = (
                 <div id="register-button">
+                    <Button id="sign-in-button" onClick={
+                        () => this.showModal()}>Sign Up / Login
+                    </Button>
                     <LinkContainer to={'/register'}>
                         <NavItem className="left-button-divider">Sign Up</NavItem>
                     </LinkContainer>
@@ -84,9 +87,6 @@ export class NavMenu extends Component {
                                 </NavDropdown>
                             </div>
                             {rightNav}
-                            <Button onClick={
-                                () => this.showModal()}>Login
-                            </Button>
                         </Nav>
                     </div>
                     <LoginModal
