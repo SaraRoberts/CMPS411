@@ -12,24 +12,25 @@
 }
 
 #info {
-    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -225px;
     margin-right: 10px;
     margin-right: 10px;
     text-align: left;
-    height: 500px;
+    height: auto;
     color: white;
     width: 45%;
     background-color: #a83939;
     border-radius: 5px;
     margin-bottom: -115px;
     box-shadow: 8px 8px 20px -4px grey, -8px 8px 20px -4px grey;
-    min-width: 425px;
+    min-width: 325px;
 }
 
 #main-image{
-    max-width: 550px;
-    max-height: 550px;
-    margin-top: 60px;
+    max-width: 250px;
+    margin-top: -20px;
     margin-bottom: 40px;
 }
 
@@ -39,12 +40,17 @@
 }
 
 @media only screen and (max-width: 887px) {
-    #info{
-        margin-top: 150px;
+    #info {
+        margin-top: -550px;
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
     }
 
     #tworow {
         text-align: center;
-        align-content: center;
+    }
+    #main-image {
+        display: none;
     }
 }
