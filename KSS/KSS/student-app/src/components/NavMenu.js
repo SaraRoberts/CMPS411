@@ -51,7 +51,7 @@ export class NavMenu extends Component {
                 } else rightNav = (
                     <div id="register-button">
                         <LinkContainer to={'/account'}>
-                            <MenuItem className="left-button-divider">My Account</MenuItem>
+                            <MenuItem className="left-button-divider">Dashboard</MenuItem>
                         </LinkContainer>
                         <LinkContainer to={'/logout'}>
                     <NavItem> Logout </NavItem>
@@ -65,26 +65,14 @@ export class NavMenu extends Component {
                         <Nav>
                             <div id="basic-nav">
                                 <LinkContainer to={'/'} exact>
-                                    <NavItem className="left-button-divider"> Home </NavItem>
+                                    <NavItem className="left-button-divider">Home</NavItem>
                                 </LinkContainer>
                                 <LinkContainer to={'/catalog'}>
-                                    <NavItem> Catalog </NavItem>
+                                    <NavItem>Catalog</NavItem>
                                 </LinkContainer>
                                 <LinkContainer to={'/group'}>
-                                    <NavItem> Group </NavItem>
+                                    <NavItem>Groups</NavItem>
                                 </LinkContainer>
-                            </div>
-                            <div className="dropdown">
-                                <NavDropdown eventKey={5} title="Dashboard" >
-                                    <div className="dropdown-content">
-                                        <LinkContainer to={'/myclasses'}>
-                                            <MenuItem className="first-item">My Classes</MenuItem>
-                                        </LinkContainer>
-                                        <LinkContainer to={'/search'}>
-                                            <MenuItem className="menu-item">Class Search</MenuItem>
-                                        </LinkContainer>
-                                    </div>
-                                </NavDropdown>
                             </div>
                             {rightNav}
                         </Nav>

@@ -1,6 +1,9 @@
 ﻿#main-container{
     text-align: center;
 }
+.tworow {
+    margin-bottom: -100px;
+}
 
 #info {
     position: relative;
@@ -14,18 +17,17 @@
     width: 45%;
     background-color: #a83939;
     border-radius: 5px;
-    margin-bottom: -115px;
     box-shadow: 8px 8px 20px -4px grey, -8px 8px 20px -4px grey;
     min-width: 325px;
 }
 
-#main-image{
-    max-width: 250px;
+#main-image {
+    max-width: 275px;
     margin-top: -20px;
 }
 
 #info h1{
-    margin-top: -40px;
+    margin-top: -20px;
 }
 
 @media only screen and (max-width: 887px) {
@@ -35,6 +37,10 @@
         margin-right: 5%;
         width: 90%;
         text-align: center;
+    }
+
+    .tworow {
+        margin-bottom: -200px;
     }
 
     #main-image {

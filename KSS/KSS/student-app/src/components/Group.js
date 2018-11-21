@@ -19,28 +19,22 @@ export class Group extends Component {
                         <img id="main-image" src={k} alt="Group Safety Classes image" />
                     </div>
                     <div class="twocolumn" id="info">
-                        <h1>Interested in enrolling as a group?</h1>
+                        <h1>Group Classes</h1>
                         <p> 
-                            Keeping Safety Smart offers group classes which can be made available upon request.  If you represent 
-                            a business considering training its employees in first aid and other first responder
-                            courses, please contact us to discuss pricing, location, and other considerations.  
+                            We offer group classes upon request.  If your business is considering employee training
+                            in first aid or any other safety courses, Please contact Beckey Smith to discuss pricing,
+                            location, and other considerations.  
                         </p>
-                        <p>
-                            The maximum class capacity for CPR is one instructor for every nine students which may
-                            effect pricing as well as the course selected.
-                        </p>
-                        <p>
-                            Please contact Beckey Smith for more information and quotes for prices. Thank you for your interest!
-                        </p>
-                        <p>
-                            Feel free to browse the many courses we have to offer <a href="/catalog">here!</a>
-                        </p>
-                        <br></br>
                         <p>
                             Beckey Smith, Owner <br></br>
                             becky@keepingsafetysmart.com<br></br>
                             (985) 888 - 8888<br></br>
                         </p>
+                        <p>
+                            The maximum class capacity for CPR is one instructor for every nine students which may
+                            effect pricing as well as the course selected.
+                        </p>
+                        Feel free to browse our course catalog availble <a href="/catalog">here!</a>
                     </div>
                 </div>
             </div>
