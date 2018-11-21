@@ -81,6 +81,9 @@ span.new-line-span {
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
 }
+#social{
+    float: right;
+}
 
 .social-icons{
     width: 50px;

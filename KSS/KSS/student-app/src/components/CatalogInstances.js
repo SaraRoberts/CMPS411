@@ -76,8 +76,8 @@ export class CatalogInstances extends Component {
                     </div>
                     <div class="grid-container-pages">
                         <div class="grid-item-pages">
-                        {this.state && this.state.courseInfo &&
-                            <div>
+                            {this.state && this.state.courseInfo &&
+                            <div id="descr">
                                 <br />
                                 <h2>{this.state.courseInfo.name}</h2>
                                 <p>{this.state.courseInfo.description}</p>                               

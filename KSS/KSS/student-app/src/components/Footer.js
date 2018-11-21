@@ -24,6 +24,8 @@ export class Footer extends React.Component {
                             </a>    
                         </p>
                         <p className="company-name">KSS © 2018 </p>
+                    </div>
+                    <div id="social">
                         <div className="social">
                             <img className="social-icons" src={email} />
                         </div>

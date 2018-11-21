@@ -55,7 +55,6 @@ export class Register extends Component {
                     <div class="panel-heading">
                         <div class="panel-title text-center">
                             <h3 class="title">Sign Up </h3>
-                            <hr />
                         </div>
                     </div>
                     <div class="main-login main-center" >
