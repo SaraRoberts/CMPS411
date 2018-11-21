@@ -33,7 +33,19 @@ namespace KSS.Areas.API.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return Ok(User.Identity.Name);
+                var userEmail = User.Identity.Name;
+
+                var userInformation = _context.Users
+               .Where(m => m.Email == userEmail)
+               .Select(x => new { x.UserId, x.FirstName })
+               .SingleOrDefault();
+
+                var user = new UserDto
+                {
+                    UserId = userInformation.UserId,
+                    FirstName = userInformation.FirstName
+                };
+                return Ok(user);
             }
             else
             {
