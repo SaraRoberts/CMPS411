@@ -3,9 +3,35 @@ import { Link } from 'react-router-dom';
 import { Glyphicon, Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import './styles/NavMenu.css';
+import Modal from 'react-modal';
+import { LoginModal } from './LoginModal'
+import { Button } from 'semantic-ui-react';
+
+Modal.setAppElement(document.getElementById('root'));
 
 export class NavMenu extends Component {
     displayName = NavMenu.name
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalInstance: null
+        };
+    }
+
+    showModal = () => {
+        if (!this.state.show) {
+            this.setState({
+                ...this.state,
+                show: !this.state.show,
+            })
+        }
+        else {
+            this.setState({
+                ...this.state,
+                show: !this.state.show,
+            })
+        }
+    }
 
     render() {
         if (!this.props.loginState.loggedIn) {
@@ -58,8 +84,16 @@ export class NavMenu extends Component {
                                 </NavDropdown>
                             </div>
                             {rightNav}
+                            <Button onClick={
+                                () => this.showModal()}>Book Now!>Login
+                            </Button>
                         </Nav>
                     </div>
+                    <LoginModal
+                        show={this.state.show}
+                        onClose={this.showModal}
+                        modalInstance={this.state.modalInstance}
+                    />
                 </div>
             </header>
         );

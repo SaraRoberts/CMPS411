@@ -7,6 +7,7 @@
     background-color: rgba(0,0,0,0.8);
     padding: 50px;
     text-align: center;
+    z-index: 3;
 }
 
 #modal-left {
@@ -14,6 +15,17 @@
     background-image: url('../images/EMTImageB.jpeg');
     height: 420px;
     width: 200px;
+    background-color: #ffffff;
+    border-radius: 10px 0 0 10px;
+    vertical-align: top;
+    position: relative;
+    top: 30px;
+}
+
+#login {
+    display: inline-block;
+    height: 420px;
+    width: 300px;
     background-color: #ffffff;
     border-radius: 10px 0 0 10px;
     vertical-align: top;
@@ -32,6 +44,17 @@
     position: relative;
     top: 30px;
 }
+#sign-up {
+    display: inline-block;
+    height: 420px;
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 0 10px 10px 0;
+    vertical-align: top;
+    position: relative;
+    top: 30px;
+}
+
 #closeButton{
     color: grey;
     font-weight: 600;
