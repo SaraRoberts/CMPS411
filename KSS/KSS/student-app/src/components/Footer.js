@@ -2,6 +2,8 @@
 import ReactDom from 'react-dom';
 import facebook from './images/Facebook.png';
 import email from './images/Email.png';
+import twitter from './images/Twitter.png';
+import insta from './images/Instagram.png';
 import './styles/Footer.css';
 
 
@@ -33,6 +35,12 @@ export class Footer extends React.Component {
                             <a href="https://www.facebook.com/kssbeckey/">
                                 <img className="social-icons" src={facebook} />
                             </a>
+                        </div>
+                        <div className="social">
+                            <img className="social-icons" src={twitter} />
+                        </div>
+                        <div className="social">
+                            <img className="social-icons" src={insta} />
                         </div>
                     </div>
                 </div>
