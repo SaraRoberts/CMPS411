@@ -7,13 +7,56 @@ export class InstanceModal extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            enrollment: {
+                instanceId: 5,
+                userId: 18,
+                bookBought: true,
+                paid: true
+            }
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+    //Handles Change
+    handleChange = e => {
+        var enrollment = {
+            ...this.state.enrollment,
+            [e.target.name]: e.target.value
+        };
+        this.setState({ enrollment: enrollment });
+    }
+    //Handles Submit
+    handleSubmit = e => {
 
+        e.preventDefault();
+        fetch('api/Enrollments/Enrollment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }//,
+                //credentials: 'same-origin',
+                //body: JSON.stringify(this.state.enrollment)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('You have been successfully added to the class!');
+                } else {
+                    alert('Enrollment Error');
+                }
+            });
+
+        this.setState({
+            enrollment: {
+                instanceId: 5,
+                userId: 18,
+                bookBought: true,
+                paid: true
+            }
+        });
+    }
 
     onClose = (e) => {
         this.props.onClose && this.props.onClose(e)
     }
-
 
     render() {
         if (!this.props.show) return null
@@ -67,7 +110,16 @@ export class InstanceModal extends Component {
                         onError={onError}
                         onCancel={onCancel}
                     />
-                    <h5>or <a href="/">Book and Pay Later</a></h5>
+                    <form onSubmit={this.handleSubmit} method="post">
+                        <div class="form-group ">
+
+                            <p>{this.state.enrollment.instanceId}</p>
+                            <p>{this.state.enrollment.userId}</p>
+
+                            <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Book Without Paying</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         );
