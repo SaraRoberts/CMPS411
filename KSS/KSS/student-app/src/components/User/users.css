@@ -22,7 +22,7 @@ label{
 }
 
 input{
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .main-center {
@@ -42,7 +42,7 @@ input{
 
 .form-blank {
     margin-bottom: 12px;
-    width: 300px;
+    width: 200px;
     height: 35px;
     text-align: center;
     border-radius: 15px;

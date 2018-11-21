@@ -85,7 +85,7 @@ export class NavMenu extends Component {
                             </div>
                             {rightNav}
                             <Button onClick={
-                                () => this.showModal()}>Book Now!>Login
+                                () => this.showModal()}>Login
                             </Button>
                         </Nav>
                     </div>
