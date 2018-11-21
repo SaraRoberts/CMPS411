@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route } from "react-router-dom";
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Catalog } from './components/Catalog';
@@ -23,7 +23,7 @@ class App extends Component {
             loginState: {
                 loggedIn: false,
                 userId: null,
-                firstName: "test"
+                firstName: ""
             }
         };
         fetch('/api/users', { credentials: 'same-origin' })

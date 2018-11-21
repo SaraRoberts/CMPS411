@@ -56,7 +56,7 @@ export class NavMenu extends Component {
                         <LinkContainer to={'/logout'}>
                             <NavItem>Logout</NavItem>
                         </LinkContainer>
-            </div>
+                    </div>
             );
         return (
             <header>
