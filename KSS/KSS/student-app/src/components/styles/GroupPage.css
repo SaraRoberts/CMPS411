@@ -1,14 +1,5 @@
-﻿body {
-
-}
-
-#main-container{
+﻿#main-container{
     text-align: center;
-}
-
-#tworow {
-    text-align: center;
-    align-content: center;
 }
 
 #info {
@@ -31,11 +22,9 @@
 #main-image{
     max-width: 250px;
     margin-top: -20px;
-    margin-bottom: 40px;
 }
 
 #info h1{
-    text-align: left;
     margin-top: -40px;
 }
 
@@ -45,11 +34,9 @@
         margin-left: 5%;
         margin-right: 5%;
         width: 90%;
-    }
-
-    #tworow {
         text-align: center;
     }
+
     #main-image {
         display: none;
     }
