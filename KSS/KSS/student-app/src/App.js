@@ -35,8 +35,6 @@ class App extends Component {
         return (
             <div className="App">
                 <Layout loggedIn={this.state.loggedIn}>
-                    <BrowserRouter>
-                        <Switch>
                             <Route exact path='/' component={() => <Home loggedIn={this.state.loggedIn} />} />
                             <Route exact path='/catalog' component={Catalog} />
                             <Route path='/catalog/:courseId' component={CatalogInstances} />
@@ -49,8 +47,6 @@ class App extends Component {
                             <Route path='/logout' component={Logout} />
                             <Route path='/payment' component={Payment} />
                             <Route exact path='/register' component={Register} />
-                        </Switch>
-                    </BrowserRouter>
                 </Layout>
             </div>
         );
