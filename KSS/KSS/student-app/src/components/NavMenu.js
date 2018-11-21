@@ -8,7 +8,7 @@ export class NavMenu extends Component {
     displayName = NavMenu.name
 
     render() {
-        if (!this.props.loggedIn) {
+        if (!this.props.loginState.loggedIn) {
             var rightNav = (
                 <div id="register-button">
                     <LinkContainer to={'/register'}>

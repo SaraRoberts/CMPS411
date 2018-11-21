@@ -14,7 +14,7 @@ export class Layout extends Component {
             <Grid fluid>
                 <Row>
                     <Col>
-                        <NavMenu loggedIn={this.props.loggedIn}/>
+                        <NavMenu loginState={this.props.loginState}/>
                     </Col>
                 </Row>
 

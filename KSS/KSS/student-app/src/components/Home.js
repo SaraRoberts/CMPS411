@@ -13,7 +13,7 @@ import './styles/HomePage.css';
 export class Home extends Component {
     displayName = Home.name
     render() {
-        if (this.props.loggedIn)
+        if (this.props.loginState.loggedIn)
             var test = "Logged In!";
         else test = "Not Logged In";
         return (

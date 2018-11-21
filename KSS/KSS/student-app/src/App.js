@@ -19,23 +19,45 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loggedIn: false
+            loginState: {
+                loggedIn: false,
+                userId: null,
+                firstName: "test"
+            }
         };
         fetch('/api/users', { credentials: 'same-origin' })
             .then(response => {
                 if (response.ok) {
                     this.setState({
-                        loggedIn: true
+                        loginState: {
+                            loggedIn: true,
+                            userId: null,
+                            firstName: "test2"
+                        }
                     });
+                    if (this.state.loginState.loggedIn) {
+                        fetch('/api/users', { credentials: 'same-origin' })
+                            .then(response => response.json())
+                            .then(data => {
+                                this.setState({
+                                    loginState: {
+                                        loggedIn: true,
+                                        userId: data.userId,
+                                        firstName: data.firstName
+                                    }
+                                });
+                            });
+                    }
                 }
             });
+        
 
     }
     render() {
         return (
             <div className="App">
-                <Layout loggedIn={this.state.loggedIn}>
-                            <Route exact path='/' component={() => <Home loggedIn={this.state.loggedIn} />} />
+                <Layout loginState={this.state.loginState}>
+                            <Route exact path='/' component={() => <Home loginState={this.state.loginState} />} />
                             <Route exact path='/catalog' component={Catalog} />
                             <Route path='/catalog/:courseId' component={CatalogInstances} />
                             <Route path='/contact' component={Contact} />
@@ -43,7 +65,7 @@ class App extends Component {
                             <Route path='/account' component={Account} />
                             <Route path='/myclasses' component={MyClasses} />
                             <Route path='/search' component={Search} />
-                            <Route path='/login' component={() => <Login loggedIn={this.state.loggedIn} />}/>
+                            <Route path='/login' component={() => <Login loginState={this.state.loginState} />}/>
                             <Route path='/logout' component={Logout} />
                             <Route path='/payment' component={Payment} />
                             <Route exact path='/register' component={Register} />
