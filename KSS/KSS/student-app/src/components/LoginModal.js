@@ -15,12 +15,11 @@ export class LoginModal extends Component {
 
         return (
             <div id="modalBack">
-                    <div id="modal-left"></div>
-                    <div id="modal-right" onClick="">
-                        <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
-                            X
-                            </span>
-                    <h5>or <a href="/">Book and Pay Later</a></h5>
+                <div id="login">
+                    <h1>Login</h1>
+                </div>
+                <div id="sign-up" onClick="">
+                    <h1>Sign up</h1>
                 </div>
             </div>
         );
