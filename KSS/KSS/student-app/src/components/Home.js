@@ -19,20 +19,15 @@ export class Home extends Component {
         return (
             <div id="main-container">
                 {test}
-                <div id = "nestedImage-container">
-                    <img id="topImage" src={home1} alt="Home1" />
+                <div id="homeBanner">
+                    <img id="nested-logo" src={logo} alt="Keeping Safety Smart logo" />
                 </div>
-                <div id="centered-logo-container">
-                    <img id="nested-logo" src={logo} alt="Logo" />
-                </div>
-
                 <div id="banner-container">
-                    <p id="banner-title">Keep safety smart one class at a time</p>
-                    <p id="banner-text">Keeping Safety Smart LLC. is my company and it is an honor and privilege to help educate. The company 
-                        cornerstone is to bring the strongest safety education to our community.  We are a program with the 
-                        Louisiana Bureau of Emergency Medical Services as well as a national registry company, which means we 
-                        have met all State of Louisiana requirements including a Medical Director to teach our courses. We 
-                        offer over 25 years of safety education experience.   
+                    <p id="banner-title">Keep safety smart, one class at a time!</p>
+                    <p id="banner-text">The cornerstone of Keeping Safety Smart has been bringing the best safety
+                        education to our community.  It has been an honor and privilege to help educate this community.
+                        We are a program with the Louisiana Bureau of Emergency Medical Services and a national registry
+                        company, meeting all Louisiana requirements. We also offer over 25 years of safety education experience.   
                     </p>
                 </div>
                 <div>
@@ -47,9 +42,9 @@ export class Home extends Component {
                     <div className="course">
                         <img className="course-image" src={home1} />
                         <h2>CPR</h2>
-                        <p>Learn CPR, a medical procedure involving specific compression
-                            of a patient's chest, performed in an attempt to bring back
-                            the blood circulation and breathing of a person who has suffered
+                        <p>CPR is a medical procedure involving specific chest
+                            compression, performed in an attempt to bring back
+                            blood circulation and breathing of a person suffering
                             cardiac arrest.
                         </p>
                     </div>
@@ -71,9 +66,9 @@ export class Home extends Component {
                     <div className="course">
                         <img className="course-image" src={bbsImage} />
                         <h2>BBS</h2>
-                        <p>Babysitting can sometimes be difficult, but BBS courses teach babysitting skills,
-                            such as leadership, keeping children safe, and helping kids to behave, to anyone
-                            who wants to learn or even grow a babysitting business.
+                        <p>Babysitting can be difficult, but BBS courses teach babysitting skills,
+                            such as leadership, child safety, and child behavoir to anyone
+                            with a desire to learn or growing a babysitting business.
                         </p>
                     </div>
                     <div className="course">
