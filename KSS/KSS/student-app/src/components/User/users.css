@@ -98,7 +98,7 @@ input{
     display: inline-block;
 }
 .studentClass {
-    max-width: 325px;
+    max-width: 350px;
     font-size: 13px;
     text-align: left;
     border-top: 1px solid rgba(128, 128, 128, 0.1);
@@ -116,12 +116,18 @@ input{
 .studentClassLeft {
     text-align: center;
     width: 100px;
-    border-right: 1px solid rgba(128, 128, 128, 0.1);
     color: grey;
 }
 .studentClassLeft span {
     font-weight: 800;
     color: black;
+}
+.studentClass .seperator {
+    display: inline-block;
+    background-color: rgba(128, 128, 128, 0.2);
+    width: 1px;
+    height: 40px;
+    padding: 0px;
 }
 .studentClassRight {
     width: 225px;

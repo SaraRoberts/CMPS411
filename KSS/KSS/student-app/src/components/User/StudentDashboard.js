@@ -40,6 +40,7 @@ export class StudentDashboard extends Component {
                                 </span>
                                 {enrollment.instanceStartDateTime}
                             </div>
+                            <div className="seperator"></div>
                             <div className="studentClassRight">
                                 {enrollment.courseName}<br />
                                 {enrollment.locationStreet}, {enrollment.locationCity}, {enrollment.locationState}
@@ -58,6 +59,7 @@ export class StudentDashboard extends Component {
                                 </span>
                                 {enrollment.instanceStartDateTime}
                             </div>
+                            <div className="seperator"></div>
                             <div className="studentClassRight">
                                 {enrollment.courseName}<br />
                                 {enrollment.locationStreet}, {enrollment.locationCity}, {enrollment.locationState}
