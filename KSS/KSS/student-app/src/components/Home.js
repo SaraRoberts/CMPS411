@@ -14,11 +14,11 @@ export class Home extends Component {
     displayName = Home.name
     render() {
         if (this.props.loginState.loggedIn)
-            var test = "Logged In!";
-        else test = "Not Logged In";
+            var signedIn = "signed in as " + this.props.loginState.firstName;
+       
         return (
             <div id="main-container">
-                {test}
+                {signedIn}
                 <div id="homeBanner">
                     <img id="nested-logo" src={logo} alt="Keeping Safety Smart logo" />
                 </div>

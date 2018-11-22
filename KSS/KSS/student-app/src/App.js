@@ -33,7 +33,7 @@ class App extends Component {
                         loginState: {
                             loggedIn: true,
                             userId: null,
-                            firstName: "test2"
+                            firstName: ""
                         }
                     });
                     if (this.state.loginState.loggedIn) {
