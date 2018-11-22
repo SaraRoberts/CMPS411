@@ -31,10 +31,7 @@ export class CatalogInstances extends Component {
             showM: false,
             modalInstance: null
         };
-
-        console.log(this.props);
-        console.log(this.props.match.params.courseId);
-
+        
         fetch('/api/Instances/GetInstanceByCourseId/' + this.props.match.params.courseId, { credentials: 'same-origin' })
             .then(response => response.json())
             .then(data => {

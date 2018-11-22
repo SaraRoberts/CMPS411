@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
 using KSS.Areas.API.Models;
+using System.Globalization;
 
 namespace KSS.Areas.API.Controllers
 {
@@ -37,12 +38,13 @@ namespace KSS.Areas.API.Controllers
                               join u in _context.Users on e.UserId  equals u.UserId
                               join c in _context.Course on e.Instance.Course.CourseId equals c.CourseId
                               join l in _context.Location on e.Instance.Location.LocationId equals l.LocationId
-                              where e.UserId == userId
+                              where e.UserId == userId && e.Instance.StartDate > DateTime.UtcNow
 
                                     select new EnrollmentsDto
                               {
                                   EnrollmentId = e.EnrollmentId,
                                   InstanceId = e.InstanceId,
+                                  InstanceStartDate = e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")),
                                   UserId = e.UserId,
                                   UserName = e.User.FirstName + " "+ e.User.LastName,
                                   CourseName = e.Instance.Course.Name,
