@@ -65,13 +65,13 @@
 
 /* Student Dashboard Class tiles */
 
-.studentClasses {
+.courseClasses {
     text-align: left;
     margin: 20px;
     display: inline-block;
     margin-top: -20px;
 }
-.studentClass {
+.courseClass {
     max-width: 380px;
     font-size: 13px;
     text-align: left;
@@ -79,39 +79,39 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.1);
     background-color: rgba(225, 225, 225, 0.2);
 }
-.studentClass div{
+.courseClass div{
     display: inline-block;
     vertical-align: middle;
     padding: 10px 10px;
 }
-.studentClass hr{
+.courseClass hr{
     border-color: rgba(128, 128, 128, 0.1);
 }
-.studentClassLeft {
+.courseClassLeft {
     text-align: center;
     width: 100px;
     color: grey;
     padding: -5px;
 }
-.studentClassLeft span {
+.courseClassLeft span {
     font-weight: 800;
     color: black;
 }
-.studentClass .seperator {
+.courseClass .seperator {
     display: inline-block;
     background-color: rgba(128, 128, 128, 0.2);
     width: 1px;
     height: 40px;
     padding: 0px;
 }
-.studentClassMiddle {
+.courseClassMiddle {
     width: 175px;
     color: grey;
 }
-.studentClassMiddle:first-line {
+.courseClassMiddle:first-line {
     font-weight: 600;
     color: black;
 }
-.studentClassRight {
+.courseClassRight {
     width: 75px;
 }

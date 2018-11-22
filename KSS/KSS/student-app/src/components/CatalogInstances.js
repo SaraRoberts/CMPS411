@@ -72,12 +72,12 @@ export class CatalogInstances extends Component {
                 <img id="headerImage" src={groupPage} alt="Groups1" />
                 <div className="tworow">
                     <div className="twocolumn">
-                        <div className="studentClasses">
+                        <div className="courseClasses">
                             <h5>Upcoming Classes</h5>
                             {this.state.instances.map(instance =>
                                 (
-                                    <div className="studentClass" key={instance.enrollmentId}>
-                                        <div className="studentClassLeft">
+                                    <div className="courseClass" key={instance.enrollmentId}>
+                                        <div className="courseClassLeft">
                                             {instance.startDateDOW}< br />
                                             <span>
                                                 {instance.startDateMonthF3} {instance.startDateDay}< br />
@@ -85,13 +85,13 @@ export class CatalogInstances extends Component {
                                             {instance.startDateTime}
                                         </div>
                                         <div className="seperator" />
-                                        <div className="studentClassMiddle">
+                                        <div className="courseClassMiddle">
                                             Price: ${instance.price}.00<br />
                                             Open Seats: {instance.seats}<br />
                                             {instance.locationName}<br />
                                             {instance.instructorName}
                                         </div>
-                                        <div className="studentClassRight">
+                                        <div className="courseClassRight">
                                             <button
                                                 className="redButton"
                                                 onClick={
