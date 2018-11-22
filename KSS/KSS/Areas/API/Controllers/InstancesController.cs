@@ -201,7 +201,10 @@ namespace KSS.Areas.API.Controllers
                                   select new InstancesDto
                                   {
                                       InstanceId = i.InstanceId,
-                                      StartDate = i.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")),
+                                      StartDateDOW = i.StartDate.DayOfWeek.ToString(),
+                                      StartDateMonthF3 = i.StartDate.ToString("MMMM").Substring(0, 3),
+                                      StartDateTime = i.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Substring(i.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Length - 8, 8),
+                                      StartDateDay = i.StartDate.Day.ToString(),
                                       Price = i.Price,
                                       Graded = i.Graded,
                                       CourseId = i.CourseId,

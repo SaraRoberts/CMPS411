@@ -32,6 +32,10 @@ namespace KSS.Areas.API.Models
 
         public bool BookAvailable { get; set; }
         public double? BookPrice { get; set; }
+        public string StartDateDOW { get; internal set; }
+        public string StartDateDay { get; internal set; }
+        public string StartDateTime { get; internal set; }
+        public string StartDateMonthF3 { get; internal set; }
 
         //public List<Enrollment> Enrollments { get; set; }
     }

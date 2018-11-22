@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button, Table } from 'semantic-ui-react';
 import './styles/Tables.css';
 import Modal from 'react-modal';
-import { InstanceModal } from './InstanceModal'
-import EMTImage from './images/EMTImage.jpeg'
+import { InstanceModal } from './InstanceModal';
+import EMTImage from './images/EMTImage.jpeg';
+import './styles/CatalogInstances.css';
+import groupPage from './images/groupPage.jpg';
 
 const customStyles = {
     content: {
@@ -66,63 +68,55 @@ export class CatalogInstances extends Component {
 
     render() {
         return (
-            <div id="page">
-                <div id="main-container">
-                    <div id="courseHeader">
-                        <div><img src={EMTImage} /></div>
-                    </div>
-                    <div class="grid-container-pages">
-                        <div class="grid-item-pages">
-                            {this.state && this.state.courseInfo &&
-                            <div id="descr">
-                                <br />
-                                <h2>{this.state.courseInfo.name}</h2>
-                                <p>{this.state.courseInfo.description}</p>                               
-                            </div>
-                        } 
-                        </div>
-                        <div class="grid-item-pages">
-                            <Table>
-                                <Table.Header>
-                                    <Table.Row>
-                                        <Table.HeaderCell>Upcoming Classes</Table.HeaderCell>
-                                    </Table.Row>
-                                </Table.Header>
-                                <Table.Body>
-                                    {this.state.instances.map(instance =>
-                                        <Table.Row key={instance.instanceId}>
-                                            <Table.Cell>
-                                                {instance.startDate}<br />
-                                                {instance.instructorName}
-                                            </Table.Cell>
-                                            <Table.Cell>{instance.locationName}<br />
-                                                {instance.locationCity}, {instance.locationState}
-                                            </Table.Cell>
-                                            <Table.Cell>
-                                                Open Seats: {instance.seats} <br />
-                                                Price: ${instance.price}.00
-                                            </Table.Cell>
-                                            <Table.Cell>
-                                                <button
-                                                    className="redButton"
-                                                    onClick={
-                                                        () => this.showModal(instance)}>Book Now!
-                                                </button>
-                                            </Table.Cell>
-                                        </Table.Row>
-                                    )}
-                                </Table.Body>
-                            </Table>
+            <div id="main-container">
+                <img id="headerImage" src={groupPage} alt="Groups1" />
+                <div className="tworow">
+                    <div className="twocolumn">
+                        <div className="studentClasses">
+                            <h5>Upcoming Classes</h5>
+                            {this.state.instances.map(instance =>
+                                (
+                                    <div className="studentClass" key={instance.enrollmentId}>
+                                        <div className="studentClassLeft">
+                                            {instance.startDateDOW}< br />
+                                            <span>
+                                                {instance.startDateMonthF3} {instance.startDateDay}< br />
+                                            </span>
+                                            {instance.startDateTime}
+                                        </div>
+                                        <div className="seperator" />
+                                        <div className="studentClassMiddle">
+                                            Price: ${instance.price}.00<br />
+                                            Open Seats: {instance.seats}<br />
+                                            {instance.locationName}<br />
+                                            {instance.instructorName}
+                                        </div>
+                                        <div className="studentClassRight">
+                                            <button
+                                                className="redButton"
+                                                onClick={
+                                                    () => this.showModal(instance)}>Book!
+                                            </button>
+                                        </div>
+                                    </div>
+                                )
+                            )}
                         </div>
                     </div>
-
-                    <InstanceModal
-                        show={this.state.show}
-                        onClose={this.showModal}
-                        modalInstance={this.state.modalInstance}
-                    />
-                    
+                    {this.state && this.state.courseInfo &&
+                        <div className="twocolumn" id="info">
+                            <h2>{this.state.courseInfo.name}</h2>
+                            <p>{this.state.courseInfo.description}</p>
+                        </div>
+                    }
                 </div>
+                    
+                <InstanceModal
+                    show={this.state.show}
+                    onClose={this.showModal}
+                    modalInstance={this.state.modalInstance}
+                />
+                    
             </div>
         );
     }
