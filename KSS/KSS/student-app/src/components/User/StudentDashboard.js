@@ -28,34 +28,42 @@ export class StudentDashboard extends Component {
         return (
             <div id="main-container">
                 <h1>Student Dashboard</h1>
-                Welcome {this.props.loginState.firstName}
-                <div class="grid-container-pages">
-                    <div class="grid-item-pages">
-                        <Table>
-                            <Table.Header>
-                                <Table.Row>
-                                    <Table.HeaderCell>Your Upcoming Classes</Table.HeaderCell>
-                                </Table.Row>
-                            </Table.Header>
-                            <Table.Body>
-                                {this.state.enrollments.map(enrollment =>
-                                    <Table.Row key={enrollment.enrollmentId}>
-                                        <Table.Cell>
-                                            {enrollment.courseName}<br />
-                                            {enrollment.instanceStartDate}
-                                        </Table.Cell>
-                                        <Table.Cell>{enrollment.locationName}<br />
-                                            {enrollment.locationCity}, {enrollment.locationState}
-                                        </Table.Cell>
-                                        <Table.Cell>
-                                            Instructor: {enrollment.instructorName} <br />
-                                            Price: ${enrollment.price}.00
-                                        </Table.Cell>
-                                    </Table.Row>
-                                )}
-                            </Table.Body>
-                        </Table>
-                    </div>
+                <h3>Welcome {this.props.loginState.firstName}</h3>
+                <div className="studentClasses">
+                    <h5>Your Upcoming Classes</h5>
+                    {this.state.enrollments.map(enrollment =>
+                        <div className="studentClass" key={enrollment.enrollmentId}>
+                            <div className="studentClassLeft">
+                                {enrollment.instanceStartDateDOW}< br />
+                                <span>
+                                    {enrollment.instanceStartDateMonthF3} {enrollment.instanceStartDateDay}< br />
+                                </span>
+                                {enrollment.instanceStartDateTime}
+                            </div>
+                            <div className="studentClassRight">
+                                {enrollment.courseName}<br />
+                                {enrollment.locationStreet}, {enrollment.locationCity}, {enrollment.locationState}
+                            </div>
+                        </div>
+                    )}
+                </div>
+                <div className="studentClasses">
+                    <h5>Course Records</h5>
+                    {this.state.enrollments.map(enrollment =>
+                        <div className="studentClass" key={enrollment.enrollmentId}>
+                            <div className="studentClassLeft">
+                                {enrollment.instanceStartDateDOW}< br />
+                                <span>
+                                    {enrollment.instanceStartDateMonthF3} {enrollment.instanceStartDateDay}< br />
+                                </span>
+                                {enrollment.instanceStartDateTime}
+                            </div>
+                            <div className="studentClassRight">
+                                {enrollment.courseName}<br />
+                                {enrollment.locationStreet}, {enrollment.locationCity}, {enrollment.locationState}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         );

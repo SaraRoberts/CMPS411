@@ -89,3 +89,45 @@ input{
  .title{
      font-size: 25px;
  }
+
+ /* Student Dashboard Class tiles */
+
+.studentClasses {
+    text-align: left;
+    margin: 20px;
+    display: inline-block;
+}
+.studentClass {
+    max-width: 325px;
+    font-size: 13px;
+    text-align: left;
+    border-top: 1px solid rgba(128, 128, 128, 0.1);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+    background-color: rgba(225, 225, 225, 0.2);
+}
+.studentClass div{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 10px;
+}
+.studentClass hr{
+    border-color: rgba(128, 128, 128, 0.1);
+}
+.studentClassLeft {
+    text-align: center;
+    width: 100px;
+    border-right: 1px solid rgba(128, 128, 128, 0.1);
+    color: grey;
+}
+.studentClassLeft span {
+    font-weight: 800;
+    color: black;
+}
+.studentClassRight {
+    width: 225px;
+    color: grey;
+}
+.studentClassRight:first-line {
+    font-weight: 600;
+    color: black;
+}

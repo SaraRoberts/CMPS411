@@ -44,7 +44,10 @@ namespace KSS.Areas.API.Controllers
                               {
                                   EnrollmentId = e.EnrollmentId,
                                   InstanceId = e.InstanceId,
-                                  InstanceStartDate = e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")),
+                                  InstanceStartDateDOW = e.Instance.StartDate.DayOfWeek.ToString(),
+                                  InstanceStartDateMonthF3 = e.Instance.StartDate.ToString("MMMM").Substring(0,3),
+                                  InstanceStartDateTime = e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Substring(e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Length-8,8),
+                                  InstanceStartDateDay = e.Instance.StartDate.Day.ToString(),
                                   UserId = e.UserId,
                                   UserName = e.User.FirstName + " "+ e.User.LastName,
                                   CourseName = e.Instance.Course.Name,

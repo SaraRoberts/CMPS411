@@ -28,5 +28,9 @@ namespace KSS.Areas.API.Models
         public bool BookBought { get; set; }
         public bool Paid { get; set; }
         public DateTime? Confirmed { get; set; }
+        public string InstanceStartDateDay { get; set; }
+        public string InstanceStartDateDOW { get; set; }
+        public string InstanceStartDateMonthF3 { get; set; }
+        public string InstanceStartDateTime { get; set; }
     }
 }
