@@ -1,9 +1,8 @@
 ﻿import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import facebook from './images/Facebook.png';
-import email from './images/Email.png';
-import twitter from './images/Twitter.png';
-import insta from './images/Instagram.png';
+import facebookLogo from './images/facebookLogo.png';
+import emailLink from './images/emailLink.png';
+import twitterLogo from './images/twitterLogo.png';
+import instagramLogo from './images/instagramLogo.png';
 import './styles/Footer.css';
 
 
@@ -13,35 +12,31 @@ export class Footer extends React.Component {
     render() {
         return (
             <footer>
-                <div className="main-container">
-                    <div className="footer-navigation">
-                        <h3><a href="#">Keeping Safety Smart</a></h3>
+                <div className="content-container">
+                    <div id="footer-contact">
+                        <a href="\">
+                            <h3>Keeping Safety Smart</h3>
+                        </a>
                         <p>
                             Ms Beckey Smith, Owner <br />
                             beckey@keepingsafetysmart.com <br />
                             (985) 888-8888 <br />
                             Cell: (985) 888-8888 <br />
-                            <a href="\">
-                                www.keepingsafetysmart.com
-                            </a>    
+                            <a href="\">www.keepingsafetysmart.com</a>    
                         </p>
-                        <p className="company-name">KSS © 2018 </p>
+                        <p>KSS © 2018 </p>
                     </div>
-                    <div id="social">
-                        <div className="social">
-                            <img className="social-icons" src={email} />
-                        </div>
-                        <div className="social">
-                            <a href="https://www.facebook.com/kssbeckey/">
-                                <img className="social-icons" src={facebook} />
-                            </a>
-                        </div>
-                        <div className="social">
-                            <img className="social-icons" src={twitter} />
-                        </div>
-                        <div className="social">
-                            <img className="social-icons" src={insta} />
-                        </div>
+                    <div id="social-icons">
+                        <img src={emailLink} />
+                        <a href="https://www.facebook.com/kssbeckey/">
+                            <img src={facebookLogo} />
+                        </a>
+                        <a href="">
+                            <img src={twitterLogo} />
+                        </a>
+                        <a href="">
+                            <img src={instagramLogo} />
+                        </a>
                     </div>
                 </div>
             </footer>

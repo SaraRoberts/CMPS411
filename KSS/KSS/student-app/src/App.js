@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Catalog } from './components/Catalog';
@@ -56,23 +56,21 @@ class App extends Component {
     }
     render() {
         return (
-            <div className="App">
-                <Layout loginState={this.state.loginState}>
-                            <Route exact path='/' component={() => <Home loginState={this.state.loginState} />} />
-                            <Route exact path='/catalog' component={Catalog} />
-                            <Route path='/catalog/:courseId' component={CatalogInstances} />
-                            <Route path='/contact' component={Contact} />
-                            <Route path='/group' component={Group} />
-                            <Route path='/account' component={Account} />
-                            <Route path='/myclasses' component={MyClasses} />
-                            <Route path='/search' component={Search} />
-                            <Route path='/login' component={() => <Login loginState={this.state.loginState} />}/>
-                            <Route path='/logout' component={Logout} />
-                            <Route path='/payment' component={Payment} />
-                            <Route exact path='/register' component={Register} />
-                            <Route path='/dashboard' component={() => <StudentDashboard loginState={this.state.loginState} />} />
-                </Layout>
-            </div>
+            <Layout loginState={this.state.loginState}>
+                        <Route exact path='/' component={() => <Home loginState={this.state.loginState} />} />
+                        <Route exact path='/catalog' component={Catalog} />
+                        <Route path='/catalog/:courseId' component={CatalogInstances} />
+                        <Route path='/contact' component={Contact} />
+                        <Route path='/group' component={Group} />
+                        <Route path='/account' component={Account} />
+                        <Route path='/myclasses' component={MyClasses} />
+                        <Route path='/search' component={Search} />
+                        <Route path='/login' component={() => <Login loginState={this.state.loginState} />}/>
+                        <Route path='/logout' component={Logout} />
+                        <Route path='/payment' component={Payment} />
+                        <Route exact path='/register' component={Register} />
+                        <Route path='/dashboard' component={() => <StudentDashboard loginState={this.state.loginState} />} />
+            </Layout>
         );
     }
 }

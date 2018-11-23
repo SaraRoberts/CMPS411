@@ -2,6 +2,7 @@
 import { Grid, Row } from 'react-bootstrap';
 import { NavMenu } from './NavMenu';
 import { Footer } from './Footer';
+import './styles/Layout.css';
 
 export class Layout extends Component {
     displayName = Layout.name
@@ -15,7 +16,9 @@ export class Layout extends Component {
                     <NavMenu loginState={this.props.loginState}/>
                 </Row>
                 <Row>
-                    {this.props.children}
+                    <div className="main-container">
+                        {this.props.children}
+                    </div>
                 </Row>
                 <Row>
                     <Footer />

@@ -5,3 +5,7 @@ body {
   background-color: lightgrey;
   text-align: center;
 }
+.content-container {
+    width: 80%;
+    max-width: 1100px;
+}

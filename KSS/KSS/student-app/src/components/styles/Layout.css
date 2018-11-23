@@ -1,0 +1,8 @@
+.main-container {
+    box-shadow: 12px 0 20px -4px grey, -12px 0 20px -4px grey;
+    height: auto;
+    max-width: 1100px;
+    text-align: center;
+    background-color: white;
+    display: inline-block;
+}
