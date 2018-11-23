@@ -23,12 +23,19 @@
 
 #sign-in-button {
     margin-top: 3px;
+    margin-left: 10px;
     float: right;
-    width: 160px;
+    width: 140px;
     height: 40px;
     border-radius: 20px;
     border-style: solid;
+    background-color: #a83939;
+    color: white;
 }
+
+    #sign-in-button:hover {
+        background-color: indianred;
+    }
 
 .nav li{
     float: left;
