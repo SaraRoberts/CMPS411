@@ -8,18 +8,7 @@ import EMTImage from './images/EMTImage.jpeg';
 import './styles/CatalogInstances.css';
 import groupPage from './images/groupPage.jpg';
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
-    }
-};
 
-Modal.setAppElement(document.getElementById('root'));
 
 
 export class CatalogInstances extends Component {
@@ -29,24 +18,17 @@ export class CatalogInstances extends Component {
         super(props);
         this.state = {
             instances: [],
-            courseInfo: null,
             showM: false,
             modalInstance: null
         };
-        
+    }
+
+    componentDidMount() {
         fetch('/api/Instances/GetInstanceByCourseId/' + this.props.match.params.courseId, { credentials: 'same-origin' })
             .then(response => response.json())
             .then(data => {
                 this.setState({ instances: data, loading: false });
                 console.log(data);
-            });
-
-        //Pulls course data display course title/description
-        fetch('/api/courses/' + this.props.match.params.courseId)
-            .then(res => res.json())
-            .then(data2 => {
-                this.setState({ courseInfo: data2, loading: false });
-                console.log(data2);
             });
     }
 
@@ -56,19 +38,19 @@ export class CatalogInstances extends Component {
                 ...this.state,
                 modalInstance: instance,
                 show: !this.state.show,
-            })
+            });
         }
         else {
             this.setState({
                 ...this.state,
                 show: !this.state.show,
-            })
+            });
         }
     }
 
     render() {
         return (
-            <div id="main-container">
+            <div>
                 <img id="headerImage" src={groupPage} alt="Groups1" />
                 <div className="tworow">
                     <div className="twocolumn">
@@ -76,47 +58,45 @@ export class CatalogInstances extends Component {
                             <h5>Upcoming Classes</h5>
                             {this.state.instances.map(instance =>
                                 (
-                                    <div className="courseClass" key={instance.enrollmentId}>
-                                        <div className="courseClassLeft">
-                                            {instance.startDateDOW}< br />
-                                            <span>
-                                                {instance.startDateMonthF3} {instance.startDateDay}< br />
-                                            </span>
-                                            {instance.startDateTime}
-                                        </div>
-                                        <div className="seperator" />
-                                        <div className="courseClassMiddle">
-                                            Price: ${instance.price}.00<br />
-                                            Open Seats: {instance.seats}<br />
-                                            {instance.locationName}<br />
-                                            {instance.instructorName}
-                                        </div>
-                                        <div className="courseClassRight">
-                                            <button
-                                                className="redButton"
-                                                onClick={
-                                                    () => this.showModal(instance)}>Book!
-                                            </button>
-                                        </div>
+                                <div className="courseClass" key={instance.enrollmentId}>
+                                    <div className="courseClassLeft">
+                                        {instance.startDateDOW}< br />
+                                        <span>
+                                            {instance.startDateMonthF3} {instance.startDateDay}< br />
+                                        </span>
+                                        {instance.startDateTime}
                                     </div>
+                                    <div className="seperator" />
+                                    <div className="courseClassMiddle">
+                                        Price: ${instance.price}.00<br />
+                                        Open Seats: {instance.seats}<br />
+                                        {instance.locationName}<br />
+                                        {instance.instructorName}
+                                    </div>
+                                    <div className="courseClassRight">
+                                        <button
+                                            className="redButton"
+                                            onClick={
+                                                () => this.showModal(instance)}
+                                        >Book!
+                                        </button>
+                                    </div>
+                                </div>
                                 )
                             )}
                         </div>
                     </div>
-                    {this.state && this.state.courseInfo &&
-                        <div className="twocolumn" id="info">
-                            <h2>{this.state.courseInfo.name}</h2>
-                            <p>{this.state.courseInfo.description}</p>
-                        </div>
-                    }
+                    <div className="twocolumn" id="info">
+                        <h2>{this.props.location.state.courseName}</h2>
+                        <p>{this.props.location.state.courseDescription}</p>
+                    </div>
                 </div>
                     
                 <InstanceModal
                     show={this.state.show}
                     onClose={this.showModal}
                     modalInstance={this.state.modalInstance}
-                />
-                    
+                />  
             </div>
         );
     }

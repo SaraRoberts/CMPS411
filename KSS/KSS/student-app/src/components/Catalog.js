@@ -23,11 +23,19 @@ export class Catalog extends Component {
                             <Table.Cell>{courses.name}</Table.Cell>
                             <Table.Cell>{courses.description}</Table.Cell>
                             <Table.Cell>
-                                <Link to={`catalog/${courses.courseId}`}>
+                              <Link
+                                  to={{
+                                      pathname: `catalog/${courses.courseId}`,
+                                      state: {
+                                          courseName: courses.name,
+                                          courseDescription: courses.description
+                                      }
+                                  }}
+                              >
                                     <button className="redButton">
                                         Upcoming Classes
-                            </button>
-                                </Link>
+                                    </button>
+                              </Link>
                             </Table.Cell>
                         </Table.Row>
                     )
