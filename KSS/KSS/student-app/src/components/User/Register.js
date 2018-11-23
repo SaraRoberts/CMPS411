@@ -50,81 +50,50 @@ export class Register extends Component {
     // Visuals
     render() {
         return (
-            <div class="container">
-                <div class="row main">
-                    <div class="panel-heading">
-                        <div class="panel-title text-center">
-                            <h3 class="title">Sign Up </h3>
+            <div>
+                <h2>Sign Up</h2>
+                <div className="main-login main-center">
+                    <form onSubmit={this.handleSubmit}>
+                        <div>
+                            <label>Email</label>
+                            <div>
+                                <input type="text" className="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChange} />
+                            </div>
                         </div>
-                    </div>
-                    <div class="main-login main-center" >
-                        <form onSubmit={this.handleSubmit} class="form-horizontal">
-
-                            <div class="form-group">
-                                <label for="email" class="cols-sm-2 control-label">Email</label>
-                                <div class="cols-sm-10">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChange} />
-                                    </div>
-                                </div>
+                        <div>
+                            <label>Password</label>
+                            <div>
+                                <input type="password" className="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChange} />
                             </div>
-
-                            <div class="form-group">
-                                <label for="password" class="cols-sm-2 control-label">Password</label>
-                                <div class="cols-sm-10">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChange} />
-                                    </div>
-                                </div>
+                        </div>
+                        <div>
+                            <label>Confirm Password</label>
+                            <div>
+                                <input type="password" className="form-blank" name="confirmPassword" id="confirmPassword" placeholder="Confirm your Password" onChange={this.handleChange} />
                             </div>
-
-                            <div class="form-group">
-                                <label for="confirmPassword" class="cols-sm-2 control-label">Confirm Password</label>
-                                <div class="cols-sm-10">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" class="form-blank" name="confirmPassword" id="confirmPassword" placeholder="Confirm your Password" onChange={this.handleChange} />
-                                    </div>
-                                </div>
+                        </div>
+                        <div>
+                            <label>First Name</label>
+                            <div>
+                                <input type="text" className="form-blank" name="firstName" id="firstName" placeholder="Enter your First Name" onChange={this.handleChange} />
                             </div>
-
-                            <div class="form-group">
-                                <label for="addressLine1" class="cols-sm-2 control-label">First Name</label>
-                                <div class="cols-sm-10">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" class="form-blank" name="firstName" id="firstName" placeholder="Enter your First Name" onChange={this.handleChange} />
-                                    </div>
-                                </div>
+                        </div>
+                        <div>
+                            <label>Last Name</label>
+                            <div>
+                                <input type="text" className="form-blank" name="lastName" id="lastName" placeholder="Enter your Last Name" onChange={this.handleChange} />
                             </div>
-
-                            <div class="form-group">
-                                <label for="addressLine1" class="cols-sm-2 control-label">Last Name</label>
-                                    <div class="cols-sm-10">
-                                        <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" class="form-blank" name="lastName" id="lastName" placeholder="Enter your Last Name" onChange={this.handleChange} />
-                                    </div>
-                                </div>
+                        </div>
+                        <div>
+                            <label>Phone</label>
+                            <div>
+                                <input type="text" className="form-blank" name="phone" id="phone" placeholder="(###) ### - ####" onChange={this.handleChange} />
                             </div>
-
-                            <div class="form-group">
-                                <label for="addressLine2" class="cols-sm-2 control-label">Phone</label>
-                                <div class="cols-sm-10">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" class="form-blank" name="phone" id="phone" placeholder="(###) ### - ####" onChange={this.handleChange} />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Sign Up</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div>
+                            <button type="submit" className="login-button">Sign Up</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         );
