@@ -9,21 +9,30 @@ export class LoginModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            email: "",
+            password: "",
+            confirmPassword: "",
+            firstName: "",
+            lastName: "",
+            phone: "",
             credentials: {
                 email: "",
                 password: ""
             }
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChangeLogin = this.handleChangeLogin.bind(this);
+        this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
+
+        this.handleChangeSignUp = this.handleChangeSignUp.bind(this);
+        this.handleSubmitSignUp = this.handleSubmitSignUp.bind(this);
     }
 
     onClose = (e) => {
         this.props.onClose && this.props.onClose(e)
     }
 
-    //Handles Change
-    handleChange = e => {
+    //Handles Change for login
+    handleChangeLogin = e => {
         var credentials = {
             ...this.state.credentials,
             [e.target.name]: e.target.value
@@ -31,9 +40,13 @@ export class LoginModal extends Component {
         this.setState({ credentials: credentials });
     }
 
-    //Handles Submit
-    handleSubmit = e => {
+    //handles change for signup
+    handleChangeSignUp(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
 
+    //Handles Submit
+    handleSubmitLogin = e => {
         e.preventDefault();
         fetch('api/account/login', {
             method: 'POST',
@@ -54,12 +67,34 @@ export class LoginModal extends Component {
                 }
             });
 
-        this.setState({
+        //Sets state based on information provided in login
+        this.setStateLogin({
             credentials: {
                 email: "",
                 password: ""
             }
         });
+    }
+
+    //handles submission for Sign up
+    handleSubmitSignUp(event) {
+        const user = {
+            email: this.state.email,
+            password: this.state.password,
+            confirmPassword: this.state.confirmPassword,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            phone: this.state.phone
+        };
+
+        // Posts to the API
+        axios.post('api/account/register', user)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+            .catch(error => (alert("Incorrect registration please try again")))
+        alert("Thank you for registering!")
     }
 
     render() {
@@ -74,13 +109,13 @@ export class LoginModal extends Component {
                                 <h2>Login</h2>
                             </div>
                             <div class="main-login main-center">
-                                <form onSubmit={this.handleSubmit} class="form-horizontal" method="post">
+                                <form onSubmit={this.handleSubmitLogin} class="form-horizontal" method="post">
                                     <div class="form-group">
                                         <label for="email" class="cols-sm-2 control-label">Email</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChange} />
+                                                <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChangeLogin} />
                                             </div>
                                         </div>
                                     </div>
@@ -90,7 +125,7 @@ export class LoginModal extends Component {
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChange} />
+                                                <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChangeLogin} />
                                             </div>
                                         </div>
                                     </div>
@@ -113,14 +148,14 @@ export class LoginModal extends Component {
                     <div class="container">
                         <div class="row main">
                             <div class="main-login main-center" >
-                                <form onSubmit={this.handleSubmit} class="form-horizontal">
+                                <form onSubmit={this.handleSubmitSignUp} class="form-horizontal">
 
                                     <div class="form-group">
                                         <label for="email" class="cols-sm-2 control-label">Email</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChange} />
+                                                <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChangeSignUp} />
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +165,7 @@ export class LoginModal extends Component {
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChange} />
+                                                <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChangeSignUp} />
                                             </div>
                                         </div>
                                     </div>
@@ -140,7 +175,7 @@ export class LoginModal extends Component {
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <input type="password" class="form-control" class="form-blank" name="confirmPassword" id="confirmPassword" placeholder="Confirm your Password" onChange={this.handleChange} />
+                                                <input type="password" class="form-control" class="form-blank" name="confirmPassword" id="confirmPassword" placeholder="Confirm your Password" onChange={this.handleChangeSignUp} />
                                             </div>
                                         </div>
                                     </div>
@@ -150,7 +185,7 @@ export class LoginModal extends Component {
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="firstName" id="firstName" placeholder="Enter your First Name" onChange={this.handleChange} />
+                                                <input type="text" class="form-control" class="form-blank" name="firstName" id="firstName" placeholder="Enter your First Name" onChange={this.handleChangeSignUp} />
                                             </div>
                                         </div>
                                     </div>
@@ -160,7 +195,7 @@ export class LoginModal extends Component {
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="lastName" id="lastName" placeholder="Enter your Last Name" onChange={this.handleChange} />
+                                                <input type="text" class="form-control" class="form-blank" name="lastName" id="lastName" placeholder="Enter your Last Name" onChange={this.handleChangeSignUp} />
                                             </div>
                                         </div>
                                     </div>
@@ -170,7 +205,7 @@ export class LoginModal extends Component {
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="phone" id="phone" placeholder="(###) ### - ####" onChange={this.handleChange} />
+                                                <input type="text" class="form-control" class="form-blank" name="phone" id="phone" placeholder="(###) ### - ####" onChange={this.handleChangeSignUp} />
                                             </div>
                                         </div>
                                     </div>
