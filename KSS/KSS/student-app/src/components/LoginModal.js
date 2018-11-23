@@ -4,10 +4,10 @@ import './styles/InstanceModal.css';
 import './User/users.css';  
 
 export class LoginModal extends Component {
-    //Follows pattern (pretty much the same thing) as the register page
     //Constructor
     constructor(props) {
         super(props);
+        //These variables  are used for Sign Up information
         this.state = {
             email: "",
             password: "",
@@ -15,11 +15,13 @@ export class LoginModal extends Component {
             firstName: "",
             lastName: "",
             phone: "",
+            //The credentials are used for Login information
             credentials: {
                 email: "",
                 password: ""
             }
         };
+        //This initiates the methods to the Modal object
         this.handleChangeLogin = this.handleChangeLogin.bind(this);
         this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
 
