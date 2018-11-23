@@ -22,9 +22,8 @@
 }
 
 #banner-container {
-    width: 107%;
+    width: 100%;
     margin-top: -30px;
-    margin-left: -35px;
     background-color: rgba(128, 128, 128, 0.8);
     text-align: center;
     color: white;
