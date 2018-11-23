@@ -58,17 +58,13 @@ export class LoginModal extends Component {
                 if (response.ok) {
                     alert('Login successful, ok to continue.');
                     window.location.href = '/account';
-                    //this.login()
                 } else {
                     alert('Login failed!!!!');
-                    //this.setState({
-                    //    loginError: "Invalid credentials, try again!"
-                    //})
                 }
             });
 
         //Sets state based on information provided in login
-        this.setStateLogin({
+        this.setState({
             credentials: {
                 email: "",
                 password: ""
