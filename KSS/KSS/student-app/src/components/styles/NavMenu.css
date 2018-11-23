@@ -6,6 +6,7 @@
     width: 85%;
     max-height: 46px;
     max-width: 1100px;
+    min-width: 400px;
     text-align: center;
     margin: auto;
 }
