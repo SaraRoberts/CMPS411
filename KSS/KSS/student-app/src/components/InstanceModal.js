@@ -18,6 +18,32 @@ export class InstanceModal extends Component {
         
     }
 
+    bookAndPayLater = () => {
+        this.setState({ //set state with the dummy info
+            enrollmentInfo: {
+                userId: 17,
+                instanceId: 5,
+                bookBought: true,
+                paid: true
+            }
+        });
+        console.log(this.state.enrollmentInfo);
+        //e.preventDefault();
+        fetch('/api/Enrollments/Enrollment', { //Call Api
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify(this.state.enrollmentInfo) //Pass in the enrollemnt info to the api
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('enrollment successful, ok to continue.'); // Success/failure can be changed to a prettier 
+                    window.location.href = '/dashboard';             // modal or something 
+                } else {
+                    alert('enrollment failed!!!!');
+                }
+            });
+    }
 
     onClose = (e) => {
         this.props.onClose && this.props.onClose(e)
@@ -26,18 +52,18 @@ export class InstanceModal extends Component {
 
     render() {
         if (!this.props.show) return null
-        const onSuccess = (payment) => { 
+        const onSuccess = (payment) => {
             console.log("Successful: ", payment);
             this.setState({ //set state with the dummy info
-                enrollmentInfo: {                
+                enrollmentInfo: {
+                    userId: 17,              
                     instanceId: 5,
-                    userId: 17,
                     bookBought: true,
                     paid: true
                 }
             });
             //e.preventDefault();
-            fetch('api/Enrollments/Enrollment', { //Call Api
+            fetch('/api/Enrollments/Enrollment', { //Call Api
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',
@@ -101,7 +127,7 @@ export class InstanceModal extends Component {
                         onError={onError}
                         onCancel={onCancel}
                     />
-                    <h5>or <a href="/">Book and Pay Later</a></h5>
+                    or <button onClick={() => this.bookAndPayLater()}>Book and Pay Later</button>
                 </div>
             </div>
         );
