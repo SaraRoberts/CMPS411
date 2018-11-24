@@ -7,6 +7,15 @@ export class InstanceModal extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            enrollmentInfo: {
+                userId: "",
+                instanceId: "",
+                bookBought: "",
+                paid: ""
+            }
+        };
+        
     }
 
 
@@ -17,9 +26,34 @@ export class InstanceModal extends Component {
 
     render() {
         if (!this.props.show) return null
-        const onSuccess = (payment) => {
+        const onSuccess = (payment) => { 
             console.log("Successful: ", payment);
+            this.setState({ //set state with the dummy info
+                enrollmentInfo: {                
+                    instanceId: 5,
+                    userId: 17,
+                    bookBought: true,
+                    paid: true
+                }
+            });
+            //e.preventDefault();
+            fetch('api/Enrollments/Enrollment', { //Call Api
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'same-origin',
+                body: JSON.stringify(this.state.enrollmentInfo) //Pass in the enrollemnt info to the api
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('enrollment successful, ok to continue.'); // Success/failure can be changed to a prettier 
+                        window.location.href = '/dashboard';             // modal or something 
+                    } else {
+                        alert('enrollment failed!!!!');
+                    }
+                });
         };
+
+        
 
         //Output in browser console on cancel (closing the window)
         const onCancel = (data) => {
