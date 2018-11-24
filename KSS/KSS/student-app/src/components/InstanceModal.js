@@ -37,10 +37,13 @@ export class InstanceModal extends Component {
         })
             .then(response => {
                 if (response.ok) {
-                    alert('enrollment successful, ok to continue.'); // Success/failure can be changed to a prettier 
+                    alert("You are enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
                     window.location.href = '/dashboard';             // modal or something 
-                } else {
-                    alert('enrollment failed!!!!');
+                } else if (response.status == 422) {
+                    alert("This class is full");
+                }
+                else {
+                    alert("Something else went wrong");
                 }
             });
     }
@@ -71,10 +74,13 @@ export class InstanceModal extends Component {
             })
                 .then(response => {
                     if (response.ok) {
-                        alert('enrollment successful, ok to continue.'); // Success/failure can be changed to a prettier 
+                        alert("You are enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
                         window.location.href = '/dashboard';             // modal or something 
-                    } else {
-                        alert('enrollment failed!!!!');
+                    } else if (response.status == 422) {
+                        alert("This class is full");
+                    }
+                    else {
+                        alert("Something else went wrong");
                     }
                 });
         };

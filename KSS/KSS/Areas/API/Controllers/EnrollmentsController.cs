@@ -9,6 +9,7 @@ using KSS.Areas.Admin.Data;
 using KSS.Areas.Admin.Models;
 using KSS.Areas.API.Models;
 using System.Globalization;
+using System.Net;
 
 namespace KSS.Areas.API.Controllers
 {
@@ -127,7 +128,7 @@ namespace KSS.Areas.API.Controllers
             var instance = await _context.Instance.FirstOrDefaultAsync(e => e.InstanceId.Equals(enrollDto.InstanceId));
             if (numStudents >= instance.Seats)
             {
-                return NotFound();
+                return StatusCode(422,"Classes are full cannot enroll");
             }
 
             if (duplicate == null)
