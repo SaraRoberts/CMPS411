@@ -18,6 +18,17 @@ export class InstanceModal extends Component {
         
     }
 
+    componentDidMount() {
+        this.setState({ //set state with the dummy info
+            enrollmentInfo: {
+                userId: 17,
+                instanceId: 5,
+                bookBought: true,
+                paid: true
+            }
+        });
+    }
+
     bookAndPayLater = () => {
         this.setState({ //set state with the dummy info
             enrollmentInfo: {
