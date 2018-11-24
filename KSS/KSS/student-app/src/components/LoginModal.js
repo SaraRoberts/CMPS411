@@ -9,13 +9,6 @@ export class LoginModal extends Component {
         super(props);
         //These variables  are used for Sign Up information
         this.state = {
-            email: "",
-            password: "",
-            confirmPassword: "",
-            firstName: "",
-            lastName: "",
-            phone: "",
-            //The credentials are used for Login information
             credentials: {
                 email: "",
                 password: ""
@@ -24,9 +17,6 @@ export class LoginModal extends Component {
         //This initiates the methods to the Modal object
         this.handleChangeLogin = this.handleChangeLogin.bind(this);
         this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
-
-        this.handleChangeSignUp = this.handleChangeSignUp.bind(this);
-        this.handleSubmitSignUp = this.handleSubmitSignUp.bind(this);
     }
 
     onClose = (e) => {
@@ -40,11 +30,6 @@ export class LoginModal extends Component {
             [e.target.name]: e.target.value
         };
         this.setState({ credentials: credentials });
-    }
-
-    //handles change for signup
-    handleChangeSignUp(event) {
-        this.setState({ [event.target.name]: event.target.value });
     }
 
     //Handles Submit
@@ -74,38 +59,20 @@ export class LoginModal extends Component {
         });
     }
 
-    //handles submission for Sign up
-    handleSubmitSignUp(event) {
-        const user = {
-            email: this.state.email,
-            password: this.state.password,
-            confirmPassword: this.state.confirmPassword,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            phone: this.state.phone
-        };
-
-        // Posts to the API
-        axios.post('api/account/register', user)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            })
-            .catch(error => (alert("Incorrect registration please try again")))
-        alert("Thank you for registering!")
-    }
-
     render() {
         if (!this.props.show) return null
-
         return (
             <div id="modalBack">
                 <div id="login">
+                    <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
+                        Close[X]
+                    </span>
                     <div class="container">
                         <div class="row main">
                             <div class="panel-heading">
-                                <h2>Login</h2>
+                                <h1 id="header">Login</h1>
                             </div>
+                            <hr id="divider"></hr>
                             <div class="main-login main-center">
                                 <form onSubmit={this.handleSubmitLogin} class="form-horizontal" method="post">
                                     <div class="form-group">
@@ -131,86 +98,7 @@ export class LoginModal extends Component {
                                     <div class="form-group ">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="sign-up" onClick="">
-                    <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
-                        Close[X]
-                    </span>
-                    <h2>Sign up</h2>
-                    <div class="container">
-                        <div class="row main">
-                            <div class="main-login main-center" >
-                                <form onSubmit={this.handleSubmitSignUp} class="form-horizontal">
-
-                                    <div class="form-group">
-                                        <label for="email" class="cols-sm-2 control-label">Email</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChangeSignUp} />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="password" class="cols-sm-2 control-label">Password</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChangeSignUp} />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="confirmPassword" class="cols-sm-2 control-label">Confirm Password</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <input type="password" class="form-control" class="form-blank" name="confirmPassword" id="confirmPassword" placeholder="Confirm your Password" onChange={this.handleChangeSignUp} />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="addressLine1" class="cols-sm-2 control-label">First Name</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="firstName" id="firstName" placeholder="Enter your First Name" onChange={this.handleChangeSignUp} />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="addressLine1" class="cols-sm-2 control-label">Last Name</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="lastName" id="lastName" placeholder="Enter your Last Name" onChange={this.handleChangeSignUp} />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="addressLine2" class="cols-sm-2 control-label">Phone</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="phone" id="phone" placeholder="(###) ### - ####" onChange={this.handleChangeSignUp} />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group ">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Sign Up</button>
-                                    </div>
+                                    <p>Don't have an account? Sign up <a href='register'>here!</a></p>
                                 </form>
                             </div>
                         </div>

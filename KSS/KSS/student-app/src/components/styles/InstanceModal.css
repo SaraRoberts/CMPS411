@@ -24,10 +24,9 @@
 
 #login {
     display: inline-block;
-    height: 700px;
     width: 400px;
-    background-color: #ffffff;
-    border-radius: 10px 0 0 10px;
+    background-color: #a83939;
+    border-radius: 10px 10px 10px 10px;
     vertical-align: top;
     position: relative;
     top: 30px;
@@ -44,19 +43,18 @@
     position: relative;
     top: 30px;
 }
-#sign-up {
-    display: inline-block;
-    height: 700px;
-    width: 400px;
-    background-color: #ffffff;
-    border-radius: 0 10px 10px 0;
-    vertical-align: top;
-    position: relative;
-    top: 30px;
+
+#header{
+    color: white;
+    font-weight: 100;
+}
+
+#divider{
+    width: 85%;
 }
 
 #closeButton{
-    color: grey;
+    color: black;
     font-weight: 600;
     float: right;
     cursor: pointer;
