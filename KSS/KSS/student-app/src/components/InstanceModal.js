@@ -113,6 +113,13 @@ export class InstanceModal extends Component {
                 console.log("Failure: ", err);
         };
 
+        // checks category
+        if (this.props.modalInstance.courseCategory != "EMT") {
+            var payLater = (
+                <h5>or <span id="payLater" onClick={() => this.bookAndPayLater()}>Book and Pay Later</span></h5>
+            );
+        }
+
         const client = {
                 //For testing, use sandbox, for live, use Production. The 'env' variable will also need to be changed in the PayPalExpressBtn element below
                 sandbox: 'AU7-TZCTcPacLNP7bj74quFlQPLWzG9jlMB8Zqr5m4wnygK-ckrcuV6izspeNmb-su0VXrXWSsjXZAY-',
@@ -150,7 +157,7 @@ export class InstanceModal extends Component {
                         onCancel={onCancel}
                     />
 
-                    <h5>or <span id="payLater" onClick={() => this.bookAndPayLater()}>Book and Pay Later</span></h5>
+                { payLater }
                 </div>
             </div>
         );
