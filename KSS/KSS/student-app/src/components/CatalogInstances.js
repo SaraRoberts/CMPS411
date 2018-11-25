@@ -50,6 +50,10 @@ export class CatalogInstances extends Component {
                 <p>Sorry, no classes are currently scheduled.</p>
             );
         }
+        var disabled = false;
+        if (!this.props.loginState.loggedIn) {
+            disabled = true
+        }
 
         return (
             <div>
@@ -78,9 +82,11 @@ export class CatalogInstances extends Component {
                                     </div>
                                     <div className="courseClassRight">
                                         <button
-                                            className="redButton"
-                                            onClick={
-                                                () => this.showModal(instance)}
+                                                className="redButton"
+                                                onClick={
+                                                    () => this.showModal(instance)
+                                                }
+                                                disabled={disabled}
                                         >Book!
                                         </button>
                                     </div>
