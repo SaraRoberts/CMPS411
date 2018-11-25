@@ -26,6 +26,7 @@ namespace KSS.Areas.API.Models
         public int LocationZip { get; set; }
         public int Seats { get; set; }
         public bool? Full { get; set; } 
+        public int? SeatsAvailable { get; set; }
 
         public int InstructorId { get; set; } //FK reference to User Table
         //public User Instructor { get; set; }

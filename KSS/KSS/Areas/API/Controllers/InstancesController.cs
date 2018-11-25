@@ -231,13 +231,16 @@ namespace KSS.Areas.API.Controllers
                 .Where(e => e.InstanceId == item.InstanceId)
                 .ToListAsync();
                 var studentCount = enrollment.Count();
-                if(studentCount >= item.Seats)
+                var seatsAvailable = item.Seats - studentCount;
+                if (studentCount >= item.Seats)
                 {
                     item.Full = true;
+                    item.SeatsAvailable = 0;
                 }
                 else
                 {
                     item.Full = false;
+                    item.SeatsAvailable = seatsAvailable;
                 }
             }
 
