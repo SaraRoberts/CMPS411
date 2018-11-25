@@ -18,9 +18,9 @@ namespace KSS.Areas.API.Controllers
     public class EnrollmentsController : ControllerBase
     {
         private readonly DataContext _context;
-
+     
         public EnrollmentsController(DataContext context)
-        {
+        {          
             _context = context;
         }
 
@@ -121,6 +121,8 @@ namespace KSS.Areas.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddEnrollment([FromBody] EnrollDto enrollDto)
         {
+            var user = await _context.Users.FirstOrDefaultAsync(e => e.Email == User.Identity.Name);
+            enrollDto.UserId = user.UserId;
             var duplicate = await _context.Enrollment
                    .FirstOrDefaultAsync(e => e.InstanceId == enrollDto.InstanceId && e.UserId == enrollDto.UserId);
             var numStudents = _context.Enrollment
