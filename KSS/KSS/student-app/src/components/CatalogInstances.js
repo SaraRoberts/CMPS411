@@ -51,8 +51,10 @@ export class CatalogInstances extends Component {
             );
         }
         var disabled = false;
+        var hideButton = false;
         if (!this.props.loginState.loggedIn) {
             disabled = true
+            hideButton = true;
         }
 
         return (
@@ -62,6 +64,7 @@ export class CatalogInstances extends Component {
                     <div className="twocolumn">
                         <div className="courseClasses">
                             <h5>Upcoming Classes</h5>
+                            <h5 hidden={!hideButton}>please log in to book a class</h5>
                             { noClasses }
                             {this.state.instances.map(instance =>
                                 (
@@ -80,13 +83,15 @@ export class CatalogInstances extends Component {
                                         {instance.locationName}<br />
                                         {instance.instructorName}
                                     </div>
-                                    <div className="courseClassRight">
+                                        <div className="courseClassRight">
+                                            
                                         <button
                                                 className="redButton"
                                                 onClick={
                                                     () => this.showModal(instance)
                                                 }
                                                 disabled={disabled}
+                                                hidden={hideButton}
                                         >Book!
                                         </button>
                                     </div>
