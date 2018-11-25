@@ -29,6 +29,8 @@ namespace KSS.Areas.API.Controllers
         [HttpGet("{userId}")]
         public async Task <IActionResult> GetEnrollment([FromRoute] int userId)
         {
+            var user = await _context.Users.FirstOrDefaultAsync(e => e.Email == User.Identity.Name);
+            userId = user.UserId;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
