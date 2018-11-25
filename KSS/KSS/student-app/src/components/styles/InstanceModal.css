@@ -9,6 +9,10 @@
     text-align: center;
     z-index: 3;
 }
+#payLater {
+    color: #265670;
+    cursor: pointer;
+}
 
 #modal-left {
     display: inline-block;
@@ -61,6 +65,7 @@
 }
 #payMessage {
     color: #265670;
+    margin-bottom: 0;
 }
 
 @media (max-width: 824px) {

@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import './styles/InstanceModal.css';
+import { Link } from 'react-router-dom';
 
 
 export class InstanceModal extends Component {
@@ -144,7 +145,8 @@ export class InstanceModal extends Component {
                         onError={onError}
                         onCancel={onCancel}
                     />
-                    or <button onClick={() => this.bookAndPayLater()}>Book and Pay Later</button>
+
+                    <h5>or <span id="payLater" onClick={() => this.bookAndPayLater()}>Book and Pay Later</span></h5>
                 </div>
             </div>
         );
