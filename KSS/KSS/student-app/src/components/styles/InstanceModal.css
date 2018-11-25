@@ -24,7 +24,7 @@
 
 #login {
     display: inline-block;
-    width: 400px;
+    padding-top: 20px;
     background-color: #a83939;
     border-radius: 10px 10px 10px 10px;
     vertical-align: top;
@@ -54,7 +54,7 @@
 }
 
 #closeButton{
-    color: black;
+    color: lightgrey;
     font-weight: 600;
     float: right;
     cursor: pointer;

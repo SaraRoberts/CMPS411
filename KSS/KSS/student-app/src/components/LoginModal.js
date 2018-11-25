@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
-import axios from 'axios';
 import './styles/InstanceModal.css';
-import './User/users.css';  
+import './User/users.css';
+import { Link } from 'react-router-dom';
 
 export class LoginModal extends Component {
     //Constructor
@@ -65,7 +65,7 @@ export class LoginModal extends Component {
             <div id="modalBack">
                 <div id="login">
                     <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
-                        Close[X]
+                        X &nbsp;
                     </span>
                     <div class="container">
                         <div class="row main">
@@ -74,31 +74,30 @@ export class LoginModal extends Component {
                             </div>
                             <hr id="divider"></hr>
                             <div class="main-login main-center">
-                                <form onSubmit={this.handleSubmitLogin} class="form-horizontal" method="post">
-                                    <div class="form-group">
-                                        <label for="email" class="cols-sm-2 control-label">Email</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <form onSubmit={this.handleSubmitLogin} method="post">
+                                    <div>
+                                        <label for="email">Email</label>
+                                        <div>
+                                            <div>
+                                                <span><i aria-hidden="true"></i></span>
                                                 <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChangeLogin} />
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="password" class="cols-sm-2 control-label">Password</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <div>
+                                        <label>Password</label>
+                                        <div>
+                                            <div>
+                                                <span><i aria-hidden="true"></i></span>
                                                 <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChangeLogin} />
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group ">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+                                    <div>
+                                        <button type="submit" className="login-button">Login</button>
                                     </div>
-                                    <p>Don't have an account? Sign up <a href='register'>here!</a></p>
+                                    <p>Don't have an account? Sign up <Link to='/register' onClick={(e) => { this.onClose(e) }}>here!</Link></p>
                                 </form>
                             </div>
                         </div>
