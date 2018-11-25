@@ -49,13 +49,20 @@ export class CatalogInstances extends Component {
     }
 
     render() {
+        if (!this.state.instances[0]) {
+            var noClasses = (
+                <p>Sorry, no classes are currently scheduled.</p>
+            );
+        }
+
         return (
             <div>
                 <img id="headerImage" src={groupPage} alt="Groups1" />
-                <div className="tworow">
+                <div className="tworow" id="catalogInstance">
                     <div className="twocolumn">
                         <div className="courseClasses">
                             <h5>Upcoming Classes</h5>
+                            { noClasses }
                             {this.state.instances.map(instance =>
                                 (
                                 <div className="courseClass" key={instance.enrollmentId}>
@@ -91,7 +98,6 @@ export class CatalogInstances extends Component {
                         <p>{this.props.location.state.courseDescription}</p>
                     </div>
                 </div>
-                    
                 <InstanceModal
                     show={this.state.show}
                     onClose={this.showModal}

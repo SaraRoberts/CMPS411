@@ -20,7 +20,9 @@
 .tworow {
     margin-bottom: -100px;
 }
-
+#catalogInstance {
+    margin-bottom: 50px;
+}
 #info {
     position: relative;
     overflow: hidden;
