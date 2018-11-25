@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Button, Table } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
+import { Table } from 'semantic-ui-react';
 import './styles/Tables.css';
 
 

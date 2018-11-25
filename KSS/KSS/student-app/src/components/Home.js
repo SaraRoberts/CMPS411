@@ -1,13 +1,11 @@
 ﻿import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import home1 from './images/home1.jpg';
-import logo from './images/logo.png';
-import emtImage from './images/EMTImage.jpeg';
-import emrImage from './images/EMRImage.jpeg';
+import aquImage from './images/AQUImage.jpeg';
 import bbsImage from './images/BBSImage.jpeg';
 import cssImage from './images/CSSImage.jpeg';
-import aquImage from './images/AQUImage.jpeg';
+import emrImage from './images/EMRImage.jpeg';
+import emtImage from './images/EMTImage.jpeg';
+import home1 from './images/home1.jpg';
+import logo from './images/logo.png';
 import './styles/HomePage.css';
 
 export class Home extends Component {

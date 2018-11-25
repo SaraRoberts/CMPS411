@@ -1,9 +1,7 @@
 ﻿import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 
-export class Payment extends React.Component {
+export class Payment extends Component {
     displayName = Payment.name
     constructor(props) {
         super(props);

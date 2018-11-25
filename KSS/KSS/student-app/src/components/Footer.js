@@ -1,12 +1,12 @@
 ﻿import React, { Component } from 'react';
-import facebookLogo from './images/facebookLogo.png';
 import emailLink from './images/emailLink.png';
-import twitterLogo from './images/twitterLogo.png';
+import facebookLogo from './images/facebookLogo.png';
 import instagramLogo from './images/instagramLogo.png';
+import twitterLogo from './images/twitterLogo.png';
 import './styles/Footer.css';
 
 
-export class Footer extends React.Component {
+export class Footer extends Component {
     displayName = Footer.name
 
     render() {

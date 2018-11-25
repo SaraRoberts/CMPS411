@@ -1,8 +1,6 @@
-﻿import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import axios from 'axios';
-import './users.css';  
+﻿import axios from 'axios';
+import React, { Component } from 'react';
+import './users.css';
 
 export class Register extends Component {
     displayName = Register.name

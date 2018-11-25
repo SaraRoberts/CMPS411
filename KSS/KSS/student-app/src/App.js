@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { Route } from "react-router-dom";
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
+import './App.css';
 import { Catalog } from './components/Catalog';
 import { CatalogInstances } from './components/CatalogInstances';
 import { Contact } from './components/Contact';
-import { Group } from './components/Group';
 import { Account } from './components/Dashboard/Account';
 import { MyClasses } from './components/Dashboard/MyClasses';
 import { Search } from './components/Dashboard/Search';
+import { Group } from './components/Group';
+import { Home } from './components/Home';
+import { Layout } from './components/Layout';
+import { Payment } from './components/Payment';
 import { Login } from './components/User/Login';
 import { Logout } from './components/User/Logout';
 import { Register } from './components/User/Register';
-import { Payment } from './components/Payment';
 import { StudentDashboard } from './components/User/StudentDashboard';
-import './App.css';
 
 class App extends Component {
     constructor(props) {

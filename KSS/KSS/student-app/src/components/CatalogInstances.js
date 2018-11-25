@@ -1,12 +1,8 @@
 ﻿import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Button, Table } from 'semantic-ui-react';
-import './styles/Tables.css';
-import Modal from 'react-modal';
-import { InstanceModal } from './InstanceModal';
-import EMTImage from './images/EMTImage.jpeg';
-import './styles/CatalogInstances.css';
 import groupPage from './images/groupPage.jpg';
+import { InstanceModal } from './InstanceModal';
+import './styles/CatalogInstances.css';
+import './styles/Tables.css';
 
 
 

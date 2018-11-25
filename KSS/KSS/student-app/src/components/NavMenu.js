@@ -1,11 +1,10 @@
 ﻿import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Glyphicon, Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import './styles/NavMenu.css';
+import { MenuItem, Nav, NavItem } from 'react-bootstrap';
 import Modal from 'react-modal';
-import { LoginModal } from './LoginModal'
+import { LinkContainer } from 'react-router-bootstrap';
 import { Button } from 'semantic-ui-react';
+import { LoginModal } from './LoginModal';
+import './styles/NavMenu.css';
 
 Modal.setAppElement(document.getElementById('root'));
 

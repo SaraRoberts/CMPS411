@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
-import { NavMenu } from './NavMenu';
 import { Footer } from './Footer';
+import { NavMenu } from './NavMenu';
 import './styles/Layout.css';
 
 export class Layout extends Component {

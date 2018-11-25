@@ -1,6 +1,5 @@
 ﻿import React, { Component } from 'react';
 import { Login } from './Login';
-import { Button, Table } from 'semantic-ui-react';
 import './users.css';
 
 export class StudentDashboard extends Component {

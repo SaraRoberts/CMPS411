@@ -1,6 +1,6 @@
-﻿import React, { Component } from 'react';
+﻿import { Component } from 'react';
 
-export class Logout extends React.Component {
+export class Logout extends Component {
     
     handleLogout() {
         fetch('api/account/logout', { method: 'POST' });

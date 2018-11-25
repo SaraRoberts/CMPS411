@@ -1,6 +1,5 @@
 ﻿import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import groupPage from './images/groupPage.jpg';
 import k from './images/k.png';
 import './styles/GroupPage.css';
@@ -34,7 +33,7 @@ export class Group extends Component {
                             The maximum class capacity for CPR is one instructor for every nine students which may
                             effect pricing as well as the course selected.
                         </p>
-                        Feel free to browse our course catalog availble <a href="/catalog">here!</a>
+                        Feel free to browse our course catalog availble <Link to='/catalog'>here!</Link>
                     </div>
                 </div>
             </div>
