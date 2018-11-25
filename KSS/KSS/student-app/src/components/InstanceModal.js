@@ -22,10 +22,10 @@ export class InstanceModal extends Component {
     componentDidMount() {
         this.setState({ //set state with the dummy info
             enrollmentInfo: {
-                userId: 17,
-                instanceId: 5,
+                userId: 16,
+                instanceId: 16,
                 bookBought: true,
-                paid: true
+                paid: false
             }
         });
     }
@@ -33,10 +33,10 @@ export class InstanceModal extends Component {
     bookAndPayLater = () => {
         this.setState({ //set state with the dummy info
             enrollmentInfo: {
-                userId: 17,
-                instanceId: 5,
+                userId: 16,
+                instanceId: 16,
                 bookBought: true,
-                paid: true
+                paid: false
             }
         });
         console.log(this.state.enrollmentInfo);
@@ -53,7 +53,9 @@ export class InstanceModal extends Component {
                     window.location.href = '/dashboard';             // modal or something 
                 } else if (response.status == 422) {
                     alert("This class is full");
-                }
+                } else if (response.status == 423) {
+                    alert("Payment is required for EMT classes");
+                }           
                 else {
                     alert("Something else went wrong");
                 }
@@ -71,8 +73,8 @@ export class InstanceModal extends Component {
             console.log("Successful: ", payment);
             this.setState({ //set state with the dummy info
                 enrollmentInfo: {
-                    userId: 17,              
-                    instanceId: 5,
+                    userId: 16,              
+                    instanceId: 16,
                     bookBought: true,
                     paid: true
                 }
@@ -90,6 +92,8 @@ export class InstanceModal extends Component {
                         window.location.href = '/dashboard';             // modal or something 
                     } else if (response.status == 422) {
                         alert("This class is full");
+                    } else if (response.status == 423) {
+                        alert("Payment is required for EMT classes");
                     }
                     else {
                         alert("Something else went wrong");

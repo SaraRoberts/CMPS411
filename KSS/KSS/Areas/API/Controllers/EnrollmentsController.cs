@@ -123,11 +123,21 @@ namespace KSS.Areas.API.Controllers
         {
             var user = await _context.Users.FirstOrDefaultAsync(e => e.Email == User.Identity.Name);
             enrollDto.UserId = user.UserId;
+
             var duplicate = await _context.Enrollment
                    .FirstOrDefaultAsync(e => e.InstanceId == enrollDto.InstanceId && e.UserId == enrollDto.UserId);
             var numStudents = _context.Enrollment
                        .Count(e => e.InstanceId.Equals(enrollDto.InstanceId));
-            var instance = await _context.Instance.FirstOrDefaultAsync(e => e.InstanceId.Equals(enrollDto.InstanceId));
+            var instance = await _context.Instance
+                .Include(e => e.Course)
+                .Include(e => e.Course.CourseCategory)
+                .FirstOrDefaultAsync(e => e.InstanceId.Equals(enrollDto.InstanceId));
+
+            if(instance.Course.CourseCategory.Name == "EMT" && !enrollDto.Paid)
+            {
+                return StatusCode(423, "Payment is required for EMT");
+            }
+
             if (numStudents >= instance.Seats)
             {
                 return StatusCode(422,"Classes are full cannot enroll");
