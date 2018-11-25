@@ -3,14 +3,10 @@ import { Route } from "react-router-dom";
 import './App.css';
 import { Catalog } from './components/Catalog';
 import { CatalogInstances } from './components/CatalogInstances';
-import { Contact } from './components/Contact';
 import { Account } from './components/Dashboard/Account';
-import { MyClasses } from './components/Dashboard/MyClasses';
-import { Search } from './components/Dashboard/Search';
 import { Group } from './components/Group';
 import { Home } from './components/Home';
 import { Layout } from './components/Layout';
-import { Payment } from './components/Payment';
 import { Login } from './components/User/Login';
 import { Logout } from './components/User/Logout';
 import { Register } from './components/User/Register';
@@ -26,6 +22,9 @@ class App extends Component {
                 firstName: ""
             }
         };
+    }
+
+    componentDidMount() {
         fetch('/api/users', { credentials: 'same-origin' })
             .then(response => {
                 if (response.ok) {
@@ -51,25 +50,20 @@ class App extends Component {
                     }
                 }
             });
-        
-
     }
+
     render() {
         return (
             <Layout loginState={this.state.loginState}>
-                        <Route exact path='/' component={() => <Home loginState={this.state.loginState} />} />
-                        <Route exact path='/catalog' component={Catalog} />
-                        <Route path='/catalog/:courseId' component={CatalogInstances} />
-                        <Route path='/contact' component={Contact} />
-                        <Route path='/group' component={Group} />
-                        <Route path='/account' component={Account} />
-                        <Route path='/myclasses' component={MyClasses} />
-                        <Route path='/search' component={Search} />
-                        <Route path='/login' component={() => <Login loginState={this.state.loginState} />}/>
-                        <Route path='/logout' component={Logout} />
-                        <Route path='/payment' component={Payment} />
-                        <Route exact path='/register' component={Register} />
-                        <Route path='/dashboard' component={() => <StudentDashboard loginState={this.state.loginState} />} />
+                <Route exact path='/' render={(props) => <Home {...props} loginState={this.state.loginState} />} />
+                <Route exact path='/catalog' render={(props) => <Catalog {...props} loginState={this.state.loginState} />} />
+                <Route path='/catalog/:courseId' render={(props) => <CatalogInstances {...props} loginState={this.state.loginState} />} />
+                <Route path='/group' render={(props) => <Group {...props} loginState={this.state.loginState} />} />
+                <Route path='/account' render={(props) => <Account {...props} loginState={this.state.loginState} />} />
+                <Route path='/login' render={(props) => <Login {...props} loginState={this.state.loginState} />} />
+                <Route path='/logout' render={(props) => <Logout {...props} loginState={this.state.loginState} />} />
+                <Route path='/register' render={(props) => <Register {...props} loginState={this.state.loginState} />} />
+                <Route path='/dashboard' render={(props) => <StudentDashboard {...props} loginState={this.state.loginState} />} />
             </Layout>
         );
     }
