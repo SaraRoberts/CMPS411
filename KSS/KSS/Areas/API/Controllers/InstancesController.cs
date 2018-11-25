@@ -55,7 +55,7 @@ namespace KSS.Areas.API.Controllers
                              InstructorName = i.Instructor.FirstName + " " + i.Instructor.LastName,
                              CourseCategory = i.Course.CourseCategory.Name
 
-                         }).ToList().OrderBy(i => i.InstanceId);
+                         }).ToAsyncEnumerable().OrderBy(i => i.InstanceId);
 
 
             return Ok(query);
@@ -223,6 +223,26 @@ namespace KSS.Areas.API.Controllers
                                       CourseCategory = i.Course.CourseCategory.Name
 
                                   }).ToListAsync();
+
+            foreach(var item in instance)
+            {
+                var enrollment = await _context.Enrollment
+                .Include(e => e.User)
+                .Where(e => e.InstanceId == item.InstanceId)
+                .ToListAsync();
+                var studentCount = enrollment.Count();
+                var seatsAvailable = item.Seats - studentCount;
+                if (studentCount >= item.Seats)
+                {
+                    item.Full = true;
+                    item.SeatsAvailable = 0;
+                }
+                else
+                {
+                    item.Full = false;
+                    item.SeatsAvailable = seatsAvailable;
+                }
+            }
 
             if (instance == null)
             {

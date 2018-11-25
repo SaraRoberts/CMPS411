@@ -7,8 +7,57 @@ export class InstanceModal extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            enrollmentInfo: {
+                userId: "",
+                instanceId: "",
+                bookBought: "",
+                paid: ""
+            }
+        };
+        
     }
 
+    componentDidMount() {
+        this.setState({ //set state with the dummy info
+            enrollmentInfo: {
+                userId: 17,
+                instanceId: 5,
+                bookBought: true,
+                paid: true
+            }
+        });
+    }
+
+    bookAndPayLater = () => {
+        this.setState({ //set state with the dummy info
+            enrollmentInfo: {
+                userId: 17,
+                instanceId: 5,
+                bookBought: true,
+                paid: true
+            }
+        });
+        console.log(this.state.enrollmentInfo);
+        //e.preventDefault();
+        fetch('/api/Enrollments/Enrollment', { //Call Api
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify(this.state.enrollmentInfo) //Pass in the enrollemnt info to the api
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("You are enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
+                    window.location.href = '/dashboard';             // modal or something 
+                } else if (response.status == 422) {
+                    alert("This class is full");
+                }
+                else {
+                    alert("Something else went wrong");
+                }
+            });
+    }
 
     onClose = (e) => {
         this.props.onClose && this.props.onClose(e)
@@ -19,7 +68,35 @@ export class InstanceModal extends Component {
         if (!this.props.show) return null
         const onSuccess = (payment) => {
             console.log("Successful: ", payment);
+            this.setState({ //set state with the dummy info
+                enrollmentInfo: {
+                    userId: 17,              
+                    instanceId: 5,
+                    bookBought: true,
+                    paid: true
+                }
+            });
+            //e.preventDefault();
+            fetch('/api/Enrollments/Enrollment', { //Call Api
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'same-origin',
+                body: JSON.stringify(this.state.enrollmentInfo) //Pass in the enrollemnt info to the api
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("You are enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
+                        window.location.href = '/dashboard';             // modal or something 
+                    } else if (response.status == 422) {
+                        alert("This class is full");
+                    }
+                    else {
+                        alert("Something else went wrong");
+                    }
+                });
         };
+
+        
 
         //Output in browser console on cancel (closing the window)
         const onCancel = (data) => {
@@ -67,7 +144,7 @@ export class InstanceModal extends Component {
                         onError={onError}
                         onCancel={onCancel}
                     />
-                    <h5>or <a href="/">Book and Pay Later</a></h5>
+                    or <button onClick={() => this.bookAndPayLater()}>Book and Pay Later</button>
                 </div>
             </div>
         );

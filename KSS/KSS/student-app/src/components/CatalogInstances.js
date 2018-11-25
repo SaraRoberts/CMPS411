@@ -76,7 +76,7 @@ export class CatalogInstances extends Component {
                                     <div className="seperator" />
                                     <div className="courseClassMiddle">
                                         Price: ${instance.price}.00<br />
-                                        Open Seats: {instance.seats}<br />
+                                        Open Seats: {instance.seatsAvailable}<br />
                                         {instance.locationName}<br />
                                         {instance.instructorName}
                                     </div>
