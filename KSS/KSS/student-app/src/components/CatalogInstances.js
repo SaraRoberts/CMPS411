@@ -91,7 +91,6 @@ export class CatalogInstances extends Component {
                     <div className="twocolumn">
                         <div className="courseClasses">
                             <h5>Upcoming Classes</h5>
-                            <h5 hidden={!hideButton}>please log in to book a class</h5>
                             { noClasses }
                             {this.state.instances.map(instance =>
                                 (
