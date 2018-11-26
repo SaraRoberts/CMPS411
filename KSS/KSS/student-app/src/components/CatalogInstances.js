@@ -29,6 +29,12 @@ export class CatalogInstances extends Component {
     }
 
     showModal = (instance) => {
+
+        if (instance.seatsAvailable == 0) {
+            alert("This class is full If you are interested in taking this class please email beckysmith@kss.com ");
+            return;
+        }
+
         if (!this.state.show) {
             this.setState({
                 ...this.state,
@@ -45,6 +51,10 @@ export class CatalogInstances extends Component {
     }
 
     showLoginModal = (instance) => {
+        if (instance.seatsAvailable == 0) {
+            alert("This class is full If you are interested in taking this class please email beckysmith@kss.com ");
+            return;
+        }
         if (!this.state.showLogin) {
             this.setState({
                 ...this.state,
@@ -60,12 +70,17 @@ export class CatalogInstances extends Component {
         }
     }
 
+    checkFull = () => {
+     
+    }
+   
     render() {
         if (!this.state.instances[0]) {
             var noClasses = (
                 <p class="kssnotify" >Sorry, no classes are currently scheduled.</p>
             );
         }
+
         var disabled = false;
         var hideButton = false;
 
