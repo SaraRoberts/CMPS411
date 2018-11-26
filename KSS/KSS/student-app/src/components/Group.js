@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import k from './images/k.png';
+import initialsLogo from './images/initialsLogo.png';
 import './styles/GroupPage.css';
 
 export class Group extends Component {
@@ -11,8 +12,8 @@ export class Group extends Component {
             <div>
                 <div id="groupBanner" alt="Group Safety Classes" />
 
-                <div class="tworow">
-                    <div class="twocolumn" id="groupInfo">
+                <div className="groupRow">
+                    <div className="groupColumn" id="groupInfo">
                         <h1>Group Classes</h1>
                         <p>
                             We offer group classes upon request.  If your business is considering employee training
@@ -29,10 +30,10 @@ export class Group extends Component {
                             effect pricing as well as the course selected.
                         </p>
                         Feel free to browse our course catalog availble <Link to='/catalog'>here!</Link>
-                    </div>
-                    <div class="twocolumn">
-                        <img id="main-image" src={k} alt="Group Safety Classes image" />
-                    </div>
+                    </div>                    
+                </div>
+                <div className="groupColumn" id="groupImage">
+                    <img src={initialsLogo} alt="Group Safety Classes image" />
                 </div>
             </div>
         );

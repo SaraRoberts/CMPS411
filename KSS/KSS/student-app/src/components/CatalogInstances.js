@@ -101,18 +101,20 @@ export class CatalogInstances extends Component {
 
         return (
             <div>
-                <div id="catalogInstanceBanner" alt="Classes for selected course" />
-                <div className="tworow" id="catalogInstance">
-                    <div className="twocolumn" id="courseInfo">
+                <div id="catalogBanner" alt="Group Safety Classes" />
+
+                <div className="catalogRow">
+                    <div className="catalogColumn" id="catalogInfo">
                         <h2>{this.props.location.state.courseName}</h2>
                         <p>{this.props.location.state.courseDescription}</p>
                     </div>
-                    <div className="twocolumn">
-                        <div className="courseClasses">
-                            <h5>Upcoming Classes</h5>
-                            { noClasses }
-                            {this.state.instances.map(instance =>
-                                (
+                </div>
+                <div className="catalogColumn" id="catalogImage">
+                    <div className="courseClasses">
+                        <h4>Upcoming Classes</h4>
+                        {noClasses}
+                        {this.state.instances.map(instance =>
+                            (
                                 <div className="courseClass" key={instance.enrollmentId}>
                                     <div className="courseClassLeft">
                                         {instance.startDateDOW}< br />
@@ -128,33 +130,33 @@ export class CatalogInstances extends Component {
                                         {instance.locationName}<br />
                                         {instance.instructorName}
                                     </div>
-                                        <div className="courseClassRight">
-                                            
+                                    <div className="courseClassRight">
+
                                         <button
-                                                className="redButton"
-                                                onClick={
-                                                    () => this.showModal(instance)
-                                                }
-                                                disabled={disabled}
-                                                hidden={hideButton}
+                                            className="redButton"
+                                            onClick={
+                                                () => this.showModal(instance)
+                                            }
+                                            disabled={disabled}
+                                            hidden={hideButton}
                                         >Book!
                                         </button>
-                                            <button
-                                                className="redButton"
-                                                onClick={
-                                                    () => this.showLoginModal(instance)
-                                                }
-                                                disabled={Ldisabled}
-                                                hidden={LhideButton}
-                                            >Book!
+                                        <button
+                                            className="redButton"
+                                            onClick={
+                                                () => this.showLoginModal(instance)
+                                            }
+                                            disabled={Ldisabled}
+                                            hidden={LhideButton}
+                                        >Book!
                                         </button>
                                     </div>
                                 </div>
-                                )
-                            )}
-                        </div>
+                            )
+                        )}
                     </div>
                 </div>
+                
                 <InstanceModal
                     show={this.state.show}
                     onClose={this.showModal}
