@@ -12,7 +12,7 @@ export class Home extends Component {
     displayName = Home.name
     render() {       
         return (
-            <div id="main-container">
+            <div>
                 <div id="homeBanner">
                     <img id="nested-logo" src={logo} alt="Keeping Safety Smart logo" />
                 </div>
