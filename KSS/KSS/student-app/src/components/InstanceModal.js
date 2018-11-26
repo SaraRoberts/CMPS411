@@ -83,7 +83,7 @@ export class InstanceModal extends Component {
             })
                 .then(response => {
                     if (response.ok) {
-                        alert("You are enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
+                        alert("You have paid and enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
                         window.location.href = '/dashboard';             // modal or something 
                     } else if (response.status == 422) {
                         alert("This class is full");
