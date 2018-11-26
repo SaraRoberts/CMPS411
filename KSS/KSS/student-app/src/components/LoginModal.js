@@ -64,7 +64,7 @@ export class LoginModal extends Component {
             <div id="modalBack">
                 <div id="login">
                     <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
-                        X &nbsp;
+                        [X] &nbsp;
                     </span>
                     <div class="container">
                         <div class="row main">
@@ -96,7 +96,7 @@ export class LoginModal extends Component {
                                     <div>
                                         <button type="submit" className="login-button">Login</button>
                                     </div>
-                                    <p>Don't have an account? Sign up <Link to='/register' onClick={(e) => { this.onClose(e) }}>here!</Link></p>
+                                    <p id="redirect">Don't have an account? Sign up <Link to='/register' onClick={(e) => { this.onClose(e) }}>here!</Link></p>
                                 </form>
                             </div>
                         </div>
