@@ -25,17 +25,15 @@ export class StudentDashboard extends Component {
             return <Login />;
         }
         if (!this.state.enrollments[0]) {
-            var noClasses = (
-                <p class="kssnotify" >You have not enrolled in any classes.</p>
-            );
+            var noClasses = <p className="kssnotify" >You have not enrolled in any classes.</p>;
         }
         return (
-            <div>
+            <div id="studentDashboard">
                 <h1>Student Dashboard</h1>
                 <h3>Welcome {this.props.loginState.firstName}</h3>
-                    { noClasses }
                 <div className="studentClasses">
                     <h5>Your Upcoming Classes</h5>
+                    {noClasses}
                     {this.state.enrollments.map(enrollment =>
                         (
                         <div className="studentClass" key={enrollment.enrollmentId}>
@@ -56,7 +54,7 @@ export class StudentDashboard extends Component {
                     )}
                 </div>
                 <div className="studentClasses">
-                    <h5>Courses Record</h5>
+                    <h5>Courses Taken</h5>
                     {this.state.enrollments.map(enrollment =>
                         (
                         <div className="studentClass" key={enrollment.enrollmentId}>

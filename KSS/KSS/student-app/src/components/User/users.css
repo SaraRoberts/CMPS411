@@ -88,12 +88,14 @@ input{
         color: #207cca;
 }
 
- /* Student Dashboard Class tiles */
-
+#studentDashboard {
+    text-align: left;
+    margin-left: 15%;
+}
+/* Student Dashboard Class tiles */
 .studentClasses {
     text-align: left;
-    margin: 20px;
-    display: inline-block;
+    margin-top: 20px;
 }
 .studentClass {
     max-width: 350px;
