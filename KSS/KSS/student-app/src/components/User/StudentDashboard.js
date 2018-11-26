@@ -30,6 +30,8 @@ export class StudentDashboard extends Component {
         return (
             <div id="studentDashboard">
                 <h1>{this.props.loginState.firstName}'s Dashboard</h1>
+                <hr id="divider"></hr>
+                <br></br>
                 <div className="studentClasses">
                     <h2>Your Upcoming Classes:</h2>
                     {noClasses}
