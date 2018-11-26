@@ -96,7 +96,7 @@ export class LoginModal extends Component {
                                     <div>
                                         <button type="submit" className="login-button">Login</button>
                                     </div>
-                                    <p id="redirect">Don't have an account? Sign up <Link to='/register' onClick={(e) => { this.onClose(e) }}>here!</Link></p>
+                                    <p id="redirect">Don't have an account? Sign up <Link id="toReg" to='/register' onClick={(e) => { this.onClose(e) }}>here!</Link></p>
                                 </form>
                             </div>
                         </div>

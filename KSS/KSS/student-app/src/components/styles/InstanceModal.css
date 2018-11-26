@@ -40,6 +40,15 @@
     top: 30px;
 }
 
+#toReg{
+    color: salmon;
+
+}
+
+#toReg:hover{
+    color: lightblue;
+}
+
 #modal-right {
     display: inline-block;
     padding: 20px;
@@ -52,6 +61,7 @@
     top: 30px;
 }
 
+
 #header{
     color: white;
     font-weight: 100;
@@ -59,6 +69,7 @@
 
 #divider{
     width: 85%;
+    margin-left: 30px;
 }
 
 #redirect{
