@@ -15,6 +15,15 @@ input::-webkit-input-placeholder {
    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+.title{
+    text-align: center;
+}
+
+#divider{
+    width: 85%;
+    float: left
+}
+
 label{
     margin-top: 10px;
     font-size: 22px;
@@ -22,7 +31,7 @@ label{
 }
 
 input{
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .main-center {
@@ -44,7 +53,7 @@ input{
 .form-blank {
     margin-bottom: 12px;
     width: 300px;
-    height: 35px;
+    height: 45px;
     text-align: center;
     border-radius: 15px;
     border-color: #a83939;
@@ -52,9 +61,10 @@ input{
 
 .login-button{
    margin-top: 20px;
-   width: 100px;
-   height: 32px;
+   width: 125px;
+   height: 37px;
    border-radius: 5px;
+   font-size: 16px;
 }
 
 .login-register{
@@ -87,12 +97,14 @@ input{
         color: #207cca;
 }
 
- /* Student Dashboard Class tiles */
-
+#studentDashboard {
+    text-align: left;
+    margin: 0 10% 0 10%;
+}
+/* Student Dashboard Class tiles */
 .studentClasses {
     text-align: left;
-    margin: 20px;
-    display: inline-block;
+    margin-top: 20px;
 }
 .studentClass {
     max-width: 350px;

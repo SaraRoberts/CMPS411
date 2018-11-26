@@ -30,49 +30,91 @@ namespace KSS.Areas.API.Controllers
         public async Task <IActionResult> GetEnrollment([FromRoute] int userId)
         {
             var user = await _context.Users.FirstOrDefaultAsync(e => e.Email == User.Identity.Name);
-            userId = user.UserId;
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            var enrollment = await (from e in _context.Enrollment
-                              join i in _context.Instance on e.InstanceId equals i.InstanceId
-                              join u in _context.Users on e.UserId  equals u.UserId
-                              join c in _context.Course on e.Instance.Course.CourseId equals c.CourseId
-                              join l in _context.Location on e.Instance.Location.LocationId equals l.LocationId
-                              where e.UserId == userId && e.Instance.StartDate > DateTime.UtcNow
-
-                                    select new EnrollmentsDto
-                              {
-                                  EnrollmentId = e.EnrollmentId,
-                                  InstanceId = e.InstanceId,
-                                  InstanceStartDateDOW = e.Instance.StartDate.DayOfWeek.ToString(),
-                                  InstanceStartDateMonthF3 = e.Instance.StartDate.ToString("MMMM").Substring(0,3),
-                                  InstanceStartDateTime = e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Substring(e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Length-8,8),
-                                  InstanceStartDateDay = e.Instance.StartDate.Day.ToString(),
-                                  UserId = e.UserId,
-                                  UserName = e.User.FirstName + " "+ e.User.LastName,
-                                  CourseName = e.Instance.Course.Name,
-                                  CategoryName = e.Instance.Course.CourseCategory.Name,
-                                  LocationName = i.Location.Name,
-                                  LocationStreet = i.Location.Street,
-                                  LocationCity = i.Location.City,
-                                  LocationState = i.Location.State,
-                                  LocationZip = i.Location.Zipcode,
-                                  Status = e.Status,
-                                  BookBought = e.BookBought,
-                                  Paid = e.Paid,
-                                  Confirmed = e.Confirmed
-
-                              }).ToListAsync();
-            if (enrollment == null)
+            if(userId == 1)
             {
-                return NotFound();
+                var enrollment = await (from e in _context.Enrollment
+                                        join i in _context.Instance on e.InstanceId equals i.InstanceId
+                                        join u in _context.Users on e.UserId equals u.UserId
+                                        join c in _context.Course on e.Instance.Course.CourseId equals c.CourseId
+                                        join l in _context.Location on e.Instance.Location.LocationId equals l.LocationId
+                                        where e.UserId == user.UserId && e.Instance.StartDate > DateTime.UtcNow
+
+                                        select new EnrollmentsDto
+                                        {
+                                            EnrollmentId = e.EnrollmentId,
+                                            InstanceId = e.InstanceId,
+                                            InstanceStartDateDOW = e.Instance.StartDate.DayOfWeek.ToString(),
+                                            InstanceStartDateMonthF3 = e.Instance.StartDate.ToString("MMMM").Substring(0, 3),
+                                            InstanceStartDateTime = e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Substring(e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Length - 8, 8),
+                                            InstanceStartDateDay = e.Instance.StartDate.Day.ToString(),
+                                            UserId = e.UserId,
+                                            UserName = e.User.FirstName + " " + e.User.LastName,
+                                            CourseName = e.Instance.Course.Name,
+                                            CategoryName = e.Instance.Course.CourseCategory.Name,
+                                            LocationName = i.Location.Name,
+                                            LocationStreet = i.Location.Street,
+                                            LocationCity = i.Location.City,
+                                            LocationState = i.Location.State,
+                                            LocationZip = i.Location.Zipcode,
+                                            Status = e.Status,
+                                            BookBought = e.BookBought,
+                                            Paid = e.Paid,
+                                            Confirmed = e.Confirmed
+
+                                        }).ToListAsync();
+                if (enrollment == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(enrollment);
             }
 
-            return Ok(enrollment);
+            if (userId == 2)
+            {
+                var enrollment = await (from e in _context.Enrollment
+                                        join i in _context.Instance on e.InstanceId equals i.InstanceId
+                                        join u in _context.Users on e.UserId equals u.UserId
+                                        join c in _context.Course on e.Instance.Course.CourseId equals c.CourseId
+                                        join l in _context.Location on e.Instance.Location.LocationId equals l.LocationId
+                                        where e.UserId == user.UserId && e.Instance.StartDate < DateTime.UtcNow
 
+                                        select new CoursesTakenDto
+                                        {
+                                            EnrollmentId = e.EnrollmentId,
+                                            InstanceId = e.InstanceId,
+                                            InstanceStartDateDOW = e.Instance.StartDate.DayOfWeek.ToString(),
+                                            InstanceStartDateMonthF3 = e.Instance.StartDate.ToString("MMMM").Substring(0, 3),
+                                            InstanceStartDateTime = e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Substring(e.Instance.StartDate.ToString("f", CultureInfo.CreateSpecificCulture("en-US")).Length - 8, 8),
+                                            InstanceStartDateDay = e.Instance.StartDate.Day.ToString(),
+                                            UserId = e.UserId,
+                                            UserName = e.User.FirstName + " " + e.User.LastName,
+                                            CourseName = e.Instance.Course.Name,
+                                            CategoryName = e.Instance.Course.CourseCategory.Name,
+                                            LocationName = i.Location.Name,
+                                            LocationStreet = i.Location.Street,
+                                            LocationCity = i.Location.City,
+                                            LocationState = i.Location.State,
+                                            LocationZip = i.Location.Zipcode,
+                                            Status = e.Status,
+                                            BookBought = e.BookBought,
+                                            Paid = e.Paid,
+                                            Confirmed = e.Confirmed
+
+                                        }).ToListAsync();
+                if (enrollment == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(enrollment);
+            }
+            return NotFound();
         }
 
         [HttpGet("{userId},{instanceId}")]
@@ -143,6 +185,11 @@ namespace KSS.Areas.API.Controllers
             if (numStudents >= instance.Seats)
             {
                 return StatusCode(422,"Classes are full cannot enroll");
+            }
+
+            if (duplicate!=null)
+            {
+                return StatusCode(424, "You are already enrolled in this class");
             }
 
             if (duplicate == null)

@@ -25,6 +25,7 @@ export class Register extends Component {
     }
     //Handles Submit
     handleSubmit(event) {
+        event.preventDefault();
         const user = {
             email: this.state.email,
             password: this.state.password,
@@ -39,10 +40,9 @@ export class Register extends Component {
             .then(res => {
                 console.log(res);
                 console.log(res.data);
+                window.location.href = '/login'; // Redirect to the login page
             })
-            .catch(error => (alert("Incorrect registration please try again")))
-
-        alert("Thank you for registering!")
+            .catch(error => (alert("Incorrect registration please try again")))       
     }
 
     // Visuals

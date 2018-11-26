@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import groupPage from './images/groupPage.jpg';
 import k from './images/k.png';
+import initialsLogo from './images/initialsLogo.png';
 import './styles/GroupPage.css';
 
 export class Group extends Component {
@@ -9,20 +9,16 @@ export class Group extends Component {
 
     render() {
         return (
-            <div id="main-container">
+            <div>
+                <div id="groupBanner" alt="Group Safety Classes" />
 
-                <img id="headerImage" src={groupPage} alt="Groups1" />
-
-                <div class="tworow">
-                    <div class="twocolumn">
-                        <img id="main-image" src={k} alt="Group Safety Classes image" />
-                    </div>
-                    <div class="twocolumn" id="info">
+                <div className="groupRow">
+                    <div className="groupColumn" id="groupInfo">
                         <h1>Group Classes</h1>
-                        <p> 
+                        <p>
                             We offer group classes upon request.  If your business is considering employee training
                             in first aid or any other safety courses, Please contact Beckey Smith to discuss pricing,
-                            location, and other considerations.  
+                            location, and other considerations.
                         </p>
                         <p>
                             Beckey Smith, Owner <br></br>
@@ -34,7 +30,10 @@ export class Group extends Component {
                             effect pricing as well as the course selected.
                         </p>
                         Feel free to browse our course catalog availble <Link to='/catalog'>here!</Link>
-                    </div>
+                    </div>                    
+                </div>
+                <div className="groupColumn" id="groupImage">
+                    <img src={initialsLogo} alt="Group Safety Classes image" />
                 </div>
             </div>
         );

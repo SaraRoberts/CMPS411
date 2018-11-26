@@ -8,8 +8,7 @@ export class StudentDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            enrollments: [],
-            coursesTaken: []
+            enrollments: []
         };
     }
 
@@ -18,11 +17,6 @@ export class StudentDashboard extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({ enrollments: data });
-            });
-        fetch('/api/Enrollments/2', { credentials: 'same-origin' })
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ coursesTaken: data });
             });
     }
 
@@ -33,17 +27,22 @@ export class StudentDashboard extends Component {
         if (!this.state.enrollments[0]) {
             var noClasses = <p className="kssnotify" >You have not enrolled in any classes.</p>;
         }
-        if (!this.state.coursesTaken[0]) {
-            var noneTaken = <p className="kssnotify" >You have not taken any classes.</p>;
-        }
         return (
+<<<<<<< HEAD
             <div id="studentDashboard">
-                <h1>{this.props.loginState.firstName}'s Dashboard</h1>
-                <hr id="divider" />
-                <br />
+                <h1>Student Dashboard</h1>
+                <h3>Welcome {this.props.loginState.firstName}</h3>
                 <div className="studentClasses">
-                    <h2>Your Upcoming Classes</h2>
+                    <h5>Your Upcoming Classes</h5>
                     {noClasses}
+=======
+            <div>
+                <h1>{this.props.loginState.firstName}'s Dashboard</h1>
+                <hr id="divider"></hr>
+                    { noClasses }
+                <div className="studentClasses">
+                    <h2 className="title">Your Upcoming Classes:</h2>
+>>>>>>> be74d61915a63599b56e9523154f58b064e03e7c
                     {this.state.enrollments.map(enrollment =>
                         (
                         <div className="studentClass" key={enrollment.enrollmentId}>
@@ -64,22 +63,25 @@ export class StudentDashboard extends Component {
                     )}
                 </div>
                 <div className="studentClasses">
-                    <h2>Courses Taken</h2>
-                    {noneTaken}
-                    {this.state.coursesTaken.map(courseTaken =>
+<<<<<<< HEAD
+                    <h5>Courses Taken</h5>
+=======
+                    <h2 className="title">Courses Record:</h2>
+>>>>>>> be74d61915a63599b56e9523154f58b064e03e7c
+                    {this.state.enrollments.map(enrollment =>
                         (
-                        <div className="studentClass" key={courseTaken.enrollmentId}>
+                        <div className="studentClass" key={enrollment.enrollmentId}>
                             <div className="studentClassLeft">
-                                {courseTaken.instanceStartDateDOW}< br />
+                                {enrollment.instanceStartDateDOW}< br />
                                 <span>
-                                    {courseTaken.instanceStartDateMonthF3} {courseTaken.instanceStartDateDay}< br />
+                                    {enrollment.instanceStartDateMonthF3} {enrollment.instanceStartDateDay}< br />
                                 </span>
-                                {courseTaken.instanceStartDateTime}
+                                {enrollment.instanceStartDateTime}
                             </div>
                             <div className="seperator" />
                             <div className="studentClassRight">
-                                {courseTaken.courseName}<br />
-                                {courseTaken.locationStreet}, {courseTaken.locationCity}, {courseTaken.locationState}
+                                {enrollment.courseName}<br />
+                                {enrollment.locationStreet}, {enrollment.locationCity}, {enrollment.locationState}
                             </div>
                         </div>
                         )

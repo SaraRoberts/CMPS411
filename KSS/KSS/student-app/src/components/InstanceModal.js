@@ -10,26 +10,15 @@ export class InstanceModal extends Component {
         super(props);
         this.state = {
             enrollmentInfo: {
-                userId: "",
-                instanceId: "",
-                bookBought: "",
-                paid: ""
-            }
-        };
-        
-    }
-
-    componentDidMount() {
-        this.setState({ //set state with the dummy info
-            enrollmentInfo: {
                 userId: 0,         // Dummy value, Cannot be null or empty 
                 instanceId: 1,    //  Dummy value, Cannot be null or empty
                 bookBought: false,
                 paid: false
             }
-        });
+        };
+        
     }
-
+    
     bookAndPayLater = (instId) => {
         this.setState({ 
             enrollmentInfo: {
@@ -56,7 +45,9 @@ export class InstanceModal extends Component {
                     alert("This class is full");
                 } else if (response.status == 423) {
                     alert("Payment is required for EMT classes");
-                }           
+                } else if (response.status == 424) {
+                    alert("You are already enrolled in this class");
+                }          
                 else {
                     alert("Something else went wrong. Instance: " + instId );
                 }
@@ -92,7 +83,7 @@ export class InstanceModal extends Component {
             })
                 .then(response => {
                     if (response.ok) {
-                        alert("You are enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
+                        alert("You have paid and enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
                         window.location.href = '/dashboard';             // modal or something 
                     } else if (response.status == 422) {
                         alert("This class is full");
