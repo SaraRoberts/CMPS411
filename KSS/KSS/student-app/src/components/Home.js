@@ -18,10 +18,10 @@ export class Home extends Component {
                 </div>
                 <div id="banner-container">
                     <p id="banner-title">Keep safety smart, one class at a time!</p>
-                    <p id="banner-text">The cornerstone of Keeping Safety Smart has been bringing the best safety
-                        education to our community.  It has been an honor and privilege to help educate this community.
-                        We are a program with the Louisiana Bureau of Emergency Medical Services and a national registry
-                        company, meeting all Louisiana requirements. We also offer over 25 years of safety education experience.   
+                    <p id="banner-text">The cornerstone of Keeping Safety Smart is bringing our community the best safety
+                        education. It is our honor and privilege to help educate our community.  We are a program with the
+                        Louisiana Bureau of Emergency Medical Services and a national registry company, meeting all
+                        Louisiana requirements. We also offer over 25 years of safety education experience.   
                     </p>
                 </div>
                 <div>
