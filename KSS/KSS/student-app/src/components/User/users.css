@@ -22,7 +22,7 @@ label{
 }
 
 input{
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .main-center {
@@ -44,7 +44,7 @@ input{
 .form-blank {
     margin-bottom: 12px;
     width: 300px;
-    height: 35px;
+    height: 45px;
     text-align: center;
     border-radius: 15px;
     border-color: #a83939;
@@ -52,9 +52,10 @@ input{
 
 .login-button{
    margin-top: 20px;
-   width: 100px;
-   height: 32px;
+   width: 125px;
+   height: 37px;
    border-radius: 5px;
+   font-size: 16px;
 }
 
 .login-register{

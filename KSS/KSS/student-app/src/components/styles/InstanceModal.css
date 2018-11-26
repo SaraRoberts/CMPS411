@@ -1,4 +1,8 @@
-﻿#modalBack {
+﻿label{
+    font-weight: 100;
+}
+
+#modalBack {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -55,6 +59,10 @@
 
 #divider{
     width: 85%;
+}
+
+#redirect{
+    color: white;
 }
 
 #closeButton{
