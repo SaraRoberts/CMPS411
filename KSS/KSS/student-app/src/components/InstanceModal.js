@@ -10,26 +10,15 @@ export class InstanceModal extends Component {
         super(props);
         this.state = {
             enrollmentInfo: {
-                userId: "",
-                instanceId: "",
-                bookBought: "",
-                paid: ""
-            }
-        };
-        
-    }
-
-    componentDidMount() {
-        this.setState({ //set state with the dummy info
-            enrollmentInfo: {
                 userId: 0,         // Dummy value, Cannot be null or empty 
                 instanceId: 1,    //  Dummy value, Cannot be null or empty
                 bookBought: false,
                 paid: false
             }
-        });
+        };
+        
     }
-
+    
     bookAndPayLater = (instId) => {
         this.setState({ 
             enrollmentInfo: {
