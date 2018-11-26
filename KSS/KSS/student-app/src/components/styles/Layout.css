@@ -2,6 +2,7 @@
     padding-top: 48px;
     box-shadow: 12px 0 20px -4px grey, -12px 0 20px -4px grey;
     height: auto;
+    min-height: 800px;
     width: 80%;
     max-width: 1100px;
     text-align: center;
@@ -16,8 +17,8 @@
 }
 
 .kssnotify {
-    color: indianred;
+    color: rgb(201, 76, 76);
     background-color: rgba(201, 76, 76, 0.2);
-    border-style: solid;
+    border: solid 1px rgb(201, 76, 76);
     padding: 10px;
 }
