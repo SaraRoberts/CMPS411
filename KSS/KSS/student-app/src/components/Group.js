@@ -1,6 +1,5 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import groupPage from './images/groupPage.jpg';
 import k from './images/k.png';
 import './styles/GroupPage.css';
 
@@ -11,13 +10,13 @@ export class Group extends Component {
         return (
             <div id="main-container">
 
-                <img id="headerImage" src={groupPage} alt="Groups1" />
+                <div id="groupBanner" alt="Group Safety Classes" />
 
                 <div class="tworow">
                     <div class="twocolumn">
                         <img id="main-image" src={k} alt="Group Safety Classes image" />
                     </div>
-                    <div class="twocolumn" id="info">
+                    <div class="twocolumn" id="groupInfo">
                         <h1>Group Classes</h1>
                         <p> 
                             We offer group classes upon request.  If your business is considering employee training
