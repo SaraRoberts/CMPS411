@@ -40,6 +40,15 @@
     top: 30px;
 }
 
+#toReg{
+    color: salmon;
+
+}
+
+#toReg:hover{
+    color: lightblue;
+}
+
 #modal-right {
     display: inline-block;
     padding: 20px;
