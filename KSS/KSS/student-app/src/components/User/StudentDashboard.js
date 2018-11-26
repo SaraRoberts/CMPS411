@@ -24,10 +24,16 @@ export class StudentDashboard extends Component {
         if (!this.props.loginState.loggedIn) {
             return <Login />;
         }
+        if (!this.state.enrollments[0]) {
+            var noClasses = (
+                <p class="kssnotify" >You have not enrolled in any classes.</p>
+            );
+        }
         return (
             <div>
                 <h1>Student Dashboard</h1>
                 <h3>Welcome {this.props.loginState.firstName}</h3>
+                    { noClasses }
                 <div className="studentClasses">
                     <h5>Your Upcoming Classes</h5>
                     {this.state.enrollments.map(enrollment =>

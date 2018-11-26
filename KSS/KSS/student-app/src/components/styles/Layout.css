@@ -14,3 +14,10 @@
         width: 100%;
     }
 }
+
+.kssnotify {
+    color: indianred;
+    background-color: rgba(201, 76, 76, 0.2);
+    border-style: solid;
+    padding: 10px;
+}

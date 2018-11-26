@@ -63,7 +63,7 @@ export class CatalogInstances extends Component {
     render() {
         if (!this.state.instances[0]) {
             var noClasses = (
-                <p>Sorry, no classes are currently scheduled.</p>
+                <p class="kssnotify" >Sorry, no classes are currently scheduled.</p>
             );
         }
         var disabled = false;
