@@ -22,15 +22,23 @@
 }
 
 #banner-container {
-    width: 100%;
+    width: 105%;
     margin-top: -30px;
+    margin-left: -26px;
     padding: 0px 5px;
     background-color: rgba(128, 128, 128, 0.8);
     text-align: center;
     color: white;
     min-width: 200px;
     border-radius: 2px;
-    box-shadow: 8px 8px 15px -4px darkgrey, -8px 0 15px -4px grey;
+    box-shadow: 8px 0px 15px -4px grey, -8px 0 15px -4px grey;
+}
+
+@media only screen and (max-width: 950px) {
+    #banner-text {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
 }
 
 #banner-title{

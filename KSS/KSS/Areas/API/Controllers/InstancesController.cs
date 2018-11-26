@@ -197,7 +197,7 @@ namespace KSS.Areas.API.Controllers
                                   join c in _context.Course on i.CourseId equals c.CourseId
                                   join l in _context.Location on i.LocationId equals l.LocationId
                                   join t in _context.Users on i.InstructorId equals t.UserId
-                                  where i.CourseId == id
+                                  where i.CourseId == id && i.StartDate > DateTime.UtcNow
                                   select new InstancesDto
                                   {
                                       InstanceId = i.InstanceId,
