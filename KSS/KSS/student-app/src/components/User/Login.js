@@ -38,7 +38,6 @@ export class Login extends Component {
         })
             .then(response => {
                 if (response.ok) {
-                    alert('Login successful, ok to continue.');
                     window.location.href = '/dashboard';
                 } else {
                     alert('Login failed!!!!');

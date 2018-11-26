@@ -1,11 +1,10 @@
 ﻿import React, { Component } from 'react';
 import groupPage from './images/groupPage.jpg';
+import Modal from 'react-modal';
 import { InstanceModal } from './InstanceModal';
+import { LoginModal } from './LoginModal';
 import './styles/CatalogInstances.css';
 import './styles/Tables.css';
-
-
-
 
 export class CatalogInstances extends Component {
     displayName = CatalogInstances.name
@@ -15,7 +14,8 @@ export class CatalogInstances extends Component {
         this.state = {
             instances: [],
             showM: false,
-            modalInstance: null
+            modalInstance: null,
+            LoginModalInstance: null
         };
     }
 
@@ -44,6 +44,22 @@ export class CatalogInstances extends Component {
         }
     }
 
+    showLoginModal = (instance) => {
+        if (!this.state.showLogin) {
+            this.setState({
+                ...this.state,
+                showLogin: !this.state.showLogin,
+            })
+        }
+        else {
+            this.setState({
+                ...this.state,
+                LoginModalInstance: instance,
+                showLogin: !this.state.showLogin,
+            })
+        }
+    }
+
     render() {
         if (!this.state.instances[0]) {
             var noClasses = (
@@ -52,9 +68,20 @@ export class CatalogInstances extends Component {
         }
         var disabled = false;
         var hideButton = false;
+
+        var Ldisabled = true;
+        var LhideButton = true;
         if (!this.props.loginState.loggedIn) {
-            disabled = true
+            disabled = true;
             hideButton = true;
+            Ldisabled = false;
+            LhideButton = false;
+        }
+        else {
+            disabled = false;
+            hideButton = false;
+            Ldisabled = true;
+            LhideButton = true;
         }
 
         return (
@@ -64,7 +91,6 @@ export class CatalogInstances extends Component {
                     <div className="twocolumn">
                         <div className="courseClasses">
                             <h5>Upcoming Classes</h5>
-                            <h5 hidden={!hideButton}>please log in to book a class</h5>
                             { noClasses }
                             {this.state.instances.map(instance =>
                                 (
@@ -94,6 +120,15 @@ export class CatalogInstances extends Component {
                                                 hidden={hideButton}
                                         >Book!
                                         </button>
+                                            <button
+                                                className="redButton"
+                                                onClick={
+                                                    () => this.showLoginModal(instance)
+                                                }
+                                                disabled={Ldisabled}
+                                                hidden={LhideButton}
+                                            >Book!
+                                        </button>
                                     </div>
                                 </div>
                                 )
@@ -110,6 +145,11 @@ export class CatalogInstances extends Component {
                     onClose={this.showModal}
                     modalInstance={this.state.modalInstance}
                 />  
+                <LoginModal
+                    show={this.state.showLogin}
+                    onClose={this.showLoginModal}
+                    modalInstance={this.state.loginModalInstance}
+                />
             </div>
         );
     }

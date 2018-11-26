@@ -35,7 +35,7 @@ export class LoginModal extends Component {
     //Handles Submit
     handleSubmitLogin = e => {
         e.preventDefault();
-        fetch('api/account/login', {
+        fetch('/api/account/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'same-origin',
@@ -43,8 +43,7 @@ export class LoginModal extends Component {
         })
             .then(response => {
                 if (response.ok) {
-                    alert('Login successful, ok to continue.');
-                    window.location.href = '/account';
+                    window.location.href = '/dashboard';
                 } else {
                     alert('Login failed!!!!');
                 }

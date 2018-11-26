@@ -129,7 +129,7 @@ export class InstanceModal extends Component {
 
         return (
             <div id="modalBack">
-                <div id="modal-left"></div>
+                <div id="modal-left" />
                 <div id="modal-right" onClick="">
                     <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
                         X
@@ -157,7 +157,6 @@ export class InstanceModal extends Component {
                         onError={onError}
                         onCancel={onCancel}
                     />
-
                 { payLater }
                 </div>
             </div>
