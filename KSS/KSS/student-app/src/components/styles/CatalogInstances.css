@@ -10,22 +10,20 @@
 }
 
 /* Page layout */
-
-#main-container {
-    text-align: center;
-    height: auto;
-    overflow: hidden;
+#catalogInstanceBanner {
+    margin: auto;
+    background-image: url("../images/groupPage.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 275px;
 }
-
 .tworow {
     margin-bottom: -100px;
 }
 #catalogInstance {
     margin-bottom: 50px;
 }
-#info {
-    position: relative;
-    overflow: hidden;
+#courseInfo {
     margin-top: -225px;
     margin-right: 10px;
     margin-right: 10px;
@@ -48,7 +46,7 @@
 }
 
 @media only screen and (max-width: 887px) {
-    #info {
+    #courseInfo {
         margin-top: -550px;
         margin-left: 5%;
         margin-right: 5%;

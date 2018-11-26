@@ -9,7 +9,6 @@ export class Group extends Component {
     render() {
         return (
             <div>
-
                 <div id="groupBanner" alt="Group Safety Classes" />
 
                 <div class="tworow">

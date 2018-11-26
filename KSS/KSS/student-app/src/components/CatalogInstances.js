@@ -86,7 +86,7 @@ export class CatalogInstances extends Component {
 
         return (
             <div>
-                <img id="headerImage" src={groupPage} alt="Groups1" />
+                <div id="catalogInstanceBanner" alt="Classes for selected course" />
                 <div className="tworow" id="catalogInstance">
                     <div className="twocolumn">
                         <div className="courseClasses">
@@ -135,7 +135,7 @@ export class CatalogInstances extends Component {
                             )}
                         </div>
                     </div>
-                    <div className="twocolumn" id="info">
+                    <div className="twocolumn" id="courseInfo">
                         <h2>{this.props.location.state.courseName}</h2>
                         <p>{this.props.location.state.courseDescription}</p>
                     </div>
