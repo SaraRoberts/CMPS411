@@ -31,11 +31,11 @@ export class StudentDashboard extends Component {
         }
         return (
             <div>
-                <h1>Student Dashboard</h1>
-                <h3>Welcome {this.props.loginState.firstName}</h3>
+                <h1>{this.props.loginState.firstName}'s Dashboard</h1>
+                <hr id="divider"></hr>
                     { noClasses }
                 <div className="studentClasses">
-                    <h5>Your Upcoming Classes</h5>
+                    <h2 className="title">Your Upcoming Classes:</h2>
                     {this.state.enrollments.map(enrollment =>
                         (
                         <div className="studentClass" key={enrollment.enrollmentId}>
@@ -56,7 +56,7 @@ export class StudentDashboard extends Component {
                     )}
                 </div>
                 <div className="studentClasses">
-                    <h5>Courses Record</h5>
+                    <h2 className="title">Courses Record:</h2>
                     {this.state.enrollments.map(enrollment =>
                         (
                         <div className="studentClass" key={enrollment.enrollmentId}>
