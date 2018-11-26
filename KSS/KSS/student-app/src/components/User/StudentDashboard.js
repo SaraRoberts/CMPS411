@@ -8,7 +8,8 @@ export class StudentDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            enrollments: []
+            enrollments: [],
+            coursesTaken: []
         };
     }
 
@@ -17,6 +18,11 @@ export class StudentDashboard extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({ enrollments: data });
+            });
+        fetch('/api/Enrollments/2', { credentials: 'same-origin' })
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ coursesTaken: data });
             });
     }
 
@@ -27,13 +33,16 @@ export class StudentDashboard extends Component {
         if (!this.state.enrollments[0]) {
             var noClasses = <p className="kssnotify" >You have not enrolled in any classes.</p>;
         }
+        if (!this.state.coursesTaken[0]) {
+            var noneTaken = <p className="kssnotify" >You have not taken any classes.</p>;
+        }
         return (
             <div id="studentDashboard">
                 <h1>{this.props.loginState.firstName}'s Dashboard</h1>
-                <hr id="divider"></hr>
-                <br></br>
+                <hr id="divider" />
+                <br />
                 <div className="studentClasses">
-                    <h2>Your Upcoming Classes:</h2>
+                    <h2>Your Upcoming Classes</h2>
                     {noClasses}
                     {this.state.enrollments.map(enrollment =>
                         (
@@ -55,21 +64,22 @@ export class StudentDashboard extends Component {
                     )}
                 </div>
                 <div className="studentClasses">
-                    <h2>Courses Taken:</h2>
-                    {this.state.enrollments.map(enrollment =>
+                    <h2>Courses Taken</h2>
+                    {noneTaken}
+                    {this.state.coursesTaken.map(courseTaken =>
                         (
-                        <div className="studentClass" key={enrollment.enrollmentId}>
+                        <div className="studentClass" key={courseTaken.enrollmentId}>
                             <div className="studentClassLeft">
-                                {enrollment.instanceStartDateDOW}< br />
+                                {courseTaken.instanceStartDateDOW}< br />
                                 <span>
-                                    {enrollment.instanceStartDateMonthF3} {enrollment.instanceStartDateDay}< br />
+                                    {courseTaken.instanceStartDateMonthF3} {courseTaken.instanceStartDateDay}< br />
                                 </span>
-                                {enrollment.instanceStartDateTime}
+                                {courseTaken.instanceStartDateTime}
                             </div>
                             <div className="seperator" />
                             <div className="studentClassRight">
-                                {enrollment.courseName}<br />
-                                {enrollment.locationStreet}, {enrollment.locationCity}, {enrollment.locationState}
+                                {courseTaken.courseName}<br />
+                                {courseTaken.locationStreet}, {courseTaken.locationCity}, {courseTaken.locationState}
                             </div>
                         </div>
                         )
