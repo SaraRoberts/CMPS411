@@ -25,6 +25,7 @@ export class Register extends Component {
     }
     //Handles Submit
     handleSubmit(event) {
+        event.preventDefault();
         const user = {
             email: this.state.email,
             password: this.state.password,
