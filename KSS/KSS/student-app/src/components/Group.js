@@ -27,7 +27,7 @@ export class Group extends Component {
                         <p>
                             Beckey Smith, Owner <br></br>
                             becky@keepingsafetysmart.com<br></br>
-                            (985) 888 - 8888<br></br>
+                            (985) 502 - 9425<br></br>
                         </p>
                         <p>
                             The maximum class capacity for CPR is one instructor for every nine students which may

@@ -20,8 +20,7 @@ export class Footer extends Component {
                         <p>
                             Ms Beckey Smith, Owner <br />
                             beckey@keepingsafetysmart.com <br />
-                            (985) 888-8888 <br />
-                            Cell: (985) 888-8888 <br />
+                            (985) 502 - 9425 <br />
                             <a href="\">www.keepingsafetysmart.com</a>    
                         </p>
                         <p>KSS © 2018 </p>
