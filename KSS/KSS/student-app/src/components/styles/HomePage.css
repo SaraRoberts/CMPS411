@@ -34,6 +34,13 @@
     box-shadow: 8px 0px 15px -4px grey, -8px 0 15px -4px grey;
 }
 
+@media only screen and (max-width: 950px) {
+    #banner-text {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+}
+
 #banner-title{
     font-size: 30px;
     font-style: italic;
