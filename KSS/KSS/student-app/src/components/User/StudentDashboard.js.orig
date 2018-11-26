@@ -1,0 +1,93 @@
+﻿import React, { Component } from 'react';
+import { Login } from './Login';
+import './users.css';
+
+export class StudentDashboard extends Component {
+    displayName = StudentDashboard.name
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            enrollments: []
+        };
+    }
+
+    componentDidMount() {
+        fetch('/api/Enrollments/1', { credentials: 'same-origin' })
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ enrollments: data });
+            });
+    }
+
+    render() {
+        if (!this.props.loginState.loggedIn) {
+            return <Login />;
+        }
+        if (!this.state.enrollments[0]) {
+            var noClasses = <p className="kssnotify" >You have not enrolled in any classes.</p>;
+        }
+        return (
+<<<<<<< HEAD
+            <div id="studentDashboard">
+                <h1>Student Dashboard</h1>
+                <h3>Welcome {this.props.loginState.firstName}</h3>
+                <div className="studentClasses">
+                    <h5>Your Upcoming Classes</h5>
+                    {noClasses}
+=======
+            <div>
+                <h1>{this.props.loginState.firstName}'s Dashboard</h1>
+                <hr id="divider"></hr>
+                    { noClasses }
+                <div className="studentClasses">
+                    <h2 className="title">Your Upcoming Classes:</h2>
+>>>>>>> be74d61915a63599b56e9523154f58b064e03e7c
+                    {this.state.enrollments.map(enrollment =>
+                        (
+                        <div className="studentClass" key={enrollment.enrollmentId}>
+                            <div className="studentClassLeft">
+                                {enrollment.instanceStartDateDOW}< br />
+                                <span>
+                                    {enrollment.instanceStartDateMonthF3} {enrollment.instanceStartDateDay}< br />
+                                </span>
+                                {enrollment.instanceStartDateTime}
+                            </div>
+                            <div className="seperator" />
+                            <div className="studentClassRight">
+                                {enrollment.courseName}<br />
+                                {enrollment.locationStreet}, {enrollment.locationCity}, {enrollment.locationState}
+                            </div>
+                        </div>
+                        )
+                    )}
+                </div>
+                <div className="studentClasses">
+<<<<<<< HEAD
+                    <h5>Courses Taken</h5>
+=======
+                    <h2 className="title">Courses Record:</h2>
+>>>>>>> be74d61915a63599b56e9523154f58b064e03e7c
+                    {this.state.enrollments.map(enrollment =>
+                        (
+                        <div className="studentClass" key={enrollment.enrollmentId}>
+                            <div className="studentClassLeft">
+                                {enrollment.instanceStartDateDOW}< br />
+                                <span>
+                                    {enrollment.instanceStartDateMonthF3} {enrollment.instanceStartDateDay}< br />
+                                </span>
+                                {enrollment.instanceStartDateTime}
+                            </div>
+                            <div className="seperator" />
+                            <div className="studentClassRight">
+                                {enrollment.courseName}<br />
+                                {enrollment.locationStreet}, {enrollment.locationCity}, {enrollment.locationState}
+                            </div>
+                        </div>
+                        )
+                    )}
+                </div>
+            </div>
+        );
+    }
+}

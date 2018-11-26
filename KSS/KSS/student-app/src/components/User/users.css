@@ -15,6 +15,14 @@ input::-webkit-input-placeholder {
    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+.title{
+    text-align: center;
+}
+
+#divider{
+    width: 85%;
+}
+
 label{
     margin-top: 10px;
     font-size: 22px;
