@@ -22,20 +22,20 @@ export class InstanceModal extends Component {
     componentDidMount() {
         this.setState({ //set state with the dummy info
             enrollmentInfo: {
-                userId: 16,
-                instanceId: 16,
-                bookBought: true,
-                paid: false
+                userId: "",
+                instanceId: "",
+                bookBought: false,
+                paid: true
             }
         });
     }
 
-    bookAndPayLater = () => {
-        this.setState({ //set state with the dummy info
+    bookAndPayLater = (instId) => {
+        this.setState({ 
             enrollmentInfo: {
-                userId: 16,
-                instanceId: 16,
-                bookBought: true,
+                userId: 18,
+                instanceId: instId,
+                bookBought: false,
                 paid: false
             }
         });
@@ -57,7 +57,7 @@ export class InstanceModal extends Component {
                     alert("Payment is required for EMT classes");
                 }           
                 else {
-                    alert("Something else went wrong");
+                    alert("Something else went wrong. Instance: " + instId );
                 }
             });
     }
@@ -69,16 +69,18 @@ export class InstanceModal extends Component {
 
     render() {
         if (!this.props.show) return null
+
         const onSuccess = (payment) => {
             console.log("Successful: ", payment);
             this.setState({ //set state with the dummy info
                 enrollmentInfo: {
-                    userId: 16,              
-                    instanceId: 16,
-                    bookBought: true,
+                    userId: 1,              
+                    instanceId: this.props.modalInstance.instanceId,
+                    bookBought: false,
                     paid: true
                 }
             });
+
             //e.preventDefault();
             fetch('/api/Enrollments/Enrollment', { //Call Api
                 method: 'POST',
@@ -101,8 +103,6 @@ export class InstanceModal extends Component {
                 });
         };
 
-        
-
         //Output in browser console on cancel (closing the window)
         const onCancel = (data) => {
                 console.log('Canceled', data);
@@ -115,8 +115,9 @@ export class InstanceModal extends Component {
 
         // checks category
         if (this.props.modalInstance.courseCategory != "EMT") {
+            var instId = this.props.modalInstance.instanceId;
             var payLater = (
-                <h5>or <span id="payLater" onClick={() => this.bookAndPayLater()}>Book and Pay Later</span></h5>
+                <h5>or <span id="payLater" onClick={() => this.bookAndPayLater(instId)}> Book and Pay Later </span></h5>
             );
         }
 
