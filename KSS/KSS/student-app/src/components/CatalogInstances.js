@@ -88,6 +88,10 @@ export class CatalogInstances extends Component {
             <div>
                 <div id="catalogInstanceBanner" alt="Classes for selected course" />
                 <div className="tworow" id="catalogInstance">
+                    <div className="twocolumn" id="courseInfo">
+                        <h2>{this.props.location.state.courseName}</h2>
+                        <p>{this.props.location.state.courseDescription}</p>
+                    </div>
                     <div className="twocolumn">
                         <div className="courseClasses">
                             <h5>Upcoming Classes</h5>
@@ -134,10 +138,6 @@ export class CatalogInstances extends Component {
                                 )
                             )}
                         </div>
-                    </div>
-                    <div className="twocolumn" id="courseInfo">
-                        <h2>{this.props.location.state.courseName}</h2>
-                        <p>{this.props.location.state.courseDescription}</p>
                     </div>
                 </div>
                 <InstanceModal
