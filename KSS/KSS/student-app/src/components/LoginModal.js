@@ -35,7 +35,7 @@ export class LoginModal extends Component {
     //Handles Submit
     handleSubmitLogin = e => {
         e.preventDefault();
-        fetch('api/account/login', {
+        fetch('/api/account/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'same-origin',
