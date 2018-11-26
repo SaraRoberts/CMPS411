@@ -10,13 +10,9 @@ import './styles/HomePage.css';
 
 export class Home extends Component {
     displayName = Home.name
-    render() {
-        if (this.props.loginState.loggedIn)
-            var signedIn = "signed in as " + this.props.loginState.firstName;
-       
+    render() {       
         return (
             <div id="main-container">
-                {signedIn}
                 <div id="homeBanner">
                     <img id="nested-logo" src={logo} alt="Keeping Safety Smart logo" />
                 </div>
