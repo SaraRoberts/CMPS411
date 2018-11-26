@@ -10,6 +10,7 @@ import { Layout } from './components/Layout';
 import { Login } from './components/User/Login';
 import { Logout } from './components/User/Logout';
 import { Register } from './components/User/Register';
+import { Staff } from './components/Staff';
 import { StudentDashboard } from './components/User/StudentDashboard';
 
 class App extends Component {
@@ -59,6 +60,7 @@ class App extends Component {
                 <Route exact path='/catalog' render={(props) => <Catalog {...props} loginState={this.state.loginState} />} />
                 <Route path='/catalog/:courseId' render={(props) => <CatalogInstances {...props} loginState={this.state.loginState} />} />
                 <Route path='/group' render={(props) => <Group {...props} loginState={this.state.loginState} />} />
+                <Route path='/staff' render={(props) => <Staff {...props} loginState={this.state.loginState} />} />
                 <Route path='/account' render={(props) => <Account {...props} loginState={this.state.loginState} />} />
                 <Route path='/login' render={(props) => <Login {...props} loginState={this.state.loginState} />} />
                 <Route path='/logout' render={(props) => <Logout {...props} loginState={this.state.loginState} />} />
