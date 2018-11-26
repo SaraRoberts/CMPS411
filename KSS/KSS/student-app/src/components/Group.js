@@ -12,15 +12,12 @@ export class Group extends Component {
                 <div id="groupBanner" alt="Group Safety Classes" />
 
                 <div class="tworow">
-                    <div class="twocolumn">
-                        <img id="main-image" src={k} alt="Group Safety Classes image" />
-                    </div>
                     <div class="twocolumn" id="groupInfo">
                         <h1>Group Classes</h1>
-                        <p> 
+                        <p>
                             We offer group classes upon request.  If your business is considering employee training
                             in first aid or any other safety courses, Please contact Beckey Smith to discuss pricing,
-                            location, and other considerations.  
+                            location, and other considerations.
                         </p>
                         <p>
                             Beckey Smith, Owner <br></br>
@@ -32,6 +29,9 @@ export class Group extends Component {
                             effect pricing as well as the course selected.
                         </p>
                         Feel free to browse our course catalog availble <Link to='/catalog'>here!</Link>
+                    </div>
+                    <div class="twocolumn">
+                        <img id="main-image" src={k} alt="Group Safety Classes image" />
                     </div>
                 </div>
             </div>
