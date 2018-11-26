@@ -39,12 +39,6 @@ export class NavMenu extends Component {
                     <Button id="sign-in-button" onClick={
                         () => this.showModal()}>Sign Up / Login
                     </Button>
-                    <LinkContainer to={'/register'}>
-                        <NavItem className="left-button-divider">Sign Up</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to={'/login'}>
-                        <NavItem>Login</NavItem>
-                    </LinkContainer>
                 </div>
             );
                 } else rightNav = (
