@@ -22,10 +22,10 @@ export class InstanceModal extends Component {
     componentDidMount() {
         this.setState({ //set state with the dummy info
             enrollmentInfo: {
-                userId: "",
-                instanceId: "",
+                userId: 0,         // Dummy value, Cannot be null or empty 
+                instanceId: 1,    //  Dummy value, Cannot be null or empty
                 bookBought: false,
-                paid: true
+                paid: false
             }
         });
     }
@@ -33,12 +33,13 @@ export class InstanceModal extends Component {
     bookAndPayLater = (instId) => {
         this.setState({ 
             enrollmentInfo: {
-                userId: 18,
+                userId: 0, //  Dummy value, Cannot be null or empty
                 instanceId: instId,
                 bookBought: false,
                 paid: false
             }
         });
+        this.state.enrollmentInfo.instanceId = instId;
         console.log(this.state.enrollmentInfo);
         //e.preventDefault();
         fetch('/api/Enrollments/Enrollment', { //Call Api
@@ -80,7 +81,8 @@ export class InstanceModal extends Component {
                     paid: true
                 }
             });
-
+            this.state.enrollmentInfo.instanceId = instId;
+            this.state.enrollmentInfo.paid = true;
             //e.preventDefault();
             fetch('/api/Enrollments/Enrollment', { //Call Api
                 method: 'POST',
