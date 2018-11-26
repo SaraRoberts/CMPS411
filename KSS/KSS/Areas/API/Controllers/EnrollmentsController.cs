@@ -145,6 +145,11 @@ namespace KSS.Areas.API.Controllers
                 return StatusCode(422,"Classes are full cannot enroll");
             }
 
+            if (duplicate!=null)
+            {
+                return StatusCode(424, "You are already enrolled in this class");
+            }
+
             if (duplicate == null)
             {
                 var enrollment = _context.Enrollment;

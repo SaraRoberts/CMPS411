@@ -56,7 +56,9 @@ export class InstanceModal extends Component {
                     alert("This class is full");
                 } else if (response.status == 423) {
                     alert("Payment is required for EMT classes");
-                }           
+                } else if (response.status == 424) {
+                    alert("You are already enrolled in this class");
+                }          
                 else {
                     alert("Something else went wrong. Instance: " + instId );
                 }
