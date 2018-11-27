@@ -93,13 +93,13 @@ export class CatalogInstances extends Component {
             <div>
                 <div id="catalogBanner" alt="Group Safety Classes" />
 
-                <div className="catalogRow">
-                    <div className="catalogColumn" id="catalogInfo">
+                <div className="catalogInfo">
+                    <div>
                         <h2>{this.props.location.state.courseName}</h2>
                         <p>{this.props.location.state.courseDescription}</p>
                     </div>
                 </div>
-                <div className="catalogColumn" id="catalogImage">
+                <div className="catalogClasses">
                     <div className="courseClasses">
                         <h4>Upcoming Classes</h4>
                         {noClasses}

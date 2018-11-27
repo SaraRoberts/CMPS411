@@ -12,27 +12,27 @@ export class Group extends Component {
             <div>
                 <div id="groupBanner" alt="Group Safety Classes" />
 
-                <div className="groupRow">
-                    <div className="groupColumn" id="groupInfo">
-                        <h1>Group Classes</h1>
+                <div className="groupInfo">
+                    <div>
+                        <h2>Group Classes</h2>
                         <p>
                             We offer group classes upon request.  If your business is considering employee training
                             in first aid or any other safety courses, Please contact Beckey Smith to discuss pricing,
                             location, and other considerations.
                         </p>
                         <p>
-                            Beckey Smith, Owner <br></br>
+                            Beckey Smith, Owner <br />
                             becky@keepingsafetysmart.com<br></br>
-                            (985) 502 - 9425<br></br>
+                            (985) 502 - 9425<br />
                         </p>
                         <p>
                             The maximum class capacity for CPR is one instructor for every nine students which may
                             effect pricing as well as the course selected.
                         </p>
                         Feel free to browse our course catalog availble <Link to='/catalog'>here!</Link>
-                    </div>                    
+                    </div>
                 </div>
-                <div className="groupColumn" id="groupImage">
+                <div className="groupLogo">
                     <img src={initialsLogo} alt="Group Safety Classes image" />
                 </div>
             </div>
