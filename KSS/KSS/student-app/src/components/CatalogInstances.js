@@ -5,6 +5,7 @@ import { InstanceModal } from './InstanceModal';
 import { LoginModal } from './LoginModal';
 import './styles/CatalogInstances.css';
 import './styles/Tables.css';
+import toastr from 'toastr'
 
 export class CatalogInstances extends Component {
     displayName = CatalogInstances.name
@@ -17,6 +18,14 @@ export class CatalogInstances extends Component {
             modalInstance: null,
             LoginModalInstance: null,
         };
+
+        toastr.options = {
+            positionClass: 'toast-top-center',
+            hideDuration: 3000,
+            timeOut: 5000,
+            newestOnTop: true,
+
+        }
     }
 
     componentDidMount() {
@@ -26,11 +35,11 @@ export class CatalogInstances extends Component {
                 this.setState({ instances: data, loading: false });
                 console.log(data);
             });
+       
     }
-
     showModal = (instance) => {
         if (instance.seatsAvailable == 0) {
-            alert("This class is full If you are interested in taking this class please email beckysmith@kss.com ");
+            toastr.error("This class is full If you are interested in taking this class please email beckysmith@kss.com")
             return;
         }
         if (!this.state.show) {
@@ -50,7 +59,7 @@ export class CatalogInstances extends Component {
 
     showLoginModal = (instance) => {
         if (instance.seatsAvailable == 0) {
-            alert("This class is full If you are interested in taking this class please email beckysmith@kss.com ");
+            toastr.error("This class is full If you are interested in taking this class please email beckysmith@kss.com")
             return;
         }
         if (!this.state.showLogin) {

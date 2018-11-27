@@ -12,6 +12,7 @@ import { Logout } from './components/User/Logout';
 import { Register } from './components/User/Register';
 import { Staff } from './components/Staff';
 import { StudentDashboard } from './components/User/StudentDashboard';
+import 'toastr/build/toastr.min.css';
 
 class App extends Component {
     constructor(props) {
