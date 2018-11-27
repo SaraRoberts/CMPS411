@@ -10,15 +10,6 @@
 }
 
 /* Page layout */
-.catalogRow {
-    width: 100%;
-    padding: 5%;
-}
-
-.catalogColumn {
-    float: left;
-}
-
 #catalogBanner {
     background-image: url("../images/groupPage.jpg");
     background-size: cover;
@@ -26,47 +17,32 @@
     height: 275px;
 }
 
-#catalogInfo {
-    margin-top: -250px;
-    width: 50%;
+.catalogInfo {
     float: left;
-    height: auto;
-    padding: 30px;
+    display: inline-block;
+    width: 40%;
+    padding-left: 40px;
+}
+.catalogInfo div {
+    margin-top: -225px;
+    display: inline-block;
+    width: 100%;
+    padding: 30px 30px 20px 30px;
     color: white;
     background-color: #a83939;
     border-radius: 5px;
     box-shadow: 8px 8px 20px -4px grey, -8px 8px 20px -4px grey;
 }
 
-#catalogInfo h1 {
-    margin-top: -10px;
+.catalogInfo h2 {
+    margin-top: 0px;
 }
 
-#catalogImage {
-    margin-top: 1%;
-    margin-right: 5%;
-    float: right;
-}
-
-@media only screen and (max-width: 887px) {
-    #catalogInfo {
-        margin-top: -250px;
-        width: 95%;
-        float: left;
-        margin-left: 2.5%;
-        margin-right: 2.5%;
-    }
-
-    .catalogColumn#catalogImage {
-        width: 100%;
-        text-align: center;
-    }
-
-    #catalogImage {
-        margin-top: 40px;
-        margin-right: 0%;
-        float: right;
-    }
+.catalogClasses {
+    display: inline-block;
+    width: 60%;
+    text-align: left;
+    padding: 30px 0px 30px 40px;
 }
 
 /* Student Dashboard Class tiles */
@@ -97,7 +73,6 @@
     text-align: center;
     width: 100px;
     color: grey;
-    padding: -5px;
 }
 .courseClassLeft span {
     font-weight: 800;
@@ -108,7 +83,7 @@
     background-color: rgba(128, 128, 128, 0.2);
     width: 1px;
     height: 40px;
-    padding: 0px;
+    padding: 1px;
 }
 .courseClassMiddle {
     width: 175px;
@@ -120,4 +95,27 @@
 }
 .courseClassRight {
     width: 75px;
+}
+
+@media only screen and (max-width: 824px) {
+    .catalogInfo {
+        float: none;
+        margin-top: -25px;
+        display: inline-block;
+        width: 95%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .catalogClasses {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding: 30px 0px;
+    }
+
+    .courseClasses {
+        margin: 0px;
+        text-align: center;
+    }
 }
