@@ -7,67 +7,87 @@ import './styles/Catalog.css';
 
 
 export class Catalog extends Component {
-
-    static rendercourseTable(courses) {
-      return (
-        <Table>
-            <Table.Header>
-                <Table.Row>
-                    <Table.HeaderCell>Courses</Table.HeaderCell>
-                    <Table.HeaderCell />
-                </Table.Row>
-            </Table.Header>
-
-            <Table.Body>
-                {courses.map(courses => (
-                      <Table.Row key={courses.courseId}>
-                          <Accordion atomic={true}>
-                              <AccordionItem title={courses.name}>
-                                  <p>{courses.description}</p>
-                              </AccordionItem>
-                          </Accordion>    
-                            <Table.Cell>
-                              <Link
-                                  to={{
-                                      pathname: `catalog/${courses.courseId}`,
-                                      state: {
-                                          courseName: courses.name,
-                                          courseDescription: courses.description
-                                      }
-                                  }}
-                              >
-                                    <button className="redButton">
-                                        Upcoming Classes
-                                    </button>
-                              </Link>
-                            </Table.Cell>
-                        </Table.Row>
-                    )
-                )}
-            </Table.Body>
-        </Table>
-        );
-    }
-
     displayName = Catalog.name
 
     constructor(props) {
         super(props);
-        this.state = { courses: [], loading: true };
+        this.state = {
+            courses: [], displayCourses: [], loading: true, chosenCategory: '', unique: [] };
     }
 
     componentDidMount() {
         fetch('/api/courses', { credentials: 'same-origin' })
             .then(response => response.json())
             .then(data => {
-                this.setState({ courses: data, loading: false });
+                let model = { courses: data, displayCourses: data, loading: false, unique: ['', ...new Set(data.map(item => item.categoryName))] };
+                console.log(model);
+                this.setState(model);
             });
     }
+
+    
+
+    static rendercourseTable(courses) {
+        return (
+            <Table>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>Courses</Table.HeaderCell>
+                        <Table.HeaderCell />
+                    </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                    {courses.map(courses => (
+                        <Table.Row key={courses.courseId}>
+                            <Accordion atomic={true}>
+                                <AccordionItem title={courses.name}>
+                                    <p>{courses.description}</p>
+                                </AccordionItem>
+                            </Accordion>
+                            <Table.Cell>
+                                <Link
+                                    to={{
+                                        pathname: `catalog/${courses.courseId}`,
+                                        state: {
+                                            courseName: courses.name,
+                                            courseDescription: courses.description
+                                        }
+                                    }}
+                                >
+                                    <button className="redButton">
+                                        Upcoming Classes
+                                    </button>
+                                </Link>
+                            </Table.Cell>
+                        </Table.Row>
+                    )
+                    )}
+                </Table.Body>
+            </Table>
+        );
+    }
+
+    // This handles the DropDown
+    updateFilter(event)
+{
+    console.log(event);
+    if (event.target.value !== '') {
+        let newArray = this.state.courses.filter(x => x.categoryName.indexOf(
+                event.target.value) >
+            -1);
+        this.setState({ displayCourses: newArray, filterField: event.target.value });
+    } else {
+        this.setState({ displayCourses: this.state.courses, filterField: event.target.value });
+    }
+    }
+
+// End of Dropdown
 
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : Catalog.rendercourseTable(this.state.courses);
+            : Catalog.rendercourseTable(this.state.displayCourses);
 
         return (
             <div>
@@ -78,6 +98,14 @@ export class Catalog extends Component {
                         course listings below.
                     </p>
                 </div>
+                <select name="category" onChange= {event => this.updateFilter(event)} >
+                    {this.state.unique.map((object, index) => {
+                        return (
+                            <option value={object} key= {object+index}>{object}</option>
+                            )
+                    })
+                    }
+                    </select>
                 {contents}
             </div>
         );
