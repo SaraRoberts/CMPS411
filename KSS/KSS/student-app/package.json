@@ -8,6 +8,7 @@
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.0",
+    "react-light-accordion": "^0.1.4",
     "react-modal": "^3.6.1",
     "react-paypal-button": "^1.2.2",
     "react-paypal-express-checkout": "^1.0.5",
