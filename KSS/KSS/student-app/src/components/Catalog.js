@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 import { Table } from 'semantic-ui-react';
 import './styles/Tables.css';
+import { Accordion, AccordionItem } from 'react-light-accordion';
+import './styles/Catalog.css';
 
 
 export class Catalog extends Component {
@@ -11,17 +13,19 @@ export class Catalog extends Component {
         <Table>
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell>Course</Table.HeaderCell>
-                    <Table.HeaderCell>Description</Table.HeaderCell>
+                    <Table.HeaderCell>Courses</Table.HeaderCell>
                     <Table.HeaderCell />
                 </Table.Row>
             </Table.Header>
 
             <Table.Body>
                 {courses.map(courses => (
-                        <Table.Row key={courses.courseId}>
-                            <Table.Cell>{courses.name}</Table.Cell>
-                            <Table.Cell>{courses.description}</Table.Cell>
+                      <Table.Row key={courses.courseId}>
+                          <Accordion atomic={true}>
+                              <AccordionItem title={courses.name}>
+                                  <p>{courses.description}</p>
+                              </AccordionItem>
+                          </Accordion>    
                             <Table.Cell>
                               <Link
                                   to={{
