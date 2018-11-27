@@ -45,19 +45,6 @@
 
 }
 
-#full-warning {
-    display: inline-block;
-    padding-top: 20px;
-    background-color: #a83939;
-    border-radius: 10px 10px 10px 10px;
-    vertical-align: top;
-    position: relative;
-    top: 60px;
-    padding-bottom: 40px;
-    padding-right: 150px;
-    padding-left: 150px;
-}
-
 #toReg:hover{
     color: lightblue;
 }

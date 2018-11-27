@@ -3,7 +3,6 @@ import groupPage from './images/groupPage.jpg';
 import Modal from 'react-modal';
 import { InstanceModal } from './InstanceModal';
 import { LoginModal } from './LoginModal';
-import { FullWarning } from './FullWarning';
 import './styles/CatalogInstances.css';
 import './styles/Tables.css';
 
@@ -17,7 +16,6 @@ export class CatalogInstances extends Component {
             showM: false,
             modalInstance: null,
             LoginModalInstance: null,
-            FullWarningInstance: null
         };
     }
 
@@ -31,59 +29,33 @@ export class CatalogInstances extends Component {
     }
 
     showModal = (instance) => {
-        if (instance.seatsAvailable == 0) {
-            this.FullWarningModal(instance)
+        if (!this.state.show) {
+            this.setState({
+                ...this.state,
+                modalInstance: instance,
+                show: !this.state.show,
+            });
         }
         else {
-            if (!this.state.show) {
-                this.setState({
-                    ...this.state,
-                    modalInstance: instance,
-                    show: !this.state.show,
-                });
-            }
-            else {
-                this.setState({
-                    ...this.state,
-                    show: !this.state.show,
-                });
-            }
+            this.setState({
+                ...this.state,
+                show: !this.state.show,
+            });
         }
     }
 
     showLoginModal = (instance) => {
-        if (instance.seatsAvailable == 0) {
-            this.FullWarningModal(instance)
-            return;
-        }
-        else {
-            if (!this.state.showLogin) {
-                this.setState({
-                    ...this.state,
-                    showLogin: !this.state.showLogin,
-                })
-            }
-            else {
-                this.setState({
-                    ...this.state,
-                    LoginModalInstance: instance,
-                    showLogin: !this.state.showLogin,
-                })
-            }
-        }
-    }
-
-    FullWarningModal = (instance) => {
-        if (!this.state.showFull) {
+        if (!this.state.showLogin) {
             this.setState({
                 ...this.state,
-                showFull: !this.state.showFull,
+                showLogin: !this.state.showLogin,
             })
         }
         else {
             this.setState({
                 ...this.state,
-                showFull: !this.state.showFull,
+                LoginModalInstance: instance,
+                showLogin: !this.state.showLogin,
             })
         }
     }
@@ -184,11 +156,6 @@ export class CatalogInstances extends Component {
                     show={this.state.showLogin}
                     onClose={this.showLoginModal}
                     modalInstance={this.state.loginModalInstance}
-                />
-                <FullWarning
-                    show={this.state.showFull}
-                    onClose={this.showFull}
-                    modalInstance={this.state.FullWarningInstance}
                 />
             </div>
         );
