@@ -45,8 +45,8 @@
     text-align: left;
     padding: 50px;
     min-width: 75%;
-    margin: 5% 0;
     transition: 0.5s;
+    padding-top: 0px;
 }
 .ui.table th {
     font-size: 12px;
@@ -67,5 +67,27 @@
     font-size: 12px;
     border-collapse: collapse;
 }
-
 /*END tables*/
+.catsearch {
+    color: black;
+    width: 90%;
+    background-color: #eee;
+    padding: 15px;
+    font-weight: bold;
+}
+.cataloghead { grid-area: ch; }
+.catalogsearch {
+    grid-area: cs;
+}
+
+.cataloggrid{
+    display: grid;
+    grid-template-areas:
+                       'ch'
+                       'cs';
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.cataloggrid > div {
+    background-color: rgba(255, 255, 255, 0.8);
+}

@@ -32,7 +32,7 @@ export class Catalog extends Component {
             <Table>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Courses</Table.HeaderCell>
+                        <Table.HeaderCell><h2>Courses Offered</h2></Table.HeaderCell>
                         <Table.HeaderCell />
                     </Table.Row>
                 </Table.Header>
@@ -90,22 +90,38 @@ export class Catalog extends Component {
             : Catalog.rendercourseTable(this.state.displayCourses);
 
         return (
+
             <div>
-                <div>
-                    <h1>Course Catalog</h1>
-                    <p>
-                        Keeping Safety Smart offers a variety of courses that teach valuable first responder skills. Search through
-                        course listings below.
-                    </p>
+                <div id="catalogBanner2" alt="Catalog Classes" />
+
+                <div className="catalogInfo">
+                    <div>
+                        <h2>Course Catalog</h2>
+                        <p>
+                        Keeping Safety Smart offers a variety of courses that teach valuable first responder skills.  Whether
+                        you're interested in learning CPR and First Aid or becoming an Emergency Medical Technician,                   Keeping safety smarthow to Search through
+                        our courses teach students how to make a difference! View courses below.
+                        </p>
+                    </div>
                 </div>
-                <select name="category" onChange= {event => this.updateFilter(event)} >
-                    {this.state.unique.map((object, index) => {
-                        return (
-                            <option value={object} key= {object+index}>{object}</option>
-                            )
-                    })
-                    }
-                    </select>
+
+
+                <div class="cataloggrid">
+                    <div class="cataloghead">
+                        <h3>Search By Category:</h3>
+                    </div>
+
+                    <div class="catalogsearch">
+                        <select class="catsearch" name="category" onChange={event => this.updateFilter(event)} >
+                            {this.state.unique.map((object, index) => {
+                                return (
+                                    <option value={object} key={object + index}>{object}</option>
+                                )
+                            })
+                            }
+                        </select>
+                    </div>
+                </div>
                 {contents}
             </div>
         );
