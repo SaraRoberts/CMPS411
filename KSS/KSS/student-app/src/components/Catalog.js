@@ -69,17 +69,15 @@ export class Catalog extends Component {
     }
 
     // This handles the DropDown
-    updateFilter(event)
-{
-    console.log(event);
-    if (event.target.value !== '') {
-        let newArray = this.state.courses.filter(x => x.categoryName.indexOf(
-                event.target.value) >
-            -1);
-        this.setState({ displayCourses: newArray, filterField: event.target.value });
-    } else {
-        this.setState({ displayCourses: this.state.courses, filterField: event.target.value });
-    }
+    updateFilter(event) {
+        console.log(event);
+        if (event.target.value !== '') {
+            let newArray = this.state.courses.filter(x => x.categoryName.indexOf(event.target.value) > -1);
+            this.setState({ displayCourses: newArray, filterField: event.target.value });
+        }
+        else {
+            this.setState({ displayCourses: this.state.courses, filterField: event.target.value });
+        }
     }
 
 // End of Dropdown
@@ -99,8 +97,8 @@ export class Catalog extends Component {
                         <h2>Course Catalog</h2>
                         <p>
                         Keeping Safety Smart offers a variety of courses that teach valuable first responder skills.  Whether
-                        you're interested in learning CPR and First Aid or becoming an Emergency Medical Technician,                   Keeping safety smarthow to Search through
-                        our courses teach students how to make a difference! View courses below.
+                        you're interested in learning CPR and First Aid or becoming an Emergency Medical Technician,
+                        our courses teach students how to make a difference! <br /><br /> View our courses below!
                         </p>
                     </div>
                 </div>
