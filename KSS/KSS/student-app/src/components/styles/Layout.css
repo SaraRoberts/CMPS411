@@ -3,16 +3,17 @@
     box-shadow: 12px 0 20px -4px grey, -12px 0 20px -4px grey;
     height: auto;
     min-height: 600px;
-    width: 80%;
+    width: 90%;
     max-width: 1100px;
     text-align: center;
     background-color: white;
     display: inline-block;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 824px) {
     .main-container {
         width: 100%;
+        padding-top: 115px;
     }
 }
 
