@@ -1,0 +1,50 @@
+﻿label{
+    font-weight: 100;
+}
+
+#modalBackLogin {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.8);
+    padding: 50px;
+    text-align: center;
+    z-index: 3;
+}
+
+#loginLogin {
+    display: inline-block;
+    padding-top: 20px;
+    background-color: #a83939;
+    border-radius: 10px 10px 10px 10px;
+    vertical-align: top;
+    position: relative;
+    top: 30px;
+    color: white;
+}
+
+#loginModalForm a {
+    color: salmon;
+}
+
+#loginModalForm a:hover {
+    color: lightblue;
+}
+
+#dividerLogin {
+    width: 85%;
+    margin-left: 30px;
+}
+
+#closeButtonLogin{
+    color: lightgrey;
+    font-weight: 600;
+    float: right;
+    cursor: pointer;
+}
+
+@media (max-width: 824px) {
+    
+}

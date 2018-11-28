@@ -42,7 +42,6 @@
 
 #toReg{
     color: salmon;
-
 }
 
 #toReg:hover{
@@ -73,6 +72,7 @@
 
 #redirect{
     color: white;
+    padding-top: 20px;
 }
 
 #closeButton{
