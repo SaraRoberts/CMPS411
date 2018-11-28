@@ -45,7 +45,7 @@ namespace KSS.Areas.API.Controllers
                              TypicalPrice = c.TypicalPrice,
                              BookAvailable = c.BookAvailable,
                              PrereqId = c.PrereqId,
-                             CategoryName = c.CourseCategory.Name,
+                             CategoryName = c.CourseCategory.Title,
                              PrereqName = c.Prereq.Name
 
                          }).ToList();
