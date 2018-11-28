@@ -56,7 +56,6 @@
 }
 .ui.table td {
     padding: 10px;
-    border-bottom: solid 1px lightgrey;
 }
 /*.ui.table tr:nth-child(even) {
     background-color: #eee;
