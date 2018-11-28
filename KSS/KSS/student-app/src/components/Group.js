@@ -29,7 +29,7 @@ export class Group extends Component {
                             The maximum class capacity for CPR is one instructor for every nine students which may
                             effect pricing as well as the course selected.
                         </p>
-                        Feel free to browse our course catalog availble <Link to='/catalog'>here!</Link>
+                        Feel free to browse our course catalog availble <Link id="groupLink" to='/catalog'>here!</Link>
                     </div>
                 </div>
                 <div className="groupLogo">

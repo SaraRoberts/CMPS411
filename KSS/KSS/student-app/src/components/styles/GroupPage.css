@@ -34,6 +34,14 @@
     padding: 100px 100px 0px 100px;
 }
 
+#groupLink {
+    color: salmon;
+}
+
+#groupLink:hover {
+        color: lightblue;
+}
+
 @media only screen and (max-width: 824px) {
     .groupInfo {
         float: none;
