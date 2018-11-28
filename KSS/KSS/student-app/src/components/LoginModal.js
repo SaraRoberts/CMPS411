@@ -69,32 +69,31 @@ export class LoginModal extends Component {
                     <div>
                         <div id="loginModalForm">
                             <h1>Login</h1>
-                            <hr id="dividerLogin" />
-                            <div className="main-center">
-                                <form onSubmit={this.handleSubmitLogin} method="post">
+                            <hr />
+                            <br />
+                            <form onSubmit={this.handleSubmitLogin} method="post">
+                                <div>
+                                    <label>Email</label>
                                     <div>
-                                        <label>Email</label>
                                         <div>
-                                            <div>
-                                                <input type="text" className="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChangeLogin} />
-                                            </div>
+                                            <input type="text" className="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChangeLogin} />
                                         </div>
                                     </div>
+                                </div>
+                                <div>
+                                    <label>Password</label>
                                     <div>
-                                        <label>Password</label>
                                         <div>
-                                            <div>
-                                                <input type="password" className="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChangeLogin} />
-                                            </div>
+                                            <input type="password" className="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChangeLogin} />
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div>
-                                        <button type="submit" className="login-button">Login</button>
-                                    </div>
-                                    <p>Don't have an account? Sign up <Link to='/register' onClick={(e) => { this.onClose(e); }}>here!</Link></p>
-                                </form>
-                            </div>
+                                <div>
+                                    <button type="submit" className="login-button">Login</button>
+                                </div>
+                                <p>Don't have an account? Sign up <Link to='/register' onClick={(e) => { this.onClose(e); }}>here!</Link></p>
+                            </form>
                         </div>
                     </div>
                 </div>
