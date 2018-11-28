@@ -57,14 +57,14 @@ export class InstanceModal extends Component {
                     })
                               
                 } else if (response.status == 422) {
-                    toastr.error("This class is full");
+                    toastr.warning("This class is full");
                 } else if (response.status == 423) {
                     toastr.warning("Payment is required for EMT classes");
                 } else if (response.status == 424) {
                     toastr.warning("You are already enrolled in this class");
                 }          
                 else {
-                    toastr.error("Something else went wrong. Instance: " + instId );
+                    toastr.warning("Something else went wrong. Instance: " + instId );
                 }
             });
     }
@@ -108,7 +108,7 @@ export class InstanceModal extends Component {
                         toastr.warning("You are already enrolled in this class");
                     }
                     else {
-                        toastr.error("Something else went wrong");
+                        toastr.warning("Something else went wrong");
                     }
                 });
         };
