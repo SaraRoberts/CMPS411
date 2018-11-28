@@ -56,7 +56,7 @@ export class Catalog extends Component {
                                     }}
                                 >
                                     <button className="redButton">
-                                        Upcoming Classes
+                                        See Dates
                                     </button>
                                 </Link>
                             </Table.Cell>
