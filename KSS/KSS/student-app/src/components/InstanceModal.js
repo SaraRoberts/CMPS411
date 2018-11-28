@@ -2,6 +2,7 @@
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import './styles/InstanceModal.css';
 import { Link } from 'react-router-dom';
+import toastr from 'toastr'
 
 
 export class InstanceModal extends Component {
@@ -16,9 +17,20 @@ export class InstanceModal extends Component {
                 paid: false
             }
         };
-        
+
+        toastr.options = {
+            positionClass: 'toast-top-center',
+            hideDuration: 3000,
+            timeOut: 5000,
+            newestOnTop: true,
+
+        }
     }
-    
+
+    sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
     bookAndPayLater = (instId) => {
         this.setState({ 
             enrollmentInfo: {
@@ -39,17 +51,20 @@ export class InstanceModal extends Component {
         })
             .then(response => {
                 if (response.ok) {
-                    alert("You are enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
-                    window.location.href = '/dashboard';             // modal or something 
+                    toastr.success("You are enrolled!"); // Success/failure can be changed to a prettier 
+                    this.sleep(1500).then(() => {
+                        window.location.href = '/dashboard';  
+                    })
+                              
                 } else if (response.status == 422) {
-                    alert("This class is full");
+                    toastr.error("This class is full");
                 } else if (response.status == 423) {
-                    alert("Payment is required for EMT classes");
+                    toastr.warning("Payment is required for EMT classes");
                 } else if (response.status == 424) {
-                    alert("You are already enrolled in this class");
+                    toastr.warning("You are already enrolled in this class");
                 }          
                 else {
-                    alert("Something else went wrong. Instance: " + instId );
+                    toastr.error("Something else went wrong. Instance: " + instId );
                 }
             });
     }
@@ -83,15 +98,17 @@ export class InstanceModal extends Component {
             })
                 .then(response => {
                     if (response.ok) {
-                        alert("You have paid and enrolled, Press okay to continue"); // Success/failure can be changed to a prettier 
-                        window.location.href = '/dashboard';             // modal or something 
+                        toastr.success("You are enrolled!"); // Success/failure can be changed to a prettier 
+                        this.sleep(1500).then(() => {
+                            window.location.href = '/dashboard';
+                        })    
                     } else if (response.status == 422) {
-                        alert("This class is full");
+                        toastr.warning("This class is full");
                     } else if (response.status == 423) {
-                        alert("Payment is required for EMT classes");
+                        toastr.error("Payment is required for EMT classes");
                     }
                     else {
-                        alert("Something else went wrong");
+                        toastr.error("Something else went wrong");
                     }
                 });
         };
