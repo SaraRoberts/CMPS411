@@ -87,8 +87,6 @@ export class InstanceModal extends Component {
                     paid: true
                 }
             });
-            this.state.enrollmentInfo.instanceId = instId;
-            this.state.enrollmentInfo.paid = true;
             //e.preventDefault();
             fetch('/api/Enrollments/Enrollment', { //Call Api
                 method: 'POST',
@@ -106,6 +104,8 @@ export class InstanceModal extends Component {
                         toastr.warning("This class is full");
                     } else if (response.status == 423) {
                         toastr.error("Payment is required for EMT classes");
+                    } else if (response.status == 424) {
+                        toastr.warning("You are already enrolled in this class");
                     }
                     else {
                         toastr.error("Something else went wrong");
