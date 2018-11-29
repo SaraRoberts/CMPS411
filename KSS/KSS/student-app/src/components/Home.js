@@ -48,7 +48,6 @@ export class Home extends Component {
                 <div id="homeBanner">
                     <img id="nested-logo" src={logo} alt="Keeping Safety Smart logo" />
                 </div>
-                <br /><br /><br /><br />
                 <div id="banner-container">
                     <br/>
                     <p id="banner-title">Keep safety smart, one class at a time!</p>
