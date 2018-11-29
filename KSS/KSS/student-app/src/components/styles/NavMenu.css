@@ -60,6 +60,9 @@ header a.logo {
     text-decoration: none;
     background-color: indianred;
 }
+.link:active {
+    background-color: rgb(185, 72, 72);
+}
 
 @media screen and (max-width: 824px) {
 }

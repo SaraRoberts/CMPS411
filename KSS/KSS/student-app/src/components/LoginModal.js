@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './styles/InstanceModal.css';
+import './styles/LoginModal.css';
 import './User/users.css';
 
 export class LoginModal extends Component {
@@ -59,46 +59,41 @@ export class LoginModal extends Component {
     }
 
     render() {
-        if (!this.props.show) return null
+        if (!this.props.show) return null;
         return (
-            <div id="modalBack">
-                <div id="login">
-                    <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
-                        [X] &nbsp;
+            <div id="modalBackLogin">
+                <div id="loginLogin">
+                    <span id="closeButtonLogin" onClick={(e) => { this.onClose(e); }} onMouseOver="">
+                        X &nbsp;&nbsp;
                     </span>
-                    <div class="container">
-                        <div class="row main">
-                            <div class="panel-heading">
-                                <h1 id="header">Login</h1>
-                            </div>
-                            <hr id="divider"></hr>
-                            <div class="main-login main-center">
-                                <form onSubmit={this.handleSubmitLogin} method="post">
+                    <div>
+                        <div id="loginModalForm">
+                            <h1>Login</h1>
+                            <hr />
+                            <br />
+                            <form onSubmit={this.handleSubmitLogin} method="post">
+                                <div>
+                                    <label>Email</label>
                                     <div>
-                                        <label for="email">Email</label>
                                         <div>
-                                            <div>
-                                                <span><i aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" class="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChangeLogin} />
-                                            </div>
+                                            <input type="text" className="form-blank" name="email" id="email" placeholder="Enter your Email" onChange={this.handleChangeLogin} />
                                         </div>
                                     </div>
+                                </div>
+                                <div>
+                                    <label>Password</label>
                                     <div>
-                                        <label>Password</label>
                                         <div>
-                                            <div>
-                                                <span><i aria-hidden="true"></i></span>
-                                                <input type="password" class="form-control" class="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChangeLogin} />
-                                            </div>
+                                            <input type="password" className="form-blank" name="password" id="password" placeholder="Enter your Password" onChange={this.handleChangeLogin} />
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div>
-                                        <button type="submit" className="login-button">Login</button>
-                                    </div>
-                                    <p id="redirect">Don't have an account? Sign up <Link id="toReg" to='/register' onClick={(e) => { this.onClose(e) }}>here!</Link></p>
-                                </form>
-                            </div>
+                                <div>
+                                    <button type="submit" className="login-button">Login</button>
+                                </div>
+                                <p>Don't have an account? Sign up <Link to='/register' onClick={(e) => { this.onClose(e); }}>here!</Link></p>
+                            </form>
                         </div>
                     </div>
                 </div>
