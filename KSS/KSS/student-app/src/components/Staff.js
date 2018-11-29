@@ -8,7 +8,7 @@ export class Staff extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { staffs: [], loading: true };
+        this.state = { staffs: [], loading: true, featuredStaffId: Math.floor(Math.random() * 10) };
     }
 
     componentDidMount() {
@@ -19,33 +19,23 @@ export class Staff extends Component {
             });
     }
 
-    static renderStaff(staffs) {
+    static renderStaff(staffs, featuredStaffId) {
         return (
-            <Table>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell>Picture</Table.HeaderCell>
-                        <Table.HeaderCell>Bio</Table.HeaderCell>
-                        <Table.HeaderCell />
-                    </Table.Row>
-                </Table.Header>
-
-                <Table.Body>
-                    {staffs.map(staffs => (
-                        <Table.Row key={staffs.staffBioId}>
-                            <Table.Cell><Image src={staffs.picture} max width="300" /></Table.Cell>
-                            <Table.Cell>{staffs.bio}</Table.Cell>
-                        </Table.Row>
-                    ))}
-                </Table.Body>
-            </Table>
+            <div class="staffBox">
+                <div class="staffBoxItem">
+                    <Image src={staffs[featuredStaffId].picture} max width="150" />
+                </div>
+                <div class="staffBoxItem">
+                    <p>{staffs[featuredStaffId].bio}</p>
+                </div>
+            </div>
         );
     }
 
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : Staff.renderStaff(this.state.staffs);
+            : Staff.renderStaff(this.state.staffs, this.state.featuredStaffId );
 
         return (
             <div>

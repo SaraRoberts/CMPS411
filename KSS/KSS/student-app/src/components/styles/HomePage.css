@@ -22,9 +22,7 @@
 }
 
 #banner-container {
-    width: 105%;
-    margin-top: -30px;
-    margin-left: -26px;
+    width: 100%;
     padding: 0px 5px;
     background-color: rgba(128, 128, 128, 0.8);
     text-align: center;
@@ -49,6 +47,8 @@
 
 #banner-text{
     font-size: 20px;
+    padding-left: 90px;
+    padding-right: 90px;
 }
 
 #middleDiv{
@@ -114,4 +114,22 @@ body{
         width: 100%;
         margin-left: 0px;
     }
+}
+
+.staffBox {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 20px;
+    padding-left: 25%;
+    padding-right: 25%;
+    text-align: left;
+}
+.staffBoxItem {
+    padding: 15px;
+    border-top: 6px solid #a83939;
+    background-color: #eee;
+    color: black;
+}
+.staffDiv {
+    align-self: center
 }
