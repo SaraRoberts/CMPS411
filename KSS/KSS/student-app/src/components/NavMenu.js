@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import { LoginModal } from './LoginModal';
 import './styles/NavMenu.css';
-import { initialsNav } from './images/initialsNav.png';
+import initialsNav from './images/initialsNav.png';
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -56,10 +56,11 @@ export class NavMenu extends Component {
         return (
             <header>
                 <div className="container">
+                    
                     <div className="topnav">
                         <Link to={'/'} exact>
-                            <div className="link">
-                                Home
+                            <div className="logo">
+                                <img src={initialsNav} />
                             </div>
                         </Link>
                         <Link to={'/catalog'}>

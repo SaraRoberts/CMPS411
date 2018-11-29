@@ -14,9 +14,6 @@ export class Layout extends Component {
         return (
             <Grid fluid>
                 <Row>
-                    <BrandBanner />
-                </Row>
-                <Row>
                     <NavMenu loginState={this.props.loginState}/>
                 </Row>
                 <Row>
