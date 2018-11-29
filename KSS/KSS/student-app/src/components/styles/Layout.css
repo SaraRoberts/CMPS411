@@ -1,6 +1,5 @@
 .main-container {
-    padding: 48px 0;
-    box-shadow: 12px 0 20px -4px grey, -12px 0 20px -4px grey;
+    padding: 160px 0;
     height: auto;
     min-height: 600px;
     width: 90%;
@@ -13,7 +12,7 @@
 @media (max-width: 824px) {
     .main-container {
         width: 100%;
-        padding-top: 115px;
+        padding-top: 260px;
     }
 }
 

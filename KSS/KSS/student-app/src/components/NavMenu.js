@@ -56,9 +56,6 @@ export class NavMenu extends Component {
         return (
             <header>
                 <div className="container">
-                    <div className="logo">
-                        <img src={initialsNav} />
-                    </div>
                     <div className="topnav">
                         <Link to={'/'} exact>
                             <div className="link">

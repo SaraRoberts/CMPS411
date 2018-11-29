@@ -3,6 +3,7 @@ import { Grid, Row } from 'react-bootstrap';
 import { Footer } from './Footer';
 import { NavMenu } from './NavMenu';
 import './styles/Layout.css';
+import { BrandBanner } from './BrandBanner';
 
 export class Layout extends Component {
     displayName = Layout.name
@@ -12,6 +13,9 @@ export class Layout extends Component {
 
         return (
             <Grid fluid>
+                <Row>
+                    <BrandBanner />
+                </Row>
                 <Row>
                     <NavMenu loginState={this.props.loginState}/>
                 </Row>

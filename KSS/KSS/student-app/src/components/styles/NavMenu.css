@@ -11,6 +11,7 @@ header {
     width: 100%;
     background-color: #a83939;
     position: fixed;
+    top: 110px;
     box-shadow: 1px 1px 1px grey;
     text-transform: uppercase;
 }
@@ -34,7 +35,7 @@ header a.logo {
 .link {
     float: left;
     margin: 5px;
-    width: 110px;
+    width: 120px;
     height: 50px;
     color: white;
     text-align: center;
@@ -50,7 +51,7 @@ header a.logo {
 }
 .link.signup-login {
     width: 225px;
-    margin-left: 137px;
+    margin-left: 107px;
 }
 .link.dashboard {
     width: 130px;
@@ -65,4 +66,7 @@ header a.logo {
 }
 
 @media screen and (max-width: 824px) {
+    header {
+        top: 140px;
+    }
 }
