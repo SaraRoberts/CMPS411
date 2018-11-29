@@ -15,8 +15,7 @@
 
 #nested-logo{
     width: 100%;
-    max-width: 430px;
-    min-width: 350px;
+    max-width: 450px;
     display: inline-block;
     margin: 20px;
 }
@@ -32,10 +31,15 @@
     box-shadow: 8px 0px 15px -4px grey, -8px 0 15px -4px grey;
 }
 
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 824px) {
     #banner-text {
-        margin-right: 20px;
-        margin-left: 20px;
+        margin: 10px;
+    }
+    #nested-logo {
+        width: 100%;
+        max-width: 300px;
+        display: inline-block;
+        margin: 20px;
     }
 }
 
@@ -47,8 +51,6 @@
 
 #banner-text{
     font-size: 20px;
-    padding-left: 90px;
-    padding-right: 90px;
 }
 
 #middleDiv{
@@ -114,22 +116,4 @@ body{
         width: 100%;
         margin-left: 0px;
     }
-}
-
-.staffBox {
-    display: grid;
-    grid-template-columns: auto auto;
-    padding: 20px;
-    padding-left: 25%;
-    padding-right: 25%;
-    text-align: left;
-}
-.staffBoxItem {
-    padding: 15px;
-    border-top: 6px solid #a83939;
-    background-color: #eee;
-    color: black;
-}
-.staffDiv {
-    align-self: center
 }
