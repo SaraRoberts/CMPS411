@@ -36,13 +36,15 @@ export class Register extends Component {
         };
 
     // Posts to the API
-        axios.post('api/account/register', user)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-                window.location.href = '/login'; // Redirect to the login page
-            })
-            .catch(error => (alert("Incorrect registration please try again")))       
+        fetch('api/account/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user)
+        })
+        .then(res => {
+            window.location.href = '/login'; // Redirect to the login page
+        })
+        .catch(error => (alert("Incorrect registration please try again")))      
     }
 
     // Visuals
