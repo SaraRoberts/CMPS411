@@ -3,8 +3,10 @@
 export class Logout extends Component {
     
     handleLogout() {
-        fetch('api/account/logout', { method: 'POST' });
-        window.location.href = '/login';
+        fetch('api/account/logout', { method: 'POST' })
+            .then(res => {
+                window.location.href = '/login';
+            });
     }
 
     render() {
