@@ -16,6 +16,8 @@ export class Catalog extends Component {
     }
 
     componentDidMount() {
+        document.title = "Keeping Safety Smart | Catalog";
+
         fetch('/api/courses', { credentials: 'same-origin' })
             .then(response => response.json())
             .then(data => {

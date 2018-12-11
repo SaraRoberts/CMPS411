@@ -7,6 +7,10 @@ import './styles/GroupPage.css';
 export class Group extends Component {
     displayName = Group.name
 
+    componentDidMount() {
+        document.title = "Keeping Safety Smart | Groups";
+    }
+
     render() {
         return (
             <div>

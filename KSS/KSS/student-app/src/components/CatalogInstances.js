@@ -29,6 +29,8 @@ export class CatalogInstances extends Component {
     }
 
     componentDidMount() {
+        document.title = "Keeping Safety Smart | Classes";
+
         fetch('/api/Instances/GetInstanceByCourseId/' + this.props.match.params.courseId, { credentials: 'same-origin' })
             .then(response => response.json())
             .then(data => {

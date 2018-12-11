@@ -17,6 +17,10 @@ export class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        document.title = "Keeping Safety Smart | Login";
+    }
+
     //Handles Change
     handleChange = e => {
         var credentials = {

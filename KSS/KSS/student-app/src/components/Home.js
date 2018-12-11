@@ -18,6 +18,7 @@ export class Home extends Component {
     }
 
     componentDidMount() {
+        document.title = "Keeping Safety Smart | Home";
         fetch('/api/Staffs', { credentials: 'same-origin' })
             .then(response => response.json())
             .then(data => {
