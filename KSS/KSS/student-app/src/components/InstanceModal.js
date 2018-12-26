@@ -123,7 +123,7 @@ export class InstanceModal extends Component {
                 console.log("Failure: ", err);
         };
 
-        // checks category
+        // checks EMT
         if (this.props.modalInstance.courseCategory != "EMT") {
             var instId = this.props.modalInstance.instanceId;
             var payLater = (
@@ -137,39 +137,65 @@ export class InstanceModal extends Component {
                 production: 'ATt_35Hio2zgeOr0HRxARGxst3ewohkZXzSJ7N4Ds3kwynkon66oriV6zuxLq5RfYW5l64d0dQJoBTAB'
         };
 
+        if (this.props.modalInstance.courseCategory == "CAR") {
         return (
-            <div id="modalBack">
-                <div id="modal-left" />
-                <div id="modal-right" onClick="">
-                    <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
-                        X
+                <div id="modalBack">
+                    <div id="modal-left" />
+                    <div id="modal-right" onClick="">
+                        <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
+                            X
                     </span>
-                    <h2>{this.props.modalInstance.courseName}</h2>
-
-                    <h4>Instructor: {this.props.modalInstance.instructorName}</h4>
-                    <h4>{this.props.modalInstance.startDate}</h4>
-                    <h4>{this.props.modalInstance.locationName}<br />
-                        {this.props.modalInstance.locationCity}, {this.props.modalInstance.locationState} {this.props.modalInstance.locationZip}
-                    </h4>
-                    <h4>Price: ${this.props.modalInstance.price}</h4>
-
-                    <h5 id="payMessage">Click to pay with PayPal and Book Class.</h5>
-
-                    <PaypalExpressBtn
-                        env={'sandbox'} //change this to 'production' to complete REAL transactions
-                        client={client}
-                        currency={'USD'}
-
-                        total={this.props.modalInstance.price} //change this to adjust price
-
-                        //output handlers
-                        onSuccess={onSuccess}
-                        onError={onError}
-                        onCancel={onCancel}
-                    />
-                { payLater }
+                        <h2>{this.props.modalInstance.courseName}</h2>
+                        <h4>Instructor: {this.props.modalInstance.instructorName}</h4>
+                        
+                        <p>
+                            We offer assistance with car seat installation and safety free of charge to make sure
+                            your little ones ride safely. Please contact Nicole Dufrene for more information!
+                        </p>
+                        <p>
+                            Nicole Dufrene, EMR <br />
+                            nicoledufrene0301@gmail.com<br></br>
+                        </p>
+                        View a list of locations <Link id="carLink" to='/carseatsafety'>here!</Link>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        else {
+            return(
+                <div id="modalBack">
+                    <div id="modal-left" />
+                    <div id="modal-right" onClick="">
+                        <span id="closeButton" onClick={(e) => { this.onClose(e) }} onMouseOver="">
+                            X
+                    </span>
+                        <h2>{this.props.modalInstance.courseName}</h2>
+
+                        <h4>Instructor: {this.props.modalInstance.instructorName}</h4>
+                        <h4>{this.props.modalInstance.startDate}</h4>
+                        <h4>{this.props.modalInstance.locationName}<br />
+                            {this.props.modalInstance.locationCity}, {this.props.modalInstance.locationState} {this.props.modalInstance.locationZip}
+                        </h4>
+                        <h4>Price: ${this.props.modalInstance.price}</h4>
+
+                        <h5 id="payMessage">Click to pay with PayPal and Book Class.</h5>
+
+                        <PaypalExpressBtn
+                            env={'sandbox'} //change this to 'production' to complete REAL transactions
+                            client={client}
+                            currency={'USD'}
+
+                            total={this.props.modalInstance.price} //change this to adjust price
+
+                            //output handlers
+                            onSuccess={onSuccess}
+                            onError={onError}
+                            onCancel={onCancel}
+                        />
+                        {payLater}
+                    </div>
+                </div>
+            );
+        }
     }
 }

@@ -8,7 +8,7 @@ export class CarSeatSafety extends Component {
     displayName = CarSeatSafety.name
 
     componentDidMount() {
-        document.title = "Keeping Safety Smart | Car Seat Safety";
+        document.title = "Keeping Safety Smart | Car Seat";
     }
 
     render() {
