@@ -69,7 +69,6 @@
                 <h2 id="courseName" align="center"></h2>
                 <br />
                 <h4 id="typicalPrice"></h4>
-                <h4 id="bookAvailible"></h4>
                 <h4 id="preReq"></h4>
                 <br />
                 <p id="courseDetails"></p>
@@ -95,7 +94,6 @@
                 <h2 id="courseName2" align="center"></h2>
                 <br />
                 <h4 id="typicalPrice2"></h4>
-                <h4 id="bookAvailible2"></h4>
                 <h4 id="preReq2"></h4>
                 <br />
                 <p id="courseDetails2"></p>
@@ -125,12 +123,6 @@
                     $("#courseDetails").text(data.description);
                     $("#courseName").text(data.name);
                     $("#typicalPrice").text("Typical Price : $ " + data.price );
-                    if (data.book) {
-                        $("#bookAvailible").text("A book is available for this course for $ " + data.bookPrice);
-                    }
-                    else {
-                        $("#bookAvailible").text("This course does not require a book ");
-                    }
                     if (data.preReq != "") {
                         $("#preReq").text("Course Prerequisite : " + data.preReq )
                     }
@@ -159,12 +151,6 @@
                     $("#courseDetails2").text(data.description);
                     $("#courseName2").text(data.name);
                     $("#typicalPrice2").text("Typical Price : $ " + data.price);
-                    if (data.book) {
-                        $("#bookAvailible2").text("A book is available for this course for $ " + data.bookPrice);
-                    }
-                    else {
-                        $("#bookAvailible2").text("This course does not require a book ");
-                    }
                     if (data.preReq != "") {
                         $("#preReq2").text("Course Prerequisite : " + data.preReq)
                     }

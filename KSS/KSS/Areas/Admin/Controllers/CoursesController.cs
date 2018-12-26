@@ -118,8 +118,8 @@ namespace KSS.Areas.Admin.Controllers
                     Name = course.Name,
                     Description = course.Description,
                     TypicalPrice = course.TypicalPrice,
-                    BookAvailable = course.BookAvailable,
-                    BookPrice = course.BookPrice,
+                    BookAvailable = false,
+                    BookPrice = 0,
                     PrereqId = course.PrereqId,
                     CategoryId = course.CategoryId
                 };
