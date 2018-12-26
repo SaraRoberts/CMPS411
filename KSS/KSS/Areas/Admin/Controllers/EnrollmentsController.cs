@@ -187,6 +187,7 @@ namespace KSS.Areas.Admin.Controllers
                 List<UserViewModel> userList = UsersList();
                 List<UserViewModel> instanceList = InstancesList();
 
+                enrollment.BookBought = false;
                 ViewData["Duplicate"] = "User already registered for this class.";
                 ViewData["InstanceId"] = new SelectList(instanceList, "InstanceId", "FullInstance", enrollment.InstanceId);
                 ViewData["UserId"] = userList;

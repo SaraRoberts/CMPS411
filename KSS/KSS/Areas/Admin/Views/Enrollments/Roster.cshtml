@@ -17,7 +17,6 @@
                     <h4 id="instance2"></h4>
                     <h4 id="fullName2"></h4>
                     <h4 id="status2"></h4>
-                    <h4 id="bookBought2"></h4>
                     <h4 id="paid2"></h4>
                     <h4 id="confirmed2"></h4>
                 </div>
@@ -37,9 +36,6 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Paid)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BookBought)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Status)
@@ -62,10 +58,6 @@
                 </td>
                 <td>
                     @if (@item.Paid) { <span class="glyphicon glyphicon-ok"></span> }
-                    else { <span class="glyphicon glyphicon-remove"></span> }
-                </td>
-                <td>
-                    @if (@item.BookBought) { <span class="glyphicon glyphicon-ok"></span> }
                     else { <span class="glyphicon glyphicon-remove"></span> }
                 </td>
                 <td>
@@ -97,7 +89,6 @@
                     $("#instance2").text("Instance : " + data.instance);
                     $("#fullName2").text("Name : " + data.fullName);
                     $("#status2").text("Status : " + data.status);
-                    $("#bookBought2").text(data.bookBought);
                     $("#paid2").text(data.paid);
                     $("#confirmed2").text("Date Confirmed : " + data.confirmed);
                     deleteId = data.enrollmentId;
