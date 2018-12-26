@@ -76,24 +76,6 @@
                     </label>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="BookAvailable" /> Book Available
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="BookPrice" class="control-label">Book Price</label>
-                <div class="input-group">
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-usd"></span>
-                    </div>
-                    <input asp-for="BookPrice" class="form-control" />
-                    @*<input asp-for="BookPrice" class="form-control currency" type="number" min="0.00" step="0.01" max="2000" value="0.00" />*@
-                </div>
-                <span asp-validation-for="BookPrice" class="text-danger"></span>
-            </div>
             <div style="text-align: center" class="form-group">
                 <input type="submit" value="Save Changes" class="btn btn-default" />
                 <div style="display: inline">

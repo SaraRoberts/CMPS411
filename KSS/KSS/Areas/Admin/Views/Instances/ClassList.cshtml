@@ -43,8 +43,6 @@
                 <h4 id="location"></h4>
                 <h4 id="seats"></h4>
                 <h4 id="instructor"></h4>
-                <h4 id="bookavailable"></h4>
-                <h4 id="bookprice"></h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -71,8 +69,6 @@
                     $("#location").text("Location : " + data.location);
                     $("#seats").text("Seats : " + data.seats);
                     $("#instructor").text("Instructor : " + data.instructor);
-                    $("#bookavailable").text("Book Available : " + data.bookavailable);
-                    $("#bookprice").text("Book Price : " + data.bookprice);
                     $("#detailsModal").modal("show");
                 }
             },

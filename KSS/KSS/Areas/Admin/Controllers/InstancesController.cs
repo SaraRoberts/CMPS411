@@ -179,6 +179,9 @@ namespace KSS.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            instance.BookAvailable = true;
+            instance.BookPrice = 0;
+
             ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "Name", instance.CourseId);
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "Street", instance.LocationId);
             ViewData["InstructorId"] = new SelectList(_context.Users.Where(e => e.Role == "Staff" || e.Role == "Admin"), "UserId", "FirstName", instance.InstructorId);

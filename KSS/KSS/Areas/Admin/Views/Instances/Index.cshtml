@@ -85,8 +85,6 @@
                 <h4 id="price"></h4>
                 <h4 id="location"></h4>
                 <h4 id="seats"></h4>
-                <h4 id="book"></h4>
-                <h4 id="bookP"></h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -108,8 +106,6 @@
                 <h4 id="price2"></h4>
                 <h4 id="location2"></h4>
                 <h4 id="seats2"></h4>
-                <h4 id="book2"></h4>
-                <h4 id="bookP2"></h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -135,8 +131,6 @@
                     $("#courseName").text(data.courseName);
                     $("#location").text(data.location);
                     $("#seats").text(data.seats);
-                    $("#book").text(data.book);
-                    $("#bookP").text(data.bookP)
                     $("#detailsModal").modal("show");
                 }
             },
@@ -164,8 +158,6 @@
                     $("#courseName2").text(data.courseName);
                     $("#location2").text(data.location);
                     $("#seats2").text(data.seats);
-                    $("#book2").text(data.book);
-                    $("#bookP2").text(data.bookP)
                     deleteId = data.id
                     $("#deleteModal").modal("show");
                 }
