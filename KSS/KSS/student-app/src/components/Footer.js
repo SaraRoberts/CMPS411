@@ -34,10 +34,10 @@ export class Footer extends Component {
                         <a href="https://www.facebook.com/kssbeckey/">
                             <img src={facebookLogo} />
                         </a>
-                        <a href="">
+                        <a href="https://twitter.com/KeepSafetySmart">
                             <img src={twitterLogo} />
                         </a>
-                        <a href="">
+                        <a href="https://www.instagram.com/keepingsafetysmart/">
                             <img src={instagramLogo} />
                         </a>
                     </div>

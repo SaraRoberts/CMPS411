@@ -14,7 +14,7 @@ export class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { staffs: [], loading: true, featuredStaffId: Math.floor(Math.random() * 6) };
+        this.state = { staffs: [], loading: true, featuredStaffId: 1 };
     }
 
     componentDidMount() {
@@ -22,7 +22,7 @@ export class Home extends Component {
         fetch('/api/Staffs', { credentials: 'same-origin' })
             .then(response => response.json())
             .then(data => {
-                this.setState({ staffs: data, loading: false });
+                this.setState({ staffs: data, loading: false, featuredStaffId: Math.floor(Math.random() * data.length) });
             });
     }
 
@@ -65,7 +65,7 @@ export class Home extends Component {
                     <div className="course">
                             <img className="course-image" src={emtImage} />
                             <h2>Emergency Medical Technician</h2>
-                            <p>Interested in becoming an EMT? An EMT is a specially trained
+                            <p> Become an EMT, or a specially trained medical
                                 technician certified to provide basic emergency services
                                 before and during transportation to a hospital.
                             </p>
@@ -73,7 +73,7 @@ export class Home extends Component {
                     <div className="course">
                         <img className="course-image" src={home1} />
                         <h2>CPR</h2>
-                        <p>CPR is a medical procedure involving specific chest
+                        <p> Learn CPR, a medical procedure involving specific chest
                             compression, performed in an attempt to bring back
                             blood circulation and breathing of a person suffering
                             cardiac arrest.
@@ -89,23 +89,23 @@ export class Home extends Component {
                     <div className="course">
                         <img className="course-image" src={aquImage} />
                         <h2>Aquatic Rescue</h2>
-                        <p>These courses teach
-                            applicable safety practices for individuals such as swim coaches, lifeguard
-                            instructors, and even professional rescuers.
+                        <p> Learn how to save lives during aquatic emergencies. These courses teach
+                            applicable safety practices for lifeguards, swim coaches, lifeguard
+                            instructors, and professional rescuers.
                         </p>
                     </div>
                     <div className="course">
                         <img className="course-image" src={bbsImage} />
                         <h2>Babysitting</h2>
-                        <p>Babysitting can be difficult, but BBS courses teach babysitting skills,
-                            such as leadership, child safety, and child behavoir to anyone
-                            with a desire to learn or growing a babysitting business.
+                        <p> Babysitting can be difficult, but these courses teach babysitting skills,
+                            such as child safety, leadership, and child behavoir to anyone
+                            with a desire provide childcare or grow a babysitting business.
                         </p>
                     </div>
                     <div className="course">
                         <img className="course-image" src={cssImage} />
                         <h2>Car Seat Safety</h2>
-                        <p>Learn how to properly conduct child safety seat checks and be informed on the best
+                        <p> Learn how to properly conduct child safety seat checks and be informed on the best
                             way to utilize and understand seat belts and child restraint systems while in 
                             motorized vehicles.
                         </p>
