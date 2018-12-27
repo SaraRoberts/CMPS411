@@ -12,6 +12,7 @@
     padding: 50px;
     text-align: center;
     z-index: 3;
+    text-transform: none;
 }
 
 #loginLogin {

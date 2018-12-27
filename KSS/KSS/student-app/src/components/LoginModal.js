@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/LoginModal.css';
-import './User/users.css';
+//import './User/users.css';
 
 export class LoginModal extends Component {
     //Constructor
