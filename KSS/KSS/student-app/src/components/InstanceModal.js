@@ -135,6 +135,8 @@ export class InstanceModal extends Component {
                 //For testing, use sandbox, for live, use Production. The 'env' variable will also need to be changed in the PayPalExpressBtn element below
                 sandbox: 'AU7-TZCTcPacLNP7bj74quFlQPLWzG9jlMB8Zqr5m4wnygK-ckrcuV6izspeNmb-su0VXrXWSsjXZAY-',
                 production: 'ATt_35Hio2zgeOr0HRxARGxst3ewohkZXzSJ7N4Ds3kwynkon66oriV6zuxLq5RfYW5l64d0dQJoBTAB'
+                //sandbox: 'ATMf4d7SPqeZMV9R0WpKNvcrDHERNV0KYDQKktvfCurjjV67vtLUyXbnKmRwi_5FWhOuEn-EXQvJ4BNl',
+                //production: 'ARELtGyaRtFqHImsQx3Myp1wkwXPYdnvGk1udo_JBK349zDWKAK_nMOk4Vooll6qI7H7DqlchVZJUup-'
         };
 
         if (this.props.modalInstance.courseCategory == "CAR") {
