@@ -41,7 +41,7 @@ export class CatalogInstances extends Component {
     }
     showModal = (instance) => {
         if (instance.seatsAvailable == 0) {
-            toastr.info("This class is full. If you are interested in taking this class, please email beckysmith@kss.com")
+            toastr.info("This class is full. If you are interested in taking this class, please email beckey@keepingsafetysmart.com").css("width", "350px")
             return;
         }
         if (!this.state.show) {
@@ -61,7 +61,7 @@ export class CatalogInstances extends Component {
 
     showLoginModal = (instance) => {
         if (instance.seatsAvailable == 0) {
-            toastr.info("This class is full. If you are interested in taking this class, please email beckysmith@kss.com")
+            toastr.info("This class is full. If you are interested in taking this class, please email beckey@keepingsafetysmart.com").css("width", "350px")
             return;
         }
         if (!this.state.showLogin) {
@@ -134,7 +134,7 @@ export class CatalogInstances extends Component {
                                     </div>
                                     <div className="seperator" />
                                     <div className="courseClassMiddle">
-                                        Price: ${instance.price}.00<br />
+                                        Price: ${instance.price}<br />
                                         Open Seats: {instance.seatsAvailable}<br />
                                         {instance.locationName}<br />
                                         {instance.instructorName}
