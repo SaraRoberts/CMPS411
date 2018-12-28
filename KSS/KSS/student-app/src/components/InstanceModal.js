@@ -176,6 +176,7 @@ export class InstanceModal extends Component {
                         <h4>Instructor: {this.props.modalInstance.instructorName}</h4>
                         <h4>{this.props.modalInstance.startDate}</h4>
                         <h4>{this.props.modalInstance.locationName}<br />
+                            {this.props.modalInstance.locationStreet}<br />
                             {this.props.modalInstance.locationCity}, {this.props.modalInstance.locationState} {this.props.modalInstance.locationZip}
                         </h4>
                         <h4>Price: ${this.props.modalInstance.price}</h4>

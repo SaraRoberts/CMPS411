@@ -58,17 +58,13 @@
             </p>
             <h4>New Staff Bio</h4>
             <p>
-                Add new staff bio.
+                Add new staff bio.  You will be prompted to select the Staff in the form.
             </p>
-            <h4>Edit</h4>
+            <h4 class="edit">Edit</h4>
             <p>
                 Change existing staff bio.
             </p>
-            <h4>Details</h4>
-            <p>
-                View more information about existing staff bio.
-            </p>
-            <h4>Delete</h4>
+            <h4 class="delete">Delete</h4>
             <p>
                 Delete existing staff bio.
             </p>
@@ -130,7 +126,7 @@
             success: function (data) {
                 if (data.success) {
                     $("#fullName").text(data.fullName);
-                    $("#picture").text("This is a placeholder for a picture : " + data.picture);
+                    $("#picture").text("Image URL: " + data.picture);
                     $("#bio").text("Staff Bio : " + data.bio);
                     $("#detailsModal").modal("show");
                 }
@@ -155,7 +151,7 @@
             success: function (data) {
                 if (data.success) {
                     $("#fullName1").text(data.fullName);
-                    $("#picture1").text("This is a placeholder for a picture : " + data.picture);
+                    $("#picture1").text("Image URL : " + data.picture);
                     $("#bio1").text("Staff Bio : " + data.bio);
                     deleteId = data.staffId;
                     $("#deleteModal").modal("show");
