@@ -8,8 +8,10 @@ namespace KSS.Areas.Admin.ViewModels
 {
     public class UserCreate
     {
+        [Required(ErrorMessage = "First Name is required")]
         [MaxLength(15)]
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "Last Name is required")]
         [MaxLength(15)]
         public string LastName { get; set; }
         [Phone]
