@@ -29,7 +29,7 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Categories/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -43,7 +43,16 @@ namespace KSS.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return View(category);
+
+            return Json(new
+            {
+                success = true,
+                name = category.Name,
+                title = category.Title,
+                description = category.Description,
+                categoryId = category.CategoryId
+
+            });
         }
 
         // GET: Admin/Categories/Create
@@ -138,14 +147,31 @@ namespace KSS.Areas.Admin.Controllers
         }
 
         // POST: Admin/Categories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Category.FindAsync(id);
+            var category = await _context.Category.FirstOrDefaultAsync(m => m.CategoryId == id);
+            var used = await _context.Course.FirstOrDefaultAsync(e => e.CategoryId == category.CategoryId);
+
+            if (used != null)
+            {
+                return Json(new
+                {
+                    success = true,
+                    message = used.Name + " is using this category.",
+                    canDelete = false
+                });
+            }
+            var deletedCategory= category;
             _context.Category.Remove(category);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json(new
+            {
+                success = true,
+                message = deletedCategory.Name + " has been deleted",
+                canDelete = true
+            });
         }
 
         private bool CategoryExists(int id)
