@@ -13,7 +13,7 @@ using KSS.Areas.Admin.ViewModels;
 namespace KSS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Staff")]
     public class EnrollmentsController : Controller
     {
         private readonly DataContext _context;
@@ -126,7 +126,7 @@ namespace KSS.Areas.Admin.Controllers
             ViewData["Location"] = instance.Location.Name;
             return View(enrollment);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Enrollments/Create
         public async Task<IActionResult> Create(int? id)
         {
@@ -147,7 +147,7 @@ namespace KSS.Areas.Admin.Controllers
             ViewData["UserId"] = userList;
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Admin/Enrollments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -202,7 +202,7 @@ namespace KSS.Areas.Admin.Controllers
             ViewData["UserId"] = userList2;
             return View(enrollment);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Enrollments/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -225,7 +225,7 @@ namespace KSS.Areas.Admin.Controllers
 
             return View(enrollment);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Admin/Enrollments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -266,7 +266,7 @@ namespace KSS.Areas.Admin.Controllers
 
             return View(enrollment);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Enrollments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -286,7 +286,7 @@ namespace KSS.Areas.Admin.Controllers
 
             return View(enrollment);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Admin/Enrollments/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
@@ -312,7 +312,7 @@ namespace KSS.Areas.Admin.Controllers
 
             });
         }
-
+        
         private bool EnrollmentExists(int id)
         {
             return _context.Enrollment.Any(e => e.EnrollmentId == id);
