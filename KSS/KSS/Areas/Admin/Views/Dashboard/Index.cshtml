@@ -35,7 +35,9 @@
                 <span class="glyphicon glyphicon-map-marker"></span> @Html.DisplayFor(modelItem => item.Location.Name)<br />
                 <span class="glyphicon glyphicon-time"></span> @time
                 <span class="links">
-                    <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> |
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Enrollments" asp-action="Create" asp-route-id="@item.InstanceId">Add Student</a> <span> | </span> }
                     <a asp-controller="Enrollments" asp-action="Roster" asp-route-id="@item.InstanceId">Roster</a>
                 </span>
             </div>

@@ -28,51 +28,69 @@
 
         </div>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Student
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Paid)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Confirmed)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
+<table class="table">
+    <thead>
+    <tr>
+        @if (User.IsInRole("Admin"))
+        {
+            <th></th>
+        }
+        <th>
+            Student
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Confirmed)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (User.IsInRole("Admin"))
             {
-            <tr>
                 <td>
                     <span onclick="deleteItem(@item.EnrollmentId)" onmouseover="" class="glyphicon glyphicon-trash"></span>&nbsp
                     <a asp-action="Edit" asp-route-id="@item.EnrollmentId" class="transfer">
                         <span class="glyphicon glyphicon-transfer"></span>
                     </a>&nbsp
-                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
                 </td>
-                <td>
-                    @if (@item.Paid) { <span class="glyphicon glyphicon-ok"></span> }
-                    else { <span class="glyphicon glyphicon-remove"></span> }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Confirmed)
-                </td>
-            </tr>
             }
-        </tbody>
-    </table>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+            </td>
+            <td>
+                @if (@item.Paid)
+                {
+                    <span class="glyphicon glyphicon-ok"></span>
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-remove"></span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confirmed)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+@if (User.IsInRole("Admin"))
+{
     <p>
         <a asp-action="Create" asp-route-id="@ViewData["Instance"]">Add Student</a>
     </p>
+}
 <script>
       var deleteId;
 
