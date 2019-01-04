@@ -18,7 +18,6 @@
                     <h4 id="fullName2"></h4>
                     <h4 id="status2"></h4>
                     <h4 id="paid2"></h4>
-                    <h4 id="confirmed2"></h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -43,9 +42,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Confirmed)
         </th>
     </tr>
     </thead>
@@ -78,9 +74,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Confirmed)
-            </td>
         </tr>
     }
     </tbody>
@@ -108,7 +101,6 @@
                     $("#fullName2").text("Name : " + data.fullName);
                     $("#status2").text("Status : " + data.status);
                     $("#paid2").text(data.paid);
-                    $("#confirmed2").text("Date Confirmed : " + data.confirmed);
                     deleteId = data.enrollmentId;
                     $("#deleteModal").modal("show");
                 }
