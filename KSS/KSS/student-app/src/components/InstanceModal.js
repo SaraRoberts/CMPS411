@@ -188,7 +188,7 @@ export class InstanceModal extends Component {
                         <h5 id="payMessage">Click to pay with PayPal and Book Class.</h5>
 
                         <PaypalExpressBtn
-                            env={'sandbox'} //change this to 'production' to complete REAL transactions
+                            env={'production'} //change this to 'production' to complete REAL transactions
                             client={client}
                             currency={'USD'}
 
