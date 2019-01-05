@@ -124,43 +124,40 @@ namespace KSS.Areas.Admin.Data
             );
 
             modelBuilder.Entity<StaffBio>().HasData(
-                new StaffBio { StaffBioId = 1, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "Becky Smith is the owner of Keeping Safety Smart. With over 20 years of emergency/life saver teaching experience, Ms. Smith founded Keeping Safety Smart in 2015.", UserId = 1 },
-                new StaffBio { StaffBioId = 2, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "Nicole Dufrene EMR has a passion to help protect our littles one from the number one cause of children's death motor vehicle accidents.  She is driven to help educate about how to properly install a car seat and make sure your little ones are safe and secured.", UserId = 2 },
-                new StaffBio { StaffBioId = 3, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "Dennis Pitts NREMT is a seasoned fire fighter in the Tangipahoa Parish area.  He teaches all the CPR, first aid, and bureau of EM S classes.", UserId = 3 },
-                new StaffBio { StaffBioId = 4, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "Clayton Cawyer NREMT has been teaching for several years in the CPR, first aid and Bureau of EMS classes as well as a fire fighter in the St. Tammany area. ", UserId = 4 },
-                new StaffBio { StaffBioId = 5, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "Jodi Toliver MS is an instructor train the trainer and has been teach water classes for over 25 years.  She will also be helping to teach the American Red Cross babysitters class.", UserId = 5 },
-                new StaffBio { StaffBioId = 6, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "Savannah Rachel RN started her career as an EMT and has continued her education in the healthcare field.  She is currently working at East Jefferson Hospital and will be teaching the ACLS classes.", UserId = 6 },
-                new StaffBio { StaffBioId = 7, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "Jackie Smith BSN is finish her Masters degree in Nursing education she is a current cardiac nurse.  She will be teaching the ACLS classes.", UserId = 7 },
-                new StaffBio { StaffBioId = 8, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "I am Staff 6!", UserId = 8 },
-                new StaffBio { StaffBioId = 9, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "I am Staff 6!", UserId = 9 },
-                new StaffBio { StaffBioId = 10, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "I am Staff 6!", UserId = 10 }
+                new StaffBio { StaffBioId = 1, Picture = "https://i.ibb.co/KVjPPp7/beckeysmith.jpg", Bio = "Beckey Smith is the owner of Keeping Safety Smart. With over 20 years of emergency/life saver teaching experience, Ms. Smith founded Keeping Safety Smart in 2015.", UserId = 1 },
+                new StaffBio { StaffBioId = 2, Picture = "https://i.ibb.co/dt0W5kH/nicoledufrene.jpg", Bio = "Nicole Dufrene EMR has a passion to help protect our littles one from the number one cause of children's death motor vehicle accidents.  She is driven to help educate about how to properly install a car seat and make sure your little ones are safe and secured.", UserId = 2 },
+                new StaffBio { StaffBioId = 3, Picture = "https://i.ibb.co/JBxJPv6/dennispitts.jpg", Bio = "Dennis Pitts NREMT is a seasoned fire fighter in the Tangipahoa Parish area.  He teaches all the CPR, first aid, and bureau of EM S classes.", UserId = 3 },
+                new StaffBio { StaffBioId = 4, Picture = "https://i.ibb.co/GJdjzDw/claytoncawyer.png", Bio = "Clayton Cawyer NREMT has been teaching for several years in the CPR, first aid and Bureau of EMS classes as well as a fire fighter in the St. Tammany area. ", UserId = 4 },
+                new StaffBio { StaffBioId = 5, Picture = "https://i.ibb.co/G33Vh31/jodit.png", Bio = "Jodi Toliver MS is an instructor train the trainer and has been teach water classes for over 25 years.  She will also be helping to teach the American Red Cross babysitters class.", UserId = 5 },
+                new StaffBio { StaffBioId = 6, Picture = "https://i.ibb.co/nB1N37X/savannah-rachel.jpg", Bio = "Savannah Rachel RN started her career as an EMT and has continued her education in the healthcare field.  She is currently working at East Jefferson Hospital and will be teaching the ACLS classes.", UserId = 6 },
+                new StaffBio { StaffBioId = 7, Picture = "https://image.ibb.co/jkKE2A/user-placeholder.png", Bio = "Jackie Smith BSN is finish her Masters degree in Nursing education she is a current cardiac nurse.  She will be teaching the ACLS classes.", UserId = 7 }
             );
             
             //Enrollments
-            for(int i=1,j=1; j < 30 && i<510; j++)
-            {
-                for(int k = 1; k < 18; k++)
-                {
-                    modelBuilder.Entity<Enrollment>().HasData
-                    (
-                        new Enrollment { EnrollmentId = i++, InstanceId = j, UserId = k, Status = 'E', BookBought = 0 < random.Next(0, 2), Paid = 0 < random.Next(0, 2) }
-                    );
-                }
-            }
+            //for(int i=1,j=1; j < 30 && i<510; j++)
+            //{
+            //    for(int k = 1; k < 18; k++)
+            //    {
+            //        modelBuilder.Entity<Enrollment>().HasData
+            //        (
+            //            new Enrollment { EnrollmentId = i++, InstanceId = j, UserId = k, Status = 'E', BookBought = 0 < random.Next(0, 2), Paid = 0 < random.Next(0, 2) }
+            //        );
+            //    }
+            //}
 
             //Instances
-            for(int i = 1; i < 30; i++)
-            {
-                modelBuilder.Entity<Instance>().HasData
-                (
-                        new Instance { InstanceId = i, StartDate = new DateTimeOffset(random.Next(2016,2020), random.Next(1,13), random.Next(1, 29), random.Next(7, 19), 00, 00, new TimeSpan(-6, 0, 0)), Price = (double)random.Next(45,150), CourseId = random.Next(1,11), LocationId = random.Next(1, 4), Seats = random.Next(10, 31), InstructorId = random.Next(1, 7), BookAvailable = 0<random.Next(1, 3), BookPrice = random.Next(15, 56) }
-                );
-            }
+            //for(int i = 1; i < 30; i++)
+            //{
+            //    modelBuilder.Entity<Instance>().HasData
+            //    (
+            //            new Instance { InstanceId = i, StartDate = new DateTimeOffset(random.Next(2016,2020), random.Next(1,13), random.Next(1, 29), random.Next(7, 19), 00, 00, new TimeSpan(-6, 0, 0)), Price = (double)random.Next(45,150), CourseId = random.Next(1,11), LocationId = random.Next(1, 4), Seats = random.Next(10, 31), InstructorId = random.Next(1, 7), BookAvailable = 0<random.Next(1, 3), BookPrice = random.Next(15, 56) }
+            //    );
+            //}
             
             modelBuilder.Entity<Location>().HasData
             (
-                new Location { LocationId = 1, Name = "Hammond Fire Department", Street = "405 S. Oak Street", City = "Hammond", State = "LA", Zipcode = 70403 },
-                new Location { LocationId = 2, Name = "Tickfaw Emergency Care", Street = "92 Hill Street", City = "Tickfaw", State = "LA", Zipcode = 70442 },
+                new Location { LocationId = 1, Name = "St. Tammany Fire District 12", Street = "19375 LA-36", City = "Covington", State = "LA", Zipcode = 70433 },
+                new Location { LocationId = 2, Name = "Husser Fire Department", Street = "56298 LA-445", City = "Husser", State = "LA", Zipcode = 70442 },
                 new Location { LocationId = 3, Name = "Independence Fire", Street = "12044 Hwy 40", City = "Independence", State = "LA", Zipcode = 70443 },
                 new Location { LocationId = 4, Name = "Mandeville Fire Department", Street = "24301 Highway 190", City = "Mandeville", State = "LA", Zipcode = 70448 },
                 new Location { LocationId = 5, Name = "Slidell Fire Department", Street = "375 Bouscaren St", City = "Slidell", State = "LA", Zipcode = 70458 }
@@ -173,7 +170,7 @@ namespace KSS.Areas.Admin.Data
                 rng.GetBytes(saltAdmin);
             }
             string hashedAdmin = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: "admin",
+                password: "Caroline62817",
                 salt: saltAdmin,
                 prf: KeyDerivationPrf.HMACSHA256,
                 iterationCount: 10000,
@@ -186,7 +183,7 @@ namespace KSS.Areas.Admin.Data
                 rng.GetBytes(saltStudent);
             }
             string hashedStudent = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: "student",
+                password: "kss2019",
                 salt: saltStudent,
                 prf: KeyDerivationPrf.HMACSHA256,
                 iterationCount: 10000,
@@ -195,25 +192,15 @@ namespace KSS.Areas.Admin.Data
             modelBuilder.Entity<User>().HasData
             (
                 // admin
-                new User { UserId = 1, FirstName = "Becky", LastName = "Smith", Phone = "1112223333", Email = "admin@admin.com", Password = hashedAdmin, Salt = saltAdmin, Role = "Admin" },
+                new User { UserId = 10, FirstName = "Developer", LastName = "Developer", Phone = "1112223333", Email = "webmaster@keepingsafetysmart.com", Password = hashedAdmin, Salt = saltAdmin, Role = "Admin" },
+                new User { UserId = 1, FirstName = "Beckey", LastName = "Smith", Phone = "9855029425", Email = "bsmithsafety@hotmail.com", Password = hashedAdmin, Salt = saltAdmin, Role = "Admin" },
                 // actual staff
                 new User { UserId = 2, FirstName = "Nicole", LastName = "Dufrene", Phone = "1112223333", Email = "nicoledufrene0301@gmail.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff"},
-                new User { UserId = 3, FirstName = "Dennis", LastName = "Pitts", Phone = "1112223333", Email = "student2@student.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff" },
-                new User { UserId = 4, FirstName = "Clayton", LastName = "Cawyer", Phone = "1112223333", Email = "student3@student.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff" },
-                new User { UserId = 5, FirstName = "Jodi", LastName = "Toliver", Phone = "1112223333", Email = "student4@student.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff" },
-                new User { UserId = 6, FirstName = "Savannah", LastName = "Rachel", Phone = "1112223333", Email = "student5@student.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff" },
-                new User { UserId = 7, FirstName = "Jackie", LastName = "Smith", Phone = "1112223333", Email = "student6@student.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff"},
-                //students / seed data
-                new User { UserId = 8, FirstName = "Trenton", LastName = "Hillsong", Phone = "1112223333", Email = "student7@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 9, FirstName = "Colin", LastName = "Livers", Phone = "1112223333", Email = "student8@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User"},
-                new User { UserId = 10, FirstName = "Babe", LastName = "Ruth", Phone = "1112223333", Email = "student9@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User"},
-                new User { UserId = 11, FirstName = "Tim", LastName = "Hammond", Phone = "1112223333", Email = "student10@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 12, FirstName = "Gary", LastName = "Aimes", Phone = "1112223333", Email = "student11@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User"},
-                new User { UserId = 13, FirstName = "Lucy", LastName = "Vilardo", Phone = "1112223333", Email = "student12@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 14, FirstName = "Tom", LastName = "Avers", Phone = "1112223333", Email = "student13@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 15, FirstName = "Amanda", LastName = "Catalonato", Phone = "1112223333", Email = "student14@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User"},
-                new User { UserId = 16, FirstName = "Donald", LastName = "Hill", Phone = "1112223333", Email = "student15@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User" },
-                new User { UserId = 17, FirstName = "Richard", LastName = "Newman", Phone = "1112223333", Email = "student16@student.com", Password = hashedStudent, Salt = saltStudent, Role = "User"}
+                new User { UserId = 3, FirstName = "Dennis", LastName = "Pitts", Phone = "1112223333", Email = "dennis@keepingsafetysmart.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff" },
+                new User { UserId = 4, FirstName = "Clayton", LastName = "Cawyer", Phone = "1112223333", Email = "clayton@keepingsafetysmart.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff" },
+                new User { UserId = 5, FirstName = "Jodi", LastName = "Toliver", Phone = "1112223333", Email = "jodi@keepingsafetysmart.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff" },
+                new User { UserId = 6, FirstName = "Savannah", LastName = "Rachel", Phone = "1112223333", Email = "savannah@keepingsafetysmart.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff" },
+                new User { UserId = 7, FirstName = "Jackie", LastName = "Smith", Phone = "1112223333", Email = "jackie@keepingsafetysmart.com", Password = hashedStudent, Salt = saltStudent, Role = "Staff"}
             );
         }
     }
