@@ -93,6 +93,7 @@ export class LoginModal extends Component {
                                     <button type="submit" className="login-button">Login</button>
                                 </div>
                                 <p>Don't have an account? Sign up <Link to='/register' onClick={(e) => { this.onClose(e); }}>here!</Link></p>
+                                <p>Forgot your password? Email us! <br/> beckey@keepingsafetysmart.com</p>
                             </form>
                         </div>
                     </div>
