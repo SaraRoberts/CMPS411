@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KSS.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190105224411_ProdDb")]
-    partial class ProdDb
+    [Migration("20190106174539_initial-production")]
+    partial class initialproduction
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -237,14 +237,14 @@ namespace KSS.Migrations
                     b.ToTable("Users");
 
                     b.HasData(
-                        new { UserId = 10, Email = "webmaster@keepingsafetysmart.com", FirstName = "Developer", LastName = "Developer", Password = "i1oxOIlFeI6sGfBsFtOdNjfe2d1DeDTHL19UBZI9L8k=", Phone = "1112223333", Role = "Admin", Salt = new byte[] { 182, 104, 107, 130, 235, 87, 82, 253, 120, 157, 56, 101, 116, 232, 92, 20 } },
-                        new { UserId = 1, Email = "bsmithsafety@hotmail.com", FirstName = "Beckey", LastName = "Smith", Password = "i1oxOIlFeI6sGfBsFtOdNjfe2d1DeDTHL19UBZI9L8k=", Phone = "9855029425", Role = "Admin", Salt = new byte[] { 182, 104, 107, 130, 235, 87, 82, 253, 120, 157, 56, 101, 116, 232, 92, 20 } },
-                        new { UserId = 2, Email = "nicoledufrene0301@gmail.com", FirstName = "Nicole", LastName = "Dufrene", Password = "+jCG2DQW0Fa3r12T3UbLVn4YVMzAJ2Fu71snI/VExI8=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 100, 93, 201, 81, 154, 14, 121, 100, 20, 71, 159, 203, 6, 52, 142, 140 } },
-                        new { UserId = 3, Email = "dennis@keepingsafetysmart.com", FirstName = "Dennis", LastName = "Pitts", Password = "+jCG2DQW0Fa3r12T3UbLVn4YVMzAJ2Fu71snI/VExI8=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 100, 93, 201, 81, 154, 14, 121, 100, 20, 71, 159, 203, 6, 52, 142, 140 } },
-                        new { UserId = 4, Email = "clayton@keepingsafetysmart.com", FirstName = "Clayton", LastName = "Cawyer", Password = "+jCG2DQW0Fa3r12T3UbLVn4YVMzAJ2Fu71snI/VExI8=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 100, 93, 201, 81, 154, 14, 121, 100, 20, 71, 159, 203, 6, 52, 142, 140 } },
-                        new { UserId = 5, Email = "jodi@keepingsafetysmart.com", FirstName = "Jodi", LastName = "Toliver", Password = "+jCG2DQW0Fa3r12T3UbLVn4YVMzAJ2Fu71snI/VExI8=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 100, 93, 201, 81, 154, 14, 121, 100, 20, 71, 159, 203, 6, 52, 142, 140 } },
-                        new { UserId = 6, Email = "savannah@keepingsafetysmart.com", FirstName = "Savannah", LastName = "Rachel", Password = "+jCG2DQW0Fa3r12T3UbLVn4YVMzAJ2Fu71snI/VExI8=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 100, 93, 201, 81, 154, 14, 121, 100, 20, 71, 159, 203, 6, 52, 142, 140 } },
-                        new { UserId = 7, Email = "jackie@keepingsafetysmart.com", FirstName = "Jackie", LastName = "Smith", Password = "+jCG2DQW0Fa3r12T3UbLVn4YVMzAJ2Fu71snI/VExI8=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 100, 93, 201, 81, 154, 14, 121, 100, 20, 71, 159, 203, 6, 52, 142, 140 } }
+                        new { UserId = 10, Email = "webmaster@keepingsafetysmart.com", FirstName = "Developer", LastName = "Developer", Password = "+PpaorYj4pAwGReVIzSFOFZ1ngFhvW9p1okX0em3gLw=", Phone = "1112223333", Role = "Admin", Salt = new byte[] { 56, 77, 183, 92, 241, 31, 235, 88, 132, 22, 169, 143, 163, 190, 6, 206 } },
+                        new { UserId = 1, Email = "bsmithsafety@hotmail.com", FirstName = "Beckey", LastName = "Smith", Password = "+PpaorYj4pAwGReVIzSFOFZ1ngFhvW9p1okX0em3gLw=", Phone = "9855029425", Role = "Admin", Salt = new byte[] { 56, 77, 183, 92, 241, 31, 235, 88, 132, 22, 169, 143, 163, 190, 6, 206 } },
+                        new { UserId = 2, Email = "nicoledufrene0301@gmail.com", FirstName = "Nicole", LastName = "Dufrene", Password = "D6L5boApNKVodbrG0LH0XuqdFMCKw4N+x62PrtbfvVg=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 97, 193, 27, 49, 22, 32, 200, 15, 59, 17, 251, 161, 22, 134, 92, 166 } },
+                        new { UserId = 3, Email = "dennis@keepingsafetysmart.com", FirstName = "Dennis", LastName = "Pitts", Password = "D6L5boApNKVodbrG0LH0XuqdFMCKw4N+x62PrtbfvVg=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 97, 193, 27, 49, 22, 32, 200, 15, 59, 17, 251, 161, 22, 134, 92, 166 } },
+                        new { UserId = 4, Email = "clayton@keepingsafetysmart.com", FirstName = "Clayton", LastName = "Cawyer", Password = "D6L5boApNKVodbrG0LH0XuqdFMCKw4N+x62PrtbfvVg=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 97, 193, 27, 49, 22, 32, 200, 15, 59, 17, 251, 161, 22, 134, 92, 166 } },
+                        new { UserId = 5, Email = "jodi@keepingsafetysmart.com", FirstName = "Jodi", LastName = "Toliver", Password = "D6L5boApNKVodbrG0LH0XuqdFMCKw4N+x62PrtbfvVg=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 97, 193, 27, 49, 22, 32, 200, 15, 59, 17, 251, 161, 22, 134, 92, 166 } },
+                        new { UserId = 6, Email = "savannah@keepingsafetysmart.com", FirstName = "Savannah", LastName = "Rachel", Password = "D6L5boApNKVodbrG0LH0XuqdFMCKw4N+x62PrtbfvVg=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 97, 193, 27, 49, 22, 32, 200, 15, 59, 17, 251, 161, 22, 134, 92, 166 } },
+                        new { UserId = 7, Email = "jackie@keepingsafetysmart.com", FirstName = "Jackie", LastName = "Smith", Password = "D6L5boApNKVodbrG0LH0XuqdFMCKw4N+x62PrtbfvVg=", Phone = "1112223333", Role = "Staff", Salt = new byte[] { 97, 193, 27, 49, 22, 32, 200, 15, 59, 17, 251, 161, 22, 134, 92, 166 } }
                     );
                 });
 
