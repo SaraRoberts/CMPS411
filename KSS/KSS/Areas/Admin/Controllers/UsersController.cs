@@ -171,17 +171,15 @@ namespace KSS.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                var user = await _context.Users.FindAsync(id);
                 try
                 {
-                    var user = new User
-                    {
-                        UserId = userEdit.UserId,
-                        FirstName = userEdit.FirstName,
-                        LastName = userEdit.LastName,
-                        Phone = userEdit.Phone,
-                        Email = userEdit.Email,
-                        Role = userEdit.Role
-                    };
+                    user.UserId = userEdit.UserId;
+                    user.FirstName = userEdit.FirstName;
+                    user.LastName = userEdit.LastName;
+                    user.Phone = userEdit.Phone;
+                    user.Email = userEdit.Email;
+                    user.Role = userEdit.Role;
 
                     if (userEdit.Password != null)
                     {
