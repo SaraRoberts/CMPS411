@@ -30,27 +30,17 @@ class App extends Component {
     componentDidMount() {
         fetch('/api/users', { credentials: 'same-origin' })
             .then(response => {
-                if (response.ok) {
+                if (response.ok) return response.json();
+            })
+            .then(data => {
+                if (data) {
                     this.setState({
                         loginState: {
                             loggedIn: true,
-                            userId: null,
-                            firstName: ""
+                            userId: data.userId,
+                            firstName: data.firstName
                         }
                     });
-                    if (this.state.loginState.loggedIn) {
-                        fetch('/api/users', { credentials: 'same-origin' })
-                            .then(response => response.json())
-                            .then(data => {
-                                this.setState({
-                                    loginState: {
-                                        loggedIn: true,
-                                        userId: data.userId,
-                                        firstName: data.firstName
-                                    }
-                                });
-                            });
-                    }
                 }
             });
     }
