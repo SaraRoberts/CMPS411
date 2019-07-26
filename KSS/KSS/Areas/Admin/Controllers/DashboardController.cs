@@ -29,15 +29,16 @@ namespace KSS.Areas.Admin.Controllers
         {
             var user = await _context.Users.FirstOrDefaultAsync(e => e.Email == User.Identity.Name);
             dynamic instances = new ExpandoObject();
+            var now = DateTimeOffset.Now.AddHours(-6);
             instances.FutureInstances = _context.Instance
                 .Include(i => i.Course)
                 .Include(i => i.Location)
-                .Where(e => e.StartDate >= DateTime.UtcNow && e.InstructorId == user.UserId)
+                .Where(e => e.StartDate >= now && e.InstructorId == user.UserId)
                 .OrderBy(e => e.StartDate);
             instances.GradeInstances = _context.Instance
                 .Include(i => i.Course)
                 .Include(i => i.Location)
-                .Where(e => e.Graded == false && e.StartDate < DateTime.UtcNow && e.InstructorId == user.UserId)
+                .Where(e => e.Graded == false && e.StartDate < now && e.InstructorId == user.UserId)
                 .OrderBy(e => e.StartDate);
             // get number of future instances, using to display placeholder when there are none.
             int numFutureInstances = 0;
