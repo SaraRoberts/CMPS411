@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axiom": "^0.1.6",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.0",
